@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewBag.Title = "Admin | Thêm Thương Hiệu";
+}
+<style>
+    input, textarea, select {
+        max-width: none !important;
+    }
+</style>
+<div class="container">
+    <div class="page-inner">
+        <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4">
+            <div>
+                <h3 class="fw-bold mb-3">Thêm Thương Hiệu</h3>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Thông Tin Thương Hiệu</div>
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="d-flex justify-content-between">
+                        <!-- MaTH -->
+                        <div class="col-md-2 mb-3 px-2">
+                            <label for="MaTH" class="form-label">Mã Thương Hiệu</label>
+                            <input type="text" class="form-control" id="MaTH" placeholder="TH001" disabled required>
+                        </div>
+                        <!-- TenThuongHieu -->
+                        <div class="col-md-10 mb-3 px-2">
+                            <label for="TenThuongHieu" class="form-label">Tên Thương Hiệu</label>
+                            <input type="text" class="form-control" id="TenThuongHieu" placeholder="Nhập tên thương hiệu" required>
+                        </div>
+                    </div>
+                    <!-- TrangThai -->
+                    <div class="col-md-12 mb-3 px-2">
+                        <label for="TrangThai" class="form-label">Trạng Thái</label>
+                        <select class="form-select" id="TrangThai" required>
+                            <option value="" selected disabled>Chọn trạng thái</option>
+                            <option value="1">Trạng thái 1</option>
+                            <option value="0">Trạng thái 2</option>
+                        </select>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn btn-primary">Lưu Thương Hiệu</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

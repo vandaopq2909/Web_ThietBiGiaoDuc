@@ -6,14 +6,13 @@ using System.Web.Mvc;
 
 namespace Web_ThietBiGiaoDuc.Areas.Admin.Controllers
 {
-    public class SanPhamController : Controller
+    public class LoaiSanPhamController : Controller
     {
-        // GET: Admin/SanPham
+        // GET: Admin/LoaiSanPham
         public ActionResult Index()
         {
             return View();
         }
-
         public ActionResult Them()
         {
             return View();

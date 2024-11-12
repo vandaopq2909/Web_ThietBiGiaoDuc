@@ -1,0 +1,63 @@
+﻿
+@{
+    ViewBag.Title = "Admin | Sửa Loại Sản Phẩm";
+}
+<style>
+    input, textarea, select {
+        max-width: none !important;
+    }
+</style>
+<div class="container">
+    <div class="page-inner">
+        <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4">
+            <div>
+                <h3 class="fw-bold mb-3">Sửa Loại Sản Phẩm</h3>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Thông Tin Loại Sản Phẩm</div>
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="d-flex justify-content-between">
+                        <!-- MaLoaiSP -->
+                        <div class="col-md-2 mb-3 px-2">
+                            <label for="MaLoaiSP" class="form-label">Mã Loại Sản Phẩm</label>
+                            <input type="text" class="form-control" id="MaLoaiSP" placeholder="LSP001" disabled required>
+                        </div>
+                        <!-- TenLoaiSP -->
+                        <div class="col-md-10 mb-3 px-2">
+                            <label for="TenLoaiSP" class="form-label">Tên Loại Sản Phẩm</label>
+                            <input type="text" class="form-control" id="TenLoaiSP" value="Bàn Ghế Giáo Viên" placeholder="Nhập tên loại sản phẩm" required>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <!-- MaDM -->
+                        <div class="col-md-6 mb-3 px-2">
+                            <label for="MaDM" class="form-label">Danh Mục</label>
+                            <select class="form-select" id="MaDM" required>
+                                <option value="" disabled>Chọn danh mục</option>
+                                <option value="1" selected>Thiết Bị - Nội Thất Phòng Học</option>
+                                <option value="0">Danh mục 2</option>
+                            </select>
+                        </div>
+                        <!-- TrangThai -->
+                        <div class="col-md-6 mb-3 px-2">
+                            <label for="TrangThai" class="form-label">Trạng Thái</label>
+                            <select class="form-select" id="TrangThai" required>
+                                <option value="" disabled>Chọn trạng thái</option>
+                                <option value="1" selected>Đang Hoạt Động</option>
+                                <option value="0">Trạng thái 2</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn btn-primary">Cập Nhật Loại Sản Phẩm</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

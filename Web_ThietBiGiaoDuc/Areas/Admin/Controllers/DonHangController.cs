@@ -6,21 +6,15 @@ using System.Web.Mvc;
 
 namespace Web_ThietBiGiaoDuc.Areas.Admin.Controllers
 {
-    public class SanPhamController : Controller
+    public class DonHangController : Controller
     {
-        // GET: Admin/SanPham
+        // GET: Admin/DonHang
         public ActionResult Index()
         {
             return View();
         }
-
-        public ActionResult Them()
-        {
-            return View();
-        }
-        public ActionResult Sua()
-        {
-            return View();
-        }
+        public ActionResult Them() { return View(); }
+        public ActionResult Sua() { return View(); }
+        public ActionResult ChiTiet() { return View(); }
     }
 }

@@ -1,0 +1,263 @@
+﻿
+@{
+    ViewBag.Title = "Admin | Sửa Sản Phẩm";
+}
+<style>
+    input, textarea, select {
+        max-width: none !important;
+    }
+
+    .preview-container {
+        position: relative;
+        display: inline-block;
+        margin-right: 10px;
+        margin-bottom: 10px;
+    }
+
+    .preview-img {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+    }
+
+    .remove-btn {
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        background-color: #ff4444;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        font-size: 14px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+</style>
+<div class="container">
+    <div class="page-inner">
+        <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4">
+            <div>
+                <h3 class="fw-bold mb-3">Sửa Sản Phẩm</h3>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Thông Tin Sản Phẩm</div>
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="d-flex justify-content-between">
+                        <!-- MaSP -->
+                        <div class="col-md-2 mb-3 px-2">
+                            <label for="MaSP" class="form-label">Mã Sản Phẩm</label>
+                            <input type="text" class="form-control" id="MaSP" placeholder="SP001" disabled required>
+                        </div>
+                        <!-- TenSanPham -->
+                        <div class="col-md-10 mb-3 px-2">
+                            <label for="TenSanPham" class="form-label">Tên Sản Phẩm</label>
+                            <input type="text" class="form-control" id="TenSanPham" value="Bộ Bàn Ghế Giáo Viên Không Hộc Tủ" placeholder="Nhập tên sản phẩm" required>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <!-- MaDM -->
+                        <div class="col-md-3 mb-3 px-2">
+                            <label for="MaDM" class="form-label">Danh Mục Sản Phẩm</label>
+                            <select class="form-select" id="MaDM" required>
+                                <option value="" disabled>Chọn danh mục sản phẩm</option>
+                                <option value="1" selected>Thiết Bị - Nội Thất Phòng Học</option>
+                                <option value="1">DM 2</option>
+                                <option value="1">DM 3</option>
+                            </select>
+                        </div>
+                        <!-- MaLoai -->
+                        <div class="col-md-3 mb-3 px-2">
+                            <label for="MaLoai" class="form-label">Loại Sản Phẩm</label>
+                            <select class="form-select" id="MaLoai" required>
+                                <option value="" disabled>Chọn loại sản phẩm</option>
+                                <option value="1" selected>Bàn Ghế Giáo Viên</option>
+                                <option value="1">Loại 2</option>
+                                <option value="1">Loại 3</option>
+                            </select>
+                        </div>
+                        <!-- MaTH -->
+                        <div class="col-md-3 mb-3 px-2">
+                            <label for="MaTH" class="form-label">Thương Hiệu</label>
+                            <select class="form-select" id="MaTH" required>
+                                <option value="" disabled>Chọn thương hiệu</option>
+                                <option value="1" selected>THIẾT BỊ GIÁO DỤC</option>
+                                <option value="1">Loại 2</option>
+                                <option value="1">Loại 3</option>
+                            </select>
+                        </div>
+                        <!-- MaKM -->
+                        <div class="col-md-3 mb-3 px-2">
+                            <label for="MaKM" class="form-label">Khuyến Mãi</label>
+                            <select class="form-select" id="MaKM" required>
+                                <option value="" disabled>Chọn khuyến mãi</option>
+                                <option value="1" selected>5%</option>
+                                <option value="1">KM 2</option>
+                                <option value="1">KM 3</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <!-- MauSac -->
+                        <div class="col-md-3 mb-3 px-2">
+                            <label for="MauSac" class="form-label">Màu Sắc</label>
+                            <input type="text" class="form-control" id="MauSac" value="Màu gỗ sơn" placeholder="Nhập màu sắc">
+                        </div>
+
+                        <!-- KichThuoc -->
+                        <div class="col-md-3 mb-3 px-2">
+                            <label for="KichThuoc" class="form-label">Kích Thước</label>
+                            <input type="text" class="form-control" id="KichThuoc" value="Rộng 1200 x Sâu 600 x Cao" placeholder="Nhập kích thước">
+                        </div>
+
+                        <!-- DonViTinh -->
+                        <div class="col-md-3 mb-3 px-2">
+                            <label for="DonViTinh" class="form-label">Đơn Vị Tính</label>
+                            <input type="text" class="form-control" id="DonViTinh" value="Cái" placeholder="Nhập đơn vị tính">
+                        </div>
+
+                        <!-- CachDongGoi -->
+                        <div class="col-md-3 mb-3 px-2">
+                            <label for="CachDongGoi" class="form-label">Cách Đóng Gói</label>
+                            <input type="text" class="form-control" id="CachDongGoi" value="Đóng gói tiêu chuẩn" placeholder="Nhập cách đóng gói">
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <!-- Gia -->
+                        <div class="col-md-6 mb-3 px-2">
+                            <label for="Gia" class="form-label">Giá</label>
+                            <input type="number" class="form-control" id="Gia" placeholder="800.000" required>
+                        </div>
+
+                        <!-- SoLuongTonKho -->
+                        <div class="col-md-6 mb-3 px-2">
+                            <label for="SoLuongTonKho" class="form-label">Số Lượng Tồn Kho</label>
+                            <input type="number" class="form-control" id="SoLuongTonKho" value="90" placeholder="Nhập số lượng tồn kho" required>
+                        </div>
+                    </div>
+                    <!-- HinhAnh -->
+                    <div class="col-md-13 mb-3 px-2">
+                        <label for="HinhAnh" class="form-label">Hình Ảnh Sản Phẩm</label>
+                        <input type="file" class="form-control" id="HinhAnh" multiple accept="image/*" onchange="previewImages()">
+                        <div id="imagePreview" class="mt-3 d-flex flex-wrap"></div>
+                    </div>
+                    <!-- MoTa -->
+                    <div class="col-md-12 mb-3 px-2">
+                        <label for="MoTa" class="form-label">Mô Tả</label>
+                        <textarea class="form-control" id="MoTa" rows="3" placeholder="Nhập mô tả sản phẩm">
+                            Bàn ghế giáo viên
+                            (gồm 1 bàn và 1 ghế rời)
+                            - Kích thước bàn: 1200 x 600 x 750 mm
+                            - Kích thước ghế: 400x400x450-750 mm
+                            - Đặc điểm: Mặt bàn bằng gỗ cao su ghép thanh dày 18 mm, đã qua tẩm sấy chống mối mọt được sơn phủ PU bóng 03 lớp chống ẩm. Ngăn bàn, vách bàn bằng gỗ cùng chất liệu với mặt bàn dày 12 mm
+                            - Khung bàn được làm bằng thép hộp 30x30 mm, các xà giằng thép hộp 20x20 mm, dày 1 mm, được hàn ngấu trong khí bảo vệ CO2, Toàn bộ khung bàn phun sơn tĩnh điện màu ghi sáng.
+                            - Khung ghế được làm bằng thép hộp định hình, hàn liền bằng hộp 25x25 mm, dày 1 mm, hàn trong khí bảo vệ CO2, phu sơn tĩnh điện màu ghi sáng. Mặt ghế bằng gỗ cao su ghép dày 18 mm, đã qua tẩm sấy chống mối mọt, được sơn phủ PU bóng 03 lớp chống ẩm.
+                            - Toàn bộ thép hộp được kiểm nghiệm theo tiêu chuẩn TCVN 197-1:2014: Có độ bền kéo ≥ 300MPa; Giới hạn chảy ≥ 250 MPa; Độ giãn dài ≥ 25 %;
+                            - Sản phẩm gỗ ghép thanh Có chứng nhận các chỉ tiêu: độ bền trượt của mạch keo, độ toàn vẹn mạch keo, chiều dày hoàn thiện và chiều dày thanh gỗ phù hợp với tiêu chuẩn TCVN 8575:2010
+                            Sơn phủ trên gỗ cao su ghép thanh được kiểm nghiệm theo tiêu chuẩn TCVN 2097 về độ bám dính với kết quả - Đạt; Tiêu chuẩn JISK 5663 (Độ bền thời tiết của màng sơn không vàng hóa, không phồng rộp, không bong tróc, rạn nứt ≥ 3 năm)
+                            - Sơn phủ tĩnh điện trên bề mặt thép được kiểm nghiệm theo tiêu chuẩn ASTMD 3359:2017 có độ bám dính ≥ cấp 5B; ASTMD3363 -00 có độ cứng bút chì ≥ HB; ASTM B117 với kết quả không phồng rộp, bong tróc, rạn nứt, tạo vảy và muối hóa trên bề mặt mẫu, mẫu sơn có thể chịu được sự ăn mòn của môi trường trong nhà ≥ 2 năm.
+                            - Sản phẩm Bàn ghế giáo viên đạt tiêu chuẩn ISO 9001:2015; ISO 14001:2015
+                        </textarea>
+                    </div>
+                    <!-- ThongTinChiTiet -->
+                    <div class="col-md-12 mb-3 px-2">
+                        <label for="ThongTinChiTiet" class="form-label">Thông Tin Chi Tiết</label>
+                        <textarea class="form-control" id="ThongTinChiTiet" rows="3" placeholder="Nhập thông tin chi tiết"></textarea>
+                    </div>
+
+                    <!-- TrangThai -->
+                    <div class="mb-3">
+                        <label for="TrangThai" class="form-label">Trạng Thái</label>
+                        <select class="form-select" id="TrangThai" required>
+                            <option value="" selected disabled>Chọn trạng thái</option>
+                            <option value="1">Còn Hàng</option>
+                            <option value="0">Hết Hàng</option>
+                        </select>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn btn-primary">Cập Nhật Sản Phẩm</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    let selectedFiles = [];
+
+    function previewImages() {
+        const preview = document.getElementById('imagePreview');
+        const files = document.getElementById('HinhAnh').files;
+
+        selectedFiles = Array.from(files); // Cập nhật danh sách các tệp đã chọn
+
+        selectedFiles.forEach((file, index) => {
+            if (file && file.type.startsWith('image/')) {
+                const reader = new FileReader();
+
+                reader.onload = function (event) {
+                    // Tạo thẻ chứa ảnh và nút "X" để xóa
+                    const container = document.createElement('div');
+                    container.className = 'preview-container';
+                    container.setAttribute('data-index', index);
+
+                    const img = document.createElement('img');
+                    img.src = event.target.result;
+                    img.className = 'preview-img';
+
+                    const removeBtn = document.createElement('button');
+                    removeBtn.className = 'remove-btn';
+                    removeBtn.innerHTML = '×';
+                    removeBtn.onclick = function () { removeImage(index); };
+
+                    container.appendChild(img);
+                    container.appendChild(removeBtn);
+                    preview.appendChild(container);
+                };
+
+                reader.readAsDataURL(file);
+            }
+        });
+    }
+
+    function removeImage(index) {
+        selectedFiles.splice(index, 1); // Xóa ảnh khỏi danh sách
+
+        // Cập nhật lại input file mà không thay đổi thứ tự
+        const dataTransfer = new DataTransfer();
+        selectedFiles.forEach(file => dataTransfer.items.add(file));
+        document.getElementById('HinhAnh').files = dataTransfer.files;
+
+        // Xóa phần tử ảnh khỏi phần hiển thị mà không làm mới toàn bộ
+        const preview = document.getElementById('imagePreview');
+        const imageContainers = preview.querySelectorAll('.preview-container');
+
+        imageContainers.forEach(container => {
+            if (parseInt(container.getAttribute('data-index')) === index) {
+                container.remove();
+            }
+        });
+
+        // Cập nhật lại các chỉ số data-index để giữ cho đúng với selectedFiles
+        updatePreviewIndices();
+    }
+
+    function updatePreviewIndices() {
+        const preview = document.getElementById('imagePreview');
+        const imageContainers = preview.querySelectorAll('.preview-container');
+
+        imageContainers.forEach((container, newIndex) => {
+            container.setAttribute('data-index', newIndex);
+            const removeBtn = container.querySelector('.remove-btn');
+            removeBtn.onclick = function () { removeImage(newIndex); };
+        });
+    }
+</script>
