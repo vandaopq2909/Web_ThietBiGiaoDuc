@@ -132,6 +132,7 @@
     <Compile Include="Areas\Admin\Controllers\ThuongHieuController.cs" />
     <Compile Include="Controllers\EmailController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SanPhamController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -562,6 +563,7 @@
     <Content Include="Resources\checkout.html" />
     <Content Include="Resources\contact.html" />
     <Content Include="Resources\css\bootstrap.min.css" />
+    <Content Include="Resources\css\custom.css" />
     <Content Include="Resources\css\elegant-icons.css" />
     <Content Include="Resources\css\font-awesome.min.css" />
     <Content Include="Resources\css\fonts.min.css" />
@@ -750,6 +752,8 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Email\SendEmail.cshtml" />
+    <Content Include="Views\SanPham\ChiTiet.cshtml" />
+    <Content Include="Views\Shared\_LayoutPage1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

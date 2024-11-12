@@ -1,0 +1,173 @@
+﻿
+@{
+    ViewBag.Title = "Chi Tiết Sản Phẩm";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+<style>
+    .danh-gia {
+
+        padding: 10px;
+        margin-bottom: 20px;
+    }
+
+    .nguoi-dung {
+        display: flex;
+        align-items: center;
+    }
+
+        .nguoi-dung img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+    .thong-tin {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .noi-dung {
+        margin-top: 10px;
+    }
+
+    .thoi-gian {
+        color: gray;
+        font-size: 12px;
+        margin-top: 5px;
+    }
+
+    .like {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+    }
+</style>
+<div class="container">
+    <section class="bg-light">
+        <div class="container pb-5">
+            <div class="row">
+                <div class="col-lg-5 mt-5">
+                    <div class="card mb-3">
+                        <img class="card-img img-fluid" src="https://product.hstatic.net/1000175596/product/bang_khoi_tru_hoc_dem_va_so_sanh__svdctt02007__1_grande.jpg" alt="Card image cap" id="product-detail">
+                    </div>
+                  
+                </div>
+                <!-- col end -->
+                <div class="col-lg-7 mt-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <h1 class="h2">Bảng khối trụ học đếm và so sánh</h1>
+                            <p class="h3 py-2">115.000 đ</p>
+                            <ul class="list-inline">
+                                <li class="list-inline-item">
+                                    <h6>Thương hiệu:</h6>
+                                </li>
+                                <li class="list-inline-item">
+                                    <p class="text-muted"><strong>Shark dupe</strong></p>
+                                </li>
+                            </ul>
+                            <ul class="list-inline">
+                                <li class="list-inline-item">
+                                    <h6>Tình trạng:</h6>
+                                </li>
+                                <li class="list-inline-item">
+                                    <p class="text-muted"><strong>Còn hàng</strong></p>
+                                </li>
+                            </ul>
+
+                            <h6>Mô tả</h6>
+                            <p>Vật liệu bằng gỗ sơn màu. Các khối gỗ được chia thành 4 hàng xếp từ thấp đến cao theo mỗi hình giúp trẻ học đếm và so sánh. Phù hợp với trẻ từ 3 đến 6 tuổi</p>
+                            <div class="row pb-3">
+                                <div class="col d-grid">
+                                    <button type="submit" class="btn btn-success btn-lg" name="submit" value="buy">Mua ngay</button>
+                                </div>
+                                <div class="col d-grid">
+                                    <button type="submit" class="btn btn-success btn-lg" name="submit" value="addtocard">Thêm vào giỏ hàng</button>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Close Content -->
+    <!-- Start Article -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row text-left p-2 pb-3">
+                <h4>Sản phẩm liên quan</h4>
+            </div>
+            <!--Start Carousel Wrapper-->
+            <div class="d-flex flex-wrap">
+                <div class="card" style="width: 16rem; margin: 0.5rem;">
+                    <img src="https://product.hstatic.net/1000175596/product/ban_tinh_hoc_dem_va_so_den_10__svdctt02004__1_grande.jpg" class="card-img-top" alt="Product 1 image">
+                    <div class="card-body">
+                        <h5 class="card-title">Bàn tính học đếm và số đến 10</h5>
+                        <p class="card-text">125,000₫</p>
+                    </div>
+                </div>
+                <div class="card" style="width: 16rem; margin: 0.5rem;">
+                    <img src="https://product.hstatic.net/1000175596/product/bang_so_hoc_toan_grande.jpg" class="card-img-top" alt="Product 2 image">
+                    <div class="card-body">
+                        <h5 class="card-title">Bảng số học toán</h5>
+                        <p class="card-text">120,000₫</p>
+                    </div>
+                </div>
+                <div class="card" style="width: 16rem; margin: 0.5rem;">
+                    <img src="https://product.hstatic.net/1000175596/product/bang_so_tu_0_den_9__svdctt020013__grande.jpg" class="card-img-top" alt="Product 3 image">
+                    <div class="card-body">
+                        <h5 class="card-title">Bảng số từ 0 đến 9</h5>
+                        <p class="card-text">45,000₫</p>
+                    </div>
+                </div>
+
+                <div class="card" style="width: 16rem; margin: 0.5rem;">
+                    <img src="https://product.hstatic.net/1000175596/product/5_cot_tinh_voi_5_mau_sac_khac_nhau.jpg" class="card-img-top" alt="Product 4 image">
+                    <div class="card-body">
+                        <h5 class="card-title">5 cột tính với 5 màu sắc khác nhau</h5>
+                        <p class="card-text">250.000 đ</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-5">
+        <h4>Đánh giá</h4>
+        <div class="container" style="background-color: lightgray;border-radius:2px">
+            <div class="row text-left p-2 pb-3">
+
+            </div>
+            <div>
+                <!--Start Carousel Wrapper-->
+                <div class="danh-gia">
+                    <div class="nguoi-dung">
+                        <label>Hồng Hưng</label>
+                    </div>
+                    <div class="noi-dung">
+                        <p>Sản phẩm dùng tốt</p>
+                    </div>
+                    <div class="thoi-gian">Ngày đánh giá :<strong> 22/10/2024</strong></div>
+
+                </div>
+            </div>
+            <div>
+                <!--Start Carousel Wrapper-->
+                <div class="danh-gia">
+                    <div class="nguoi-dung">
+                        <label>Hồng Hưng</label>
+                    </div>
+                    <div class="noi-dung">
+                        <p>Sản phẩm dùng tốt</p>
+                    </div>
+                    <div class="thoi-gian">Ngày đánh giá :<strong> 22/10/2024</strong></div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+</div>
