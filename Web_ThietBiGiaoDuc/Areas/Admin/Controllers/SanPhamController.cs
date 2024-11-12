@@ -18,5 +18,9 @@ namespace Web_ThietBiGiaoDuc.Areas.Admin.Controllers
         {
             return View();
         }
+        public ActionResult Sua()
+        {
+            return View();
+        }
     }
 }
