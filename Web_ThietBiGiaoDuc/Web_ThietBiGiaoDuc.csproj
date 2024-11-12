@@ -121,8 +121,10 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\DonHangController.cs" />
     <Compile Include="Areas\Admin\Controllers\DanhMucController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\PhieuNhapController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoaiSanPhamController.cs" />
     <Compile Include="Areas\Admin\Controllers\SanPhamController.cs" />
     <Compile Include="Areas\Admin\Controllers\ThuongHieuController.cs" />
@@ -718,16 +720,6 @@
     <Content Include="Resources\Source\SlickNav-master.zip" />
     <Content Include="Areas\Admin\Views\SanPham\Index.cshtml" />
     <Content Include="Areas\Admin\Views\SanPham\Them.cshtml" />
-    <Content Include="Areas\Admin\Views\DanhMuc\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\DanhMuc\Them.cshtml" />
-    <Content Include="Areas\Admin\Views\LoaiSanPham\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\LoaiSanPham\Them.cshtml" />
-    <Content Include="Areas\Admin\Views\ThuongHieu\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\ThuongHieu\Them.cshtml" />
-    <Content Include="Areas\Admin\Views\SanPham\Sua.cshtml" />
-    <Content Include="Areas\Admin\Views\LoaiSanPham\Sua.cshtml" />
-    <Content Include="Areas\Admin\Views\ThuongHieu\Sua.cshtml" />
-    <Content Include="Areas\Admin\Views\DanhMuc\Sua.cshtml" />
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />
@@ -758,7 +750,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="Areas\Admin\Views\DonHang\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
