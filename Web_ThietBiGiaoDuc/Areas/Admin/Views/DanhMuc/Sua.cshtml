@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewBag.Title = "Admin | Sửa Danh Mục";
+}
+<style>
+    input, textarea, select {
+        max-width: none !important;
+    }
+</style>
+<div class="container">
+    <div class="page-inner">
+        <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4">
+            <div>
+                <h3 class="fw-bold mb-3">Sửa Danh Mục</h3>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Thông Tin Danh Mục</div>
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="d-flex justify-content-between">
+                        <!-- MaDM -->
+                        <div class="col-md-2 mb-3 px-2">
+                            <label for="MaDM" class="form-label">Mã Danh Mục</label>
+                            <input type="text" class="form-control" id="MaDM" placeholder="DM001" disabled required>
+                        </div>
+                        <!-- TenDanhMuc -->
+                        <div class="col-md-10 mb-3 px-2">
+                            <label for="TenDanhMuc" class="form-label">Tên Danh Mục</label>
+                            <input type="text" class="form-control" id="TenDanhMuc" value="Giáo Cụ Montessori" placeholder="Nhập tên danh mục" required>
+                        </div>
+                    </div>
+                    <!-- TrangThai -->
+                    <div class="col-md-12 mb-3 px-2">
+                        <label for="TrangThai" class="form-label">Trạng Thái</label>
+                        <select class="form-select" id="TrangThai" required>
+                            <option value="" disabled>Chọn trạng thái</option>
+                            <option value="1" selected>Đang Hoạt Động</option>
+                            <option value="0">Trạng thái 2</option>
+                        </select>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn btn-primary">Cập Nhật Danh Mục</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
