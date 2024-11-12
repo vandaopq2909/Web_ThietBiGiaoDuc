@@ -1,0 +1,192 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <style>
+        .custom-search-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .entries-select {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+        }
+
+            .entries-select label {
+                margin-right: 10px;
+                font-size: 14px;
+            }
+
+        #customSearchBox {
+            font-size: 14px;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <div class="page-inner">
+            <div class="page-header">
+                <h3 class="fw-bold mb-3">Quản Lý Nhân Viên</h3>
+                <ul class="breadcrumbs mb-3">
+                    <li class="nav-home">
+                        <a href="#">
+                            <i class="icon-home"></i>
+                        </a>
+                    </li>
+                    <li class="separator">
+                        <i class="icon-arrow-right"></i>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#">Tables</a>
+                    </li>
+                    <li class="separator">
+                        <i class="icon-arrow-right"></i>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#">Datatables</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Quản Lý Nhân Viên</h4>
+                        </div>
+
+                        <div class="card-body">
+                            <!-- Custom Search and Show Entries -->
+                            <div class="custom-search-container">
+                                <div class="entries-select">
+                                    <label for="entriesSelect">Show</label>
+                                    <select id="entriesSelect" class="form-control" style="width: auto;">
+                                        <option value="5">5</option>
+                                        <option value="10" selected>10</option>
+                                        <option value="15">15</option>
+                                        <option value="20">20</option>
+                                    </select>
+                                    <label for="entriesSelect">entries</label>
+                                </div>
+                                <input type="text" id="customSearchBox" class="form-control" placeholder="Tìm kiếm..." style="width: 200px;">
+                            </div>
+
+                            <!-- Table -->
+                            <div class="table-responsive">
+                                <table id="customerTable" class="display table table-striped table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Mã NV</th>
+                                            <th>Tên DN</th>
+                                            <th>Mật Khẩu</th>
+                                            <th>Email</th>
+                                            <th>Số Điện Thoại</th>
+                                            <th>Địa Chỉ</th>
+                                            <th>Trạng Thái</th>
+                                            <th>Mã Quyền</th>
+                                            <th style="width: 10%">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>KH001</td>
+                                            <td>Nguyen Van A</td>
+                                            <td>***********</td>
+                                            <td>example1@gmail.com</td>
+                                            <td>0912345678</td>
+                                            <td>Hanoi</td>
+                                            <td>Active</td>
+                                            <td>MQ001</td>
+                                            <td>
+                                                <div class="form-button-action">
+                                                    <button type="button" class="btn btn-link btn-primary btn-lg" data-bs-toggle="tooltip" title="Edit">
+                                                        <i class="fa fa-edit"></i>
+                                                    </button>
+                                                    <button type="button" class="btn btn-link btn-danger" data-bs-toggle="tooltip" title="Remove">
+                                                        <i class="fa fa-times"></i>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <!-- Add more rows here -->
+                                    </tbody>
+                                </table>
+                            </div>
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination justify-content-center">
+                                    <li class="page-item disabled">
+                                        <a class="page-link">Previous</a>
+                                    </li>
+                                    <li class="page-item active" aria-current="page"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#">Next</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            var table = $('#customerTable').DataTable({
+                pageLength: 10,
+                order: [],
+                language: {
+                    paginate: {
+                        previous: "Previous",
+                        next: "Next"
+                    },
+                    info: "Showing _START_ to _END_ of _TOTAL_ entries"
+                }
+            });
+
+            // Custom search box event listener
+            $('#customSearchBox').on('keyup', function () {
+                table.search(this.value).draw();
+            });
+
+            // Change number of entries shown based on dropdown
+            $('#entriesSelect').on('change', function () {
+                var selectedValue = $(this).val();
+                table.page.len(selectedValue).draw();
+            });
+
+            // Sorting functionality for each column
+            $('#customerTable th.sorting').on('click', function () {
+                var columnIndex = $(this).data('column');
+                var currentOrder = table.order();
+                var direction = 'asc';
+
+                // Toggle sort direction
+                if (currentOrder[0] && currentOrder[0][0] === columnIndex && currentOrder[0][1] === 'asc') {
+                    direction = 'desc';
+                }
+
+                table.order([columnIndex, direction]).draw();
+
+                // Update sort icons
+                $('#customerTable th .sort-icon').removeClass('fa-sort-asc fa-sort-desc');
+                if (direction === 'asc') {
+                    $(this).find('.sort-icon').addClass('fa-sort-asc');
+                } else {
+                    $(this).find('.sort-icon').addClass('fa-sort-desc');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

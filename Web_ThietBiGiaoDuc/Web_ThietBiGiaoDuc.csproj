@@ -124,6 +124,8 @@
     <Compile Include="Areas\Admin\Controllers\DonHangController.cs" />
     <Compile Include="Areas\Admin\Controllers\DanhMucController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\KhachHangController.cs" />
+    <Compile Include="Areas\Admin\Controllers\NhanVienController.cs" />
     <Compile Include="Areas\Admin\Controllers\PhieuNhapController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoaiSanPhamController.cs" />
     <Compile Include="Areas\Admin\Controllers\SanPhamController.cs" />
@@ -720,6 +722,8 @@
     <Content Include="Resources\Source\SlickNav-master.zip" />
     <Content Include="Areas\Admin\Views\SanPham\Index.cshtml" />
     <Content Include="Areas\Admin\Views\SanPham\Them.cshtml" />
+    <Content Include="Areas\Admin\Views\KhachHang\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\NhanVien\Index.cshtml" />
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />
