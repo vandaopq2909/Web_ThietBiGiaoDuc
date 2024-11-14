@@ -1,4 +1,4 @@
-﻿
+﻿@model Web_ThietBiGiaoDuc.Models.DanhMuc
 @{
     ViewBag.Title = "Admin | Sửa Danh Mục";
 }
@@ -20,31 +20,30 @@
                 <div class="card-title">Thông Tin Danh Mục</div>
             </div>
             <div class="card-body">
-                <form>
+                <form action="/admin/danhmuc/sua" method="post">
+                    <!-- Hidden MaDM -->
+                    <input type="text" class="form-control" id="MaDM" name="MaDM" value="@Model.MaDM" hidden>
                     <div class="d-flex justify-content-between">
-                        <!-- MaDM -->
-                        <div class="col-md-2 mb-3 px-2">
-                            <label for="MaDM" class="form-label">Mã Danh Mục</label>
-                            <input type="text" class="form-control" id="MaDM" placeholder="DM001" disabled required>
-                        </div>
                         <!-- TenDanhMuc -->
-                        <div class="col-md-10 mb-3 px-2">
+                        <div class="col-md-8 mb-3 px-2">
                             <label for="TenDanhMuc" class="form-label">Tên Danh Mục</label>
-                            <input type="text" class="form-control" id="TenDanhMuc" value="Giáo Cụ Montessori" placeholder="Nhập tên danh mục" required>
+                            <input type="text" class="form-control" id="TenDanhMuc" name="TenDanhMuc" value="@Model.TenDanhMuc" placeholder="Nhập tên danh mục" required>
+                        </div>
+                        <!-- TrangThai -->
+                        <div class="col-md-4 mb-3 px-2">
+                            <label for="TrangThai" class="form-label">Trạng Thái</label>
+                            <select class="form-select" id="TrangThai" name="TrangThai" required>
+                                <option value="" disabled>Chọn trạng thái</option>
+                                <option value="hoatdong" @(Model.TrangThai == "hoatdong" ? "selected" : "")>Hoạt Động</option>
+                                <option value="daxoa" @(Model.TrangThai == "daxoa" ? "selected" : "")>Đã Xóa</option>
+                            </select>
                         </div>
                     </div>
-                    <!-- TrangThai -->
-                    <div class="col-md-12 mb-3 px-2">
-                        <label for="TrangThai" class="form-label">Trạng Thái</label>
-                        <select class="form-select" id="TrangThai" required>
-                            <option value="" disabled>Chọn trạng thái</option>
-                            <option value="1" selected>Đang Hoạt Động</option>
-                            <option value="0">Trạng thái 2</option>
-                        </select>
+                    <!-- Back Button & Submit Button -->
+                    <div class="d-flex justify-content-center">
+                        <a class="btn btn-success mx-2" href="/admin/danhmuc">Quay Lại</a>
+                        <button type="submit" class="btn btn-primary mx-2">Lưu Danh Mục</button>
                     </div>
-
-                    <!-- Submit Button -->
-                    <button type="submit" class="btn btn-primary">Cập Nhật Danh Mục</button>
                 </form>
             </div>
         </div>

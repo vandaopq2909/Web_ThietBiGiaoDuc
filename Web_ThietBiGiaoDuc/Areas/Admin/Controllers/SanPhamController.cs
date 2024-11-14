@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Web_ThietBiGiaoDuc.Models;
 
 namespace Web_ThietBiGiaoDuc.Areas.Admin.Controllers
 {
@@ -15,6 +16,11 @@ namespace Web_ThietBiGiaoDuc.Areas.Admin.Controllers
         }
 
         public ActionResult Them()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Them(SanPham sp, IEnumerable<HttpPostedFileBase> HinhAnh)
         {
             return View();
         }
