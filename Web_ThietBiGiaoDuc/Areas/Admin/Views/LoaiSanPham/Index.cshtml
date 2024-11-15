@@ -48,19 +48,45 @@
                                     <td>
                                         <div class="form-button-action">
                                             <a href="/admin/loaisanpham/sua?maloai=@loaiSP.MaLoai"
-                                                    data-bs-toggle="tooltip"
-                                                    title=""
-                                                    class="btn btn-link btn-primary btn-lg"
-                                                    data-original-title="Edit Task">
+                                               data-bs-toggle="tooltip"
+                                               title=""
+                                               class="btn btn-link btn-primary btn-lg"
+                                               data-original-title="Edit Task">
                                                 <i class="fa fa-edit"></i>
                                             </a>
-                                            <button type="button"
-                                                    data-bs-toggle="tooltip"
+                                            <!-- Nút xóa kích hoạt Modal -->
+                                            <button data-bs-toggle="modal"
+                                                    data-bs-target="#remove_modal_@loaiSP.MaLoai"
+                                                    aria-hidden="true"
+                                                    tabindex="-1"
+                                                    id="remove_btn_@loaiSP.MaLoai"
                                                     title=""
                                                     class="btn btn-link btn-danger"
                                                     data-original-title="Remove">
                                                 <i class="fa fa-times"></i>
                                             </button>
+                                            <!-- Modal Xác nhận xóa -->
+                                            <div class="modal fade" id="remove_modal_@loaiSP.MaLoai" tabindex="-1" aria-labelledby="confirmDeleteLabel_@loaiSP.MaLoai" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="confirmDeleteLabel_@loaiSP.MaLoai">Xác nhận xóa</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            Bạn có chắc chắn muốn xóa mục "@loaiSP.TenLoai" không?
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                                                            <!-- Form xóa -->
+                                                            <form action="/Admin/LoaiSanPham/Xoa" method="post">
+                                                                <input type="hidden" name="maLoai" value="@loaiSP.MaLoai" />
+                                                                <button type="submit" class="btn btn-danger">Xóa</button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </td>
                                 </tr>

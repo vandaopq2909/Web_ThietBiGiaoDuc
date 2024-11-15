@@ -39,9 +39,37 @@ namespace Web_ThietBiGiaoDuc.Areas.Admin.Controllers
             }
             return RedirectToAction("Index");
         }
-        public ActionResult Sua()
+        public ActionResult Sua(string maLoai)
         {
-            return View();
+            DatabaseContext db = new DatabaseContext();
+            var loaiSP = db.loaiSanPhams.Where(x => x.MaLoai == maLoai).FirstOrDefault();
+
+            ViewBag.listDM = db.danhMucs.Where(x => x.TrangThai == "hoatdong").ToList();
+            return View(loaiSP);
+        }
+        [HttpPost]
+        public ActionResult Sua(LoaiSanPham loaiSanPham)
+        {
+            DatabaseContext db = new DatabaseContext();
+            var lsp = db.loaiSanPhams.Where(x => x.MaLoai == loaiSanPham.MaLoai).FirstOrDefault();
+
+            //update
+            lsp.TenLoai = loaiSanPham.TenLoai;
+            lsp.MaDM = loaiSanPham.MaDM;
+            lsp.TrangThai = loaiSanPham.TrangThai;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        [HttpPost]
+        public ActionResult Xoa(string maLoai)
+        {
+            DatabaseContext db = new DatabaseContext();
+            var lsp = db.loaiSanPhams.Where(x => x.MaLoai == maLoai).FirstOrDefault();
+            lsp.TrangThai = "daxoa";
+
+            //db.loaiSanPhams.Remove(lsp);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }
