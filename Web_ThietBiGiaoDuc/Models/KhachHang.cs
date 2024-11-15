@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Web_ThietBiGiaoDuc.Models
 {
@@ -8,6 +9,7 @@ namespace Web_ThietBiGiaoDuc.Models
         {
             MaKH = "KH" + Guid.NewGuid().ToString("N").Substring(0, 8);
         }
+        [Key]
         public string MaKH { get; set; }
         public string TenDangNhap { get; set; }
         public string MatKhau { get; set; }
