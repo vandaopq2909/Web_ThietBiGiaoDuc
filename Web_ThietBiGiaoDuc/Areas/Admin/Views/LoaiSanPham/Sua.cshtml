@@ -1,4 +1,4 @@
-﻿
+﻿@model Web_ThietBiGiaoDuc.Models.LoaiSanPham
 @{
     ViewBag.Title = "Admin | Sửa Loại Sản Phẩm";
 }
@@ -20,42 +20,47 @@
                 <div class="card-title">Thông Tin Loại Sản Phẩm</div>
             </div>
             <div class="card-body">
-                <form>
+                <form action="/admin/loaisanpham/sua" method="post">
+                    <input type="text" class="form-control" id="MaLoai" name="MaLoai" value="@Model.MaLoai" placeholder="Nhập tên danh mục" hidden required>
                     <div class="d-flex justify-content-between">
-                        <!-- MaLoaiSP -->
-                        <div class="col-md-2 mb-3 px-2">
-                            <label for="MaLoaiSP" class="form-label">Mã Loại Sản Phẩm</label>
-                            <input type="text" class="form-control" id="MaLoaiSP" placeholder="LSP001" disabled required>
-                        </div>
-                        <!-- TenLoaiSP -->
-                        <div class="col-md-10 mb-3 px-2">
-                            <label for="TenLoaiSP" class="form-label">Tên Loại Sản Phẩm</label>
-                            <input type="text" class="form-control" id="TenLoaiSP" value="Bàn Ghế Giáo Viên" placeholder="Nhập tên loại sản phẩm" required>
-                        </div>
-                    </div>
-                    <div class="d-flex justify-content-between">
-                        <!-- MaDM -->
+                        <!-- TenLoai -->
                         <div class="col-md-6 mb-3 px-2">
+                            <label for="TenLoai" class="form-label">Tên Loại Sản Phẩm</label>
+                            <input type="text" class="form-control" id="TenLoai" value="@Model.TenLoai" name="TenLoai" placeholder="Nhập tên loại sản phẩm" required>
+                        </div>
+                        <!-- MaDM -->
+                        <div class="col-md-4 mb-3 px-2">
                             <label for="MaDM" class="form-label">Danh Mục</label>
-                            <select class="form-select" id="MaDM" required>
+                            <select class="form-select" id="MaDM" name="MaDM" required>
                                 <option value="" disabled>Chọn danh mục</option>
-                                <option value="1" selected>Thiết Bị - Nội Thất Phòng Học</option>
-                                <option value="0">Danh mục 2</option>
+                                @if (ViewBag.listDM != null)
+                                {
+                                    foreach (var danhMuc in ViewBag.listDM)
+                                    {
+                                        // Kiểm tra nếu danh mục hiện tại là danh mục đã chọn (selected)
+                                        <option value="@danhMuc.MaDM" @(danhMuc.MaDM == Model.MaDM ? "selected" : "")>
+                                            @danhMuc.TenDanhMuc
+                                        </option>
+                                    }
+                                }
                             </select>
                         </div>
                         <!-- TrangThai -->
-                        <div class="col-md-6 mb-3 px-2">
+                        <div class="col-md-2 mb-3 px-2">
                             <label for="TrangThai" class="form-label">Trạng Thái</label>
-                            <select class="form-select" id="TrangThai" required>
+                            <select class="form-select" id="TrangThai" name="TrangThai" required>
                                 <option value="" disabled>Chọn trạng thái</option>
-                                <option value="1" selected>Đang Hoạt Động</option>
-                                <option value="0">Trạng thái 2</option>
+                                <option value="hoatdong" @(Model.TrangThai == "hoatdong" ? "selected" : "")>Hoạt Động</option>
+                                <option value="daxoa" @(Model.TrangThai == "daxoa" ? "selected" : "")>Đã Xóa</option>
                             </select>
                         </div>
                     </div>
 
-                    <!-- Submit Button -->
-                    <button type="submit" class="btn btn-primary">Cập Nhật Loại Sản Phẩm</button>
+                    <!-- Back Button & Submit Button -->
+                    <div class="d-flex justify-content-center">
+                        <a class="btn btn-success mx-2" href="/admin/loaisanpham">Quay Lại</a>
+                        <button type="submit" class="btn btn-primary mx-2">Cập Nhật Loại Sản Phẩm</button>
+                    </div>
                 </form>
             </div>
         </div>
