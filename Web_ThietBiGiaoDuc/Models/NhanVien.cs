@@ -17,6 +17,7 @@ namespace Web_ThietBiGiaoDuc.Models
         public string SDT { get; set; }
         public string DiaChi { get; set; }
         public string TrangThai { get; set; }
+        public string MaQuyen { get; set; }
         public virtual Quyen Quyen { get; set; }
     }
 }
