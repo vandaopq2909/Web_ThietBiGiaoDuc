@@ -143,6 +143,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202411140648012_InitialCreate.cs" />
+    <Compile Include="Migrations\202411140648012_InitialCreate.Designer.cs">
+      <DependentUpon>202411140648012_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202411150524435_addModels.cs" />
+    <Compile Include="Migrations\202411150524435_addModels.Designer.cs">
+      <DependentUpon>202411150524435_addModels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApDungKhuyenMai.cs" />
     <Compile Include="Models\ChiTietDonHang.cs" />
     <Compile Include="Models\ChiTietPhieuNhap.cs" />
@@ -827,6 +836,14 @@
     <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="Scripts\jquery-3.7.0.slim.min.map" />
     <Content Include="Scripts\jquery-3.7.0.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202411140648012_InitialCreate.resx">
+      <DependentUpon>202411140648012_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202411150524435_addModels.resx">
+      <DependentUpon>202411150524435_addModels.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
