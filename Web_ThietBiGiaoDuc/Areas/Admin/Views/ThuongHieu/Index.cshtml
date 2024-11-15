@@ -1,4 +1,4 @@
-﻿
+﻿@model List<Web_ThietBiGiaoDuc.Models.ThuongHieu>
 @{
     ViewBag.Title = "Admin | Quản Lý Thương Hiệu";
 }
@@ -37,121 +37,58 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>TH001</td>
-                                <td>THIẾT BỊ GIÁO DỤC</td>
-                                <td>Đang Hoạt Động</td>
-                                <td>
-                                    <div class="form-button-action">
-                                        <button type="button"
-                                                data-bs-toggle="tooltip"
-                                                title=""
-                                                class="btn btn-link btn-primary btn-lg"
-                                                data-original-title="Edit Task">
-                                            <i class="fa fa-edit"></i>
-                                        </button>
-                                        <button type="button"
-                                                data-bs-toggle="tooltip"
-                                                title=""
-                                                class="btn btn-link btn-danger"
-                                                data-original-title="Remove">
-                                            <i class="fa fa-times"></i>
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>TH002</td>
-                                <td>LG</td>
-                                <td>Đang Hoạt Động</td>
-                                <td>
-                                    <div class="form-button-action">
-                                        <button type="button"
-                                                data-bs-toggle="tooltip"
-                                                title=""
-                                                class="btn btn-link btn-primary btn-lg"
-                                                data-original-title="Edit Task">
-                                            <i class="fa fa-edit"></i>
-                                        </button>
-                                        <button type="button"
-                                                data-bs-toggle="tooltip"
-                                                title=""
-                                                class="btn btn-link btn-danger"
-                                                data-original-title="Remove">
-                                            <i class="fa fa-times"></i>
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>TH003</td>
-                                <td>Samsung</td>
-                                <td>Đang Hoạt Động</td>
-                                <td>
-                                    <div class="form-button-action">
-                                        <button type="button"
-                                                data-bs-toggle="tooltip"
-                                                title=""
-                                                class="btn btn-link btn-primary btn-lg"
-                                                data-original-title="Edit Task">
-                                            <i class="fa fa-edit"></i>
-                                        </button>
-                                        <button type="button"
-                                                data-bs-toggle="tooltip"
-                                                title=""
-                                                class="btn btn-link btn-danger"
-                                                data-original-title="Remove">
-                                            <i class="fa fa-times"></i>
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>TH004</td>
-                                <td>Panasonic</td>
-                                <td>Đang Hoạt Động</td>
-                                <td>
-                                    <div class="form-button-action">
-                                        <button type="button"
-                                                data-bs-toggle="tooltip"
-                                                title=""
-                                                class="btn btn-link btn-primary btn-lg"
-                                                data-original-title="Edit Task">
-                                            <i class="fa fa-edit"></i>
-                                        </button>
-                                        <button type="button"
-                                                data-bs-toggle="tooltip"
-                                                title=""
-                                                class="btn btn-link btn-danger"
-                                                data-original-title="Remove">
-                                            <i class="fa fa-times"></i>
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>TH005</td>
-                                <td>Xiaomi</td>
-                                <td>Đang Hoạt Động</td>
-                                <td>
-                                    <div class="form-button-action">
-                                        <button type="button"
-                                                data-bs-toggle="tooltip"
-                                                title=""
-                                                class="btn btn-link btn-primary btn-lg"
-                                                data-original-title="Edit Task">
-                                            <i class="fa fa-edit"></i>
-                                        </button>
-                                        <button type="button"
-                                                data-bs-toggle="tooltip"
-                                                title=""
-                                                class="btn btn-link btn-danger"
-                                                data-original-title="Remove">
-                                            <i class="fa fa-times"></i>
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
+                            @foreach (var thuongHieu in Model)
+                            {
+                                <tr>
+                                    <td>@thuongHieu.MaTH</td>
+                                    <td>@thuongHieu.TenThuongHieu</td>
+                                    <td>@thuongHieu.TrangThai</td>
+                                    <td>
+                                        <div class="form-button-action">
+                                            <a href="/admin/thuonghieu/sua?maTH=@thuongHieu.MaTH"
+                                               data-bs-toggle="tooltip"
+                                               title=""
+                                               class="btn btn-link btn-primary btn-lg"
+                                               data-original-title="Edit Task">
+                                                <i class="fa fa-edit"></i>
+                                            </a>
+                                            <!-- Nút xóa kích hoạt Modal -->
+                                            <button data-bs-toggle="modal"
+                                                    data-bs-target="#remove_modal_@thuongHieu.MaTH"
+                                                    aria-hidden="true"
+                                                    tabindex="-1"
+                                                    id="remove_btn_@thuongHieu.MaTH"
+                                                    title=""
+                                                    class="btn btn-link btn-danger"
+                                                    data-original-title="Remove">
+                                                <i class="fa fa-times"></i>
+                                            </button>
+                                            <!-- Modal Xác nhận xóa -->
+                                            <div class="modal fade" id="remove_modal_@thuongHieu.MaTH" tabindex="-1" aria-labelledby="confirmDeleteLabel_@thuongHieu.MaTH" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="confirmDeleteLabel_@thuongHieu.MaTH">Xác nhận xóa</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            Bạn có chắc chắn muốn xóa mục "@thuongHieu.TenThuongHieu" không?
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                                                            <!-- Form xóa -->
+                                                            <form action="/Admin/ThuongHieu/Xoa" method="post">
+                                                                <input type="hidden" name="maTH" value="@thuongHieu.MaTH" />
+                                                                <button type="submit" class="btn btn-danger">Xóa</button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
                         </tbody>
                     </table>
                     <nav aria-label="Page navigation example">

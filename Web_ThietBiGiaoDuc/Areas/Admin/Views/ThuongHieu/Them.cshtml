@@ -20,31 +20,28 @@
                 <div class="card-title">Thông Tin Thương Hiệu</div>
             </div>
             <div class="card-body">
-                <form>
+                <form action="/admin/thuonghieu/them" method="post">
                     <div class="d-flex justify-content-between">
-                        <!-- MaTH -->
-                        <div class="col-md-2 mb-3 px-2">
-                            <label for="MaTH" class="form-label">Mã Thương Hiệu</label>
-                            <input type="text" class="form-control" id="MaTH" placeholder="TH001" disabled required>
-                        </div>
                         <!-- TenThuongHieu -->
-                        <div class="col-md-10 mb-3 px-2">
+                        <div class="col-md-8 mb-3 px-2">
                             <label for="TenThuongHieu" class="form-label">Tên Thương Hiệu</label>
-                            <input type="text" class="form-control" id="TenThuongHieu" placeholder="Nhập tên thương hiệu" required>
+                            <input type="text" class="form-control" id="TenThuongHieu" name="TenThuongHieu" placeholder="Nhập tên thương hiệu" required>
+                        </div>
+                        <!-- TrangThai -->
+                        <div class="col-md-4 mb-3 px-2">
+                            <label for="TrangThai" class="form-label">Trạng Thái</label>
+                            <select class="form-select" id="TrangThai" name="TrangThai" required>
+                                <option value="" disabled>Chọn trạng thái</option>
+                                <option value="hoatdong" selected>Hoạt Động</option>
+                                <option value="daxoa">Đã Xóa</option>
+                            </select>
                         </div>
                     </div>
-                    <!-- TrangThai -->
-                    <div class="col-md-12 mb-3 px-2">
-                        <label for="TrangThai" class="form-label">Trạng Thái</label>
-                        <select class="form-select" id="TrangThai" required>
-                            <option value="" selected disabled>Chọn trạng thái</option>
-                            <option value="1">Trạng thái 1</option>
-                            <option value="0">Trạng thái 2</option>
-                        </select>
+                    <!-- Back Button & Submit Button -->
+                    <div class="d-flex justify-content-center">
+                        <a class="btn btn-success mx-2" href="/admin/thuonghieu">Quay Lại</a>
+                        <button type="submit" class="btn btn-primary mx-2">Lưu Thương Hiệu</button>
                     </div>
-
-                    <!-- Submit Button -->
-                    <button type="submit" class="btn btn-primary">Lưu Thương Hiệu</button>
                 </form>
             </div>
         </div>
