@@ -143,13 +143,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202411140648012_InitialCreate.cs" />
-    <Compile Include="Migrations\202411140648012_InitialCreate.Designer.cs">
-      <DependentUpon>202411140648012_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202411150524435_addModels.cs" />
-    <Compile Include="Migrations\202411150524435_addModels.Designer.cs">
-      <DependentUpon>202411150524435_addModels.cs</DependentUpon>
+    <Compile Include="Migrations\202411150757545_InitDatabse.cs" />
+    <Compile Include="Migrations\202411150757545_InitDatabse.Designer.cs">
+      <DependentUpon>202411150757545_InitDatabse.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApDungKhuyenMai.cs" />
@@ -838,11 +834,8 @@
     <Content Include="Scripts\jquery-3.7.0.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202411140648012_InitialCreate.resx">
-      <DependentUpon>202411140648012_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202411150524435_addModels.resx">
-      <DependentUpon>202411150524435_addModels.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202411150757545_InitDatabse.resx">
+      <DependentUpon>202411150757545_InitDatabse.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
