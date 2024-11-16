@@ -143,17 +143,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202411150757545_InitDatabse.cs" />
-    <Compile Include="Migrations\202411150757545_InitDatabse.Designer.cs">
-      <DependentUpon>202411150757545_InitDatabse.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApDungKhuyenMai.cs" />
     <Compile Include="Models\ChiTietDonHang.cs" />
     <Compile Include="Models\ChiTietPhieuNhap.cs" />
     <Compile Include="Models\DanhGia.cs" />
     <Compile Include="Models\DanhMuc.cs" />
-    <Compile Include="Models\DatabaseContext.cs" />
+    <Compile Include="Context\DatabaseContext.cs" />
     <Compile Include="Models\DonHang.cs" />
     <Compile Include="Models\HinhAnh.cs" />
     <Compile Include="Models\KhachHang.cs" />
@@ -169,10 +164,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\Database1.mdf" />
-    <Content Include="App_Data\Database1_log.ldf">
-      <DependentUpon>Database1.mdf</DependentUpon>
-    </Content>
     <Content Include="Areas\Admin\ResourcesAdmin\assets\css\bootstrap.min.css" />
     <Content Include="Areas\Admin\ResourcesAdmin\assets\css\demo.css" />
     <Content Include="Areas\Admin\ResourcesAdmin\assets\css\fonts.css" />
@@ -832,11 +823,6 @@
     <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="Scripts\jquery-3.7.0.slim.min.map" />
     <Content Include="Scripts\jquery-3.7.0.min.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\202411150757545_InitDatabse.resx">
-      <DependentUpon>202411150757545_InitDatabse.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Web_ThietBiGiaoDuc.Models
@@ -21,9 +22,15 @@ namespace Web_ThietBiGiaoDuc.Models
         public string CachDongGoi { get; set; }
         public string ThongTinChiTiet { get; set; }
         public string TrangThai { get; set; }
+        public string TrangThaiSanPham { get; set; }
         public string MaLoai { get; set; }
         public string MaTH { get; set; }
         public virtual LoaiSanPham LoaiSanPham {  get; set; }
         public virtual ThuongHieu ThuongHieu { get; set; }
+        public virtual ICollection<ApDungKhuyenMai> ApDungKhuyenMais { get; set; }
+        public virtual ICollection<ChiTietDonHang> ChiTietDonHangs { get; set; }
+        public virtual ICollection<ChiTietPhieuNhap> ChiTietPhieuNhaps { get; set; }
+        public virtual ICollection<DanhGia> DanhGias { get; set; }
+        public virtual ICollection<HinhAnh> HinhAnhs { get; set; }
     }
 }
