@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Web_ThietBiGiaoDuc.Models
 {
@@ -8,8 +9,11 @@ namespace Web_ThietBiGiaoDuc.Models
         {
             MaDG= "DG" + Guid.NewGuid().ToString("N").Substring(0, 8);
         }
+        [Key]
         public string MaDG { get; set; }
         public string NoiDung { get; set; }
         public DateTimeOffset NgayDanhGia { get; set; }
+        public string MaSP { get; set; }
+        public virtual SanPham SanPham { get; set; }
     }
 }

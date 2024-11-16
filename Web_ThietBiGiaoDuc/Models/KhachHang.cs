@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Web_ThietBiGiaoDuc.Models
@@ -17,5 +18,6 @@ namespace Web_ThietBiGiaoDuc.Models
         public string SDT { get; set; }
         public string DiaChi { get; set; }
         public string TrangThai { get; set; }
+        public virtual ICollection<DonHang> DonHangs { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Web_ThietBiGiaoDuc.Models
@@ -19,5 +20,6 @@ namespace Web_ThietBiGiaoDuc.Models
         public string TrangThai { get; set; }
         public string MaQuyen { get; set; }
         public virtual Quyen Quyen { get; set; }
+        public virtual ICollection<PhieuNhap> PhieuNhaps { get; set; }
     }
 }
