@@ -143,6 +143,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202411161309190_InitDatabase.cs" />
+    <Compile Include="Migrations\202411161309190_InitDatabase.Designer.cs">
+      <DependentUpon>202411161309190_InitDatabase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApDungKhuyenMai.cs" />
     <Compile Include="Models\ChiTietDonHang.cs" />
     <Compile Include="Models\ChiTietPhieuNhap.cs" />
@@ -666,6 +671,7 @@
     <Content Include="Resources\img\product\product-8.jpg" />
     <Content Include="Resources\img\product\product-9.jpg" />
     <Content Include="Resources\index.html" />
+    <Content Include="Resources\js\bootstrap.bundle.min.js" />
     <Content Include="Resources\js\bootstrap.min.js" />
     <Content Include="Resources\js\jquery-3.3.1.min.js" />
     <Content Include="Resources\js\jquery-ui.min.js" />
@@ -765,6 +771,7 @@
     <Content Include="Areas\Admin\Views\ThuongHieu\Index.cshtml" />
     <Content Include="Areas\Admin\Views\ThuongHieu\Sua.cshtml" />
     <Content Include="Areas\Admin\Views\ThuongHieu\Them.cshtml" />
+    <Content Include="Areas\Admin\Views\SanPham\Sua.cshtml" />
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />
@@ -796,6 +803,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Images\SanPham\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
@@ -823,6 +831,11 @@
     <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="Scripts\jquery-3.7.0.slim.min.map" />
     <Content Include="Scripts\jquery-3.7.0.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202411161309190_InitDatabase.resx">
+      <DependentUpon>202411161309190_InitDatabase.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -20,9 +20,8 @@ namespace Web_ThietBiGiaoDuc.Models
         public string KichThuoc { get; set; }
         public string DonViTinh { get; set; }
         public string CachDongGoi { get; set; }
-        public string ThongTinChiTiet { get; set; }
         public string TrangThai { get; set; }
-        public string TrangThaiSanPham { get; set; }
+        public string TinhTrangSanPham { get; set; }
         public string MaLoai { get; set; }
         public string MaTH { get; set; }
         public virtual LoaiSanPham LoaiSanPham {  get; set; }
