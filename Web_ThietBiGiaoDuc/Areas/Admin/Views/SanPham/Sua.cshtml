@@ -1,4 +1,4 @@
-﻿
+﻿@model Web_ThietBiGiaoDuc.Models.SanPham
 @{
     ViewBag.Title = "Admin | Sửa Sản Phẩm";
 }
@@ -36,12 +36,119 @@
         align-items: center;
         justify-content: center;
     }
+    /* CSS để thiết lập màu chữ cho các tùy chọn */
+    select {
+        width: 220px;
+        padding: 5px;
+        font-size: 16px;
+    }
+
+    option.do {
+        color: #FF0000;
+    }
+
+    option.cam {
+        color: #FFA500;
+    }
+
+    option.vang {
+        color: #FFFF00;
+    }
+
+    option.luc {
+        color: #008000;
+    }
+
+    option.xanh-duong {
+        color: #0000FF;
+    }
+
+    option.tim {
+        color: #800080;
+    }
+
+    option.do-cam {
+        color: #FF4500;
+    }
+
+    option.vang-cam {
+        color: #FFD700;
+    }
+
+    option.vang-luc {
+        color: #9ACD32;
+    }
+
+    option.xanh-luc {
+        color: #20B2AA;
+    }
+
+    option.xanh-tim {
+        color: #8A2BE2;
+    }
+
+    option.tim-hong {
+        color: #EE82EE;
+    }
+
+    option.do-hong {
+        color: #C71585;
+    }
+
+    option.hong {
+        color: #FFC0CB;
+    }
+
+    option.hong-dam {
+        color: #FF1493;
+    }
+
+    option.nau {
+        color: #8B4513;
+    }
+
+    option.xam-nhat {
+        color: #D3D3D3;
+    }
+
+    option.xam {
+        color: #808080;
+    }
+
+    option.luc-olive {
+        color: #556B2F;
+    }
+
+    option.luc-nhat {
+        color: #90EE90;
+    }
+
+    option.xanh-nhat {
+        color: #ADD8E6;
+    }
+
+    option.tim-dam {
+        color: #4B0082;
+    }
+
+    option.be {
+        color: #F5F5DC;
+    }
+
+    option.den {
+        color: #000000;
+    }
+
+    option.trang {
+        color: #FFFFFF;
+        background-color: #000000;
+    }
 </style>
 <div class="container">
     <div class="page-inner">
         <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4">
             <div>
-                <h3 class="fw-bold mb-3">Sửa Sản Phẩm</h3>
+                <h3 class="fw-bold mb-3">Thêm Sản Phẩm</h3>
             </div>
         </div>
 
@@ -50,146 +157,170 @@
                 <div class="card-title">Thông Tin Sản Phẩm</div>
             </div>
             <div class="card-body">
-                <form>
-                    <div class="d-flex justify-content-between">
-                        <!-- MaSP -->
-                        <div class="col-md-2 mb-3 px-2">
-                            <label for="MaSP" class="form-label">Mã Sản Phẩm</label>
-                            <input type="text" class="form-control" id="MaSP" placeholder="SP001" disabled required>
-                        </div>
+                <form action="/Admin/SanPham/Sua" method="post" enctype="multipart/form-data">
+                    <!-- MaSP -->
+                    <input type="text" class="form-control" id="MaSP" name="MaSP" value="@Model.MaSP" placeholder="Nhập mã sản phẩm" hidden required>
+                    <div class="d-flex justify-content-between flex-wrap">
                         <!-- TenSanPham -->
-                        <div class="col-md-10 mb-3 px-2">
+                        <div class="col-md-6 mb-3 px-2">
                             <label for="TenSanPham" class="form-label">Tên Sản Phẩm</label>
-                            <input type="text" class="form-control" id="TenSanPham" value="Bộ Bàn Ghế Giáo Viên Không Hộc Tủ" placeholder="Nhập tên sản phẩm" required>
+                            <input type="text" class="form-control inputField" id="TenSanPham" name="TenSanPham" value="@Model.TenSanPham" placeholder="Nhập tên sản phẩm" required>
+                        </div>
+                        <!-- MauSac -->
+                        <div class="col-md-3 mb-3 px-2">
+                            <label for="MauSac" class="form-label">Màu Sắc</label>
+                            <select class="form-select inputField" id="MauSac" name="MauSac" required>
+                                <option value="" disabled>Chọn màu sắc</option>
+                                @foreach (var item in ViewBag.listMauSac)
+                                {
+                                    <option class="@item.Value" value="@item.Value" @(Model.MauSac == item.Value ? "selected" : "")>@item.Text</option>
+                                }
+                            </select>
+                        </div>
+                        <!-- KichThuoc -->
+                        <div class="col-md-3 mb-3 px-2">
+                            <label for="KichThuoc" class="form-label">Kích Thước</label>
+                            <input type="text" class="form-control inputField" id="KichThuoc" name="KichThuoc" value="@Model.KichThuoc" placeholder="Nhập kích thước" required>
                         </div>
                     </div>
                     <div class="d-flex justify-content-between">
                         <!-- MaDM -->
                         <div class="col-md-3 mb-3 px-2">
                             <label for="MaDM" class="form-label">Danh Mục Sản Phẩm</label>
-                            <select class="form-select" id="MaDM" required>
+                            <select class="form-select inputField" id="MaDM" name="MaDM" required>
                                 <option value="" disabled>Chọn danh mục sản phẩm</option>
-                                <option value="1" selected>Thiết Bị - Nội Thất Phòng Học</option>
-                                <option value="1">DM 2</option>
-                                <option value="1">DM 3</option>
+                                @if (ViewBag.listDM != null)
+                                {
+                                    foreach (var dm in ViewBag.listDM)
+                                    {
+                                        <option value="@dm.MaDM" @(dm.MaDM == Model.LoaiSanPham.DanhMuc.MaDM ? "selected" : "")>@dm.TenDanhMuc</option>
+                                    }
+                                }
                             </select>
                         </div>
                         <!-- MaLoai -->
                         <div class="col-md-3 mb-3 px-2">
                             <label for="MaLoai" class="form-label">Loại Sản Phẩm</label>
-                            <select class="form-select" id="MaLoai" required>
+                            <select class="form-select inputField" id="MaLoai" name="MaLoai" required>
                                 <option value="" disabled>Chọn loại sản phẩm</option>
-                                <option value="1" selected>Bàn Ghế Giáo Viên</option>
-                                <option value="1">Loại 2</option>
-                                <option value="1">Loại 3</option>
+                                @if (ViewBag.listLoaiSP != null)
+                                {
+                                    foreach (var lsp in ViewBag.listLoaiSP)
+                                    {
+                                        <option value="@lsp.MaLoai">@lsp.TenLoai</option>
+                                    }
+                                }
                             </select>
                         </div>
-                        <!-- MaTH -->
-                        <div class="col-md-3 mb-3 px-2">
-                            <label for="MaTH" class="form-label">Thương Hiệu</label>
-                            <select class="form-select" id="MaTH" required>
-                                <option value="" disabled>Chọn thương hiệu</option>
-                                <option value="1" selected>THIẾT BỊ GIÁO DỤC</option>
-                                <option value="1">Loại 2</option>
-                                <option value="1">Loại 3</option>
-                            </select>
-                        </div>
-                        <!-- MaKM -->
-                        <div class="col-md-3 mb-3 px-2">
-                            <label for="MaKM" class="form-label">Khuyến Mãi</label>
-                            <select class="form-select" id="MaKM" required>
-                                <option value="" disabled>Chọn khuyến mãi</option>
-                                <option value="1" selected>5%</option>
-                                <option value="1">KM 2</option>
-                                <option value="1">KM 3</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="d-flex justify-content-between">
-                        <!-- MauSac -->
-                        <div class="col-md-3 mb-3 px-2">
-                            <label for="MauSac" class="form-label">Màu Sắc</label>
-                            <input type="text" class="form-control" id="MauSac" value="Màu gỗ sơn" placeholder="Nhập màu sắc">
-                        </div>
-
-                        <!-- KichThuoc -->
-                        <div class="col-md-3 mb-3 px-2">
-                            <label for="KichThuoc" class="form-label">Kích Thước</label>
-                            <input type="text" class="form-control" id="KichThuoc" value="Rộng 1200 x Sâu 600 x Cao" placeholder="Nhập kích thước">
-                        </div>
-
-                        <!-- DonViTinh -->
-                        <div class="col-md-3 mb-3 px-2">
-                            <label for="DonViTinh" class="form-label">Đơn Vị Tính</label>
-                            <input type="text" class="form-control" id="DonViTinh" value="Cái" placeholder="Nhập đơn vị tính">
-                        </div>
-
                         <!-- CachDongGoi -->
                         <div class="col-md-3 mb-3 px-2">
                             <label for="CachDongGoi" class="form-label">Cách Đóng Gói</label>
-                            <input type="text" class="form-control" id="CachDongGoi" value="Đóng gói tiêu chuẩn" placeholder="Nhập cách đóng gói">
+                            <select class="form-select inputField" id="CachDongGoi" name="CachDongGoi" required>
+                                <option value="" disabled>Chọn cách đóng gói</option>
+                                <option value="tieuchuan" @(Model.TrangThai == "tieuchuan" ? "selected" : "")>Tiêu chuẩn</option>
+                                <option value="antoan" @(Model.TrangThai == "antoan" ? "selected" : "")>An toàn</option>
+                                <option value="sieuantoan" @(Model.TrangThai == "sieuantoan" ? "selected" : "")>Siêu an toàn</option>
+                            </select>
+                        </div>
+                        <!-- DonViTinh -->
+                        <div class="col-md-3 mb-3 px-2">
+                            <label for="DonViTinh" class="form-label">Đơn Vị Tính</label>
+                            <select class="form-select inputField" id="DonViTinh" name="DonViTinh" required>
+                                <option value="" disabled>Chọn đơn vị tính</option>
+                                @foreach (var item in ViewBag.listDVT)
+                                {
+                                    <option class="@item.Value" value="@item.Value" @(Model.DonViTinh == item.Value ? "selected" : "")>@item.Text</option>
+                                }
+                            </select>
+
                         </div>
                     </div>
                     <div class="d-flex justify-content-between">
+                        <!-- MaTH -->
+                        <div class="col-md-3 mb-3 px-2">
+                            <label for="MaTH" class="form-label">Thương Hiệu</label>
+                            <select class="form-select inputField" id="MaTH" name="MaTH" required>
+                                <option value="" disabled>Chọn thương hiệu</option>
+                                @if (ViewBag.listTH != null)
+                                {
+                                    foreach (var th in ViewBag.listTH)
+                                    {
+                                        <option value="@th.MaTH">@th.TenThuongHieu</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                        <!-- TinhTrangSanPham -->
+                        <div class="col-md-3 mb-3 px-2">
+                            <label for="TinhTrangSP" class="form-label">Tình Trạng Sản Phẩm</label>
+                            <select class="form-select" id="TinhTrangSanPham" name="TinhTrangSanPham" required>
+                                <option value="" disabled>Chọn tình trạng</option>
+                                <option value="conhang" @(Model.TinhTrangSanPham == "conhang" ? "selected" : "")>Còn hàng</option>
+                                <option value="hethang" @(Model.TinhTrangSanPham == "hethang" ? "selected" : "")>Hết hàng</option>
+                            </select>
+                        </div>
                         <!-- Gia -->
-                        <div class="col-md-6 mb-3 px-2">
+                        <div class="col-md-3 mb-3 px-2">
                             <label for="Gia" class="form-label">Giá</label>
-                            <input type="number" class="form-control" id="Gia" placeholder="800.000" required>
+                            <input type="number" class="form-control" id="Gia" name="Gia" value="@Model.Gia" min="0" placeholder="Nhập giá sản phẩm" required>
                         </div>
 
                         <!-- SoLuongTonKho -->
-                        <div class="col-md-6 mb-3 px-2">
+                        <div class="col-md-3 mb-3 px-2">
                             <label for="SoLuongTonKho" class="form-label">Số Lượng Tồn Kho</label>
-                            <input type="number" class="form-control" id="SoLuongTonKho" value="90" placeholder="Nhập số lượng tồn kho" required>
+                            <input type="number" class="form-control inputField" id="SoLuongTonKho" min="0" name="SoLuongTonKho" value="@Model.SoLuongTonKho" placeholder="Nhập số lượng tồn kho" required>
                         </div>
                     </div>
-                    <!-- HinhAnh -->
-                    <div class="col-md-13 mb-3 px-2">
-                        <label for="HinhAnh" class="form-label">Hình Ảnh Sản Phẩm</label>
-                        <input type="file" class="form-control" id="HinhAnh" multiple accept="image/*" onchange="previewImages()">
-                        <div id="imagePreview" class="mt-3 d-flex flex-wrap"></div>
+                    <div class="d-flex justify-content-between">
+                        <!-- HinhAnh -->
+                        <div class="col-md-10 mb-3 px-2">
+                            <label for="HinhAnh" class="form-label">Hình Ảnh Sản Phẩm <span style="color:red;">*(Chọn tối đa 3 ảnh)</span></label>
+                            <input type="file" class="form-control" id="HinhAnh" name="HinhAnh" multiple accept="image/*" onchange="previewImages()">
+
+                            <!-- Hiển thị ảnh đã có sẵn từ ViewBag.listHA -->
+                            <div id="imagePreview" class="mt-3 d-flex flex-wrap">
+                                @if (ViewBag.listHA != null)
+                                {
+                                    int index = 0; // Tạo chỉ số cho từng ảnh có sẵn
+                                    foreach (var img in ViewBag.listHA)
+                                    {
+                                        <div class="preview-container" data-index="@index">
+                                            <img src="~/Images/SanPham/@img.TenHinhAnh" class="preview-img" />
+                                            <!-- Nút xóa cho ảnh có sẵn -->
+                                            <button class="remove-btn" onclick="removeImage(@index)">×</button>
+                                        </div>
+                                        index++;
+                                    }
+                                }
+                            </div>
+                        </div>
+
+                        <!-- TrangThai -->
+                        <div class="col-md-2 mb-3 px-2">
+                            <label for="TrangThai" class="form-label">Trạng Thái</label>
+                            <select class="form-select" id="TrangThai" name="TrangThai" required>
+                                <option value="" disabled>Chọn trạng thái</option>
+                                <option value="hoatdong" @(Model.TrangThai == "hoatdong" ? "selected" : "")>Hoạt động</option>
+                                <option value="daxoa" @(Model.TrangThai == "daxoa" ? "selected" : "")>Đã xóa</option>
+                            </select>
+                        </div>
                     </div>
                     <!-- MoTa -->
                     <div class="col-md-12 mb-3 px-2">
                         <label for="MoTa" class="form-label">Mô Tả</label>
-                        <textarea class="form-control" id="MoTa" rows="3" placeholder="Nhập mô tả sản phẩm">
-                            Bàn ghế giáo viên
-                            (gồm 1 bàn và 1 ghế rời)
-                            - Kích thước bàn: 1200 x 600 x 750 mm
-                            - Kích thước ghế: 400x400x450-750 mm
-                            - Đặc điểm: Mặt bàn bằng gỗ cao su ghép thanh dày 18 mm, đã qua tẩm sấy chống mối mọt được sơn phủ PU bóng 03 lớp chống ẩm. Ngăn bàn, vách bàn bằng gỗ cùng chất liệu với mặt bàn dày 12 mm
-                            - Khung bàn được làm bằng thép hộp 30x30 mm, các xà giằng thép hộp 20x20 mm, dày 1 mm, được hàn ngấu trong khí bảo vệ CO2, Toàn bộ khung bàn phun sơn tĩnh điện màu ghi sáng.
-                            - Khung ghế được làm bằng thép hộp định hình, hàn liền bằng hộp 25x25 mm, dày 1 mm, hàn trong khí bảo vệ CO2, phu sơn tĩnh điện màu ghi sáng. Mặt ghế bằng gỗ cao su ghép dày 18 mm, đã qua tẩm sấy chống mối mọt, được sơn phủ PU bóng 03 lớp chống ẩm.
-                            - Toàn bộ thép hộp được kiểm nghiệm theo tiêu chuẩn TCVN 197-1:2014: Có độ bền kéo ≥ 300MPa; Giới hạn chảy ≥ 250 MPa; Độ giãn dài ≥ 25 %;
-                            - Sản phẩm gỗ ghép thanh Có chứng nhận các chỉ tiêu: độ bền trượt của mạch keo, độ toàn vẹn mạch keo, chiều dày hoàn thiện và chiều dày thanh gỗ phù hợp với tiêu chuẩn TCVN 8575:2010
-                            Sơn phủ trên gỗ cao su ghép thanh được kiểm nghiệm theo tiêu chuẩn TCVN 2097 về độ bám dính với kết quả - Đạt; Tiêu chuẩn JISK 5663 (Độ bền thời tiết của màng sơn không vàng hóa, không phồng rộp, không bong tróc, rạn nứt ≥ 3 năm)
-                            - Sơn phủ tĩnh điện trên bề mặt thép được kiểm nghiệm theo tiêu chuẩn ASTMD 3359:2017 có độ bám dính ≥ cấp 5B; ASTMD3363 -00 có độ cứng bút chì ≥ HB; ASTM B117 với kết quả không phồng rộp, bong tróc, rạn nứt, tạo vảy và muối hóa trên bề mặt mẫu, mẫu sơn có thể chịu được sự ăn mòn của môi trường trong nhà ≥ 2 năm.
-                            - Sản phẩm Bàn ghế giáo viên đạt tiêu chuẩn ISO 9001:2015; ISO 14001:2015
-                        </textarea>
+                        <textarea class="form-control" id="MoTa" name="MoTa" rows="10" placeholder="Nhập mô tả sản phẩm"></textarea>
                     </div>
-                    <!-- ThongTinChiTiet -->
-                    <div class="col-md-12 mb-3 px-2">
-                        <label for="ThongTinChiTiet" class="form-label">Thông Tin Chi Tiết</label>
-                        <textarea class="form-control" id="ThongTinChiTiet" rows="3" placeholder="Nhập thông tin chi tiết"></textarea>
+                    <!-- Back Button & Submit Button -->
+                    <div class="d-flex justify-content-center">
+                        <a class="btn btn-success mx-2" href="/admin/sanpham">Quay Lại</a>
+                        <button type="submit" class="btn btn-primary mx-2">Cập Nhật Sản Phẩm</button>
                     </div>
-
-                    <!-- TrangThai -->
-                    <div class="mb-3">
-                        <label for="TrangThai" class="form-label">Trạng Thái</label>
-                        <select class="form-select" id="TrangThai" required>
-                            <option value="" selected disabled>Chọn trạng thái</option>
-                            <option value="1">Còn Hàng</option>
-                            <option value="0">Hết Hàng</option>
-                        </select>
-                    </div>
-
-                    <!-- Submit Button -->
-                    <button type="submit" class="btn btn-primary">Cập Nhật Sản Phẩm</button>
                 </form>
             </div>
         </div>
     </div>
 </div>
+<script src="~/Areas/Admin/ResourcesAdmin/assets/js/core/jquery-3.7.1.min.js"></script>
 <script>
     let selectedFiles = [];
 
@@ -229,7 +360,8 @@
     }
 
     function removeImage(index) {
-        selectedFiles.splice(index, 1); // Xóa ảnh khỏi danh sách
+        // Xóa ảnh khỏi danh sách đã chọn (selectedFiles)
+        selectedFiles.splice(index, 1); // Loại bỏ ảnh khỏi danh sách
 
         // Cập nhật lại input file mà không thay đổi thứ tự
         const dataTransfer = new DataTransfer();
@@ -242,7 +374,7 @@
 
         imageContainers.forEach(container => {
             if (parseInt(container.getAttribute('data-index')) === index) {
-                container.remove();
+                container.remove(); // Xóa ảnh khỏi giao diện
             }
         });
 
@@ -260,4 +392,91 @@
             removeBtn.onclick = function () { removeImage(newIndex); };
         });
     }
+
+</script>
+<script>
+    $(document).ready(function () {
+        // Hàm để tải danh sách loại sản phẩm dựa trên giá trị của #MaDM
+        function loadProductTypes() {
+            // Lấy giá trị của select #MaDM
+            var maDM = $('#MaDM').val();
+
+            // Gửi yêu cầu AJAX đến controller
+            $.ajax({
+                url: '/Admin/SanPham/GetListLoaiSP', // URL đến action của controller
+                type: 'GET',
+                data: { maDM: maDM }, // Gửi maDM
+                success: function (response) {
+                    // Xóa các option cũ
+                    $('#MaLoai').empty();
+                    $('#MaLoai').append('<option value="" selected disabled>Chọn loại sản phẩm</option>');
+
+                    // Thêm các option mới từ dữ liệu trả về
+                    $.each(response, function (index, product) {
+                        $('#MaLoai').append($('<option>', {
+                            value: product.Key,
+                            text: product.Value
+                        }));
+                    });
+                },
+                error: function () {
+                    alert('Không thể tải danh sách loại sản phẩm');
+                }
+            });
+        }
+
+        // Khi giá trị của danh mục thay đổi, gọi hàm loadProductTypes
+        $('#MaDM').change(function () {
+            loadProductTypes();
+        });
+
+        // Gọi hàm loadProductTypes ngay khi trang vừa tải
+        //loadProductTypes();
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        // Hàm để cập nhật nội dung mô tả
+        function updateDescription() {
+            var description = '';
+
+            // Duyệt qua tất cả các input có class là "inputField"
+            $('.inputField').each(function () {
+                // Lấy label tương ứng với input
+                var label = $('label[for="' + $(this).attr('id') + '"]').text().trim();
+
+                // Nếu label tồn tại và không rỗng
+                if (label !== '') {
+                    description += label + ': ';
+                }
+
+                // Kiểm tra nếu là select
+                if ($(this).is('select')) {
+                    // Nếu là select, lấy tên hiển thị (text của option được chọn)
+                    var selectedText = $(this).find('option:selected').text().trim();
+                    if (selectedText !== '') {
+                        description += selectedText + '\n';
+                    }
+                } else {
+                    // Nếu là input thông thường, lấy giá trị hiện tại
+                    var inputValue = $(this).val().trim();
+                    if (inputValue !== '') {
+                        description += inputValue + '\n';
+                    }
+                }
+            });
+
+            // Cập nhật phần mô tả với nội dung đã tạo
+            $('#MoTa').html(description);
+        }
+
+        // Khi giá trị của các input thay đổi
+        $('.inputField').on('input change', function () {
+            updateDescription(); // Cập nhật lại mô tả khi có thay đổi
+        });
+
+        // Khởi tạo phần mô tả ban đầu khi trang vừa tải xong
+        updateDescription();
+    });
+
 </script>
