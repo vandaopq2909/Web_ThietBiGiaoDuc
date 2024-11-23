@@ -1,33 +1,238 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿
+@{
+    ViewBag.Title = "Trang Chủ";
 }
+<style>
+    /* Custom Styles */
+    .product-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr); /* 4 cột */
+        gap: 20px; /* Khoảng cách giữa các card */
+    }
 
-<main>
-    <section class="row" aria-labelledby="aspnetTitle">
-        <h1 id="title">ASP.NET</h1>
-        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-        <p><a href="https://asp.net" class="btn btn-primary btn-md">Learn more &raquo;</a></p>
-    </section>
+    .product-card {
+        display: flex;
+        flex-direction: column;
+        height: 100%; /* Đảm bảo chiều cao đầy đủ */
+        border: 1px solid #e0e0e0; /* Thêm viền cho card */
+        border-radius: 10px; /* Bo góc cho card */
+        background-color: #fff;
+        padding: 10px;
+        overflow: hidden; /* Ẩn phần vượt quá */
+        transition: box-shadow 0.3s ease; /* Hiệu ứng chuyển tiếp cho bóng */
+    }
 
-    <div class="row">
-        <section class="col-md-4" aria-labelledby="gettingStartedTitle">
-            <h2 id="gettingStartedTitle">Getting started</h2>
-            <p>
-                ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-                enables a clean separation of concerns and gives you full control over markup
-                for enjoyable, agile development.
-            </p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-        </section>
-        <section class="col-md-4" aria-labelledby="librariesTitle">
-            <h2 id="librariesTitle">Get more libraries</h2>
-            <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-        </section>
-        <section class="col-md-4" aria-labelledby="hostingTitle">
-            <h2 id="hostingTitle">Web Hosting</h2>
-            <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-        </section>
+        .product-card:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Bóng khi hover */
+        }
+
+    .product-image-wrapper {
+        height: 200px; /* Đặt chiều cao cố định cho hình ảnh */
+        overflow: hidden; /* Ẩn phần hình ảnh vượt quá chiều cao */
+        position: relative; /* Để đảm bảo hình ảnh được căn chỉnh đúng */
+        border-radius: 10px; /* Bo góc cho hình ảnh */
+    }
+
+    .product-image {
+        height: 180px;
+        object-fit: contain;
+        transition: transform 0.3s ease;
+    }
+
+    .product-image-wrapper img {
+        width: 100%; /* Đặt chiều rộng 100% */
+        height: 100%; /* Đặt chiều cao 100% */
+        object-fit: cover; /* Cắt hình ảnh cho phù hợp */
+        transition: transform 0.3s ease-in-out; /* Thêm hiệu ứng chuyển tiếp */
+    }
+
+        .product-image-wrapper img:hover {
+            transform: scale(1.1); /* Phóng to hình ảnh khi hover */
+        }
+
+    /* Zoom in ảnh khi hover vào toàn bộ card */
+    .product-card:hover .product-image {
+        transform: scale(1.1);
+    }
+
+    .product-name {
+        margin: 10px 0; /* Khoảng cách giữa tên sản phẩm và các phần khác */
+    }
+
+    .product-name a {
+        color: #333;
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s ease;
+    }
+
+    .product-name a:hover {
+        color: #28a745; /* Đổi màu xanh lá cây khi hover */
+    }
+    /* Hiệu ứng zoom-in khi hover */
+    .banner-ad {
+        transition: transform 0.5s ease; /* Chuyển đổi nhẹ nhàng khi hover */
+    }
+
+    .banner-ad:hover {
+        transform: scale(1.05); /* Zoom-in khi hover */
+    }
+</style>
+
+<!-- Categories Section Begin -->
+<section class="categories">
+    <div class="container">
+        <div class="row">
+            <!-- Category 1 -->
+            <div class="col-md-3 mb-4">
+                <div class="category-item">
+                    <img src="~/Resources/img/categories/DanhMuc_Ban_thi_nghiem.jpg" alt="Fresh Fruit" class="img-fluid rounded mb-3">
+                    <div class="category-title">
+                        <a href="#" class="btn btn-outline-success rounded-pill">BÀN THÍ NGHIỆM</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Category 2 -->
+            <div class="col-md-3 mb-4">
+                <div class="category-item">
+                    <img src="~/Resources/img/categories/DanhMuc_Noi_that_phong_hoc.jpeg" alt="Dried Fruit" class="img-fluid rounded mb-3">
+                    <div class="category-title">
+                        <a href="#" class="btn btn-outline-success rounded-pill">NỘI THẤT PHÒNG HỌC</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Category 3 -->
+            <div class="col-md-3 mb-4">
+                <div class="category-item">
+                    <img src="~/Resources/img/categories/DanhMuc_Thiet_bi_dung_cu_day_hoc.jpg" alt="Vegetables" class="img-fluid rounded mb-3">
+                    <div class="category-title">
+                        <a href="#" class="btn btn-outline-success rounded-pill">THIẾT BỊ - DỤNG CỤ DẠY HỌC</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Category 4 -->
+            <div class="col-md-3 mb-4">
+                <div class="category-item">
+                    <img src="~/Resources/img/categories/DanhMuc_Giao_cu_montessori.jpg" alt="Drink Fruits" class="img-fluid rounded mb-3">
+                    <div class="category-title">
+                        <a href="#" class="btn btn-outline-success rounded-pill">GIÁO CỤ MONTESSORI</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</main>
+</section>
+<!-- Categories Section End -->
+<!-- Featured Section Begin -->
+<section class="featured spad">
+    <div class="container my-5">
+        <div class="section-title d-flex justify-content-between align-items-center mb-4">
+            <h2 class="text-center flex-grow-1">Sản Phẩm Nổi Bật</h2>
+            <a href="#" class="btn btn-outline-success rounded-pill ml-auto">Xem tất cả</a>
+        </div>
+
+        <!-- Danh sách sản phẩm nổi bật -->
+        <div class="row">
+            @foreach (var spNoiBat in ViewBag.listSPNoiBat)
+            {
+                <!-- Sản phẩm -->
+                <div class="col-md-3">
+                    <div class="product-card text-center border-0">
+                        <div class="product-image-wrapper">
+                            <img src="~/Images/SanPham/@spNoiBat.img" />
+                        </div>
+                        <h5 class="product-name">
+                            <a href="#">@spNoiBat.TenSanPham</a>
+                        </h5>
+                        <p>
+                            <del>@String.Format(new System.Globalization.CultureInfo("vi-VN"), "{0:C}", Math.Floor(spNoiBat.Gia))</del>
+                            <strong style="color:red;">@String.Format(new System.Globalization.CultureInfo("vi-VN"), "{0:C}", Math.Floor(spNoiBat.Gia))</strong>
+                            <span class="badge badge-success">0% OFF</span>
+                        </p>
+                        <button class="btn btn-outline-success btn-sm">Thêm vào giỏ hàng</button>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    <!-- Sản phẩm theo loại: Thiết bị - dụng cụ dạy học-->
+    <div class="container my-5">
+        <div class="section-title d-flex justify-content-between align-items-center mb-4">
+            <h2 class="text-center flex-grow-1">Thiết Bị - Dụng Cụ Dạy Học</h2>
+            <a href="#" class="btn btn-outline-success rounded-pill ml-auto">Xem tất cả</a>
+        </div>
+
+        <!-- Danh sách sản phẩm -->
+        <div class="row">
+            @foreach (var spNoiBat in ViewBag.listSPNoiBat)
+            {
+                <!-- Sản phẩm -->
+                <div class="col-md-3">
+                    <div class="product-card text-center border-0">
+                        <div class="product-image-wrapper">
+                            <img src="~/Images/SanPham/@spNoiBat.img" />
+                        </div>
+                        <h5 class="product-name">
+                            <a href="#">@spNoiBat.TenSanPham</a>
+                        </h5>
+                        <p>
+                            <del>@String.Format(new System.Globalization.CultureInfo("vi-VN"), "{0:C}", Math.Floor(spNoiBat.Gia))</del>
+                            <strong style="color:red;">@String.Format(new System.Globalization.CultureInfo("vi-VN"), "{0:C}", Math.Floor(spNoiBat.Gia))</strong>
+                            <span class="badge badge-success">0% OFF</span>
+                        </p>
+                        <button class="btn btn-outline-success btn-sm">Thêm vào giỏ hàng</button>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="row">
+        <!-- Banner lớn bên trái, chiếm 70% -->
+        <div class="col-md-8">
+            <div class="banner-ad d-flex align-items-center large bg-info block-1 h-100 zoom-banner" style="background: url('/Resources/img/categories/DanhMuc_Ban_thi_nghiem.jpg') no-repeat; background-size: cover;">
+                <div class="banner-content p-5">
+                    <div class="content-wrapper">
+                        <h3 class="banner-title text-white">Khuyến Mãi Đặc Biệt: Thiết Bị Giáo Dục</h3>
+                        <p class="text-white">Tận hưởng giảm giá lên đến 30% cho các thiết bị giáo dục chất lượng cao. Cập nhật các sản phẩm mới nhất cho lớp học của bạn hôm nay!</p>
+                        <a href="#" class="btn-link text-white">Mua Ngay</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hai banner nhỏ bên phải, mỗi cái chiếm 50% chiều dọc -->
+        <div class="col-md-4">
+            <div class="row h-100">
+                <!-- Banner nhỏ thứ nhất -->
+                <div class="col-12 mb-3">
+                    <div class="banner-ad bg-success-subtle block-2 h-100 zoom-banner" style="background: url('/Resources/img/categories/DanhMuc_Giao_cu_montessori.jpg') no-repeat; background-size: cover;">
+                        <div class="banner-content align-items-center p-5">
+                            <div class="content-wrapper">
+                                <h3 class="banner-title text-white">Combo Tiết Kiệm Cho Lớp Học</h3>
+                                <p class="text-white">Giảm giá đến 50% khi mua các combo thiết bị giáo dục. Hoàn hảo cho mọi lớp học từ mầm non đến trung học!</p>
+                                <a href="#" class="btn-link text-white">Khám Phá Các Combo</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Banner nhỏ thứ hai -->
+                <div class="col-12">
+                    <div class="banner-ad bg-danger block-3 h-100 zoom-banner" style="background: url('/Resources/img/categories/DanhMuc_Noi_that_phong_hoc.jpeg') no-repeat; background-size: cover;">
+                        <div class="banner-content align-items-center p-5">
+                            <div class="content-wrapper">
+                                <h3 class="banner-title text-white">Mã Giảm Giá Thiết Bị Giáo Dục</h3>
+                                <p class="text-white">Nhận mã giảm giá lên đến 40% cho các thiết bị học tập. Sử dụng mã để tiết kiệm ngay hôm nay!</p>
+                                <a href="#" class="btn-link text-white">Nhận Mã Giảm Giá</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+<!-- Featured Section End -->
+
+<script src="~/Areas/Admin/ResourcesAdmin/assets/js/core/jquery-3.7.1.min.js"></script>

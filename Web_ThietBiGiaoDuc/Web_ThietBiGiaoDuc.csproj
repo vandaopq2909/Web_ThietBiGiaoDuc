@@ -143,9 +143,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202411161309190_InitDatabase.cs" />
-    <Compile Include="Migrations\202411161309190_InitDatabase.Designer.cs">
-      <DependentUpon>202411161309190_InitDatabase.cs</DependentUpon>
+    <Compile Include="Migrations\202411171227493_InitialDatabase.cs" />
+    <Compile Include="Migrations\202411171227493_InitialDatabase.Designer.cs">
+      <DependentUpon>202411171227493_InitialDatabase.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApDungKhuyenMai.cs" />
@@ -623,11 +623,10 @@
     <Content Include="Resources\img\cart\cart-1.jpg" />
     <Content Include="Resources\img\cart\cart-2.jpg" />
     <Content Include="Resources\img\cart\cart-3.jpg" />
-    <Content Include="Resources\img\categories\cat-1.jpg" />
-    <Content Include="Resources\img\categories\cat-2.jpg" />
-    <Content Include="Resources\img\categories\cat-3.jpg" />
-    <Content Include="Resources\img\categories\cat-4.jpg" />
-    <Content Include="Resources\img\categories\cat-5.jpg" />
+    <Content Include="Resources\img\categories\DanhMuc_Ban_thi_nghiem.jpg" />
+    <Content Include="Resources\img\categories\DanhMuc_Giao_cu_montessori.jpg" />
+    <Content Include="Resources\img\categories\DanhMuc_Noi_that_phong_hoc.jpeg" />
+    <Content Include="Resources\img\categories\DanhMuc_Thiet_bi_dung_cu_day_hoc.jpg" />
     <Content Include="Resources\img\featured\feature-1.jpg" />
     <Content Include="Resources\img\featured\feature-2.jpg" />
     <Content Include="Resources\img\featured\feature-3.jpg" />
@@ -833,8 +832,8 @@
     <Content Include="Scripts\jquery-3.7.0.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202411161309190_InitDatabase.resx">
-      <DependentUpon>202411161309190_InitDatabase.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202411171227493_InitialDatabase.resx">
+      <DependentUpon>202411171227493_InitialDatabase.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
