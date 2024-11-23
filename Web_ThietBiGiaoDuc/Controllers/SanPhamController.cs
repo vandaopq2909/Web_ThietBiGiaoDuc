@@ -12,7 +12,7 @@ namespace Web_ThietBiGiaoDuc.Controllers
         public ActionResult Index()
         {
             return View();
-        }
+        }       
         public ActionResult ChiTiet()
         {
             return View();
