@@ -139,6 +139,7 @@
     <Compile Include="Areas\Admin\Controllers\ThuongHieuController.cs" />
     <Compile Include="Controllers\EmailController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KhachHangController.cs" />
     <Compile Include="Controllers\SanPhamController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -588,6 +589,66 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\SanPham\ampe_ke_mot_chieu_1.jpg" />
+    <Content Include="Images\SanPham\bang_ten_chu_cai_tieng_viet_1.jpg" />
+    <Content Include="Images\SanPham\bang_tu_chong_loa_treo_tren_tuong_1.jpg" />
+    <Content Include="Images\SanPham\bang_tu_hop_truot_ngang_ket_hop_man_hinh_1.jpg" />
+    <Content Include="Images\SanPham\bang_tu_truot_ngang_ket_hop_man_hinh_tivi_1.jpg" />
+    <Content Include="Images\SanPham\ban_ghe_hoc_sinh_1_cho_ngoi_cao_cap_1.jpg" />
+    <Content Include="Images\SanPham\ban_ghe_hoc_sinh_go_cao_su_tu_nhien.jpg" />
+    <Content Include="Images\SanPham\ban_hoc_sinh_2_cho_ngoi_khong_tua.jpg" />
+    <Content Include="Images\SanPham\ban_hoc_sinh_2_cho_ngoi_lien_ghe_co_tua.jpg" />
+    <Content Include="Images\SanPham\ban_hoc_sinh_ghe_roi_bang_dai.jpg" />
+    <Content Include="Images\SanPham\ban_hoc_sinh_khong_ghe.jpg" />
+    <Content Include="Images\SanPham\ban_hoc_sinh_lien_ghe_co_tua_go_cao_su_1.jpg" />
+    <Content Include="Images\SanPham\ban_hoc_sinh_lien_ghe_go_cao_su_ghep_thanh.jpg" />
+    <Content Include="Images\SanPham\ban_hop_van_phong_2m4_bh6_1.jpg" />
+    <Content Include="Images\SanPham\ban_hop_van_phong_3m6_bh25_1.jpg" />
+    <Content Include="Images\SanPham\ban_nhan_vien_hoa_phat_hr140hlc2y1_1.jpg" />
+    <Content Include="Images\SanPham\ban_nhan_vien_hr120sc5_1.jpg" />
+    <Content Include="Images\SanPham\ban_nhan_vien_hr140hlc1y1_1.jpg" />
+    <Content Include="Images\SanPham\ban_thi_nghiem_hoa_2_cho_ngoi_1.jpg" />
+    <Content Include="Images\SanPham\ban_thi_nghiem_hoa_4_cho_ngoi_1.jpg" />
+    <Content Include="Images\SanPham\ban_thi_nghiem_ly_2_cho_1.jpg" />
+    <Content Include="Images\SanPham\ban_thi_nghiem_ly_4_cho_ngoi_1.jpg" />
+    <Content Include="Images\SanPham\ban_tieu_hoc_hai_ghe_roi.jpg" />
+    <Content Include="Images\SanPham\ban_van_phong_hoa_phat_hr120sc7_1.jpg" />
+    <Content Include="Images\SanPham\bien_the_nguon_1.jpg" />
+    <Content Include="Images\SanPham\bo_ban_ghe_giao_vien_gv01_1.jpg" />
+    <Content Include="Images\SanPham\bo_ban_ghe_giao_vien_khong_hoc_gv02_1.jpg" />
+    <Content Include="Images\SanPham\bo_ban_ghe_gv_khong_hoc.jpeg" />
+    <Content Include="Images\SanPham\bo_ban_ghe_gv_khong_hoc_tu.jpg" />
+    <Content Include="Images\SanPham\bo_chu_day_tap_viet_1.jpg" />
+    <Content Include="Images\SanPham\bo_gia_thi_nghiem_1.jpg" />
+    <Content Include="Images\SanPham\bo_mau_chu_viet_1.jpg" />
+    <Content Include="Images\SanPham\bo_the_chu_hoc_van_thuc_hanh_1.jpg" />
+    <Content Include="Images\SanPham\bo_thiet_bi_day_hoc_ve_cac_duong_conic.jpg" />
+    <Content Include="Images\SanPham\bo_thiet_bi_day_hoc_ve_hinh_hoc.jpg" />
+    <Content Include="Images\SanPham\bo_thiet_bi_day_hoc_ve_thong_ke_va_xac_suat.jpg" />
+    <Content Include="Images\SanPham\bo_thiet_bi_de_ve_tren_bang_day_hoc_1.jpg" />
+    <Content Include="Images\SanPham\but_thu_thong_mach_1.jpg" />
+    <Content Include="Images\SanPham\cac_hinh_khoi_co_ban_1.jpg" />
+    <Content Include="Images\SanPham\chuong_dien_1.jpg" />
+    <Content Include="Images\SanPham\DoAnTotNghiep.drawio %282%29.png" />
+    <Content Include="Images\SanPham\dong_ho_do_dien_da_nang_1.jpg" />
+    <Content Include="Images\SanPham\ghe_giam_doc_da_cao_cap_1.jpg" />
+    <Content Include="Images\SanPham\ghe_phong_thi_nghiem_hoa_sinh_1.jpg" />
+    <Content Include="Images\SanPham\ghe_sofa_bo_van_phong_1.jpg" />
+    <Content Include="Images\SanPham\ghe_thi_nghiem_mat_nhua_1.jpg" />
+    <Content Include="Images\SanPham\gia-treo-di-dong-p1500-cao-cap.jpg" />
+    <Content Include="Images\SanPham\gia_lap_pin_1.jpg" />
+    <Content Include="Images\SanPham\giuong_benh_nhan_3_tay_quay_1.jpg" />
+    <Content Include="Images\SanPham\hop_nuoi_sau_bo_1.jpg" />
+    <Content Include="Images\SanPham\kinh_lup_co_de_1.jpg" />
+    <Content Include="Images\SanPham\may_cat_nuoc_1_lan_1.jpg" />
+    <Content Include="Images\SanPham\nam_cham_dien_1.jpg" />
+    <Content Include="Images\SanPham\nguon_sang_1.jpg" />
+    <Content Include="Images\SanPham\ong_dong_thuy_tinh_100ml_1.jpg" />
+    <Content Include="Images\SanPham\phan_mem_toan_hoc_1.jpg" />
+    <Content Include="Images\SanPham\tu_dau_giuong_y_te_inox_1.jpg" />
+    <Content Include="Images\SanPham\tu_thuoc_y_te_inox_thuong_1.jpg" />
+    <Content Include="Images\SanPham\von_ke_1_chieu_1.jpg" />
+    <Content Include="Images\SanPham\xe_tiem_3_tang_co_vanh_cai_xo.jpg" />
     <Content Include="Resources\blog-details.html" />
     <Content Include="Resources\blog.html" />
     <Content Include="Resources\checkout.html" />
@@ -595,6 +656,7 @@
     <Content Include="Resources\css\bootstrap.min.css" />
     <Content Include="Resources\css\custom.css" />
     <Content Include="Resources\css\elegant-icons.css" />
+    <Content Include="Resources\css\flogin.css" />
     <Content Include="Resources\css\font-awesome.min.css" />
     <Content Include="Resources\css\fonts.min.css" />
     <Content Include="Resources\css\jquery-ui.min.css" />
@@ -640,7 +702,9 @@
     <Content Include="Resources\img\latest-product\lp-1.jpg" />
     <Content Include="Resources\img\latest-product\lp-2.jpg" />
     <Content Include="Resources\img\latest-product\lp-3.jpg" />
+    <Content Include="Resources\img\login\background.jpg" />
     <Content Include="Resources\img\logo.png" />
+    <Content Include="Resources\img\logo\TBGD_AandB_Logo.png" />
     <Content Include="Resources\img\payment-item.png" />
     <Content Include="Resources\img\product\details\product-details-1.jpg" />
     <Content Include="Resources\img\product\details\product-details-2.jpg" />
@@ -672,6 +736,7 @@
     <Content Include="Resources\index.html" />
     <Content Include="Resources\js\bootstrap.bundle.min.js" />
     <Content Include="Resources\js\bootstrap.min.js" />
+    <Content Include="Resources\js\flogin.js" />
     <Content Include="Resources\js\jquery-3.3.1.min.js" />
     <Content Include="Resources\js\jquery-ui.min.js" />
     <Content Include="Resources\js\jquery.nice-select.min.js" />
@@ -797,12 +862,12 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Email\SendEmail.cshtml" />
-    <Content Include="Views\SanPham\ChiTiet.cshtml" />
     <Content Include="Views\Shared\_LayoutPage1.cshtml" />
+    <Content Include="Views\KhachHang\DangNhap.cshtml" />
+    <Content Include="Views\SanPham\ChiTiet.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="Images\SanPham\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
