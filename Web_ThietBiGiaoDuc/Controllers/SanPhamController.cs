@@ -56,7 +56,7 @@ namespace Web_ThietBiGiaoDuc.Controllers
                         Gia = sp.Gia,
                         img = sp.HinhAnhs.Select(h => h.TenHinhAnh).FirstOrDefault()
                     })
-                    .ToList<dynamic>(); ;
+                    .ToList<dynamic>(); 
             // Sử dụng PagedList để phân trang
             var pagedSanPhams = listSP.ToPagedList(page, pageSize);
             ViewBag.listSP = pagedSanPhams; // Lưu danh sách phân trang vào ViewBag
@@ -76,7 +76,7 @@ namespace Web_ThietBiGiaoDuc.Controllers
                         Gia = sp.Gia,
                         img = sp.HinhAnhs.Select(h => h.TenHinhAnh).FirstOrDefault()
                     })
-                    .ToList<dynamic>(); ;
+                    .ToList<dynamic>(); 
                 // Sử dụng PagedList để phân trang
                 var pagedSanPhams = listSPTK.ToPagedList(page, pageSize);
                 ViewBag.listTimKiem = pagedSanPhams; // Lưu danh sách phân trang vào ViewBag
