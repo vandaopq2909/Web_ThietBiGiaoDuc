@@ -7,13 +7,13 @@ namespace Web_ThietBiGiaoDuc.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.5.1")]
-    public sealed partial class InitialDatabase : IMigrationMetadata
+    public sealed partial class InitialCreate : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialDatabase));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreate));
         
         string IMigrationMetadata.Id
         {
-            get { return "202411171227493_InitialDatabase"; }
+            get { return "202411240635379_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source

@@ -1,0 +1,44 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập</title>
+    <!-- APP CSS -->
+    <link rel="stylesheet" href="~/Resources/css/flogin.css" asp-append-version="true">
+</head>
+<body style="background-image: Url('/Resources/img/login//background.jpg');">
+    <div class="form" id="signin-form">
+        <a href="~/Home/Index" class="form-logo">
+            <img src="~/Resources/img/logo/TBGD_AandB_Logo.png" alt="PetSpa logo">
+        </a>
+        <form id="signin-form" action="/KhachHang/DangKi" method="post">
+            <div class="form-group">
+                <input type="text" id="TenDangNhap" class="form-input" name="TenDangNhap" placeholder="Tên đăng nhập">
+                <span class="form-input-err-msg" data-err-for="TenDangNhap"></span>
+            </div>
+            <div class="form-group">
+                <input type="email" id="Email" class="form-input" name="email" placeholder="Email">
+                <span class="form-input-err-msg" data-err-for="Email"></span>
+            </div>
+            <div class="form-group">
+                <input type="password" id="MatKhau" class="form-input" name="matkhau" placeholder="Mật khẩu">
+                <span class="form-input-err-msg" data-err-for="MatKhau"></span>
+            </div>
+            <div class="form-group">
+                <input type="password" id="RetypePassword" class="form-input" placeholder="Nhập lại Mật khẩu">
+                <span class="form-input-err-msg" data-err-for="RetypePassword"></span>
+            </div>
+            <button type="submit" class="form-btn" id="signin-btn">Đăng kí</button>
+        </form>
+    </div>
+    <script src="~/Resources/js/fregister.js" asp-append-version="true"></script>
+</body>
+</html>

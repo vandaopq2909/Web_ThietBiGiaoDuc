@@ -46,6 +46,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BCrypt.Net-Core, Version=1.6.0.0, Culture=neutral, PublicKeyToken=4d63bfbfdfd3c6e4, processorArchitecture=MSIL">
+      <HintPath>..\packages\BCrypt.Net-Core.1.6.0\lib\net452\BCrypt.Net-Core.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -144,9 +147,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202411171227493_InitialDatabase.cs" />
-    <Compile Include="Migrations\202411171227493_InitialDatabase.Designer.cs">
-      <DependentUpon>202411171227493_InitialDatabase.cs</DependentUpon>
+    <Compile Include="Migrations\202411240635379_InitialCreate.cs" />
+    <Compile Include="Migrations\202411240635379_InitialCreate.Designer.cs">
+      <DependentUpon>202411240635379_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApDungKhuyenMai.cs" />
@@ -737,6 +740,7 @@
     <Content Include="Resources\js\bootstrap.bundle.min.js" />
     <Content Include="Resources\js\bootstrap.min.js" />
     <Content Include="Resources\js\flogin.js" />
+    <Content Include="Resources\js\fregister.js" />
     <Content Include="Resources\js\jquery-3.3.1.min.js" />
     <Content Include="Resources\js\jquery-ui.min.js" />
     <Content Include="Resources\js\jquery.nice-select.min.js" />
@@ -865,6 +869,7 @@
     <Content Include="Views\Shared\_LayoutPage1.cshtml" />
     <Content Include="Views\KhachHang\DangNhap.cshtml" />
     <Content Include="Views\SanPham\ChiTiet.cshtml" />
+    <Content Include="Views\KhachHang\DangKi.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Data\" />
@@ -897,8 +902,8 @@
     <Content Include="Scripts\jquery-3.7.0.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202411171227493_InitialDatabase.resx">
-      <DependentUpon>202411171227493_InitialDatabase.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202411240635379_InitialCreate.resx">
+      <DependentUpon>202411240635379_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
