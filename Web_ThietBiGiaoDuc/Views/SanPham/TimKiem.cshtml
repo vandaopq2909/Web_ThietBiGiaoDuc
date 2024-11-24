@@ -1,0 +1,154 @@
+﻿@using PagedList.Mvc; <!-- Import thư viện PagedList trong View -->
+@{
+    var listTimKiem = ViewBag.listTimKiem as PagedList.IPagedList<dynamic>; // Ép kiểu về IPagedList<dynamic>
+}
+@{
+    ViewBag.Title = "TimKiem";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+
+<style>
+    /* Custom Styles */
+    .product-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr); /* 4 cột */
+        gap: 20px; /* Khoảng cách giữa các card */
+    }
+
+    .product-card {
+        display: flex;
+        flex-direction: column;
+        height: 100%; /* Đảm bảo chiều cao đầy đủ */
+        border: 1px solid #e0e0e0; /* Thêm viền cho card */
+        border-radius: 10px; /* Bo góc cho card */
+        background-color: #fff;
+        padding: 10px;
+        overflow: hidden; /* Ẩn phần vượt quá */
+        transition: box-shadow 0.3s ease; /* Hiệu ứng chuyển tiếp cho bóng */
+    }
+
+        .product-card:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Bóng khi hover */
+        }
+
+    .product-image-wrapper {
+        height: 200px; /* Đặt chiều cao cố định cho hình ảnh */
+        overflow: hidden; /* Ẩn phần hình ảnh vượt quá chiều cao */
+        position: relative; /* Để đảm bảo hình ảnh được căn chỉnh đúng */
+        border-radius: 10px; /* Bo góc cho hình ảnh */
+    }
+
+    .product-image {
+        height: 180px;
+        object-fit: contain;
+        transition: transform 0.3s ease;
+    }
+
+    .product-image-wrapper img {
+        width: 100%; /* Đặt chiều rộng 100% */
+        height: 100%; /* Đặt chiều cao 100% */
+        object-fit: cover; /* Cắt hình ảnh cho phù hợp */
+        transition: transform 0.3s ease-in-out; /* Thêm hiệu ứng chuyển tiếp */
+    }
+
+        .product-image-wrapper img:hover {
+            transform: scale(1.1); /* Phóng to hình ảnh khi hover */
+        }
+
+    /* Zoom in ảnh khi hover vào toàn bộ card */
+    .product-card:hover .product-image {
+        transform: scale(1.1);
+    }
+
+    .product-name {
+        margin: 10px 0; /* Khoảng cách giữa tên sản phẩm và các phần khác */
+    }
+
+        .product-name a {
+            color: #333;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+            .product-name a:hover {
+                color: #28a745; /* Đổi màu xanh lá cây khi hover */
+            }
+    /* Hiệu ứng zoom-in khi hover */
+    .banner-ad {
+        transition: transform 0.5s ease; /* Chuyển đổi nhẹ nhàng khi hover */
+    }
+
+        .banner-ad:hover {
+            transform: scale(1.05); /* Zoom-in khi hover */
+        }
+</style>
+
+<div class="container my-5">
+    <div class="section-title d-flex justify-content-between align-items-center mb-4">
+        <h2 class="text-center flex-grow-1">Tìm kiếm sản phẩm: "@ViewBag.TimKiem"</h2>
+    </div>
+    <!-- Danh sách sản phẩm -->
+    <div class="row">
+        @foreach (var sp in listTimKiem)
+        {
+            <!-- Sản phẩm -->
+            <div class="col-md-3 d-flex">
+                <div class="product-card d-flex flex-column text-center border-0 w-100">
+                    <div class="product-image-wrapper mb-3">
+                        <a href="/sanpham/chitiet?masp=@sp.MaSP">
+                            <img src="/Images/SanPham/@sp.img" class="img-fluid" />
+                        </a>
+                    </div>
+                    <h5 class="product-name">
+                        <a href="/sanpham/chitiet?masp=@sp.MaSP">@sp.TenSanPham</a>
+                    </h5>
+                    <p>
+                        <del>@String.Format(new System.Globalization.CultureInfo("vi-VN"), "{0:C}", Math.Floor(sp.Gia))</del>
+                        <strong style="color:red;">@String.Format(new System.Globalization.CultureInfo("vi-VN"), "{0:C}", Math.Floor(sp.Gia))</strong>
+                        <span class="badge badge-success">0% OFF</span>
+                    </p>
+                    <!-- Spacer để đẩy nút xuống đáy -->
+                    <div class="mt-auto">
+                        <button class="btn btn-outline-success btn-sm">Thêm vào giỏ hàng</button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<!-- Hiển thị phân trang -->
+<div class="pagination-container mb-5">
+    @if (ViewBag.listTimKiem != null && ViewBag.listTimKiem is PagedList.IPagedList)
+    {
+        var pagedList = (PagedList.IPagedList)ViewBag.listTimKiem;
+
+        <ul class="pagination justify-content-center">
+            @if (pagedList.HasPreviousPage)
+            {
+                <li class="page-item">
+                    <a class="page-link" href="@Url.Action("TimKiem", "SanPham", new { page = pagedList.PageNumber - 1, s = ViewBag.TimKiem })">Previous</a>
+                </li>
+            }
+
+            @for (int i = 1; i <= pagedList.PageCount; i++)
+            {
+                <li class="page-item @(i == pagedList.PageNumber ? "active" : "")">
+                    <a class="page-link" href="@Url.Action("TimKiem", "SanPham", new { page = i, s = ViewBag.TimKiem })">@i</a>
+                </li>
+            }
+
+            @if (pagedList.HasNextPage)
+            {
+                <li class="page-item">
+                    <a class="page-link" href="@Url.Action("TimKiem", "SanPham", new { page = pagedList.PageNumber + 1, s = ViewBag.TimKiem })">Next</a>
+                </li>
+            }
+        </ul>
+    }
+</div>
+
+
+
+
