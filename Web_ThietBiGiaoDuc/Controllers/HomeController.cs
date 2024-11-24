@@ -21,8 +21,7 @@ namespace Web_ThietBiGiaoDuc.Controllers
             DatabaseContext db = new DatabaseContext();
 
             // Lấy tối đa 4 sản phẩm có trạng thái 'hoatdong' và hình ảnh đầu tiên
-            ViewBag.listSPNoiBat = db.sanPhams
-                .Where(sp => sp.TrangThai == "hoatdong")  // Lọc sản phẩm có trạng thái 'hoatdong'
+            ViewBag.listSPNoiBat = db.sanPhams    
                 .Take(4)                                  // Lấy tối đa 4 sản phẩm
                 .Select(sp => new SanPhamVM
                 {
