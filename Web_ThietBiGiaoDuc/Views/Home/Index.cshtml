@@ -147,8 +147,8 @@
                             <a href="/sanpham/chitiet?masp=@spNoiBat.MaSP">@spNoiBat.TenSanPham</a>
                         </h5>
                         <p>
-                            <del>@String.Format(new System.Globalization.CultureInfo("vi-VN"), "{0:C}", Math.Floor(spNoiBat.Gia))</del>
-                            <strong style="color:red;">@String.Format(new System.Globalization.CultureInfo("vi-VN"), "{0:C}", Math.Floor(spNoiBat.Gia))</strong>
+                            <del><span>@spNoiBat.Gia.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("vi-VN"))</span><sup>đ</sup></del>
+                            <strong style="color:red;">@spNoiBat.Gia.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("vi-VN"))<sup>đ</sup></strong>
                             <span class="badge badge-success">0% OFF</span>
                         </p>
                         <!-- Spacer để đẩy nút xuống đáy -->
@@ -184,8 +184,8 @@
                             <a href="/sanpham/chitiet?masp=@spNoiBat.MaSP">@spNoiBat.TenSanPham</a>
                         </h5>
                         <p>
-                            <del>@String.Format(new System.Globalization.CultureInfo("vi-VN"), "{0:C}", Math.Floor(spNoiBat.Gia))</del>
-                            <strong style="color:red;">@String.Format(new System.Globalization.CultureInfo("vi-VN"), "{0:C}", Math.Floor(spNoiBat.Gia))</strong>
+                            <del><span>@spNoiBat.Gia.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("vi-VN"))</span><sup>đ</sup></del>
+                            <strong style="color:red;">@spNoiBat.Gia.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("vi-VN"))<sup>đ</sup></strong>
                             <span class="badge badge-success">0% OFF</span>
                         </p>
                         <!-- Spacer để đẩy nút xuống đáy -->
