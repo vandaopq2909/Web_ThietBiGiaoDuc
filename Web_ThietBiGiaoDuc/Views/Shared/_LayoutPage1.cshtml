@@ -1,5 +1,7 @@
-﻿<!DOCTYPE html>
-
+﻿@{
+    var TenDangNhap = Context.Request.Cookies["auth"];
+}
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -102,15 +104,24 @@
                         </div>
                         <div class="col-lg-4 col-md-4">
                             <div class="header__top__right">
-                                <div class="header__top__right__social">
-                                    <a href="#"><i class="fa fa-facebook"></i></a>
-                                    <a href="#"><i class="fa fa-twitter"></i></a>
-                                    <a href="#"><i class="fa fa-linkedin"></i></a>
-                                    <a href="#"><i class="fa fa-pinterest-p"></i></a>
-                                </div>
-                                <div class="header__top__right__auth">
-                                    <a href="#"><i class="fa fa-user"></i> Đăng nhập</a>
-                                </div>
+                                @if (TenDangNhap == null)
+                                {
+                                    <div class="header__top__right__social">
+                                        <a href="~/KhachHang/DangKi"><i class="fa fas fa-user-plus"></i> Đăng kí</a>
+                                    </div>
+                                    <div class="header__top__right__auth">
+                                        <a href="~/KhachHang/DangNhap"><i class="fa fa-user"></i> Đăng nhập</a>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="header__top__right__social">
+                                        <strong>@TenDangNhap.Values</strong>
+                                    </div>
+                                    <div class="header__top__right__auth">
+                                        <a href="~/KhachHang/DangXuat"> Đăng xuất</a>
+                                    </div>
+                                }
                             </div>
                         </div>
                     </div>
