@@ -85,7 +85,7 @@ namespace Web_ThietBiGiaoDuc.Controllers
             db.khachHangs.Add(khach);
             db.SaveChanges();
 
-            return RedirectToAction("/Home/Index");
+            return RedirectToAction("DangNhap");
         }
     }
 }

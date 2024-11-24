@@ -136,51 +136,62 @@
             @foreach (var spNoiBat in ViewBag.listSPNoiBat)
             {
                 <!-- Sản phẩm -->
-                <div class="col-md-3">
-                    <div class="product-card text-center border-0">
-                        <div class="product-image-wrapper">
-                            <img src="~/Images/SanPham/@spNoiBat.img" />
+                <div class="col-md-3 d-flex">
+                    <div class="product-card d-flex flex-column text-center border-0 w-100">
+                        <div class="product-image-wrapper mb-3">
+                            <a href="/sanpham/chitiet?masp=@spNoiBat.MaSP">
+                                <img src="~/Images/SanPham/@spNoiBat.img" class="img-fluid" />
+                            </a>
                         </div>
                         <h5 class="product-name">
-                            <a href="#">@spNoiBat.TenSanPham</a>
+                            <a href="/sanpham/chitiet?masp=@spNoiBat.MaSP">@spNoiBat.TenSanPham</a>
                         </h5>
                         <p>
                             <del>@String.Format(new System.Globalization.CultureInfo("vi-VN"), "{0:C}", Math.Floor(spNoiBat.Gia))</del>
                             <strong style="color:red;">@String.Format(new System.Globalization.CultureInfo("vi-VN"), "{0:C}", Math.Floor(spNoiBat.Gia))</strong>
                             <span class="badge badge-success">0% OFF</span>
                         </p>
-                        <button class="btn btn-outline-success btn-sm">Thêm vào giỏ hàng</button>
+                        <!-- Spacer để đẩy nút xuống đáy -->
+                        <div class="mt-auto">
+                            <button class="btn btn-outline-success btn-sm">Thêm vào giỏ hàng</button>
+                        </div>
                     </div>
                 </div>
             }
         </div>
     </div>
-    <!-- Sản phẩm theo loại: Thiết bị - dụng cụ dạy học-->
+
+    <!-- Sản phẩm theo loại: Bàn ghế học sinh-->
     <div class="container my-5">
         <div class="section-title d-flex justify-content-between align-items-center mb-4">
-            <h2 class="text-center flex-grow-1">Thiết Bị - Dụng Cụ Dạy Học</h2>
+            <h2 class="text-center flex-grow-1">Bàn ghế học sinh</h2>
             <a href="#" class="btn btn-outline-success rounded-pill ml-auto">Xem tất cả</a>
         </div>
 
-        <!-- Danh sách sản phẩm -->
+        <!-- Danh sách sản phẩm nổi bật -->
         <div class="row">
-            @foreach (var spNoiBat in ViewBag.listSPNoiBat)
+            @foreach (var spNoiBat in ViewBag.listSPBanGheHS)
             {
                 <!-- Sản phẩm -->
-                <div class="col-md-3">
-                    <div class="product-card text-center border-0">
-                        <div class="product-image-wrapper">
-                            <img src="~/Images/SanPham/@spNoiBat.img" />
+                <div class="col-md-3 d-flex">
+                    <div class="product-card d-flex flex-column text-center border-0 w-100">
+                        <div class="product-image-wrapper mb-3">
+                            <a href="/sanpham/chitiet?masp=@spNoiBat.MaSP">
+                                <img src="~/Images/SanPham/@spNoiBat.img" class="img-fluid" />
+                            </a>
                         </div>
                         <h5 class="product-name">
-                            <a href="#">@spNoiBat.TenSanPham</a>
+                            <a href="/sanpham/chitiet?masp=@spNoiBat.MaSP">@spNoiBat.TenSanPham</a>
                         </h5>
                         <p>
                             <del>@String.Format(new System.Globalization.CultureInfo("vi-VN"), "{0:C}", Math.Floor(spNoiBat.Gia))</del>
                             <strong style="color:red;">@String.Format(new System.Globalization.CultureInfo("vi-VN"), "{0:C}", Math.Floor(spNoiBat.Gia))</strong>
                             <span class="badge badge-success">0% OFF</span>
                         </p>
-                        <button class="btn btn-outline-success btn-sm">Thêm vào giỏ hàng</button>
+                        <!-- Spacer để đẩy nút xuống đáy -->
+                        <div class="mt-auto">
+                            <button class="btn btn-outline-success btn-sm">Thêm vào giỏ hàng</button>
+                        </div>
                     </div>
                 </div>
             }

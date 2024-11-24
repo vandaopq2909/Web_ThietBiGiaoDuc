@@ -32,6 +32,18 @@ namespace Web_ThietBiGiaoDuc.Controllers
                     img = sp.HinhAnhs.Select(h => h.TenHinhAnh).FirstOrDefault()
                 }).ToList();
 
+            //list sản phẩm theo loại
+            ViewBag.listSPBanGheHS = db.sanPhams
+                .Where(sp => sp.LoaiSanPham.MaLoai == "L7")  // Lọc sản phẩm theo loại "Bàn ghế học sinh"
+                .Take(4)                                  // Lấy tối đa 4 sản phẩm
+                .Select(sp => new SanPhamVM
+                {
+                    MaSP = sp.MaSP,
+                    TenSanPham = sp.TenSanPham,
+                    Gia = sp.Gia,
+                    img = sp.HinhAnhs.Select(h => h.TenHinhAnh).FirstOrDefault()
+                }).ToList();
+
             return View();
         }
         public ActionResult About()
