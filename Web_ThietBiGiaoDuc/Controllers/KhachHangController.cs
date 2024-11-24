@@ -50,8 +50,6 @@ namespace Web_ThietBiGiaoDuc.Controllers
             authCookie.Expires = DateTime.Now.AddDays(-1);
 
             Response.Cookies.Add(authCookie);
-
-
             return RedirectToAction("Index", "Home");
         }
         public ActionResult DangKi()

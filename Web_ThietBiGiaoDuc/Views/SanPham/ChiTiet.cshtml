@@ -239,6 +239,80 @@
     .card-body {
         padding: 0.3rem 0.3rem 0.2rem
     }
+     /* Custom Styles */
+ .product-grid {
+     display: grid;
+     grid-template-columns: repeat(4, 1fr); /* 4 cột */
+     gap: 20px; /* Khoảng cách giữa các card */
+ }
+
+ .product-card {
+     display: flex;
+     flex-direction: column;
+     height: 100%; /* Đảm bảo chiều cao đầy đủ */
+     border: 1px solid #e0e0e0; /* Thêm viền cho card */
+     border-radius: 10px; /* Bo góc cho card */
+     background-color: #fff;
+     padding: 10px;
+     overflow: hidden; /* Ẩn phần vượt quá */
+     transition: box-shadow 0.3s ease; /* Hiệu ứng chuyển tiếp cho bóng */
+ }
+
+     .product-card:hover {
+         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Bóng khi hover */
+     }
+
+ .product-image-wrapper {
+     height: 200px; /* Đặt chiều cao cố định cho hình ảnh */
+     overflow: hidden; /* Ẩn phần hình ảnh vượt quá chiều cao */
+     position: relative; /* Để đảm bảo hình ảnh được căn chỉnh đúng */
+     border-radius: 10px; /* Bo góc cho hình ảnh */
+ }
+
+ .product-image {
+     height: 180px;
+     object-fit: contain;
+     transition: transform 0.3s ease;
+ }
+
+ .product-image-wrapper img {
+     width: 100%; /* Đặt chiều rộng 100% */
+     height: 100%; /* Đặt chiều cao 100% */
+     object-fit: cover; /* Cắt hình ảnh cho phù hợp */
+     transition: transform 0.3s ease-in-out; /* Thêm hiệu ứng chuyển tiếp */
+ }
+
+     .product-image-wrapper img:hover {
+         transform: scale(1.1); /* Phóng to hình ảnh khi hover */
+     }
+
+ /* Zoom in ảnh khi hover vào toàn bộ card */
+ .product-card:hover .product-image {
+     transform: scale(1.1);
+ }
+
+ .product-name {
+     margin: 10px 0; /* Khoảng cách giữa tên sản phẩm và các phần khác */
+ }
+
+ .product-name a {
+     color: #333;
+     text-decoration: none;
+     font-weight: bold;
+     transition: color 0.3s ease;
+ }
+
+ .product-name a:hover {
+     color: #28a745; /* Đổi màu xanh lá cây khi hover */
+ }
+ /* Hiệu ứng zoom-in khi hover */
+ .banner-ad {
+     transition: transform 0.5s ease; /* Chuyển đổi nhẹ nhàng khi hover */
+ }
+
+ .banner-ad:hover {
+     transform: scale(1.05); /* Zoom-in khi hover */
+ }
 </style>
 <link rel='stylesheet' href='https://sachinchoolur.github.io/lightslider/dist/css/lightslider.css'>
 <div class="container-fluid mt-2 mb-3">
@@ -263,7 +337,9 @@
                 <div class="about">
                     <h3 class="font-weight-bold mb-3">@Model.TenSanPham</h3>
 
-                    <h3 class="font-weight-bold"><span>@Model.Gia.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("vi-VN"))</span><sup>đ</sup></h3>
+                    <h3 class="font-weight-bold">
+                    <span>@Model.Gia.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("vi-VN"))</span><sup>đ</sup>
+                    </h3>
                 </div>
                 <div class="buttons">
                     <button class="btn btn-outline-warning btn-long cart">Thêm vào giỏ hàng</button>
@@ -375,38 +451,30 @@
     </div>
     <div>
         <div class="card mt-2">
-            <span>Similar items:</span>
-            <div class="similar-products mt-2 d-flex flex-row">
-                <div class="card border p-1" style="width: 9rem;margin-right: 3px;">
-                    <img src="https://i.imgur.com/KZpuufK.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h6 class="card-title">$1,999</h6>
+            <strong style="text-align:center">Sản phẩm tương tự</strong>
+            <div class="similar-products mt-2 d-flex flex-row pt-3">
+                @foreach (var item in ViewBag.lstSPTuongTu)
+                {
+                    <div class="col-md-3 d-flex">
+                        <div class="product-card d-flex flex-column text-center border-0 w-80">
+                            <div class="product-image-wrapper mb-3">
+                                <a href="/sanpham/chitiet?masp=@item.MaSP">
+                                    <img src="~/Images/SanPham/@item.img" class="img-fluid" />
+                                </a>
+                            </div>
+                            <h5 class="product-name">
+                                <a href="/sanpham/chitiet?masp=@item.MaSP">@item.TenSanPham</a>
+                            </h5>
+                            <p>
+                                <del><span>@item.Gia.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("vi-VN"))</span><sup>đ</sup></del>
+                                <strong style="color:red;">@item.Gia.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("vi-VN"))<sup>đ</sup></strong>
+                                <span class="badge badge-success">0% OFF</span>
+                            </p>
+                            <!-- Spacer để đẩy nút xuống đáy -->
+                            
+                        </div>
                     </div>
-                </div>
-                <div class="card border p-1" style="width: 9rem;margin-right: 3px;">
-                    <img src="https://i.imgur.com/GwiUmQA.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h6 class="card-title">$1,699</h6>
-                    </div>
-                </div>
-                <div class="card border p-1" style="width: 9rem;margin-right: 3px;">
-                    <img src="https://i.imgur.com/c9uUysL.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h6 class="card-title">$2,999</h6>
-                    </div>
-                </div>
-                <div class="card border p-1" style="width: 9rem;margin-right: 3px;">
-                    <img src="https://i.imgur.com/kYWqL7k.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h6 class="card-title">$3,999</h6>
-                    </div>
-                </div>
-                <div class="card border p-1" style="width: 9rem;">
-                    <img src="https://i.imgur.com/DhKkTrG.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h6 class="card-title">$999</h6>
-                    </div>
-                </div>
+                }
             </div>
         </div>
     </div>

@@ -35,7 +35,15 @@ namespace Web_ThietBiGiaoDuc.Controllers
             //ViewBag.listsp = listsp;
             List<HinhAnh> lstha = db.hinhAnhs.Where(x => x.MaSP == masp).ToList();
             ViewBag.lstHA = lstha;
-
+            ViewBag.lstSPTuongTu = db.sanPhams.Where(x=>x.MaLoai==sanPham.MaLoai)
+                   .Take(4)    // Lấy tối đa 5 sản phẩm
+                   .Select(sp => new SanPhamVM
+                   {
+                       MaSP = sp.MaSP,
+                       TenSanPham = sp.TenSanPham,
+                       Gia = sp.Gia,
+                       img = sp.HinhAnhs.Select(h => h.TenHinhAnh).FirstOrDefault()
+                   }).ToList();
             return View(sanPham);
         }
         public ActionResult TatCa(int page = 1, int pageSize = 16)
