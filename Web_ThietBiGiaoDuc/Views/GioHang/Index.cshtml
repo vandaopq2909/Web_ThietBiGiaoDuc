@@ -5,20 +5,20 @@
     {
         cart = new List<dynamic>();
     }
-
+    double tongTienTatCaSP = ViewBag.tongTienTatCaSP;
 }
 @{
     ViewBag.Title = "Giỏ hàng";
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <style>
     #verify-form {
         display: none;
     }
 </style>
 <section class="h-100" style="background-color: #eee;">
-    <div class="container h-100 py-5">
+    <div class="container h-100 py-3">
         <div class="row d-flex justify-content-center h-100">
             <h4 class="text text-danger text-center">GIỎ HÀNG</h4>
 
@@ -29,47 +29,68 @@
                         <div class="card-body p-4">
                             <div class="row d-flex justify-content-between align-items-center">
                                 <div class="col-md-2 col-lg-2 col-xl-2">
-                                    <img src="~/Images/SanPham/@item.Img"
-                                         class="img-fluid rounded-3">
+                                    <a href="/SanPham/ChiTiet?maSP=@item.MaSP">
+                                        <img src="~/Images/SanPham/@item.Img"
+                                             class="img-fluid rounded-3">
+                                    </a>
                                 </div>
                                 <div class="col-md-3 col-lg-3 col-xl-3">
                                     <p class="lead fw-normal mb-2"></p>
-                                    <p><span class="text-muted">@item.TenSP</span></p>
+                                    <p><a href="/SanPham/ChiTiet?maSP=@item.MaSP" class="text-muted">@item.TenSP</a></p>
                                 </div>
-                                <div class="col-md-3 col-lg-3 col-xl-2 d-flex justify-content-center align-items-center">
-                                    <form id="" method="post" style="display: flex;">
+                                <div class="col-md-2 col-lg-3 col-xl-2">
+                                    <form id="form-submit-capnhat-@item.MaSP" action="/GioHang/CapNhatSPGioHang" method="post" class="d-flex justify-content-center align-items-center">
                                         <input type="button" class="button-quantity px-2" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" value="-">
 
-                                        <input type="number" id="#" class="form-control form-control-sm mx-1" min="1" name="qty" value="@item.SoLuong" style="width: 50px;">
-                                        <input type="hidden" name="pro_id" value="" />
+                                        <input type="number" id="#" class="form-control form-control-sm mx-1 text-center" min="1" name="soLuong" value="@item.SoLuong" style="width: 50px;">
 
                                         <input type="button" class="button-quantity px-2" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" value="+">
 
-
-                                        <input type="hidden" name="update" value="cập nhật giá" class="btn btn-success" />
+                                        <input type="hidden" name="maSP" value="@item.MaSP"/>
                                     </form>
                                 </div>
                                 <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                                    <h5 class="mb-0">@item.TongTien vnđ</h5>
+                                    <h5 class="mb-0">@item.TongTien.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("vi-VN"))<sup>đ</sup></h5>
                                 </div>
-                                <div class="col-md-1 col-lg-1 col-xl-2 text-end">
-                                    <a href="#!" id="submitLink" class="text-success">Cập nhật</a>
+                                <div class="col-md-1 col-lg-1 col-xl-2 text-end d-flex">
+                                    <h4 id="capNhatSP-@item.MaSP" style="cursor:pointer;" title="Cập nhật sản phẩm"><i class="fa-solid fa-repeat text-success"></i></h4>
                                     <span class="mx-3">|</span>
-                                    <a href="#" class="text-danger">Xóa</a>
-                                </div>
-                            </div>
+                                    <form id="form-xoa" action="/GioHang/XoaSPKhoiGioHang" method="post">
+                                        <input type="hidden" name="maSP" value="@item.MaSP" />
+                                        <h4 id="xoaKhoiGioHang" style="cursor:pointer;" title="Xóa sản phẩm"><i class="fa-solid fa-trash text-danger"></i></h4>
+                                    </form>
+                                    <script>//xóa
+                                        document.getElementById('xoaKhoiGioHang').addEventListener('click', function (event) {
+                                            event.preventDefault(); // Ngăn chặn hành động mặc định
+                                            document.getElementById('form-xoa').submit(); // Submit form
+                                        });</script>
+                                    <script>//cập nhật sản phẩm
+                                        // Đảm bảo sự kiện được gắn khi DOM đã hoàn tất
+                                        document.addEventListener("DOMContentLoaded", function() {
+                                            // Lặp qua tất cả các phần tử có ID theo mẫu "capNhatSP-"
+                                            var capNhatElements = document.querySelectorAll('[id^="capNhatSP-"]');
 
-                            <script>
-                                document.getElementById("submitLink").addEventListener("click", function (event) {
-                                    event.preventDefault(); // Ngăn chặn hành vi mặc định của thẻ <a>
-                                    document.getElementById("formUpdate").submit(); // Kích hoạt sự kiện submit của form
-                                });
-                            </script>
+                                            capNhatElements.forEach(function(element) {
+                                                // Lấy ID động từ phần tử
+                                                var maSP = element.id.split('-')[1];  // @item.MaSP từ ID ví dụ "capNhatSP-123"
+
+                                                // Gắn sự kiện click
+                                                element.addEventListener("click", function (event) {
+                                                    event.preventDefault(); // Ngăn chặn hành vi mặc định
+                                                    // Kích hoạt sự kiện submit của form có ID tương ứng
+                                                    document.getElementById("form-submit-capnhat-" + maSP).submit();
+                                                });
+                                            });
+                                        });
+                                    </script>
+
+                                </div>
+                            </div>                       
                         </div>
                     </div>
                 }
 
-                <a href="cart.php?action=empty" class="btn btn-danger">làm trống giỏ thàng</a>
+                <a href="/GioHang/LamTrongGioHang" class="btn btn-danger">Làm trống giỏ hàng</a>
 
             </div>
             <div class="col-4">
@@ -81,11 +102,11 @@
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
                                 Tổng tiền
-                                <span>vnđ</span>
+                                <span>@tongTienTatCaSP.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("vi-VN"))<sup>đ</sup></span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center px-0">
                                 Phí giao hàng
-                                <span>0 vnđ</span>
+                                <span>0<sup>đ</sup></span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
                                 <div>
@@ -94,7 +115,7 @@
                                         <p class="mb-0">(đã bao gồm VAT)</p>
                                     </strong>
                                 </div>
-                                <span id="total-price"><strong><?= number_format($total, 0, ',', '.')?> vnđ</strong></span>
+                                <span id="total-price"><strong>@tongTienTatCaSP.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("vi-VN"))<sup>đ</sup></strong></span>
                             </li>
                         </ul>
 
@@ -129,8 +150,7 @@
                             </div>
                         </form>
                         <!-- script cho btn thanh toán -->
-                        <script>
-                            var totalPriceText = document.getElementById('total-price').textContent;
+                        <script>var totalPriceText = document.getElementById('total-price').textContent;
 
                             // Ép kiểu về int
                             var totalPrice = parseInt(totalPriceText, 10);
@@ -155,11 +175,9 @@
                                     });
                                 }
 
-                            });
-                        </script>
+                            });</script>
                         <!-- scrip cho btn xác nhận thanh toán -->
-                        <script>
-                            document.getElementById('btn-verify-pay').addEventListener('click', function (event) {
+                        <script>document.getElementById('btn-verify-pay').addEventListener('click', function (event) {
 
                                 var phoneInput = document.getElementById('phone');
                                 var addressInput = document.getElementById('address');
@@ -187,8 +205,7 @@
                                         }
                                     });
                                 }
-                            });
-                        </script>
+                            });</script>
                     </div>
                 </div>
 

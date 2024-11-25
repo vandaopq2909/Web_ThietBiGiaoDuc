@@ -26,9 +26,11 @@ namespace Web_ThietBiGiaoDuc.Controllers
         public ActionResult Index()
         {
             ViewBag.Cart = LoadGioHang();
+            ViewBag.tongTienTatCaSP = TinhTongTienTatCaSP();
             return View();
         }
-        public ActionResult ThemVaoGio(string maSP, int soLuong = 1)
+        [HttpPost]
+        public void ThemVaoGio(string maSP, int soLuong = 1)
         {
             DatabaseContext db = new DatabaseContext();
 
@@ -72,7 +74,7 @@ namespace Web_ThietBiGiaoDuc.Controllers
                 else
                 {
                     // Nếu không tìm thấy sản phẩm trong database, xử lý thông báo lỗi (nếu cần)
-                    return RedirectToAction("ErrorPage"); // Ví dụ: điều hướng đến trang lỗi
+                    return; // Ví dụ: điều hướng đến trang lỗi
                 }
             }
 
@@ -80,7 +82,7 @@ namespace Web_ThietBiGiaoDuc.Controllers
             Session["Cart"] = cart;
             ViewBag.Cart = Session["Cart"];
 
-            return RedirectToAction("Index");
+            return;
         }
 
         public List<ItemSanPham> LoadGioHang()
@@ -95,7 +97,22 @@ namespace Web_ThietBiGiaoDuc.Controllers
             ViewBag.cart = Session["Cart"];
             return cart;
         }
-        public void XoaSPKhoiGioHang(string maSP)
+        public double TinhTongTienTatCaSP()
+        {
+            // Lấy giỏ hàng từ session
+            List<ItemSanPham> cart = Session["Cart"] as List<ItemSanPham>;
+            double tongTien = 0;
+            if (cart != null)
+            {              
+                foreach(var item in cart)
+                {
+                    tongTien += item.TongTien;
+                }
+            }
+            return tongTien;
+        }
+        [HttpPost]
+        public ActionResult XoaSPKhoiGioHang(string maSP)
         {
             List<ItemSanPham> cart = Session["Cart"] as List<ItemSanPham>;
             if (cart != null)
@@ -109,10 +126,12 @@ namespace Web_ThietBiGiaoDuc.Controllers
                 }
 
                 // Lưu lại giỏ hàng vào session
-                Session["Cart"] = cart;
+                Session["Cart"] = cart;              
             }
+            return RedirectToAction("Index");
         }
-        public void CapNhatGioHang(string maSP, int soLuong)
+        [HttpPost]
+        public ActionResult CapNhatSPGioHang(string maSP, int soLuong)
         {
             List<ItemSanPham> cart = Session["Cart"] as List<ItemSanPham>;
             if (cart != null)
@@ -127,8 +146,25 @@ namespace Web_ThietBiGiaoDuc.Controllers
 
                 // Lưu lại giỏ hàng vào session
                 Session["Cart"] = cart;
+                ViewBag.Cart = Session["Cart"];
             }
+            return RedirectToAction("Index");
         }
+        public ActionResult LamTrongGioHang()
+        {
+            // Lấy giỏ hàng từ session
+            List<ItemSanPham> cart = Session["Cart"] as List<ItemSanPham>;
 
+            if (cart != null)
+            {
+                // Xóa tất cả các sản phẩm trong giỏ hàng
+                cart.Clear();
+
+                Session["Cart"] = cart;
+                ViewBag.Cart = Session["Cart"];
+            }
+
+            return RedirectToAction("Index");
+        }
     }
 }
