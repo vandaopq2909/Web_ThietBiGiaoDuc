@@ -446,10 +446,18 @@
                                              alt="..."
                                              class="avatar-img rounded-circle" />
                                     </div>
-                                    <span class="profile-username">
-                                        <span class="op-7">Hi,</span>
-                                        <span class="fw-bold">@TenDangNhap.Value</span>
-                                    </span>
+                                    @if (TenDangNhap == null)
+                                    {
+                                        Response.Redirect("/Admin/NhanVien/DangNhap"); 
+                                    }
+                                    else
+                                    {
+                                        <span class="profile-username">
+                                            <span class="op-7">Hi,</span>
+                                            <span class="fw-bold">@TenDangNhap.Value</span>
+                                        </span>
+                                    }
+
                                 </a>
                                 <ul class="dropdown-menu dropdown-user animated fadeIn">
                                     <div class="dropdown-user-scroll scrollbar-outer">
@@ -478,7 +486,8 @@
                                         <div class="dropdown-divider"></div>
                                         <a class="dropdown-item" href="#">Logout</a>
                                     </li>
-                    </div>
+                              
+                                 </div>
                     </ul>
                     </li>
                     </ul>

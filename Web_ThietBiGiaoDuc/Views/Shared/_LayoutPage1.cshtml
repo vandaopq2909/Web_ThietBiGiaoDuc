@@ -1,5 +1,6 @@
 ﻿@{
     var TenDangNhap = Context.Request.Cookies["auth"];
+    var makh = Context.Request.Cookies["makh"];
 }
 <!DOCTYPE html>
 <html>
@@ -111,11 +112,19 @@
                                 }
                                 else
                                 {
-                                    <div class="header__top__right__social">
-                                        <strong>@TenDangNhap.Values</strong>
-                                    </div>
                                     <div class="header__top__right__auth">
-                                        <a href="~/KhachHang/DangXuat"> Đăng xuất</a>
+                                        <div class="dropdown">
+                                            <a class="btn btn-info dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                                @TenDangNhap.Value
+                                            </a>
+                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                                <li><a class="dropdown-item" href="#">Lịch sử mua hàng</a></li>
+                                                <li><a class="dropdown-item" href="/Khachhang/Sua/@makh.Value">Cập nhật thông tin cá nhân</a></li>
+                                                <li><a class="dropdown-item" href="#">Đổi mật khẩu</a></li>
+                                                <li><hr class="dropdown-divider"></li>
+                                                <li><a class="dropdown-item" href="~/KhachHang/DangXuat">Đăng xuất</a></li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 }
                             </div>
@@ -225,19 +234,20 @@
                     </div>
                 </div>
             </div>
-        </footer>       
+        </footer>
     </div>
-</body>
-<!-- Js Plugins -->
-<script src="~/Resources/js/jquery-3.3.1.min.js"></script>
-<script src="~/Resources/js/bootstrap.min.js"></script>
-<script src="~/Resources/js/jquery.nice-select.min.js"></script>
-<script src="~/Resources/js/jquery-ui.min.js"></script>
-<script src="~/Resources/js/jquery.slicknav.js"></script>
-<script src="~/Resources/js/mixitup.min.js"></script>
-<script src="~/Resources/js/main.js"></script>
+    <!-- Js Plugins -->
+    <script src="~/Resources/js/jquery-3.3.1.min.js"></script>
+    <script src="~/Resources/js/bootstrap.min.js"></script>
+    <script src="~/Resources/js/jquery.nice-select.min.js"></script>
+    <script src="~/Resources/js/jquery-ui.min.js"></script>
+    <script src="~/Resources/js/jquery.slicknav.js"></script>
+    <script src="~/Resources/js/mixitup.min.js"></script>
+    <script src="~/Resources/js/main.js"></script>
 
-@Scripts.Render("~/bundles/jquery")
-@Scripts.Render("~/bundles/bootstrap")
-@RenderSection("scripts", required: false)
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+
 </html>

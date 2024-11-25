@@ -1,5 +1,7 @@
-﻿@{ 
+﻿
+@{ 
     var TenDangNhap = Context.Request.Cookies["auth"];
+    var makh = Context.Request.Cookies["makh"];
 }
 <!DOCTYPE html>
 <html>
@@ -18,7 +20,6 @@
     <link rel="stylesheet" href="~/Resources/css/jquery-ui.min.css" type="text/css">
     <link rel="stylesheet" href="~/Resources/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="~/Resources/css/style.css" type="text/css">
-
     <!-- Css categories -->
     <style>
         /* Minimal Custom Styles */
@@ -49,7 +50,7 @@
                 <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
             </ul>
             <div class="header__cart__price">item: <span>$150.00</span></div>
-        </div>       
+        </div>
         <nav class="humberger__menu__nav mobile-menu">
             <ul>
                 <li class="active"><a href="./index.html">Home</a></li>
@@ -106,14 +107,23 @@
                                     <a href="~/KhachHang/DangNhap"><i class="fa fa-user"></i> Đăng nhập</a>
                                 </div>
                             }
-                            else
+                            else if(TenDangNhap !=null)
                             {
-                                <div class="header__top__right__social">
-                                    <strong>@TenDangNhap.Value</strong>
+                            <div class="header__top__right__auth">
+                                <div class="dropdown">
+                                    <a class="btn btn-info dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                      @TenDangNhap.Value
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                        <li><a class="dropdown-item" href="#">Lịch sử mua hàng</a></li>
+                                        <li><a class="dropdown-item" href="/Khachhang/Sua/@makh.Value">Cập nhật thông tin cá nhân</a></li>
+                                        <li><a class="dropdown-item" href="#">Đổi mật khẩu</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item" href="~/KhachHang/DangXuat">Đăng xuất</a></li>
+                                    </ul>
                                 </div>
-                                <div class="header__top__right__auth">
-                                    <a href="~/KhachHang/DangXuat"> Đăng xuất</a>
-                                </div>
+                            </div>
+                          
                             }
                         </div>
                     </div>
@@ -321,12 +331,13 @@
 
     <!-- Js Plugins -->
     <script src="~/Resources/js/jquery-3.3.1.min.js"></script>
-    <script src="~/Resources/js/bootstrap.min.js"></script>
+    <script src="~/Resources/js/bootstrap.bundle.min.js"></script>
     <script src="~/Resources/js/jquery.nice-select.min.js"></script>
     <script src="~/Resources/js/jquery-ui.min.js"></script>
     <script src="~/Resources/js/jquery.slicknav.js"></script>
     <script src="~/Resources/js/mixitup.min.js"></script>
     <script src="~/Resources/js/main.js"></script>
+
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

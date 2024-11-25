@@ -314,12 +314,13 @@ ol {
 	content: "";
 }
 
-.header__top__right__social a {
-	font-size: 14px;
-	display: inline-block;
-	color: #1c1c1c;
-	margin-right: 20px;
-}
+	.header__top__right__social a {
+		font-size: 14px;
+		display: inline-block;
+		color: #1c1c1c;
+		margin-right: 20px;
+		text-decoration: none;
+	}
 
 .header__top__right__social a:last-child {
 	margin-right: 0;
@@ -400,6 +401,7 @@ ol {
 }
 
 .header__top__right__auth a {
+	text-decoration:none;
 	display: block;
 	font-size: 14px;
 	color: #1c1c1c;
@@ -485,6 +487,7 @@ ol {
 	text-transform: uppercase;
 	font-weight: 700;
 	letter-spacing: 2px;
+	text-decoration:none;
 	-webkit-transition: all, 0.3s;
 	-moz-transition: all, 0.3s;
 	-ms-transition: all, 0.3s;
