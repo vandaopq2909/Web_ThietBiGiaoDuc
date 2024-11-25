@@ -39,11 +39,11 @@ checkSignupInput = (input) => {
             break;
         case 'text':
             if (input.id === 'TenDangNhap') {
-                const usernameRegex = /^(?=.*[a-zA-Z])(?=.*\d).{8,}$/;
+                const usernameRegex = /^(?=.*[a-zA-Z])(?=.*\d).{6,}$/;
                 if (!usernameRegex.test(val)) {
                     form_group.classList.add('err');
                     form_group.classList.remove('success');
-                    err_span.innerHTML = 'Tên đăng nhập cần ít nhất 8 kí tự, bao gồm chữ và số.';
+                    err_span.innerHTML = 'Tên đăng nhập cần ít nhất 6 kí tự, bao gồm chữ và số.';
                 } else {
                     form_group.classList.add('success');
                     form_group.classList.remove('err');

@@ -31,9 +31,9 @@ body {
 
 .form {
     padding: 50px 60px;
-    background-color: var(--form-bg);
+    background-color: rgb(255 255 255 / 80%);
     border-radius: var(--border-radius);
-    color: var(--form-color);
+    color: #340303;
     text-align: center;
     width: 100%;
     max-width: var(--form-max-width);
@@ -54,7 +54,7 @@ body {
 }
 
 .form-input {
-    background-color: var(--form-input-bg);
+    background-color: rgb(7 0 0);
     border: 2px solid transparent;
     height: 46px;
     width: 100%;
