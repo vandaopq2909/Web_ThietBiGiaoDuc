@@ -882,6 +882,7 @@
     <Content Include="Views\SanPham\TatCa.cshtml" />
     <Content Include="Views\SanPham\TimKiem.cshtml" />
     <Content Include="Views\GioHang\Index.cshtml" />
+    <Content Include="Views\KhachHang\Sua.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Data\" />

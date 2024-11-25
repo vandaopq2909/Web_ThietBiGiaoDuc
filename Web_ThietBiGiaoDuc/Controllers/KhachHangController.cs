@@ -27,12 +27,15 @@ namespace Web_ThietBiGiaoDuc.Controllers
             {
                 DatabaseContext db = new DatabaseContext();
                 KhachHang khach = db.khachHangs.Where(u => u.TenDangNhap == u.TenDangNhap).FirstOrDefault();
+           
                 if (khach != null)
                 {
                     if (BCrypt.Net.BCrypt.Verify(khachHang.MatKhau, khach.MatKhau))
                     {
                         HttpCookie authCookie = new HttpCookie("auth", khach.TenDangNhap);
+                        HttpCookie maKHCookie= new HttpCookie("makh", khach.MaKH);
                         Response.Cookies.Add(authCookie);
+                        Response.Cookies.Add(maKHCookie);
                         return RedirectToAction("Index", "Home");
                     }
                 }
@@ -51,6 +54,28 @@ namespace Web_ThietBiGiaoDuc.Controllers
 
             Response.Cookies.Add(authCookie);
             return RedirectToAction("Index", "Home");
+        }
+        public ActionResult Sua(string makh)
+        {
+            DatabaseContext db = new DatabaseContext();
+            var kh = db.khachHangs.Where(x => x.MaKH == makh).FirstOrDefault();
+        
+            return View(kh);
+        }
+        [HttpPost]
+        public ActionResult Sua(KhachHang kh)
+        {
+            DatabaseContext db = new DatabaseContext();
+            if (kh != null)
+            {
+                var khachhang = db.khachHangs.Where(x => x.MaKH == kh.MaKH).FirstOrDefault();
+                khachhang.HoTen = kh.HoTen;
+                khachhang.DiaChi = kh.DiaChi;
+                khachhang.Email = kh.Email;
+                khachhang.SDT = kh.SDT;
+                db.SaveChanges();
+            }
+            return RedirectToAction("Index");
         }
         public ActionResult DangKi()
         {
