@@ -151,9 +151,39 @@
                             <strong style="color:red;">@spNoiBat.Gia.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("vi-VN"))<sup>đ</sup></strong>
                             <span class="badge badge-success">0% OFF</span>
                         </p>
+                        <!-- Toast thông báo với màu nền xanh lá -->
+                        <div class="toast" id="successToast" role="alert" aria-live="assertive" aria-atomic="true"
+                             style="position: fixed; top: 20px; right: 20px; min-width: 200px; z-index: 1050; background-color: #28a745; color: white;">
+                            <div class="toast-header" style="background-color: #218838; color: white;">
+                                <strong class="mr-auto">Thông báo</strong>
+                                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                                    <span aria-hidden="true" style="color: white;">&times;</span>
+                                </button>
+                            </div>
+                            <div class="toast-body">
+                                Thêm sản phẩm vào giỏ hàng thành công!
+                            </div>
+                        </div>
+                        <script type="text/javascript">
+                            function themVaoGioHang(maSP) {
+                                $.ajax({
+                                    url: '@Url.Action("ThemVaoGio", "GioHang")', // URL của Action
+                                    type: 'POST', // Phương thức gửi dữ liệu
+                                    data: { maSP: maSP }, // Gửi maSP tới server
+                                    success: function () {
+                                        // Hiển thị toast khi gửi thành công
+                                        $('#successToast').toast({ delay: 2000 }); // Thiết lập thời gian tồn tại là 2 giây
+                                        $('#successToast').toast('show');
+                                    },
+                                    error: function () {
+                                        alert("Có lỗi xảy ra khi gửi dữ liệu.");
+                                    }
+                                });
+                            }
+                        </script>
                         <!-- Spacer để đẩy nút xuống đáy -->
                         <div class="mt-auto">
-                            <a class="btn btn-outline-success btn-sm" href="/GioHang/ThemVaoGio?maSP=@spNoiBat.MaSP">Thêm vào giỏ hàng</a>
+                            <button class="btn btn-outline-success btn-sm" onclick="themVaoGioHang('@spNoiBat.MaSP')">Thêm vào giỏ hàng</button>
                         </div>
                     </div>
                 </div>
@@ -187,10 +217,10 @@
                             <del><span>@spNoiBat.Gia.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("vi-VN"))</span><sup>đ</sup></del>
                             <strong style="color:red;">@spNoiBat.Gia.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("vi-VN"))<sup>đ</sup></strong>
                             <span class="badge badge-success">0% OFF</span>
-                        </p>
+                        </p>                       
                         <!-- Spacer để đẩy nút xuống đáy -->
                         <div class="mt-auto">
-                            <button class="btn btn-outline-success btn-sm">Thêm vào giỏ hàng</button>
+                            <button class="btn btn-outline-success btn-sm" onclick="themVaoGioHang('@spNoiBat.MaSP')">Thêm vào giỏ hàng</button>
                         </div>
                     </div>
                 </div>
