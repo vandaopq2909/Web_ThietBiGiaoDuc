@@ -848,6 +848,7 @@
     <Content Include="Areas\Admin\Views\ThuongHieu\Sua.cshtml" />
     <Content Include="Areas\Admin\Views\ThuongHieu\Them.cshtml" />
     <Content Include="Areas\Admin\Views\SanPham\Sua.cshtml" />
+    <Content Include="Areas\Admin\Views\NhanVien\DangNhap.cshtml" />
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />

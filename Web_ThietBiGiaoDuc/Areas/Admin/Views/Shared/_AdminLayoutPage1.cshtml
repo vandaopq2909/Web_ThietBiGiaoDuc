@@ -1,5 +1,8 @@
-﻿<!DOCTYPE html>
-
+﻿@{ 
+    var TenDangNhap = Context.Request.Cookies["auth"];
+    var Quyen = Context.Request.Cookies["role"];
+}
+<!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
@@ -445,7 +448,7 @@
                                     </div>
                                     <span class="profile-username">
                                         <span class="op-7">Hi,</span>
-                                        <span class="fw-bold">Admin</span>
+                                        <span class="fw-bold">@TenDangNhap.Value</span>
                                     </span>
                                 </a>
                                 <ul class="dropdown-menu dropdown-user animated fadeIn">
