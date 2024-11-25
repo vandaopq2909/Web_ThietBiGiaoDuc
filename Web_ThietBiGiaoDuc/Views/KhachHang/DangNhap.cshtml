@@ -4,7 +4,12 @@
 }
 
 <!DOCTYPE html>
-
+<style>
+    input::placeholder {
+        color: black;
+      
+    }
+</style>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -16,7 +21,7 @@
 </head>
 <body style="background-image: Url('/Resources/img/login//background.jpg');">
     <div class="form" id="signin-form">
-        <a href="#" class="form-logo">
+        <a href="/Home/Index" class="form-logo">
             <img src="~/Resources/img/logo/TBGD_AandB_Logo.png" alt="PetSpa logo">
         </a>
         <form method="post">
@@ -32,7 +37,7 @@
             </div>
             <button type="submit" class="form-btn" id="signin-btn">Đăng nhập</button>
         </form>
-        <span class="form-txt">Bạn chưa có tài khoản ? <a href="#">Đăng kí ngay !</a></span>
+        <span class="form-txt">Bạn chưa có tài khoản ? <a href="/KhachHang/DangKi">Đăng kí ngay !</a></span>
         <span class="form-txt"><a href="#">Quên mật khẩu?</a></span>
     </div>
     <script src="~/Resources/js/flogin.js" asp-append-version="true"></script>

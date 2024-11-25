@@ -31,7 +31,7 @@ body {
 
 .form {
     padding: 50px 60px;
-    background-color: var(--form-bg);
+    background-color:rgb(253 240 255 / 80%);
     border-radius: var(--border-radius);
     color: var(--form-color);
     text-align: center;
