@@ -5,7 +5,18 @@
     {
         cart = new List<dynamic>();
     }
-    double tongTienTatCaSP = ViewBag.tongTienTatCaSP;
+
+    double tongTienTatCaSP = 0;
+    if (cart != null)
+    {
+        foreach (var item in cart)
+        {
+            tongTienTatCaSP += item.TongTien;
+        }
+    }
+    //double tongTienTatCaSP = ViewBag.tongTienTatCaSP;
+
+    var cookieMaKH = Context.Request.Cookies["makh"].Value;
 }
 @{
     ViewBag.Title = "Giỏ hàng";
@@ -13,6 +24,10 @@
 }
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <style>
+    a {
+        text-decoration: none;
+    }
+
     #verify-form {
         display: none;
     }
@@ -46,7 +61,7 @@
 
                                         <input type="button" class="button-quantity px-2" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" value="+">
 
-                                        <input type="hidden" name="maSP" value="@item.MaSP"/>
+                                        <input type="hidden" name="maSP" value="@item.MaSP" />
                                     </form>
                                 </div>
                                 <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
@@ -55,15 +70,31 @@
                                 <div class="col-md-1 col-lg-1 col-xl-2 text-end d-flex">
                                     <h4 id="capNhatSP-@item.MaSP" style="cursor:pointer;" title="Cập nhật sản phẩm"><i class="fa-solid fa-repeat text-success"></i></h4>
                                     <span class="mx-3">|</span>
-                                    <form id="form-xoa" action="/GioHang/XoaSPKhoiGioHang" method="post">
+                                    <form id="form-xoa-@item.MaSP" action="/GioHang/XoaSPKhoiGioHang" method="post">
                                         <input type="hidden" name="maSP" value="@item.MaSP" />
-                                        <h4 id="xoaKhoiGioHang" style="cursor:pointer;" title="Xóa sản phẩm"><i class="fa-solid fa-trash text-danger"></i></h4>
+                                        <h4 id="xoaKhoiGioHang-@item.MaSP" style="cursor:pointer;" title="Xóa sản phẩm">
+                                            <i class="fa-solid fa-trash text-danger"></i>
+                                        </h4>
                                     </form>
-                                    <script>//xóa
-                                        document.getElementById('xoaKhoiGioHang').addEventListener('click', function (event) {
-                                            event.preventDefault(); // Ngăn chặn hành động mặc định
-                                            document.getElementById('form-xoa').submit(); // Submit form
-                                        });</script>
+                                    <script>
+                                        // Đảm bảo sự kiện được gắn khi DOM đã hoàn tất
+                                        document.addEventListener("DOMContentLoaded", function () {
+                                            // Lặp qua tất cả các phần tử có ID theo mẫu "xoaKhoiGioHang-"
+                                            var xoaElements = document.querySelectorAll('[id^="xoaKhoiGioHang-"]');
+
+                                            xoaElements.forEach(function (element) {
+                                                // Lấy ID động từ phần tử
+                                                var maSP = element.id.split('-')[1]; // Lấy @item.MaSP từ ID ví dụ "xoaKhoiGioHang-123"
+
+                                                // Gắn sự kiện click
+                                                element.addEventListener("click", function (event) {
+                                                    event.preventDefault(); // Ngăn chặn hành vi mặc định
+                                                    // Kích hoạt sự kiện submit của form có ID tương ứng
+                                                    document.getElementById("form-xoa-" + maSP).submit();
+                                                });
+                                            });
+                                        });
+                                    </script>
                                     <script>//cập nhật sản phẩm
                                         // Đảm bảo sự kiện được gắn khi DOM đã hoàn tất
                                         document.addEventListener("DOMContentLoaded", function() {
@@ -85,7 +116,7 @@
                                     </script>
 
                                 </div>
-                            </div>                       
+                            </div>
                         </div>
                     </div>
                 }
@@ -133,7 +164,7 @@
                     </div>
                     <div class="card-body">
 
-                        <form id="verify-payment-form" action="verify-payment.php" method="post">
+                        <form id="verify-payment-form" action="/GioHang/ThanhToan" method="post" style="display: none;">
                             <div class="mb-2">
                                 <label for="phone">Số điện thoại:</label>
                                 <input type="text" class="form-control" id="phone" name="phone_number" required>
@@ -149,63 +180,116 @@
                                 </button>
                             </div>
                         </form>
-                        <!-- script cho btn thanh toán -->
-                        <script>var totalPriceText = document.getElementById('total-price').textContent;
 
-                            // Ép kiểu về int
-                            var totalPrice = parseInt(totalPriceText, 10);
-                            document.getElementById('btn-pay').addEventListener('click', function (event) {
-                                event.preventDefault(); // Ngăn chặn hành vi mặc định của nút
+                        <script>
+                            document.addEventListener("DOMContentLoaded", function () {
+                                // Lấy tổng giá trị từ phần tử hiển thị tổng giá
+                                var totalPriceText = document.getElementById('total-price').textContent.trim();
+                                var totalPrice = parseInt(totalPriceText, 10);
 
-                                if (totalPrice == 0) {
-                                    Swal.fire({
-                                        icon: "error",
-                                        title: "Lỗi...",
-                                        text: "Bạn phải thêm sản phẩm cần mua vào giỏ hàng trước!",
-                                    });
-                                }
-                                else {
-                                    document.getElementById('btn-pay').addEventListener('click', function () {
+                                // Gắn sự kiện click cho nút thanh toán
+                                document.getElementById('btn-pay').addEventListener('click', function (event) {
+                                    event.preventDefault(); // Ngăn chặn hành vi mặc định của nút
+
+                                    if (isNaN(totalPrice) || totalPrice <= 0) {
+                                        // Hiển thị thông báo lỗi nếu tổng giá trị không hợp lệ
+                                        Swal.fire({
+                                            icon: "error",
+                                            title: "Lỗi...",
+                                            text: "Bạn phải thêm sản phẩm cần mua vào giỏ hàng trước!",
+                                        });
+                                    } else {
+                                        // Hiển thị hoặc ẩn form xác nhận thanh toán
                                         var form = document.getElementById('verify-form');
                                         if (form.style.display === 'none' || form.style.display === '') {
-                                            form.style.display = 'block';
+                                            form.style.display = 'block'; // Hiển thị form
                                         } else {
-                                            form.style.display = 'none';
+                                            form.style.display = 'none'; // Ẩn form
                                         }
-                                    });
-                                }
+                                    }
+                                });
+                            });
+                        </script>
+                        <script>document.addEventListener("DOMContentLoaded", function () {
+                                var maKH = '@cookieMaKH';
 
+                                document.getElementById('btn-pay').addEventListener('click', function () {
+                                    // Gửi yêu cầu AJAX đến server, kèm theo mã KH
+                                    fetch('/GioHang/LayThongTinNguoiDung?maKH=' + encodeURIComponent(maKH), {
+                                        method: 'GET',
+                                        headers: {
+                                            'Content-Type': 'application/json'
+                                        }
+                                    })
+                                        .then(response => response.json())
+                                        .then(data => {
+                                            // Điền dữ liệu vào các trường input
+                                            document.getElementById('phone').value = data.phone_number;
+                                            document.getElementById('address').value = data.delivery_address;
+
+                                            // Hiển thị form
+                                            document.getElementById('verify-payment-form').style.display = 'block';
+                                        })
+                                        .catch(error => {
+                                            console.error('Error fetching user info:', error);
+                                            Swal.fire({
+                                                icon: 'error',
+                                                title: 'Lỗi...',
+                                                text: 'Không thể lấy thông tin người dùng!'
+                                            });
+                                        });
+                                });
                             });</script>
                         <!-- scrip cho btn xác nhận thanh toán -->
-                        <script>document.getElementById('btn-verify-pay').addEventListener('click', function (event) {
+                        <script>
+                            document.addEventListener("DOMContentLoaded", function () {
+                                var maKH = '@cookieMaKH'; // Mã khách hàng từ cookie hoặc session
 
-                                var phoneInput = document.getElementById('phone');
-                                var addressInput = document.getElementById('address');
+                                document.getElementById('btn-verify-pay').addEventListener('click', function () {
+                                    // Lấy dữ liệu từ các input
+                                    var phone = document.getElementById('phone').value;
+                                    var address = document.getElementById('address').value;
 
-                                // Kiểm tra xem các trường đã được điền đầy đủ hay không
-                                if (phoneInput.value.trim() === '' || addressInput.value.trim() === '') {
-                                    alert('Vui lòng điền đầy đủ thông tin.');
-                                    event.preventDefault(); // Ngăn chặn việc gửi form nếu thông tin chưa đầy đủ
-                                } else {
-                                    event.preventDefault(); // Ngăn chặn việc gửi form nếu thông tin chưa đầy đủ
-                                    Swal.fire({
-                                        title: 'Bạn có chắc chắn muốn thanh toán?',
-                                        text: "Hành động này không thể hoàn tác!",
-                                        icon: 'question',
-                                        showCancelButton: true,
-                                        confirmButtonText: 'Có, tiếp tục!',
-                                        cancelButtonText: 'Không, hủy bỏ!'
-                                    }).then((result) => {
-                                        if (result.isConfirmed) {
-                                            // Thực hiện hành động khi người dùng chọn "Có"
-                                            document.getElementById('verify-payment-form').submit();
-                                            window.location.href("verify-payment.php");
-                                        } else if (result.dismiss === Swal.DismissReason.cancel) {
-                                            // Hành động khi người dùng chọn "Không"
+                                    // Tạo dữ liệu gửi đi dưới dạng 'application/x-www-form-urlencoded'
+                                    var formData = new URLSearchParams();
+                                    formData.append('maKH', maKH.toString());
+                                    formData.append('phone_number', phone);
+                                    formData.append('delivery_address', address);
+
+                                    // Gửi yêu cầu AJAX tới controller ThanhToan
+                                    fetch('/GioHang/ThanhToan', {
+                                        method: 'POST',
+                                        headers: {
+                                            'Content-Type': 'application/x-www-form-urlencoded'
+                                        },
+                                        body: formData // Gửi dữ liệu dạng form-urlencoded
+                                    })
+                                    .then(response => response.text()) 
+                                    .then(result => {
+                                        if (result.success) {
+                                            // Sau khi thanh toán thành công, chuyển hướng đến trang thông báo thành công
+                                            window.location.href = '/GioHang/ThanhToanThanhCong?maDH=' + result.orderId; // "result" có thể là orderId
+                                        } else {
+                                            // Hiển thị thông báo lỗi nếu không thành công
+                                            Swal.fire({
+                                                icon: 'error',
+                                                title: 'Lỗi...',
+                                                text: result.message
+                                            });
                                         }
+                                    })
+                                    .catch(error => {
+                                        console.error('Error during payment process:', error);
+                                        Swal.fire({
+                                            icon: 'error',
+                                            title: 'Lỗi...',
+                                            text: 'Có lỗi xảy ra khi gửi yêu cầu thanh toán!'
+                                        });
                                     });
-                                }
-                            });</script>
+                                });
+                            });
+
+                        </script>
                     </div>
                 </div>
 

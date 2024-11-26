@@ -154,9 +154,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202411240906153_InitialDatabase.cs" />
-    <Compile Include="Migrations\202411240906153_InitialDatabase.Designer.cs">
-      <DependentUpon>202411240906153_InitialDatabase.cs</DependentUpon>
+    <Compile Include="Migrations\202411261526464_InitialDatabase.cs" />
+    <Compile Include="Migrations\202411261526464_InitialDatabase.Designer.cs">
+      <DependentUpon>202411261526464_InitialDatabase.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApDungKhuyenMai.cs" />
@@ -883,6 +883,7 @@
     <Content Include="Views\SanPham\TimKiem.cshtml" />
     <Content Include="Views\GioHang\Index.cshtml" />
     <Content Include="Views\KhachHang\Sua.cshtml" />
+    <Content Include="Views\GioHang\ThanhToanThanhCong.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Data\" />
@@ -915,8 +916,8 @@
     <Content Include="Scripts\jquery-3.7.0.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202411240906153_InitialDatabase.resx">
-      <DependentUpon>202411240906153_InitialDatabase.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202411261526464_InitialDatabase.resx">
+      <DependentUpon>202411261526464_InitialDatabase.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
