@@ -13,6 +13,8 @@
     @Scripts.Render("~/bundles/modernizr")
 
     <!-- Css Styles -->
+    <link href="~/Resources/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/Resources/js/bootstrap.bundle.js" rel="stylesheet" />
     <link rel="stylesheet" href="~/Resources/css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="~/Resources/css/font-awesome.min.css" type="text/css">
     <link rel="stylesheet" href="~/Resources/css/elegant-icons.css" type="text/css">
@@ -20,6 +22,8 @@
     <link rel="stylesheet" href="~/Resources/css/jquery-ui.min.css" type="text/css">
     <link rel="stylesheet" href="~/Resources/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="~/Resources/css/style.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/templatemo.css">
+    <link rel="stylesheet" href="assets/css/custom.css">
     <!-- Css categories -->
     <style>
         /* Minimal Custom Styles */
@@ -112,14 +116,14 @@
                             <div class="header__top__right__auth">
                                 <div class="dropdown">
                                     <a class="btn btn-info dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                                      @TenDangNhap.Value
+                                        @TenDangNhap.Value
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                         <li><a class="dropdown-item" href="#">Lịch sử mua hàng</a></li>
-                                        <li><a class="dropdown-item" href="/Khachhang/Sua/@makh.Value">Cập nhật thông tin cá nhân</a></li>
-                                        <li><a class="dropdown-item" href="#">Đổi mật khẩu</a></li>
+                                        <li><a class="dropdown-item" href="/Khachhang/Sua?makh=@makh.Value">Cập nhật thông tin cá nhân</a></li>
+                                        <li><a class="dropdown-item" href="/Khachhang/DoiMatKhau?makh=@makh.Value" ">Đổi mật khẩu</a></li>
                                         <li><hr class="dropdown-divider"></li>
-                                        <li><a class="dropdown-item" href="~/KhachHang/DangXuat">Đăng xuất</a></li>
+                                        <li><a class="dropdown-item" href="/KhachHang/DangXuat">Đăng xuất</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -181,6 +185,7 @@
                             <a href="#" class="list-group-item list-group-item-action active bg-success" aria-current="true">
                                 <i class="fa fa-bars"></i> Tất Cả Danh Mục
                             </a>
+                         
                             <a href="#" class="list-group-item list-group-item-action">Bàn Thí Nghiệm</a>
                             <a href="#" class="list-group-item list-group-item-action">Thiết Bị - Nội Thất Trường Học</a>
                             <a href="#" class="list-group-item list-group-item-action">Thiết Bị Đồ Dùng Dạy Học</a>

@@ -1,7 +1,8 @@
-﻿@{
+﻿﻿@{
     var TenDangNhap = Context.Request.Cookies["auth"];
     var makh = Context.Request.Cookies["makh"];
 }
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -119,10 +120,10 @@
                                             </a>
                                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                                 <li><a class="dropdown-item" href="#">Lịch sử mua hàng</a></li>
-                                                <li><a class="dropdown-item" href="/Khachhang/Sua/@makh.Value">Cập nhật thông tin cá nhân</a></li>
-                                                <li><a class="dropdown-item" href="#">Đổi mật khẩu</a></li>
+                                                <li><a class="dropdown-item" href="/Khachhang/Sua?makh=@makh.Value">Cập nhật thông tin cá nhân</a></li>
+                                                <li><a class="dropdown-item" href="/Khachhang/DoiMatKhau?makh=@makh.Value" ">Đổi mật khẩu</a></li>
                                                 <li><hr class="dropdown-divider"></li>
-                                                <li><a class="dropdown-item" href="~/KhachHang/DangXuat">Đăng xuất</a></li>
+                                                <li><a class="dropdown-item" href="/KhachHang/DangXuat">Đăng xuất</a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -172,6 +173,8 @@
                 </div>
             </div>
         </header>
+
+
         @RenderBody()
         <!--Footer-->
         <footer class="footer spad">
@@ -238,12 +241,13 @@
     </div>
     <!-- Js Plugins -->
     <script src="~/Resources/js/jquery-3.3.1.min.js"></script>
-    <script src="~/Resources/js/bootstrap.min.js"></script>
+    <script src="~/Resources/js/bootstrap.bundle.min.js"></script>
     <script src="~/Resources/js/jquery.nice-select.min.js"></script>
     <script src="~/Resources/js/jquery-ui.min.js"></script>
     <script src="~/Resources/js/jquery.slicknav.js"></script>
     <script src="~/Resources/js/mixitup.min.js"></script>
     <script src="~/Resources/js/main.js"></script>
+
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

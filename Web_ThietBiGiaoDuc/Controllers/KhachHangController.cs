@@ -28,12 +28,14 @@ namespace Web_ThietBiGiaoDuc.Controllers
                 DatabaseContext db = new DatabaseContext();
                 KhachHang khach = db.khachHangs.Where(u => u.TenDangNhap == u.TenDangNhap).FirstOrDefault();
            
-                if (khach != null)
+                if (khach != null && khach.TrangThai=="hoatdong")
                 {
                     if (BCrypt.Net.BCrypt.Verify(khachHang.MatKhau, khach.MatKhau))
                     {
                         HttpCookie authCookie = new HttpCookie("auth", khach.TenDangNhap);
                         HttpCookie maKHCookie= new HttpCookie("makh", khach.MaKH);
+                        authCookie.Expires = DateTime.Now.AddDays(30);
+                        maKHCookie.Expires = DateTime.Now.AddDays(30);
                         Response.Cookies.Add(authCookie);
                         Response.Cookies.Add(maKHCookie);
                         return RedirectToAction("Index", "Home");
@@ -59,7 +61,10 @@ namespace Web_ThietBiGiaoDuc.Controllers
         {
             DatabaseContext db = new DatabaseContext();
             var kh = db.khachHangs.Where(x => x.MaKH == makh).FirstOrDefault();
-        
+            if (kh == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             return View(kh);
         }
         [HttpPost]
@@ -75,7 +80,7 @@ namespace Web_ThietBiGiaoDuc.Controllers
                 khachhang.SDT = kh.SDT;
                 db.SaveChanges();
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("Index","Home");
         }
         public ActionResult DangKi()
         {
@@ -105,10 +110,57 @@ namespace Web_ThietBiGiaoDuc.Controllers
             khach.TenDangNhap = khachHang.TenDangNhap;
             khach.Email = khachHang.Email;
             khach.MatKhau = BCrypt.Net.BCrypt.HashPassword(khachHang.MatKhau);
+            khach.TrangThai = "hoatdong";
             db.khachHangs.Add(khach);
             db.SaveChanges();
 
             return RedirectToAction("DangNhap");
+        }
+        public ActionResult DoiMatKhau(string makh)
+        {
+            DatabaseContext db = new DatabaseContext();
+            var kh = db.khachHangs.Where(x => x.MaKH == makh).FirstOrDefault();
+            if (kh == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            return View(kh);
+        }
+        [HttpPost]
+        public ActionResult DoiMatKhau(string MatKhauCu, string MatKhauMoi, string XacNhanMatKhau)
+        {
+            string tenDangNhap = Request.Cookies["auth"]?.Value;
+
+            if (string.IsNullOrEmpty(tenDangNhap))
+            {
+                return RedirectToAction("DangNhap", "KhachHang");
+            }
+
+            DatabaseContext db = new DatabaseContext();
+            var khachHang = db.khachHangs.FirstOrDefault(u => u.TenDangNhap == tenDangNhap);
+
+            if (khachHang != null)
+            {
+                if (!BCrypt.Net.BCrypt.Verify(MatKhauCu, khachHang.MatKhau))
+                {
+                    ModelState.AddModelError("MatKhauCu", "Mật khẩu cũ không đúng");
+                    return View();
+                }
+                if (MatKhauMoi != XacNhanMatKhau)
+                {
+                    ModelState.AddModelError("XacNhanMatKhau", "Mật khẩu mới không khớp");
+                    return View();
+                }
+
+                // Mã hóa và lưu vào CSDL
+                khachHang.MatKhau = BCrypt.Net.BCrypt.HashPassword(MatKhauMoi);
+                db.SaveChanges();
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                return RedirectToAction("DangNhap", "KhachHang");
+            }
         }
     }
 }

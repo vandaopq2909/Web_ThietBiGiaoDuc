@@ -747,6 +747,8 @@
     <Content Include="Resources\index.html" />
     <Content Include="Resources\js\bootstrap.bundle.min.js" />
     <Content Include="Resources\js\bootstrap.min.js" />
+    <Content Include="Resources\js\CapNhatThongTinCaNhan.js" />
+    <Content Include="Resources\js\changepass.js" />
     <Content Include="Resources\js\flogin.js" />
     <Content Include="Resources\js\fregister.js" />
     <Content Include="Resources\js\jquery-3.3.1.min.js" />
@@ -884,6 +886,7 @@
     <Content Include="Views\GioHang\Index.cshtml" />
     <Content Include="Views\KhachHang\Sua.cshtml" />
     <Content Include="Views\GioHang\ThanhToanThanhCong.cshtml" />
+    <Content Include="Views\KhachHang\DoiMatKhau.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Data\" />
