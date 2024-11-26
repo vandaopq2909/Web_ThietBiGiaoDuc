@@ -166,5 +166,115 @@ namespace Web_ThietBiGiaoDuc.Controllers
 
             return RedirectToAction("Index");
         }
+        [HttpGet]
+        public JsonResult LayThongTinNguoiDung(string maKH)
+        {
+            DatabaseContext db = new DatabaseContext();
+            var userInfo = db.khachHangs.Where(x=> x.MaKH == maKH).FirstOrDefault();
+
+            // Kiểm tra xem userInfo có dữ liệu không
+            if (userInfo != null)
+            {
+                return Json(new
+                {
+                    phone_number = userInfo.SDT ?? "",
+                    delivery_address = userInfo.DiaChi ?? ""
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            // Nếu không tìm thấy thông tin, trả về dữ liệu trống
+            return Json(new
+            {
+                phone_number = "",
+                delivery_address = ""
+            }, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public ActionResult ThanhToan(string maKH, string phone_number, string delivery_address)
+        {
+            DatabaseContext db = new DatabaseContext();
+            try
+            {
+                // Lấy giỏ hàng từ session
+                List<ItemSanPham> cart = Session["Cart"] as List<ItemSanPham>;
+                double tongTien = 0;
+                if (cart != null)
+                {
+                    foreach (var item in cart)
+                    {
+                        tongTien += item.TongTien;
+                    }
+                }
+
+                DonHang donHang = new DonHang
+                {
+                    MaKH = maKH,
+                    NgayDatHang = DateTimeOffset.Now,
+                    TongSoLuong = TinhTongSoLuongSP(),
+                    TongTien = tongTien,
+                    DiaChiGiaoHang = delivery_address,
+                    TrangThai = "Đang xử lý"
+                };
+
+                db.donHangs.Add(donHang);
+                db.SaveChanges();
+
+                ThemCTDonHang(donHang.MaDH);
+
+                // Nếu thanh toán thành công, chuyển hướng đến trang thông báo thành công
+                return View("ThanhToanThanhCong", new {maDH = donHang.MaDH });
+            }
+            catch
+            {
+                // Xử lý lỗi và trả về thông báo lỗi nếu có
+                return View("Index");
+            }
+        }
+
+        private void ThemCTDonHang(string maDH)
+        {
+            DatabaseContext db = new DatabaseContext();
+            // Lấy giỏ hàng từ session
+            List<ItemSanPham> cart = Session["Cart"] as List<ItemSanPham>;
+            if(cart != null && cart.Count > 0)
+            {
+                foreach (var item in cart)
+                {
+                    ChiTietDonHang ctdh = new ChiTietDonHang
+                    {
+                        MaDH = maDH,
+                        MaSP = item.MaSP,
+                        SoLuong = item.SoLuong,
+                        Gia = item.Gia,
+                        TongTien = item.TongTien,
+                        GhiChu = "",
+                        TrangThaiDanhGia = "chuadanhgia"
+                    };
+                    db.chiTietDonHangs.Add(ctdh);
+                    db.SaveChanges();
+                }
+            } 
+        }
+
+        private int TinhTongSoLuongSP()
+        {
+
+            // Lấy giỏ hàng từ session
+            List<ItemSanPham> cart = Session["Cart"] as List<ItemSanPham>;
+            int tongSL = 0;
+            if (cart != null)
+            {
+                foreach(var item in cart)
+                {
+                    tongSL += item.SoLuong;
+
+                }
+            }
+            return tongSL;
+        }
+        public ActionResult ThanhToanThanhCong(string maDH)
+        {
+            return View();
+        }
     }
 }

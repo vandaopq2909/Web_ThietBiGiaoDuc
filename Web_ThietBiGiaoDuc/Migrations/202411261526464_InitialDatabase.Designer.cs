@@ -13,7 +13,7 @@ namespace Web_ThietBiGiaoDuc.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202411240906153_InitialDatabase"; }
+            get { return "202411261526464_InitialDatabase"; }
         }
         
         string IMigrationMetadata.Source

@@ -7,6 +7,10 @@ namespace Web_ThietBiGiaoDuc.Models
 {
     public class DonHang
     {
+        public DonHang()
+        {
+            MaDH = "DH" + Guid.NewGuid().ToString("N").Substring(0, 8);
+        }
         [Key]
         public string MaDH { get; set; }
         public DateTimeOffset NgayDatHang { get; set; }

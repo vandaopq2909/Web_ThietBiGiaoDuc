@@ -17,7 +17,8 @@ namespace Web_ThietBiGiaoDuc.Models
         public DbSet<NhanVien> nhanViens { get; set; }
         public DbSet<KhachHang> khachHangs { get; set; }
         public DbSet<DanhGia> danhGias { get; set; }
-        public DbSet<DonHang> donHang { get; set; } 
+        public DbSet<DonHang> donHangs { get; set; } 
+        public DbSet<ChiTietDonHang> chiTietDonHangs { get; set; } 
         public DbSet<HinhAnh> hinhAnhs { get; set; }
         public DbSet<KhuyenMai> khuyenMais { get; set; }
         public DbSet<NhaCungCap> nhaCungCaps { get; set; }
