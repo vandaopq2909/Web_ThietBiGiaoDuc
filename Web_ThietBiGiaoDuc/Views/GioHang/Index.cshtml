@@ -210,7 +210,8 @@
                                 });
                             });
                         </script>
-                        <script>document.addEventListener("DOMContentLoaded", function () {
+                        <script>
+document.addEventListener("DOMContentLoaded", function () {
                                 var maKH = '@cookieMaKH';
 
                                 document.getElementById('btn-pay').addEventListener('click', function () {
@@ -242,54 +243,72 @@
                             });</script>
                         <!-- scrip cho btn xác nhận thanh toán -->
                         <script>
-                            document.addEventListener("DOMContentLoaded", function () {
-                                var maKH = '@cookieMaKH'; // Mã khách hàng từ cookie hoặc session
+    document.addEventListener("DOMContentLoaded", function () {
+        var maKH = '@cookieMaKH'; // Mã khách hàng từ cookie hoặc session
 
-                                document.getElementById('btn-verify-pay').addEventListener('click', function () {
-                                    // Lấy dữ liệu từ các input
-                                    var phone = document.getElementById('phone').value;
-                                    var address = document.getElementById('address').value;
+        document.getElementById('btn-verify-pay').addEventListener('click', function () {
+            // Lấy dữ liệu từ các input
+            var phone = document.getElementById('phone').value.trim();
+            var address = document.getElementById('address').value.trim();
 
-                                    // Tạo dữ liệu gửi đi dưới dạng 'application/x-www-form-urlencoded'
-                                    var formData = new URLSearchParams();
-                                    formData.append('maKH', maKH.toString());
-                                    formData.append('phone_number', phone);
-                                    formData.append('delivery_address', address);
+            // Kiểm tra dữ liệu input
+            if (!phone || !address) {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Thiếu thông tin',
+                    text: 'Vui lòng nhập đầy đủ số điện thoại và địa chỉ!'
+                });
+                return; // Dừng thực hiện nếu dữ liệu không hợp lệ
+            }
 
-                                    // Gửi yêu cầu AJAX tới controller ThanhToan
-                                    fetch('/GioHang/ThanhToan', {
-                                        method: 'POST',
-                                        headers: {
-                                            'Content-Type': 'application/x-www-form-urlencoded'
-                                        },
-                                        body: formData // Gửi dữ liệu dạng form-urlencoded
-                                    })
-                                    .then(response => response.text()) 
-                                    .then(result => {
-                                        if (result.success) {
-                                            // Sau khi thanh toán thành công, chuyển hướng đến trang thông báo thành công
-                                            window.location.href = '/GioHang/ThanhToanThanhCong?maDH=' + result.orderId; // "result" có thể là orderId
-                                        } else {
-                                            // Hiển thị thông báo lỗi nếu không thành công
-                                            Swal.fire({
-                                                icon: 'error',
-                                                title: 'Lỗi...',
-                                                text: result.message
-                                            });
-                                        }
-                                    })
-                                    .catch(error => {
-                                        console.error('Error during payment process:', error);
-                                        Swal.fire({
-                                            icon: 'error',
-                                            title: 'Lỗi...',
-                                            text: 'Có lỗi xảy ra khi gửi yêu cầu thanh toán!'
-                                        });
-                                    });
-                                });
-                            });
+            // Kiểm tra định dạng số điện thoại
+            var phoneRegex = /^[0-9]{10,15}$/;
+            if (!phoneRegex.test(phone)) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Sai định dạng',
+                    text: 'Số điện thoại không hợp lệ! Vui lòng kiểm tra lại.'
+                });
+                return; // Dừng thực hiện nếu số điện thoại sai định dạng
+            }
 
+            // Tạo dữ liệu gửi đi dưới dạng 'application/x-www-form-urlencoded'
+            var formData = new URLSearchParams();
+            formData.append('maKH', maKH.toString());
+            formData.append('phone_number', phone);
+            formData.append('delivery_address', address);
+
+            // Gửi yêu cầu AJAX tới controller ThanhToan
+            fetch('/GioHang/ThanhToan', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: formData
+            })
+            .then(response => {
+                if (response.redirected) {
+                    // Nếu controller trả về một redirect (chuyển hướng), ta sẽ chuyển hướng theo URL đó
+                    window.location.href = response.url;
+                } else if (response.ok) {
+                    // Nếu trả về view trực tiếp (không redirect), tải nội dung view vào trang hiện tại
+                    return response.text(); // Lấy HTML từ phản hồi
+                } else {
+                    throw new Error('Yêu cầu không thành công: ' + response.statusText);
+                }
+            })            
+            .catch(error => {
+                console.error('Error during payment process:', error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Lỗi...',
+                    text: 'Có lỗi xảy ra khi gửi yêu cầu thanh toán!'
+                });
+            });
+        });
+    });
                         </script>
+
                     </div>
                 </div>
 
