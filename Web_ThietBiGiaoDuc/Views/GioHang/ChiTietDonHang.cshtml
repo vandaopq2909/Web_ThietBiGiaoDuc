@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewBag.Title = "ChiTietDonHang";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<div style="min-height:400px;padding:100px">
+    <div class="text-center container">
+        <h4>Chi tiết đơn hàng @ViewBag.madh</h4>
+        <hr />
+    </div>
+    <div class="container d-flex justify-content-center " style="min-height:200px;">
+
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Mã sản phẩm</th>
+                    <th scope="col">Tên sản phẩm</th>
+                    <th scope="col">Giá</th>
+                    <th scope="col">Đơn giá</th>
+                    <th scope="col">Thành tiền</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in ViewBag.lstCTDH)
+                {
+                    <tr>
+                        <th scope="row">@item.MaSP</th>
+                        <td>@item.TenSanPham</td>
+                        <td>@item.SoLuong</td>
+
+                        <td>@item.Gia.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("vi-VN"))</td>
+                        <td>@item.TongTien.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("vi-VN"))</td>
+                        <td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+    <!-- Tổng tiền div -->
+    <div class="d-flex justify-content-end mt-3">
+        <div style="text-align: right;">
+            <h5>Tổng tiền:<strong style="color:red"> @ViewBag.TongTien.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("vi-VN")) đ</strong></h5>
+        </div>
+    </div>
+</div>
+
