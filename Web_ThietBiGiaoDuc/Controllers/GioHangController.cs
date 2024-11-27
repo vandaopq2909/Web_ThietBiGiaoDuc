@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Web_ThietBiGiaoDuc.Models;
@@ -28,6 +29,10 @@ namespace Web_ThietBiGiaoDuc.Controllers
         {
             ViewBag.Cart = LoadGioHang();
             ViewBag.tongTienTatCaSP = TinhTongTienTatCaSP();
+
+            if (Request.Cookies["makh"] == null) {
+                return RedirectToAction("Index", "Home");
+            }
             return View();
         }
         [HttpPost]
@@ -217,18 +222,25 @@ namespace Web_ThietBiGiaoDuc.Controllers
                     TrangThai = "Đang xử lý"
                 };
 
-                db.donHangs.Add(donHang);
-                db.SaveChanges();
+                if (tongTien > 0) {
+                    db.donHangs.Add(donHang);
+                    db.SaveChanges();
 
-                ThemCTDonHang(donHang.MaDH);
+                    ThemCTDonHang(donHang.MaDH);
 
-                // Nếu thanh toán thành công, chuyển hướng đến trang thông báo thành công
-                return View("ThanhToanThanhCong", new {maDH = donHang.MaDH });
+                    Session["Cart"] = null;
+                    ViewBag.Cart = null;
+
+                    // Nếu thanh toán thành công, chuyển hướng đến trang thông báo thành công
+                    return RedirectToAction("ThanhToanThanhCong", new {maDH = donHang.MaDH});
+                }
+                // Xử lý lỗi và trả về thông báo lỗi nếu có
+                return RedirectToAction("Index");
             }
             catch
             {
                 // Xử lý lỗi và trả về thông báo lỗi nếu có
-                return View("Index");
+                return RedirectToAction("Index");
             }
         }
 
@@ -251,9 +263,9 @@ namespace Web_ThietBiGiaoDuc.Controllers
                         GhiChu = "",
                         TrangThaiDanhGia = "chuadanhgia"
                     };
-                    db.chiTietDonHangs.Add(ctdh);
-                    db.SaveChanges();
+                    db.chiTietDonHangs.Add(ctdh);                   
                 }
+                db.SaveChanges();
             } 
         }
 
@@ -275,7 +287,10 @@ namespace Web_ThietBiGiaoDuc.Controllers
         }
         public ActionResult ThanhToanThanhCong(string maDH)
         {
-            return View();
+            DatabaseContext db = new DatabaseContext();
+            //load thông tin đơn hàng
+            var donHang = db.donHangs.Where(x => x.MaDH == maDH).FirstOrDefault();
+            return View(donHang);
         }
         public ActionResult LichSuMuaHang(string makh, int page = 1, int pageSize = 1)
         {
