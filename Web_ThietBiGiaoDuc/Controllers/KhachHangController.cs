@@ -1,9 +1,12 @@
-﻿using System;
+﻿using PagedList;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
 using Web_ThietBiGiaoDuc.Models;
 
 namespace Web_ThietBiGiaoDuc.Controllers
@@ -162,5 +165,6 @@ namespace Web_ThietBiGiaoDuc.Controllers
                 return RedirectToAction("DangNhap", "KhachHang");
             }
         }
+
     }
 }

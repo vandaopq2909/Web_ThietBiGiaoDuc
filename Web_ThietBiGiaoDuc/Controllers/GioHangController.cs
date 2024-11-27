@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PagedList;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -290,6 +291,58 @@ namespace Web_ThietBiGiaoDuc.Controllers
             //load thông tin đơn hàng
             var donHang = db.donHangs.Where(x => x.MaDH == maDH).FirstOrDefault();
             return View(donHang);
+        }
+        public ActionResult LichSuMuaHang(string makh, int page = 1, int pageSize = 1)
+        {
+            DatabaseContext db = new DatabaseContext();
+            if (makh == null) 
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            List<DonHang> lstDonHang = db.donHangs
+                .Where(dh => dh.MaKH == makh)
+                .OrderByDescending(dh => dh.NgayDatHang)
+                .ToList();
+            var pagedSanPhams = lstDonHang.ToPagedList(page, pageSize);
+            ViewBag.lstDonHang = pagedSanPhams;
+            ViewBag.makh = makh;
+            return View();
+        }
+        public class ChiTietDonHangViewModel
+        {
+            public string MaSP { get; set; }
+            public string TenSanPham { get; set; }
+            public int SoLuong { get; set; }
+            public double Gia { get; set; }
+            public double TongTien { get; set; }
+        }
+        public ActionResult ChiTietDonHang(string madh)
+        {
+            DatabaseContext db = new DatabaseContext();
+            if (madh == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            var tongtien = db.donHangs.Where(don=>don.MaDH==madh).FirstOrDefault().TongTien;
+            // Lấy danh sách chi tiết đơn hàng kèm thông tin sản phẩm
+            var lstCTDH = db.chiTietDonHangs
+                      .Where(ct => ct.MaDH == madh)
+                      .Select(ct => new ChiTietDonHangViewModel
+                      {
+                          MaSP = ct.MaSP,
+                          TenSanPham = db.sanPhams
+                                        .Where(sp => sp.MaSP == ct.MaSP)
+                                        .Select(sp => sp.TenSanPham)
+                                        .FirstOrDefault(),
+                          SoLuong = ct.SoLuong,
+                          Gia = ct.Gia,
+                          TongTien = ct.TongTien,
+                      })
+                      .ToList();
+            ViewBag.lstCTDH= lstCTDH;
+            ViewBag.madh = madh;
+            ViewBag.tongTien = tongtien;
+            return View();
         }
     }
 }
