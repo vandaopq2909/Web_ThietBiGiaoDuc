@@ -21,7 +21,8 @@ namespace Web_ThietBiGiaoDuc.Controllers
             DatabaseContext db = new DatabaseContext();
 
             // Lấy tối đa 4 sản phẩm có trạng thái 'hoatdong' và hình ảnh đầu tiên
-            ViewBag.listSPNoiBat = db.sanPhams    
+            ViewBag.listSPNoiBat = db.sanPhams
+                .OrderBy(sp => Guid.NewGuid())
                 .Take(4)                                  // Lấy tối đa 4 sản phẩm
                 .Select(sp => new SanPhamVM
                 {
@@ -34,6 +35,18 @@ namespace Web_ThietBiGiaoDuc.Controllers
             //list sản phẩm theo loại
             ViewBag.listSPBanGheHS = db.sanPhams
                 .Where(sp => sp.LoaiSanPham.MaLoai == "L7")  // Lọc sản phẩm theo loại "Bàn ghế học sinh"
+                .Take(4)                                  // Lấy tối đa 4 sản phẩm
+                .Select(sp => new SanPhamVM
+                {
+                    MaSP = sp.MaSP,
+                    TenSanPham = sp.TenSanPham,
+                    Gia = sp.Gia,
+                    img = sp.HinhAnhs.Select(h => h.TenHinhAnh).FirstOrDefault()
+                }).ToList();
+
+            //list sản phẩm theo loại
+            ViewBag.listSPThietBiDayHoc = db.sanPhams
+                .Where(sp => sp.LoaiSanPham.MaLoai == "L15")  // Lọc sản phẩm theo loại "Bàn ghế học sinh"
                 .Take(4)                                  // Lấy tối đa 4 sản phẩm
                 .Select(sp => new SanPhamVM
                 {

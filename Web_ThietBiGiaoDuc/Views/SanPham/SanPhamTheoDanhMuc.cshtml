@@ -1,9 +1,9 @@
 ﻿@using PagedList.Mvc; <!-- Import thư viện PagedList trong View -->
 @{
-    var listTimKiem = ViewBag.listTimKiem as PagedList.IPagedList<dynamic>; // Ép kiểu về IPagedList<dynamic>
+    var listSPTheoDM = ViewBag.listSPTheoDM as PagedList.IPagedList<dynamic>; // Ép kiểu về IPagedList<dynamic>
 }
 @{
-    ViewBag.Title = "Tất Cả Sản Phẩm";
+    ViewBag.Title = "Sản Phẩm Theo Danh Mục";
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
 
@@ -86,11 +86,11 @@
 
 <div class="container my-5">
     <div class="section-title d-flex justify-content-between align-items-center mb-4">
-        <h2 class="text-center flex-grow-1">Tất cả sản phẩm</h2>
+        <h2 class="text-center flex-grow-1">Sản phẩm theo danh mục: @ViewBag.TenDM</h2>
     </div>
-    <!-- Danh sách sản phẩm nổi bật -->
+    <!-- Danh sách sản phẩm theo danh mục -->
     <div class="row">
-        @foreach (var sp in ViewBag.listSP)
+        @foreach (var sp in ViewBag.listSPTheoDM)
         {
             <!-- Sản phẩm -->
             <div class="col-md-3 d-flex">
@@ -112,7 +112,7 @@
                     <div class="toast" id="successToast" role="alert" aria-live="assertive" aria-atomic="true"
                          style="position: fixed; top: 20px; right: 20px; min-width: 200px; z-index: 1050; background-color: #28a745; color: white;">
                         <div class="toast-header" style="background-color: #218838; color: white;">
-                            <strong class="mr-auto">Thông báo</strong>                            
+                            <strong class="mr-auto">Thông báo</strong>
                         </div>
                         <div class="toast-body">
                             Thêm sản phẩm vào giỏ hàng thành công!
@@ -147,29 +147,29 @@
 </div>
 <!-- Hiển thị phân trang -->
 <div class="pagination-container mb-5">
-    @if (ViewBag.listSP != null && ViewBag.listSP is PagedList.IPagedList)
+    @if (ViewBag.listSPTheoDM != null && ViewBag.listSPTheoDM is PagedList.IPagedList)
     {
-        var pagedList = (PagedList.IPagedList)ViewBag.listSP;
+        var pagedList = (PagedList.IPagedList)ViewBag.listSPTheoDM;
 
         <ul class="pagination justify-content-center">
             @if (pagedList.HasPreviousPage)
             {
                 <li class="page-item">
-                    <a class="page-link" href="@Url.Action("TatCa", "SanPham", new { page = pagedList.PageNumber - 1})">Previous</a>
+                    <a class="page-link" href="@Url.Action("SanPhamTheoDanhMuc", "SanPham", new { page = pagedList.PageNumber - 1, maDM = ViewBag.MaDM})">Previous</a>
                 </li>
             }
 
             @for (int i = 1; i <= pagedList.PageCount; i++)
             {
                 <li class="page-item @(i == pagedList.PageNumber ? "active" : "")">
-                    <a class="page-link" href="@Url.Action("TatCa", "SanPham", new { page = i})">@i</a>
+                    <a class="page-link" href="@Url.Action("SanPhamTheoDanhMuc", "SanPham", new { page = i,  maDM = ViewBag.MaDM})">@i</a>
                 </li>
             }
 
             @if (pagedList.HasNextPage)
             {
                 <li class="page-item">
-                    <a class="page-link" href="@Url.Action("TatCa", "SanPham", new { page = pagedList.PageNumber + 1})">Next</a>
+                    <a class="page-link" href="@Url.Action("SanPhamTheoDanhMuc", "SanPham", new { page = pagedList.PageNumber + 1, maDM = ViewBag.MaDM})">Next</a>
                 </li>
             }
         </ul>

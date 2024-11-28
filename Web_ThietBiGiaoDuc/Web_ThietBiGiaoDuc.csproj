@@ -600,6 +600,9 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\Banner\banner1.png" />
+    <Content Include="Images\Banner\banner2.png" />
+    <Content Include="Images\Banner\banner3.png" />
     <Content Include="Images\SanPham\ampe_ke_mot_chieu_1.jpg" />
     <Content Include="Images\SanPham\bang_ten_chu_cai_tieng_viet_1.jpg" />
     <Content Include="Images\SanPham\bang_tu_chong_loa_treo_tren_tuong_1.jpg" />
@@ -889,6 +892,8 @@
     <Content Include="Views\KhachHang\DoiMatKhau.cshtml" />
     <Content Include="Views\GioHang\LichSuMuaHang.cshtml" />
     <Content Include="Views\GioHang\ChiTietDonHang.cshtml" />
+    <Content Include="Views\SanPham\SanPhamTheoDanhMuc.cshtml" />
+    <Content Include="Views\SanPham\SanPhamTheoLoai.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Data\" />

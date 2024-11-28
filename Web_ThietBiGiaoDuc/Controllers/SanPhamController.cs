@@ -104,6 +104,59 @@ namespace Web_ThietBiGiaoDuc.Controllers
             }
             return View();
         }
+        public ActionResult SanPhamTheoDanhMuc(string maDM, int page = 1, int pageSize = 16)
+        {
+            ViewBag.TenDM = db.danhMucs.Where(x=> x.MaDM==maDM).Select(x => x.TenDanhMuc).FirstOrDefault();
+            ViewBag.MaDM = maDM;
+            if (string.IsNullOrEmpty(maDM) || maDM == "")
+            {          
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                List<dynamic> listSPTK = db.sanPhams
+                    .Where(x => x.LoaiSanPham.DanhMuc.MaDM == maDM)
+                    .Select(sp => new SanPhamVM
+                    {
+                        MaSP = sp.MaSP,
+                        TenSanPham = sp.TenSanPham,
+                        Gia = sp.Gia,
+                        img = sp.HinhAnhs.Select(h => h.TenHinhAnh).FirstOrDefault()
+                    })
+                    .ToList<dynamic>();
 
+                // Sử dụng PagedList để phân trang
+                var pagedSanPhams = listSPTK.ToPagedList(page, pageSize);
+                ViewBag.listSPTheoDM = pagedSanPhams; // Lưu danh sách phân trang vào ViewBag
+            }
+            return View();
+        }
+        public ActionResult SanPhamTheoLoai(string maLoai, int page = 1, int pageSize = 16)
+        {
+            ViewBag.TenLoai = db.loaiSanPhams.Where(x => x.MaLoai == maLoai).Select(x => x.TenLoai).FirstOrDefault();
+            ViewBag.MaLoai = maLoai;
+            if (string.IsNullOrEmpty(maLoai) || maLoai == "")
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                List<dynamic> listSPTK = db.sanPhams
+                    .Where(x => x.LoaiSanPham.MaLoai == maLoai)
+                    .Select(sp => new SanPhamVM
+                    {
+                        MaSP = sp.MaSP,
+                        TenSanPham = sp.TenSanPham,
+                        Gia = sp.Gia,
+                        img = sp.HinhAnhs.Select(h => h.TenHinhAnh).FirstOrDefault()
+                    })
+                    .ToList<dynamic>();
+
+                // Sử dụng PagedList để phân trang
+                var pagedSanPhams = listSPTK.ToPagedList(page, pageSize);
+                ViewBag.listSPTheoLoai = pagedSanPhams; // Lưu danh sách phân trang vào ViewBag
+            }
+            return View();
+        }
     }
 }
