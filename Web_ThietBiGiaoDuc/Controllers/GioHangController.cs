@@ -22,14 +22,22 @@ namespace Web_ThietBiGiaoDuc.Controllers
             // Tổng giá trị của sản phẩm (số lượng * đơn giá)
             public double TongTien => SoLuong * Gia;
         }
-
+        public class GioHangData 
+        {
+            public int TongSL { get; set; } = 0;
+            public double TongTien { get; set; } = 0;
+        }
 
         // GET: GioHang
         public ActionResult Index()
         {
-            ViewBag.Cart = LoadGioHang();
-            ViewBag.tongTienTatCaSP = TinhTongTienTatCaSP();
-
+            var cart = LoadGioHang();
+            int tongSLSP = TinhTongSoLuongSP();
+            double tongTienTatCaSP = TinhTongTienTatCaSP();
+            ViewBag.Cart = cart;
+            ViewBag.TongSLSP = tongSLSP;
+            ViewBag.tongTienTatCaSP = tongTienTatCaSP;
+          
             if (Request.Cookies["makh"] == null) {
                 return RedirectToAction("Index", "Home");
             }
@@ -263,7 +271,9 @@ namespace Web_ThietBiGiaoDuc.Controllers
                         GhiChu = "",
                         TrangThaiDanhGia = "chuadanhgia"
                     };
-                    db.chiTietDonHangs.Add(ctdh);                   
+                    db.chiTietDonHangs.Add(ctdh);
+                    var sp = db.sanPhams.Where(x => x.MaSP == ctdh.MaSP && x.SoLuongTonKho > 0).FirstOrDefault();
+                    sp.SoLuongTonKho = sp.SoLuongTonKho - 1;
                 }
                 db.SaveChanges();
             } 
@@ -343,6 +353,17 @@ namespace Web_ThietBiGiaoDuc.Controllers
             ViewBag.madh = madh;
             ViewBag.tongTien = tongtien;
             return View();
+        }
+        public JsonResult GetGioHangData()
+        {
+            var gioHangData = new GioHangData()
+            {
+                TongSL = TinhTongSoLuongSP(),
+                TongTien = TinhTongTienTatCaSP()
+            };
+
+            // Trả về dữ liệu JSON
+            return Json(gioHangData, JsonRequestBehavior.AllowGet);
         }
     }
 }

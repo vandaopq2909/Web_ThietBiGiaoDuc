@@ -162,10 +162,29 @@
                     <div class="col-lg-3">
                         <div class="header__cart">
                             <ul>
-                                <li><a href="/GioHang/Index"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                                <li><a href="/GioHang/Index"><i class="fa fa-shopping-bag"></i><span id="tong-sl"></span></a></li>
                             </ul>
-                            <div class="header__cart__price">Tổng tiền: <span>150.000 vnd</span></div>
+                            <div class="header__cart__price">Tổng tiền: <span id="tong-tien"><sup>đ</sup></span></div>
                         </div>
+                        <script src="~/Resources/js/jquery-3.3.1.min.js"></script>
+                        <script>
+                            $(document).ready(function () {
+                                // Gọi AJAX tới phương thức GetGioHangData
+                                $.ajax({
+                                    url: '/GioHang/GetGioHangData',
+                                    type: 'GET',
+                                    dataType: 'json', // Dữ liệu trả về là JSON
+                                    success: function (data) {
+                                        // Cập nhật dữ liệu vào HTML
+                                        $('#tong-sl').text(data.TongSL);
+                                        $('#tong-tien').text(data.TongTien.toLocaleString('vi-VN') + "đ");
+                                    },
+                                    error: function () {
+                                        alert('Có lỗi xảy ra khi lấy dữ liệu giỏ hàng.');
+                                    }
+                                });
+                            });
+                        </script>
                     </div>
                 </div>
                 <div class="humberger__open">
