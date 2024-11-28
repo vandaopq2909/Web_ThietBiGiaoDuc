@@ -338,12 +338,56 @@
                     <h3 class="font-weight-bold mb-3">@Model.TenSanPham</h3>
 
                     <h3 class="font-weight-bold">
-                    <span>@Model.Gia.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("vi-VN"))</span><sup>đ</sup>
+                        <span>@Model.Gia.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("vi-VN"))</span><sup>đ</sup>
                     </h3>
                 </div>
+                <!-- Toast thông báo với màu nền xanh lá -->
+                <div class="toast" id="successToast" role="alert" aria-live="assertive" aria-atomic="true"
+                     style="position: fixed; top: 20px; right: 20px; min-width: 200px; z-index: 1050; background-color: #28a745; color: white;">
+                    <div class="toast-header" style="background-color: #218838; color: white;">
+                        <strong class="mr-auto">Thông báo</strong>
+                    </div>
+                    <div class="toast-body">
+                        Thêm sản phẩm vào giỏ hàng thành công!
+                    </div>
+                </div>
+                <script type="text/javascript">
+                    function themVaoGioHang(maSP) {
+                        $.ajax({
+                            url: '@Url.Action("ThemVaoGio", "GioHang")', // URL của Action
+                            type: 'POST', // Phương thức gửi dữ liệu
+                            data: { maSP: maSP }, // Gửi maSP tới server
+                            success: function () {
+                                // Hiển thị toast khi gửi thành công
+                                $('#successToast').toast({ delay: 2000 }); // Thiết lập thời gian tồn tại là 2 giây
+                                $('#successToast').toast('show');
+                            },
+                            error: function () {
+                                alert("Có lỗi xảy ra khi gửi dữ liệu.");
+                            }
+                        });
+                    }
+                </script>
+                <script type="text/javascript">
+                    function muaNgay(maSP) {
+                        $.ajax({
+                            url: '@Url.Action("ThemVaoGio", "GioHang")', // URL của Action
+                            type: 'POST', // Phương thức gửi dữ liệu
+                            data: { maSP: maSP }, // Gửi maSP tới server
+                            success: function () {
+                                // Chuyển hướng đến trang giỏ hàng sau khi thêm sản phẩm thành công
+                                window.location.href = '@Url.Action("Index", "GioHang")';
+                            },
+                            error: function () {
+                                alert("Có lỗi xảy ra khi gửi dữ liệu.");
+                            }
+                        });
+                    }
+                </script>
+
                 <div class="buttons">
-                    <button class="btn btn-outline-warning btn-long cart">Thêm vào giỏ hàng</button>
-                    <button class="btn btn-warning btn-long buy">Mua ngay</button>
+                    <button class="btn btn-outline-warning btn-long cart" onclick="themVaoGioHang('@Model.MaSP')">Thêm vào giỏ hàng</button>
+                    <button class="btn btn-warning btn-long buy" onclick="muaNgay('@Model.MaSP')">Mua ngay</button>
                 </div>
                 <hr>
                 <div class="product-description">
