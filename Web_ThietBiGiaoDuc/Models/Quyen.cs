@@ -7,7 +7,7 @@ namespace Web_ThietBiGiaoDuc.Models
     {
         Quyen() 
         {
-            MaQuyen = "Q" + Guid.NewGuid().ToString("N").Substring(0, 8);
+            MaQuyen = "Q" + DateTime.Now.ToString("yyyyMMddHHmmssfff");
         }
         [Key]
         public string MaQuyen { get; set; }

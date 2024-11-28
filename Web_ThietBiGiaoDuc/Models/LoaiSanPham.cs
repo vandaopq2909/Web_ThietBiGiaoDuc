@@ -7,7 +7,7 @@ namespace Web_ThietBiGiaoDuc.Models
     {
         public LoaiSanPham() 
         {
-            MaLoai= "L" + Guid.NewGuid().ToString("N").Substring(0, 8);
+            MaLoai= "L" + DateTime.Now.ToString("yyyyMMddHHmmssfff");
         }
         [Key]
         public string MaLoai { get; set; }

@@ -9,7 +9,7 @@ namespace Web_ThietBiGiaoDuc.Models
     {
         public DonHang()
         {
-            MaDH = "DH" + Guid.NewGuid().ToString("N").Substring(0, 8);
+            MaDH = "DH" + DateTime.Now.ToString("yyyyMMddHHmmssfff");
         }
         [Key]
         public string MaDH { get; set; }

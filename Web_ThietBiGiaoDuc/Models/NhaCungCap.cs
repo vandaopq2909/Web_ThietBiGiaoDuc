@@ -8,7 +8,7 @@ namespace Web_ThietBiGiaoDuc.Models
     {
         public NhaCungCap() 
         {
-            MaNCC = "NCC" + Guid.NewGuid().ToString("N").Substring(0, 8);
+            MaNCC = "NCC" + DateTime.Now.ToString("yyyyMMddHHmmssfff");
         }
         [Key]
         public string MaNCC { get; set; }

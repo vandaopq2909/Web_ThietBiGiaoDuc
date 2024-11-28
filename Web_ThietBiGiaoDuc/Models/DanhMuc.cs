@@ -8,7 +8,7 @@ namespace Web_ThietBiGiaoDuc.Models
     {
         public DanhMuc() 
         {
-            MaDM = "DM" + Guid.NewGuid().ToString("N").Substring(0, 8);
+            MaDM = "DM" + DateTime.Now.ToString("yyyyMMddHHmmssfff");
         }
         [Key]
         public string MaDM { get; set; }

@@ -8,7 +8,7 @@ namespace Web_ThietBiGiaoDuc.Models
     {
         public SanPham() 
         {
-            MaSP = "SP" + Guid.NewGuid().ToString("N").Substring(0, 8);
+            MaSP = "SP" + DateTime.Now.ToString("yyyyMMddHHmmssfff");
         }
         [Key]
         public string MaSP { get; set; }

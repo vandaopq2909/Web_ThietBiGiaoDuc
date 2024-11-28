@@ -8,7 +8,7 @@ namespace Web_ThietBiGiaoDuc.Models
     {
         public NhanVien() 
         {
-            MaNV = "NV" + Guid.NewGuid().ToString("N").Substring(0, 8);
+            MaNV = "NV" + DateTime.Now.ToString("yyyyMMddHHmmssfff");
         }
         [Key]
         public string MaNV { get; set; }
