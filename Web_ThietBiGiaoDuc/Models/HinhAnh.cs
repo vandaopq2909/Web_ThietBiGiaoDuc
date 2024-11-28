@@ -7,7 +7,7 @@ namespace Web_ThietBiGiaoDuc.Models
     { 
         public HinhAnh()
         {
-            MaHinhAnh= "HA" + Guid.NewGuid().ToString("N").Substring(0, 8);
+            MaHinhAnh= "HA" + DateTime.Now.ToString("yyyyMMddHHmmssfff");
         }
         [Key]
         public string MaHinhAnh { get; set; }

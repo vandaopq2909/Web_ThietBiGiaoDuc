@@ -8,7 +8,7 @@ namespace Web_ThietBiGiaoDuc.Models
     {
         public KhachHang() 
         {
-            MaKH = "KH" + Guid.NewGuid().ToString("N").Substring(0, 8);
+            MaKH = "KH" + DateTime.Now.ToString("yyyyMMddHHmmssfff");
         }
         [Key]
         public string MaKH { get; set; }

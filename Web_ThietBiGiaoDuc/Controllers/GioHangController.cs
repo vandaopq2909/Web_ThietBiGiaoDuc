@@ -302,7 +302,7 @@ namespace Web_ThietBiGiaoDuc.Controllers
             var donHang = db.donHangs.Where(x => x.MaDH == maDH).FirstOrDefault();
             return View(donHang);
         }
-        public ActionResult LichSuMuaHang(string makh, int page = 1, int pageSize = 1)
+        public ActionResult LichSuMuaHang(string makh, int page = 1, int pageSize = 6)
         {
             DatabaseContext db = new DatabaseContext();
             if (makh == null) 

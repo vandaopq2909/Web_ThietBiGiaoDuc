@@ -7,7 +7,7 @@ namespace Web_ThietBiGiaoDuc.Models
     {
         public PhieuNhap() 
         {
-            MaPN = "PN" + Guid.NewGuid().ToString("N").Substring(0, 8);
+            MaPN = "PN" + DateTime.Now.ToString("yyyyMMddHHmmssfff");
         }
         [Key]
         public string MaPN { get; set; }

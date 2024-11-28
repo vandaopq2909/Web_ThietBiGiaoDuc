@@ -6,7 +6,7 @@ namespace Web_ThietBiGiaoDuc.Models
     {
         public PhieuDoiTra() 
         {
-            MaPDT= "PDT" + Guid.NewGuid().ToString("N").Substring(0, 8);
+            MaPDT= "PDT" + DateTime.Now.ToString("yyyyMMddHHmmssfff");
         }
         public string MaPDT { get; set; }
         public DateTimeOffset NgayDoiTra { get; set; }

@@ -8,7 +8,7 @@ namespace Web_ThietBiGiaoDuc.Models
     {
         public KhuyenMai()
         {
-            MaKM = "KM" + Guid.NewGuid().ToString("N").Substring(0, 8);
+            MaKM = "KM" + DateTime.Now.ToString("yyyyMMddHHmmssfff");
         }
         [Key]
         public string MaKM { get; set; }

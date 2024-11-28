@@ -8,7 +8,7 @@ namespace Web_ThietBiGiaoDuc.Models
     {
         public ThuongHieu()
         {
-            MaTH = "TH" + Guid.NewGuid().ToString("N").Substring(0, 8);
+            MaTH = "TH" + DateTime.Now.ToString("yyyyMMddHHmmssfff");
         }
         [Key]
         public string MaTH { get; set; }
