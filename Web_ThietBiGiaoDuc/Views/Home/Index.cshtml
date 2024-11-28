@@ -88,7 +88,7 @@
                 <div class="category-item">
                     <img src="~/Resources/img/categories/DanhMuc_Ban_thi_nghiem.jpg" alt="Fresh Fruit" class="img-fluid rounded mb-3">
                     <div class="category-title">
-                        <a href="#" class="btn btn-outline-success rounded-pill">BÀN THÍ NGHIỆM</a>
+                        <a href="/SanPham/SanPhamTheoLoai?maLoai=L2" class="btn btn-outline-success rounded-pill">BÀN THÍ NGHIỆM VẬT LÝ</a>
                     </div>
                 </div>
             </div>
@@ -97,7 +97,7 @@
                 <div class="category-item">
                     <img src="~/Resources/img/categories/DanhMuc_Noi_that_phong_hoc.jpeg" alt="Dried Fruit" class="img-fluid rounded mb-3">
                     <div class="category-title">
-                        <a href="#" class="btn btn-outline-success rounded-pill">NỘI THẤT PHÒNG HỌC</a>
+                        <a href="/SanPham/SanPhamTheoLoai?maLoai=L8" class="btn btn-outline-success rounded-pill">BÀN GHẾ GIÁO VIÊN</a>
                     </div>
                 </div>
             </div>
@@ -106,7 +106,7 @@
                 <div class="category-item">
                     <img src="~/Resources/img/categories/DanhMuc_Thiet_bi_dung_cu_day_hoc.jpg" alt="Vegetables" class="img-fluid rounded mb-3">
                     <div class="category-title">
-                        <a href="#" class="btn btn-outline-success rounded-pill">THIẾT BỊ - DỤNG CỤ DẠY HỌC</a>
+                        <a href="/SanPham/SanPhamTheoLoai?maLoai=L15" class="btn btn-outline-success rounded-pill">THIẾT BỊ - ĐỒ DÙNG DẠY HỌC</a>
                     </div>
                 </div>
             </div>
@@ -115,7 +115,7 @@
                 <div class="category-item">
                     <img src="~/Resources/img/categories/DanhMuc_Giao_cu_montessori.jpg" alt="Drink Fruits" class="img-fluid rounded mb-3">
                     <div class="category-title">
-                        <a href="#" class="btn btn-outline-success rounded-pill">GIÁO CỤ MONTESSORI</a>
+                        <a href="/SanPham/SanPhamTheoLoai?maLoai=L27" class="btn btn-outline-success rounded-pill">GIÁO CỤ MONTESSORI</a>
                     </div>
                 </div>
             </div>
@@ -127,8 +127,8 @@
 <section class="featured spad">
     <div class="container my-5">
         <div class="section-title d-flex justify-content-between align-items-center mb-4">
-            <h2 class="text-center flex-grow-1">Sản Phẩm Nổi Bật</h2>
-            <a href="#" class="btn btn-outline-success rounded-pill ml-auto">Xem tất cả</a>
+            <h2 class="text-center flex-grow-1">Sản phẩm nổi bật</h2>
+            <a href="/SanPham/TatCa" class="btn btn-outline-success rounded-pill ml-auto">Xem tất cả</a>
         </div>
 
         <!-- Danh sách sản phẩm nổi bật -->
@@ -155,7 +155,7 @@
                         <div class="toast" id="successToast" role="alert" aria-live="assertive" aria-atomic="true"
                              style="position: fixed; top: 20px; right: 20px; min-width: 200px; z-index: 1050; background-color: #28a745; color: white;">
                             <div class="toast-header" style="background-color: #218838; color: white;">
-                                <strong class="mr-auto">Thông báo</strong>                             
+                                <strong class="mr-auto">Thông báo</strong>
                             </div>
                             <div class="toast-body">
                                 Thêm sản phẩm vào giỏ hàng thành công!
@@ -192,7 +192,7 @@
     <div class="container my-5">
         <div class="section-title d-flex justify-content-between align-items-center mb-4">
             <h2 class="text-center flex-grow-1">Bàn ghế học sinh</h2>
-            <a href="#" class="btn btn-outline-success rounded-pill ml-auto">Xem tất cả</a>
+            <a href="/SanPham/SanPhamTheoLoai?maLoai=L7" class="btn btn-outline-success rounded-pill ml-auto">Xem tất cả</a>
         </div>
 
         <!-- Danh sách sản phẩm nổi bật -->
@@ -214,7 +214,44 @@
                             <del><span>@spNoiBat.Gia.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("vi-VN"))</span><sup>đ</sup></del>
                             <strong style="color:red;">@spNoiBat.Gia.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("vi-VN"))<sup>đ</sup></strong>
                             <span class="badge badge-success">0% OFF</span>
-                        </p>                       
+                        </p>
+                        <!-- Spacer để đẩy nút xuống đáy -->
+                        <div class="mt-auto">
+                            <button class="btn btn-outline-success btn-sm" onclick="themVaoGioHang('@spNoiBat.MaSP')">Thêm vào giỏ hàng</button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    <!-- Sản phẩm theo loại: Thiết bị dạy học-->
+    <div class="container my-5">
+        <div class="section-title d-flex justify-content-between align-items-center mb-4">
+            <h2 class="text-center flex-grow-1">Thiết bị dạy học</h2>
+            <a href="/SanPham/SanPhamTheoLoai?maLoai=L15" class="btn btn-outline-success rounded-pill ml-auto">Xem tất cả</a>
+        </div>
+
+        <!-- Danh sách sản phẩm nổi bật -->
+        <div class="row">
+            @foreach (var spNoiBat in ViewBag.listSPThietBiDayHoc)
+            {
+                <!-- Sản phẩm -->
+                <div class="col-md-3 d-flex">
+                    <div class="product-card d-flex flex-column text-center border-0 w-100">
+                        <div class="product-image-wrapper mb-3">
+                            <a href="/sanpham/chitiet?masp=@spNoiBat.MaSP">
+                                <img src="~/Images/SanPham/@spNoiBat.img" class="img-fluid" />
+                            </a>
+                        </div>
+                        <h5 class="product-name">
+                            <a href="/sanpham/chitiet?masp=@spNoiBat.MaSP">@spNoiBat.TenSanPham</a>
+                        </h5>
+                        <p>
+                            <del><span>@spNoiBat.Gia.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("vi-VN"))</span><sup>đ</sup></del>
+                            <strong style="color:red;">@spNoiBat.Gia.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("vi-VN"))<sup>đ</sup></strong>
+                            <span class="badge badge-success">0% OFF</span>
+                        </p>
                         <!-- Spacer để đẩy nút xuống đáy -->
                         <div class="mt-auto">
                             <button class="btn btn-outline-success btn-sm" onclick="themVaoGioHang('@spNoiBat.MaSP')">Thêm vào giỏ hàng</button>
