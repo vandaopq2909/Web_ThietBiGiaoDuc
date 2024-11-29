@@ -28,24 +28,68 @@ namespace Web_ThietBiGiaoDuc.Controllers
         public ActionResult ChiTiet(string masp)
         {
             SanPham sanPham = db.sanPhams.FirstOrDefault(sp => sp.MaSP == masp);
+            if (sanPham == null)
+            {
+               
+                return View("Error");
+            }
 
-            //List<SANPHAMCACANH> listsp = db.SANPHAMCACANHs.Where(x => x.LoaiCaID == sp.LoaiCaID)
-            //                                                .Take(4)
-            //                                                .ToList();
-            //ViewBag.listsp = listsp;
+            // Truy vấn danh sách hình ảnh của sản phẩm
             List<HinhAnh> lstha = db.hinhAnhs.Where(x => x.MaSP == masp).ToList();
             ViewBag.lstHA = lstha;
-            ViewBag.lstSPTuongTu = db.sanPhams.Where(x=>x.MaLoai==sanPham.MaLoai)
-                   .Take(4)    // Lấy tối đa 5 sản phẩm
-                   .Select(sp => new SanPhamVM
-                   {
-                       MaSP = sp.MaSP,
-                       TenSanPham = sp.TenSanPham,
-                       Gia = sp.Gia,
-                       img = sp.HinhAnhs.Select(h => h.TenHinhAnh).FirstOrDefault()
-                   }).ToList();
+            string tenDangNhap = Request.Cookies["auth"]?.Value;
+            if (string.IsNullOrEmpty(tenDangNhap))
+            {
+       
+                TempData["Message"] = "Vui lòng đăng nhập để thực hiện hành động này.";
+                return RedirectToAction("Login");
+            }
+            var khach = db.khachHangs.FirstOrDefault(u => u.TenDangNhap == tenDangNhap);
+            string hoTen = khach?.HoTen;
+            bool daMuaHang = db.chiTietDonHangs.Any(ctdh => ctdh.MaSP == masp
+                                && ctdh.DonHang.MaKH == khach.MaKH
+                                && ctdh.DonHang.TrangThai == "Giao hàng thành công");
+
+
+            var lstDanhGia = db.danhGias.Where(x => x.SanPham.MaSP == masp).ToList();
+
+            var lstSPTuongTu = db.sanPhams.Where(x => x.MaLoai == sanPham.MaLoai)
+                       .Take(4)  // Lấy tối đa 4 sản phẩm
+                       .Select(sp => new SanPhamVM
+                       {
+                           MaSP = sp.MaSP,
+                           TenSanPham = sp.TenSanPham,
+                           Gia = sp.Gia,
+                           img = sp.HinhAnhs.Select(h => h.TenHinhAnh).FirstOrDefault()
+                       }).ToList();
+
+            ViewBag.HoTen = hoTen;
+            ViewBag.DaMuaHang = daMuaHang;
+            ViewBag.lstDanhGia = lstDanhGia;
+            ViewBag.lstSPTuongTu = lstSPTuongTu;
+
             return View(sanPham);
         }
+
+        [HttpPost]
+
+        public ActionResult ThemDanhGia(DanhGia danhGia)
+        {
+            DatabaseContext db = new DatabaseContext();
+
+            if (danhGia == null)
+            {
+                return RedirectToAction("Index");
+            }
+            danhGia.NgayDanhGia=DateTime.Now;
+            // Lưu vào CSDL
+            db.danhGias.Add(danhGia);
+            db.SaveChanges();
+
+            TempData["Message"] = "Đánh giá của bạn đã được gửi!";
+            return RedirectToAction("Index", "Home");
+        }
+
         public ActionResult TatCa(int page = 1, int pageSize = 16)
         {
             List<dynamic> listSP = db.sanPhams

@@ -239,81 +239,280 @@
     .card-body {
         padding: 0.3rem 0.3rem 0.2rem
     }
-     /* Custom Styles */
- .product-grid {
-     display: grid;
-     grid-template-columns: repeat(4, 1fr); /* 4 cột */
-     gap: 20px; /* Khoảng cách giữa các card */
- }
+    /* Custom Styles */
+    .product-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr); /* 4 cột */
+        gap: 20px; /* Khoảng cách giữa các card */
+    }
 
- .product-card {
-     display: flex;
-     flex-direction: column;
-     height: 100%; /* Đảm bảo chiều cao đầy đủ */
-     border: 1px solid #e0e0e0; /* Thêm viền cho card */
-     border-radius: 10px; /* Bo góc cho card */
-     background-color: #fff;
-     padding: 10px;
-     overflow: hidden; /* Ẩn phần vượt quá */
-     transition: box-shadow 0.3s ease; /* Hiệu ứng chuyển tiếp cho bóng */
- }
+    .product-card {
+        display: flex;
+        flex-direction: column;
+        height: 100%; /* Đảm bảo chiều cao đầy đủ */
+        border: 1px solid #e0e0e0; /* Thêm viền cho card */
+        border-radius: 10px; /* Bo góc cho card */
+        background-color: #fff;
+        padding: 10px;
+        overflow: hidden; /* Ẩn phần vượt quá */
+        transition: box-shadow 0.3s ease; /* Hiệu ứng chuyển tiếp cho bóng */
+    }
 
-     .product-card:hover {
-         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Bóng khi hover */
-     }
+        .product-card:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Bóng khi hover */
+        }
 
- .product-image-wrapper {
-     height: 200px; /* Đặt chiều cao cố định cho hình ảnh */
-     overflow: hidden; /* Ẩn phần hình ảnh vượt quá chiều cao */
-     position: relative; /* Để đảm bảo hình ảnh được căn chỉnh đúng */
-     border-radius: 10px; /* Bo góc cho hình ảnh */
- }
+    .product-image-wrapper {
+        height: 200px; /* Đặt chiều cao cố định cho hình ảnh */
+        overflow: hidden; /* Ẩn phần hình ảnh vượt quá chiều cao */
+        position: relative; /* Để đảm bảo hình ảnh được căn chỉnh đúng */
+        border-radius: 10px; /* Bo góc cho hình ảnh */
+    }
 
- .product-image {
-     height: 180px;
-     object-fit: contain;
-     transition: transform 0.3s ease;
- }
+    .product-image {
+        height: 180px;
+        object-fit: contain;
+        transition: transform 0.3s ease;
+    }
 
- .product-image-wrapper img {
-     width: 100%; /* Đặt chiều rộng 100% */
-     height: 100%; /* Đặt chiều cao 100% */
-     object-fit: cover; /* Cắt hình ảnh cho phù hợp */
-     transition: transform 0.3s ease-in-out; /* Thêm hiệu ứng chuyển tiếp */
- }
+    .product-image-wrapper img {
+        width: 100%; /* Đặt chiều rộng 100% */
+        height: 100%; /* Đặt chiều cao 100% */
+        object-fit: cover; /* Cắt hình ảnh cho phù hợp */
+        transition: transform 0.3s ease-in-out; /* Thêm hiệu ứng chuyển tiếp */
+    }
 
-     .product-image-wrapper img:hover {
-         transform: scale(1.1); /* Phóng to hình ảnh khi hover */
-     }
+        .product-image-wrapper img:hover {
+            transform: scale(1.1); /* Phóng to hình ảnh khi hover */
+        }
 
- /* Zoom in ảnh khi hover vào toàn bộ card */
- .product-card:hover .product-image {
-     transform: scale(1.1);
- }
+    /* Zoom in ảnh khi hover vào toàn bộ card */
+    .product-card:hover .product-image {
+        transform: scale(1.1);
+    }
 
- .product-name {
-     margin: 10px 0; /* Khoảng cách giữa tên sản phẩm và các phần khác */
- }
+    .product-name {
+        margin: 10px 0; /* Khoảng cách giữa tên sản phẩm và các phần khác */
+    }
 
- .product-name a {
-     color: #333;
-     text-decoration: none;
-     font-weight: bold;
-     transition: color 0.3s ease;
- }
+        .product-name a {
+            color: #333;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
 
- .product-name a:hover {
-     color: #28a745; /* Đổi màu xanh lá cây khi hover */
- }
- /* Hiệu ứng zoom-in khi hover */
- .banner-ad {
-     transition: transform 0.5s ease; /* Chuyển đổi nhẹ nhàng khi hover */
- }
+            .product-name a:hover {
+                color: #28a745; /* Đổi màu xanh lá cây khi hover */
+            }
+    /* Hiệu ứng zoom-in khi hover */
+    .banner-ad {
+        transition: transform 0.5s ease; /* Chuyển đổi nhẹ nhàng khi hover */
+    }
 
- .banner-ad:hover {
-     transform: scale(1.05); /* Zoom-in khi hover */
- }
+        .banner-ad:hover {
+            transform: scale(1.05); /* Zoom-in khi hover */
+        }
+
+    vertical-align: top;
+    }
+
+    .restaurant-detailed-ratings-and-reviews hr {
+        margin: 0 -24px;
+    }
+
+    .graph-star-rating-header .star-rating {
+        font-size: 17px;
+    }
+
+    .progress {
+        background: #f2f4f8 none repeat scroll 0 0;
+        border-radius: 0;
+        height: 30px;
+    }
+
+    .rating-list {
+        display: inline-flex;
+        margin-bottom: 15px;
+        width: 100%;
+    }
+
+    .rating-list-left {
+        height: 16px;
+        line-height: 29px;
+        width: 10%;
+    }
+
+    .rating-list-center {
+        width: 80%;
+    }
+
+    .rating-list-right {
+        line-height: 29px;
+        text-align: right;
+        width: 10%;
+    }
+
+    .restaurant-slider-pics {
+        bottom: 0;
+        font-size: 12px;
+        left: 0;
+        z-index: 999;
+        padding: 0 10px;
+    }
+
+    .restaurant-slider-view-all {
+        bottom: 15px;
+        right: 15px;
+        z-index: 999;
+    }
+
+    .offer-dedicated-nav .nav-link.active,
+    .offer-dedicated-nav .nav-link:hover,
+    .offer-dedicated-nav .nav-link:focus {
+        border-color: #3868fb;
+        color: #3868fb;
+    }
+
+    .offer-dedicated-nav .nav-link {
+        border-bottom: 2px solid #fff;
+        color: #000000;
+        padding: 16px 0;
+        font-weight: 600;
+    }
+
+    .offer-dedicated-nav .nav-item {
+        margin: 0 37px 0 0;
+    }
+
+    .restaurant-detailed-action-btn {
+        margin-top: 12px;
+    }
+
+    .restaurant-detailed-header-right .btn-success {
+        border-radius: 3px;
+        height: 45px;
+        margin: -18px 0 18px;
+        min-width: 130px;
+        padding: 7px;
+    }
+
+    .text-black {
+        color: #000000;
+    }
+
+    .icon-overlap {
+        bottom: -23px;
+        font-size: 74px;
+        opacity: 0.23;
+        position: absolute;
+        right: -32px;
+    }
+
+    .menu-list img {
+        width: 41px;
+        height: 41px;
+        object-fit: cover;
+    }
+
+    .restaurant-detailed-header-left img {
+        width: 88px;
+        height: 88px;
+        border-radius: 3px;
+        object-fit: cover;
+        box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075) !important;
+    }
+
+    .reviews-members .media .mr-3 {
+        width: 56px;
+        height: 56px;
+        object-fit: cover;
+    }
+
+    .rounded-pill {
+        border-radius: 50rem !important;
+    }
+
+    .total-like-user {
+        border: 2px solid #fff;
+        height: 34px;
+        box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075) !important;
+        width: 34px;
+    }
+
+    .total-like-user-main a {
+        display: inline-block;
+        margin: 0 -17px 0 0;
+    }
+
+    .total-like {
+        border: 1px solid;
+        border-radius: 50px;
+        display: inline-block;
+        font-weight: 500;
+        height: 34px;
+        line-height: 33px;
+        padding: 0 13px;
+        vertical-align: top;
+    }
+
+    .restaurant-detailed-ratings-and-reviews hr {
+        margin: 0 -24px;
+    }
+
+    .graph-star-rating-header .star-rating {
+        font-size: 17px;
+    }
+
+    .progress {
+        background: #f2f4f8 none repeat scroll 0 0;
+        border-radius: 0;
+        height: 30px;
+    }
+
+    .rating-list {
+        display: inline-flex;
+        margin-bottom: 15px;
+        width: 100%;
+    }
+
+    .rating-list-left {
+        height: 16px;
+        line-height: 29px;
+        width: 10%;
+    }
+
+    .rating-list-center {
+        width: 80%;
+    }
+
+    .rating-list-right {
+        line-height: 29px;
+        text-align: right;
+        width: 10%;
+    }
+
+    .restaurant-slider-pics {
+        bottom: 0;
+        font-size: 12px;
+        left: 0;
+        z-index: 999;
+        padding: 0 10px;
+    }
+
+    .restaurant-slider-view-all {
+        bottom: 15px;
+        right: 15px;
+        z-index: 999;
+    }
+
+    .progress {
+        background: #f2f4f8 none repeat scroll 0 0;
+        border-radius: 0;
+        height: 30px;
+    }
 </style>
+<link rel="stylesheet" href="https://allyoucan.cloud/cdn/icofont/1.0.1/icofont.css" integrity="sha384-jbCTJB16Q17718YM9U22iJkhuGbS0Gd2LjaWb4YJEZToOPmnKDjySVa323U+W7Fv" crossorigin="anonymous">
 <link rel='stylesheet' href='https://sachinchoolur.github.io/lightslider/dist/css/lightslider.css'>
 <div class="container-fluid mt-2 mb-3">
     <div class="row no-gutters">
@@ -321,11 +520,19 @@
             <div class="card">
                 <div class="demo">
                     <ul id="lightSlider">
-                        @foreach (var item in ViewBag.lstHA)
+                        @if (ViewBag.lstHA != null && ViewBag.lstHA.Count > 0)
                         {
-                            <li data-thumb="/Images/SanPham/@item.TenHinhAnh">
-                                <img src="/Images/SanPham/@item.TenHinhAnh" />
-                            </li>
+                            foreach (var item in ViewBag.lstHA)
+                            {
+                                <li data-thumb="/Images/SanPham/@item.TenHinhAnh">
+                                    <img src="/Images/SanPham/@item.TenHinhAnh" />
+                                </li>
+                            }
+
+                        }
+                        else
+                        {
+                            <p>Không có hình ảnh nào.</p>
                         }
 
                     </ul>
@@ -419,70 +626,65 @@
                     <p class="text-black">@Model.MoTa</p>
                 </div>
                 <div class="tab-pane fade pt-4" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                    <div>
-                        <div class="card mt-2">
-                            <h6>Reviews</h6>
-                            <div class="d-flex flex-row">
-                                <div class="stars">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
-                                <span class="ml-1 font-weight-bold">4.6</span>
-                            </div>
-                            <hr>
-                            <div class="badges">
-                                <span class="badge bg-dark ">All (230)</span>
-                                <span class="badge bg-dark ">
-                                    <i class="fa fa-image"></i> 23
-                                </span>
-                                <span class="badge bg-dark ">
-                                    <i class="fa fa-comments-o"></i> 23
-                                </span>
-                                <span class="badge bg-warning">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <span class="ml-1">2,123</span>
-                                </span>
-                            </div>
-                            <hr>
-                            <div class="comment-section">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="d-flex flex-row align-items-center">
-                                        <img src="https://i.imgur.com/o5uMfKo.jpg" class="rounded-circle profile-image">
-                                        <div class="d-flex flex-column ml-1 comment-profile">
-                                            <div class="comment-ratings">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                            </div>
-                                            <span class="username">Lori Benneth</span>
+                    <div class="container">
+                        <div class="col-md-12">
+                            <div class="offer-dedicated-body-left">
+                                <div class="tab-content" id="pills-tabContent">
+                                    <div class="tab-pane fade active show" id="pills-reviews" role="tabpanel" aria-labelledby="pills-reviews-tab">
+                                        <div class="bg-white rounded shadow-sm p-4 mb-4 restaurant-detailed-ratings-and-reviews">
+
+                                            @if (ViewBag.lstDanhGia != null && ((List<Web_ThietBiGiaoDuc.Models.DanhGia>)ViewBag.lstDanhGia).Any())
+                                            {
+                                                foreach (var danhGia in ViewBag.lstDanhGia)
+                                                {
+                                                    <div class="reviews-members pt-4 pb-4">
+                                                        <div class="media">
+                                                            <a href="#"><img alt="Generic" src="http://bootdey.com/img/Content/avatar/avatar1.png" class="mr-3 rounded-pill"></a>
+                                                            <div class="media-body">
+                                                                <div class="reviews-members-header">
+
+                                                                    <h6 class="mb-1"><a class="text-black" href="#">@ViewBag.HoTen</a></h6>
+                                                                    <p class="text-gray">@danhGia.NgayDanhGia.ToString("dd/MM/yyyy HH:mm")</p>
+                                                                </div>
+                                                                <div class="reviews-members-body">
+                                                                    <p>@danhGia.NoiDung</p>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <hr />
+                                                }
+                                            }
+                                            else
+                                            {
+                                                <span>Chưa có ngày đánh giá</span>
+                                            }
+                                            <hr>
                                         </div>
-                                    </div>
-                                    <div class="date">
-                                        <span class="text-muted">2 May</span>
-                                    </div>
-                                </div>
-                                <hr>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="d-flex flex-row align-items-center">
-                                        <img src="https://i.imgur.com/tmdHXOY.jpg" class="rounded-circle profile-image">
-                                        <div class="d-flex flex-column ml-1 comment-profile">
-                                            <div class="comment-ratings">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                            </div>
-                                            <span class="username">Timona Simaung</span>
+                                        
+                                        <div class="bg-white rounded shadow-sm p-4 mb-5 rating-review-select-page">
+                                            @* Form đánh giá *@
+                                            @if (ViewBag.DaMuaHang)
+                                            {
+                                                <form method="post" action="/SanPham/ThemDanhGia">
+                                                    <input type="hidden" name="MaSP" value="@Model.MaSP" />
+                                                    <div class="form-group">
+                                                        <label for="BinhLuan">Bình luận của bạn</label>
+                                                        <textarea class="form-control" id="NoiDung" name="NoiDung" rows="3" required></textarea>
+                                                    </div>
+                                                    <div class="form-group pt-3">
+                                                        <button class="btn btn-primary btn-lg" type="submit">Gửi đánh giá</button>
+                                                    </div>
+                                                </form>
+                                            }
+                                            else
+                                            {
+                                                <strong>Để có thể đánh giá, bạn cần phải mua sản phẩm này.</strong>
+                                            }
+
                                         </div>
-                                    </div>
-                                    <div class="date">
-                                        <span class="text-muted">12 May</span>
+                                            
                                     </div>
                                 </div>
                             </div>
@@ -515,7 +717,7 @@
                                 <span class="badge badge-success">0% OFF</span>
                             </p>
                             <!-- Spacer để đẩy nút xuống đáy -->
-                            
+
                         </div>
                     </div>
                 }

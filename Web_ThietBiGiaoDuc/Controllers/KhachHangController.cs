@@ -29,7 +29,7 @@ namespace Web_ThietBiGiaoDuc.Controllers
             if (khachHang != null)
             {
                 DatabaseContext db = new DatabaseContext();
-                KhachHang khach = db.khachHangs.Where(u => u.TenDangNhap == u.TenDangNhap).FirstOrDefault();
+                KhachHang khach = db.khachHangs.Where(u => u.TenDangNhap == khachHang.TenDangNhap).FirstOrDefault();
            
                 if (khach != null && khach.TrangThai=="hoatdong")
                 {
