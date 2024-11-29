@@ -1,0 +1,184 @@
+﻿
+@{
+    ViewBag.Title = "Admin | Quản Lý Thống Kê";
+}
+
+<div class="container">
+    <div class="page-inner">
+        <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4">
+            <div>
+                <h3 class="fw-bold mb-3">Thống kê doanh thu</h3>
+            </div>
+        </div>
+        <!--Thống kê doanh thu theo các ngày trong tháng-->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Biểu đồ doanh thu các ngày trong tháng</div>
+            </div>
+            <div class="card-body">
+                <div class="chart-container">
+                    <canvas id="dailyRevenueChart"></canvas>
+                </div>
+            </div>
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    // Tùy chọn năm và tháng
+                    const year = new Date().getFullYear(); // Năm hiện tại
+                    const month = new Date().getMonth() + 1; // Tháng hiện tại (0-based, cần +1)
+
+                    // Gọi API lấy dữ liệu doanh thu
+                    fetch(`/ThongKe/GetThongKeTheoNgayTrongThang?year=${year}&month=${month}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            const labels = data.map(item => `Ngày ${item.Day}`);
+                            const revenues = data.map(item => item.Revenue);
+
+                            // Tạo biểu đồ
+                            const ctx = document.getElementById('dailyRevenueChart').getContext('2d');
+                            new Chart(ctx, {
+                                type: 'line',
+                                data: {
+                                    labels: labels,
+                                    datasets: [{
+                                        label: 'Doanh thu (đ)',
+                                        data: revenues,
+                                        borderColor: 'rgba(255, 99, 132, 1)',
+                                        backgroundColor: 'rgba(255, 159, 64, 0.2)',
+                                        borderWidth: 1,
+                                        fill: true
+                                    }]
+                                },
+                                options: {
+                                    scales: {
+                                        y: {
+                                            beginAtZero: true
+                                        },
+                                        x: {
+                                            title: {
+                                                display: true,
+                                                text: `Ngày trong tháng ${month}/${year}`
+                                            }
+                                        }
+                                    }
+                                }
+                            });
+                        })
+                        .catch(error => console.error('Lỗi khi tải dữ liệu:', error));
+                });
+            </script>
+        </div>
+        <!--Thống kê doanh thu theo tháng-->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Biểu đồ doanh thu trong 12 tháng</div>
+            </div>
+            <div class="card-body">
+                <div class="chart-container">
+                    <canvas id="myChart"></canvas>
+                </div>
+            </div>
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    // Gọi API từ Controller
+                    fetch('/ThongKe/GetThongKeTheo12Thang')
+                        .then(response => response.json())
+                        .then(data => {
+                            const labels = data.map(item => `Tháng ${item.Month}`);
+                            const revenues = data.map(item => item.Revenue);
+
+                            // Tạo biểu đồ
+                            const ctx = document.getElementById('myChart').getContext('2d');
+                            new Chart(ctx, {
+                                type: 'bar',
+                                data: {
+                                    labels: labels,
+                                    datasets: [{
+                                        label: 'Doanh thu (đ)',
+                                        data: revenues,
+                                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                                        borderColor: 'rgba(75, 192, 192, 1)',
+                                        borderWidth: 1
+                                    }]
+                                },
+                                options: {
+                                    scales: {
+                                        y: {
+                                            beginAtZero: true
+                                        }
+                                    }
+                                }
+                            });
+                        })
+                        .catch(error => console.error('Lỗi khi tải dữ liệu:', error));
+                });
+            </script>
+        </div>
+
+        <!--Thống kê doanh thu theo % danh mục sản phẩm-->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Biểu đồ doanh thu theo phần trăm danh mục sản phẩm</div>
+            </div>
+            <div class="card-body">
+                <div class="chart-container">
+                    <canvas id="yearRevenueChart"></canvas>
+                </div>
+            </div>
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script>
+    // Sử dụng AJAX để gọi controller và lấy dữ liệu
+    $.ajax({
+        url: '@Url.Action("GetThongKeTheoNam", "ThongKe")',
+        type: 'GET',
+        success: function (data) {
+            // Dữ liệu trả về từ controller
+            var years = data.map(function(item) { return item.Year; }); // Các năm
+            var revenues = data.map(function(item) { return item.Revenue; }); // Doanh thu
+
+            // Tạo biểu đồ
+            var ctx = document.getElementById('yearRevenueChart').getContext('2d');
+            var revenueChart = new Chart(ctx, {
+                type: 'bar', // Biểu đồ dạng cột
+                data: {
+                    labels: years, // Các năm
+                    datasets: [{
+                        label: 'Doanh thu (đ)',
+                        data: revenues,
+                        backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 1,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(tooltipItem) {
+                                    return 'Doanh thu: ' + tooltipItem.raw.toLocaleString() + ' đ';
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true // Đảm bảo trục Y bắt đầu từ 0
+                        }
+                    }
+                }
+            });
+        },
+        error: function (xhr, status, error) {
+            alert("Đã có lỗi xảy ra khi tải dữ liệu.");
+        }
+    });
+            </script>
+        </div>
+    </div>
+</div>
