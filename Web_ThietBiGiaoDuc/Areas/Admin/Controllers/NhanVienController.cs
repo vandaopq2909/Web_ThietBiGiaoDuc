@@ -31,6 +31,8 @@ namespace Web_ThietBiGiaoDuc.Areas.Admin.Controllers
                     {
                         HttpCookie authCookie = new HttpCookie("auth", nv.TenDangNhap);
                         HttpCookie roleCookie = new HttpCookie("role", nv.Quyen.TenQuyen);
+                        authCookie.Expires = DateTime.Now.AddDays(30);
+                        roleCookie.Expires = DateTime.Now.AddDays(30);
                         Response.Cookies.Add(authCookie);
                         Response.Cookies.Add(roleCookie);
                         if (nv.Quyen.TenQuyen == "quanli")
