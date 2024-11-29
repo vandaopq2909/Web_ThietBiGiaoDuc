@@ -7,7 +7,7 @@ namespace Web_ThietBiGiaoDuc.Models
     {
         public DanhGia() 
         {
-            MaDG= "DG" + "DH" + DateTime.Now.ToString("yyyyMMddHHmmssfff");
+            MaDG= "DG" + DateTime.Now.ToString("yyyyMMddHHmmssfff");
         }
         [Key]
         public string MaDG { get; set; }

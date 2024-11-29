@@ -1,7 +1,15 @@
-﻿
+﻿@model Web_ThietBiGiaoDuc.Models.DonHang
 @{
     ViewBag.Title = "Sửa Thông Tin Đơn Hàng";
 }
+<script>
+        function confirmDelete(url) {
+        if (confirm("Bạn có chắc chắn muốn xóa sản phẩm này không?")) {
+            window.location.href = url;
+        }
+    }
+</script>
+
 <div class="container">
     <div class="page-inner">
 
@@ -10,59 +18,97 @@
                 <div class="card-title">Thông Tin Đơn Hàng</div>
             </div>
             <div class="card-body">
-                <form>
+                <form action="/Admin/DonHang/Sua" method="post">
+                    <input type="hidden" name="MaDH" value="@Model.MaDH" />
                     <div class="d-flex justify-content-between">
                         <!-- MaDH -->
                         <div class="col-md-2 mb-3 px-2">
                             <label for="MaSP" class="form-label">Mã Đơn Hàng</label>
-                            <input type="text" class="form-control" id="MaDH" placeholder="DH001">
+                            <input type="text" class="form-control" id="MaDH" name="MaDH" value="@Model.MaDH" disabled required>
                         </div>
                         <!-- Ten Khách Hàng-->
                         <div class="col-md-3 mb-3 px-2">
                             <label for="TenSanPham" class="form-label">Tên Khách Hàng</label>
-                            <input type="text" class="form-control" id="MaDH" placeholder="Hồng Hưng">
+                            <input type="text" class="form-control" id="HoTen" value="@Model.KhachHang.HoTen" disabled required>
                         </div>
                         <div class="col-md-3 mb-3 px-2">
                             <label for="TenSanPham" class="form-label">Ngày Đặt Hàng</label>
-                            <input type="date" class="form-control" id="NgayNhapHang" required>
+                            <input type="text" class="form-control" id="NgayNhapHang" value="@Model.NgayDatHang.ToString("dd/MM/yyyy HH:mm")" disabled required>
                         </div>
                     </div>
                     <div class="d-flex justify-content-between">
                         <!-- MaDH -->
                         <div class="col-md-2 mb-3 px-2">
                             <label for="MaSP" class="form-label">Email</label>
-                            <input type="text" class="form-control" id="MaDH" placeholder="hunghung2k33@gmail.com">
+                            <input type="text" class="form-control" id="Email" value="@Model.KhachHang.Email" disabled required>
                         </div>
                         <!-- Ten Khách Hàng-->
                         <div class="col-md-3 mb-3 px-2">
                             <label for="TenSanPham" class="form-label">Số Điện Thoại</label>
-                            <input type="text" class="form-control" id="MaDH" placeholder="0362577642">
+                            <input type="text" class="form-control" id="SDT" value="@Model.KhachHang.SDT" disabled required>
                         </div>
                         <div class="col-md-3 mb-3 px-2">
                             <label for="TenSanPham" class="form-label">Tổng Tiền</label>
-                            <input type="text" class="form-control" id="MaDH" placeholder="3.000.000 vnđ">
+                            <input type="text" class="form-control" id="TongTien" value="@Model.TongTien.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("vi-VN"))" disabled required>
                         </div>
                         <div class="col-md-3 mb-3 px-2">
-                            <label for="TenSanPham" class="form-label">Trạng Thái Đơn Hàng</label>
-                            <select name="order-status" aria-controls="basic-datatables" class="form-control" style="width:200px">
-                                <option value="processing" class="text-dark">Đang xử lý</option>
-                                <option value="shipping" class="text-primary">Đang giao hàng</option>
-                                <option value="return-processing" class="text-warning">Đang xử lý đổi trả</option>
-                                <option value="delivered" class="text-success">Giao hàng thành công</option>
-                                <option value="failed" class="text-danger">Giao hàng không thành công</option>
+                            <label for="TrangThai" class="form-label">Trạng Thái Đơn Hàng</label>
+                            <select name="trangthai" id="order-status" class="form-control" style="width:200px">
+                                <option value="Đang xử lý" @(ViewBag.SelectedStatus == "Đang xử lý" ? "selected" : "")>Đang xử lý</option>
+                                <option class="text-primary" value="Đang giao hàng" @(ViewBag.SelectedStatus == "Đang giao hàng" ? "selected" : "")>Đang giao hàng</option>
+                                <option class="text-warning" value="Đang xử lý đổi trả" @(ViewBag.SelectedStatus == "Đang xử lý đổi trả" ? "selected" : "")>Đang xử lý đổi trả</option>
+                                <option class="text-success" value="Giao hàng thành công" @(ViewBag.SelectedStatus == "Giao hàng thành công" ? "selected" : "")>Giao hàng thành công</option>
                             </select>
                         </div>
                     </div>
+
                     <div class="col-md-12 mb-3 px-2">
-                        <label for="TenSanPham" class="form-label">Địa Chỉ Giao Hàng</label>
-                        <textarea type="text" class="form-control" id="MaDH" placeholder="45 Trần Quốc Toản, Khu Phố 1,TP Phú Quốc"></textarea>
+                        <label for="DiaCHi" class="form-label">Địa Chỉ Giao Hàng</label>
+                        <textarea type="text" class="form-control" id="DiaChiGiaoHang" name="DiaChiGiaoHang"> @Model.DiaChiGiaoHang</textarea>
                     </div>
-                    <div class="col-md-12 mb-3 px-2">
-                        <label for="TenSanPham" class="form-label">Ghi Chú</label>
-                        <input type="text" class="form-control" id="MaDH" placeholder="Đóng Gói Cẩn Thận">
+                    <div class=" justify-content-between">
+                        <div class="text-center container">
+                            <h4>Chi tiết đơn hàng @ViewBag.madh</h4>
+                            <hr />
+                        </div>
+                        <div class="container d-flex justify-content-center " style="min-height:200px;">
+
+                            <table class="table">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th scope="col">Mã sản phẩm</th>
+                                        <th scope="col">Tên sản phẩm</th>
+                                        <th scope="col">Số Lượng</th>
+                                        <th scope="col">Đơn giá</th>
+                                        <th scope="col">Thành tiền</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in ViewBag.lstCTDH)
+                                    {
+                                        <tr>
+                                            <th scope="row">@item.MaSP</th>
+                                            <td>@item.TenSanPham</td>
+                                            <td>@item.SoLuong</td>
+
+                                            <td>@item.Gia.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("vi-VN"))</td>
+                                            <td>@item.TongTien.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("vi-VN"))</td>
+
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <a href="/Admin/DonHang/index" type="submit" class="btn btn-secondary" style="margin-right:10px">Quay về</a>
+
+                        <button type="submit" class="btn btn-primary">Sửa Đơn Hàng</button>
+
                     </div>
                     <!-- Submit Button -->
-                    <button type="submit" class="btn btn-primary">Sửa Đơn Hàng</button>
+
                 </form>
             </div>
         </div>
