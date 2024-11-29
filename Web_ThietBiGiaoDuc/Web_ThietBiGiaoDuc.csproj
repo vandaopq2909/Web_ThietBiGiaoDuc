@@ -154,9 +154,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202411261526464_InitialDatabase.cs" />
-    <Compile Include="Migrations\202411261526464_InitialDatabase.Designer.cs">
-      <DependentUpon>202411261526464_InitialDatabase.cs</DependentUpon>
+    <Compile Include="Migrations\202411281205395_InitialDatabase.cs" />
+    <Compile Include="Migrations\202411281205395_InitialDatabase.Designer.cs">
+      <DependentUpon>202411281205395_InitialDatabase.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApDungKhuyenMai.cs" />
@@ -600,6 +600,9 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\Banner\banner1.png" />
+    <Content Include="Images\Banner\banner2.png" />
+    <Content Include="Images\Banner\banner3.png" />
     <Content Include="Images\SanPham\ampe_ke_mot_chieu_1.jpg" />
     <Content Include="Images\SanPham\bang_ten_chu_cai_tieng_viet_1.jpg" />
     <Content Include="Images\SanPham\bang_tu_chong_loa_treo_tren_tuong_1.jpg" />
@@ -889,6 +892,8 @@
     <Content Include="Views\KhachHang\DoiMatKhau.cshtml" />
     <Content Include="Views\GioHang\LichSuMuaHang.cshtml" />
     <Content Include="Views\GioHang\ChiTietDonHang.cshtml" />
+    <Content Include="Views\SanPham\SanPhamTheoDanhMuc.cshtml" />
+    <Content Include="Views\SanPham\SanPhamTheoLoai.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Data\" />
@@ -921,8 +926,8 @@
     <Content Include="Scripts\jquery-3.7.0.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202411261526464_InitialDatabase.resx">
-      <DependentUpon>202411261526464_InitialDatabase.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202411281205395_InitialDatabase.resx">
+      <DependentUpon>202411281205395_InitialDatabase.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
