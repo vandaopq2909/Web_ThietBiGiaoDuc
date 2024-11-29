@@ -145,6 +145,7 @@
     <Compile Include="Areas\Admin\Controllers\PhieuNhapController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoaiSanPhamController.cs" />
     <Compile Include="Areas\Admin\Controllers\SanPhamController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ThongKeController.cs" />
     <Compile Include="Areas\Admin\Controllers\ThuongHieuController.cs" />
     <Compile Include="Controllers\EmailController.cs" />
     <Compile Include="Controllers\GioHangController.cs" />
@@ -854,6 +855,7 @@
     <Content Include="Areas\Admin\Views\ThuongHieu\Them.cshtml" />
     <Content Include="Areas\Admin\Views\SanPham\Sua.cshtml" />
     <Content Include="Areas\Admin\Views\NhanVien\DangNhap.cshtml" />
+    <Content Include="Areas\Admin\Views\ThongKe\Index.cshtml" />
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />
