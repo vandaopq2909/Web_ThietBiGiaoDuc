@@ -112,5 +112,112 @@ namespace Web_ThietBiGiaoDuc.Areas.Admin.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        public ActionResult ApDung(string maKM)
+        {
+            DatabaseContext db = new DatabaseContext();
+
+            // Kiểm tra mã khuyến mãi
+            if (string.IsNullOrEmpty(maKM))
+            {
+                return RedirectToAction("Index");
+            }
+
+            // Lấy thông tin khuyến mãi được chọn
+            var khuyenMai = db.khuyenMais.FirstOrDefault(x => x.MaKM == maKM);
+            if (khuyenMai == null)
+            {
+                return HttpNotFound();
+            }
+
+            //Lấy ds sản phẩm có MaKM = makm
+            ViewBag.listSPKM = db.sanPhams
+            .Where(x => x.ApDungKhuyenMais.Any(adkm => adkm.MaKM == maKM))
+            .ToList();
+            return View(khuyenMai);
+        }
+        public ActionResult GetSanPhamList()
+        {
+            DatabaseContext db = new DatabaseContext();
+            var sanPhams = db.sanPhams.Select(sp => new
+            {
+                sp.MaSP,
+                sp.TenSanPham
+            }).ToList();
+
+            return Json(sanPhams, JsonRequestBehavior.AllowGet);
+        }
+        // Phương thức này sẽ được gọi từ AJAX để lấy giá sản phẩm
+        [HttpGet]
+        public JsonResult GetGiaSanPham(string MaSP)
+        {
+            DatabaseContext db = new DatabaseContext();
+            // Tìm sản phẩm theo MaSP
+            var product = db.sanPhams.FirstOrDefault(sp => sp.MaSP == MaSP);
+
+            if (product != null)
+            {
+                // Trả về thông tin sản phẩm bao gồm giá
+                return Json(new { Gia = product.Gia }, JsonRequestBehavior.AllowGet);
+            }
+
+            // Nếu không tìm thấy sản phẩm, trả về thông báo lỗi
+            return Json(null, JsonRequestBehavior.AllowGet);
+        }
+        [HttpGet]
+        public JsonResult TimKiemSPKM(string search = "", int page = 1, int pageSize = 10)
+        {
+            DatabaseContext db = new DatabaseContext();
+            var listSP = db.sanPhams.AsQueryable();
+
+            if (!string.IsNullOrEmpty(search))
+            {
+                listSP = listSP.Where(sp => sp.TenSanPham.Contains(search));
+            }
+
+            var pagedSanPhams = listSP.OrderBy(sp => sp.MaSP).ToPagedList(page, pageSize);
+
+            var result = new
+            {
+                Data = pagedSanPhams.Select(sp => new
+                {
+                    sp.MaSP,
+                    sp.TenSanPham,
+                    DanhMuc = sp.LoaiSanPham.DanhMuc.TenDanhMuc,
+                    Loai = sp.LoaiSanPham.TenLoai,
+                    Gia = sp.Gia.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("vi-VN")),
+                    TonKho = sp.SoLuongTonKho,
+                    sp.TrangThai
+                }).ToList(),
+                TotalPages = pagedSanPhams.PageCount,
+                CurrentPage = pagedSanPhams.PageNumber
+            };
+
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public JsonResult ThemSanPhamApDung(string MaKM, string NgayBD, string NgayKT, List<SanPham> products)
+        {
+            DatabaseContext db = new DatabaseContext();
+
+            // Kiểm tra và xử lý các sản phẩm
+            foreach (var product in products)
+            {
+                var apDungKhuyenMai = new ApDungKhuyenMai
+                {
+                    MaKM = MaKM,   // Nhận MaKM từ client
+                    NgayBD = DateTime.Parse(NgayBD), // Chuyển đổi NgàyBD thành kiểu DateTime
+                    NgayKT = DateTime.Parse(NgayKT), // Chuyển đổi NgàyKT thành kiểu DateTime
+                    MaSP = product.MaSP
+                };
+
+                db.apDungKhuyenMais.Add(apDungKhuyenMai); // Thêm vào bảng ApDungKhuyenMai
+            }
+
+            // Lưu thay đổi vào database
+            db.SaveChanges();
+
+            return Json(new { success = true });
+        }
+
     }
 }
