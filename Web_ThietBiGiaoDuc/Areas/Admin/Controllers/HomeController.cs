@@ -13,6 +13,12 @@ namespace Web_ThietBiGiaoDuc.Areas.Admin.Controllers
         public ActionResult Index()
         {
             DatabaseContext db = new DatabaseContext();
+            string tenDangNhap = Request.Cookies["auth"]?.Value;
+            var nv = db.nhanViens.Where(x => x.TenDangNhap == tenDangNhap).FirstOrDefault();
+            if( nv==null)
+            {
+                return RedirectToAction("DangNhap", "NhanVien");
+            }
             var date = DateTime.Now;
 
             ViewBag.SLKhachHang = db.khachHangs.ToList().Count;
