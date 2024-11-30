@@ -1,0 +1,230 @@
+﻿@using PagedList.Mvc; <!-- Import thư viện PagedList trong View -->
+@model PagedList.IPagedList<Web_ThietBiGiaoDuc.Models.KhuyenMai>
+@{
+    ViewBag.Title = "Quản Lý Khuyến Mãi";
+}
+
+<div class="container">
+    <div class="page-inner">
+        <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4">
+            <div>
+                <h3 class="fw-bold mb-3">Quản lý khuyến mãi</h3>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <div class="d-flex align-items-center">
+                    <!-- Ô tìm kiếm -->
+                    <div class="input-group">
+                        <input type="text" id="search-input" class="form-control" placeholder="Search..." aria-label="Search...">
+                        <button id="search-button" class="btn btn-primary" type="button">
+                            <i class="fa fa-search"></i> Tìm kiếm
+                        </button>
+                    </div>
+                    <div class="input-group">
+                        <a class="btn btn-primary btn-round ms-auto" href="/admin/khuyenmai/them">
+                            <i class="fa fa-plus"></i>
+                            Thêm khuyến mãi
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <!-- Bảng sản phẩm -->
+                    <table id="add-row" class="display table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>Mã khuyến mãi</th>
+                                <th>Tên khuyến mãi</th>
+                                <th>Tỉ lệ giảm giá</th>
+                                <th>Mô tả</th>
+                                <th>Trạng thái</th>
+                                <th style="width: 10%">Xử Lý</th>
+                            </tr>
+                        </thead>
+                        <tbody id="product-table-body">
+                            @foreach (var km in Model)
+                            {
+                                <tr>
+                                    <td>@km.MaKM</td>
+                                    <td>@km.TenKM</td>
+                                    <td>@km.TiLeGiamGia<span>%</span></td>
+                                    <td>@km.MoTa</td>
+                                    <td>@km.TrangThai</td>
+                                    <td>
+                                        <div class="form-button-action">
+                                            <!-- Nút xử lý -->
+                                            <a href="/admin/khuyenmai/sua?maKM=@km.MaKM" class="btn btn-link btn-primary btn-lg">
+                                                <i class="fa fa-edit"></i>
+                                            </a>
+                                            <!-- Nút xóa kích hoạt Modal -->
+                                            <button data-bs-toggle="modal"
+                                                    data-bs-target="#remove_modal_@km.MaKM"
+                                                    aria-hidden="true"
+                                                    tabindex="-1"
+                                                    id="remove_btn_@km.MaKM"
+                                                    title=""
+                                                    class="btn btn-link btn-danger"
+                                                    data-original-title="Remove">
+                                                <i class="fa fa-times"></i>
+                                            </button>
+                                            <!-- Modal Xác nhận xóa -->
+                                            <div class="modal fade" id="remove_modal_@km.MaKM" tabindex="-1" aria-labelledby="confirmDeleteLabel_@km.MaKM" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="confirmDeleteLabel_@km.MaKM">Xác nhận xóa</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            Bạn có chắc chắn muốn xóa mục "@km.TenKM" không?
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                                                            <!-- Form xóa -->
+                                                            <form action="/Admin/KhuyenMai/Xoa" method="post">
+                                                                <input type="hidden" name="maKM" value="@km.MaKM" />
+                                                                <button type="submit" class="btn btn-danger">Xóa</button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <!-- Phân trang -->
+                    <div id="pagination-container">
+                        @if (Model != null && Model is PagedList.IPagedList)
+                        {
+                            var pagedList = (PagedList.IPagedList)Model;
+
+                            <ul class="pagination justify-content-center">
+                                @if (pagedList.HasPreviousPage)
+                                {
+                                    <li class="page-item">
+                                        <a class="page-link" href="#" onclick="loadPage(@(pagedList.PageNumber - 1))">Previous</a>
+                                    </li>
+                                }
+
+                                @for (int i = 1; i <= pagedList.PageCount; i++)
+                                {
+                                    <li class="page-item @(i == pagedList.PageNumber ? "active" : "")">
+                                        <a class="page-link" href="#" onclick="loadPage(@i)">@i</a>
+                                    </li>
+                                }
+
+                                @if (pagedList.HasNextPage)
+                                {
+                                    <li class="page-item">
+                                        <a class="page-link" href="#" onclick="loadPage(@(pagedList.PageNumber + 1))">Next</a>
+                                    </li>
+                                }
+                            </ul>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    // Bắt sự kiện khi nhấn nút tìm kiếm
+    $('#search-button').on('click', function () {
+        const query = $('#search-input').val(); // Lấy giá trị từ ô tìm kiếm
+        loadPage(1, query); // Tìm kiếm từ trang 1
+    });
+
+    // Tải dữ liệu theo trang hoặc từ khóa tìm kiếm
+    function loadPage(page, query = '') {
+        $.ajax({
+            url: '/Admin/KhuyenMai/TimKiem',
+            type: 'GET',
+            data: { search: query, page: page },
+            success: function (response) {
+                if (!response.Data || response.Data.length === 0) {
+                    $('#product-table-body').html('<tr><td colspan="8">Không tìm thấy khuyến mãi nào!</td></tr>');
+                    $('#pagination-container').html('');
+                    return;
+                }
+
+                let tableBody = '';
+                response.Data.forEach(km => {
+                    tableBody += `
+            <tr>
+                <td>${km.MaKM}</td>
+                <td>${km.TenKM}</td>
+                <td>${km.TiLeGiamGia}</td>
+                <td>${km.MoTa}</td>
+                <td>${km.TrangThai}</td>
+                <td>
+                    <div class="form-button-action">
+                        <a href="/admin/khuyenmai/sua?maKM=${km.MaKM}" class="btn btn-link btn-primary btn-lg">
+                            <i class="fa fa-edit"></i>
+                        </a>
+                        <!-- Nút xóa kích hoạt Modal -->
+                        <button data-bs-toggle="modal"
+                                data-bs-target="#remove_modal_${km.MaKM}"
+                                aria-hidden="true"
+                                tabindex="-1"
+                                id="remove_btn_${km.MaKM}"
+                                title="Xóa"
+                                class="btn btn-link btn-danger"
+                                data-original-title="Remove">
+                            <i class="fa fa-times"></i>
+                        </button>
+                        <!-- Modal Xác nhận xóa -->
+                        <div class="modal fade" id="remove_modal_${km.MaKM}" tabindex="-1" aria-labelledby="confirmDeleteLabel_${km.MaKM}" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="confirmDeleteLabel_${km.MaKM}">Xác nhận xóa</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Bạn có chắc chắn muốn xóa mục "${km.TenKM}" không?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                                            <!-- Form xóa -->
+                                            <form action="/Admin/KhuyenMai/Xoa" method="post">
+                                                <input type="hidden" name="maKM" value="${km.MaKM}" />
+                                                <button type="submit" class="btn btn-danger">Xóa</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        </div>
+                    </td>
+                </tr>
+            `;
+                    });
+
+                    $('#product-table-body').html(tableBody);
+
+                    // Xây dựng phân trang
+                    let pagination = '';
+                    for (let i = 1; i <= response.TotalPages; i++) {
+                        pagination += `
+                <li class="page-item ${i === response.CurrentPage ? 'active' : ''}">
+                    <a class="page-link" href="javascript:void(0);" onclick="loadPage(${i}, '${query}')">${i}</a>
+                </li>
+            `;
+                    }
+                    $('#pagination-container').html(`<ul class="pagination justify-content-center">${pagination}</ul>`);
+                },
+                error: function () {
+                    alert('Có lỗi xảy ra, vui lòng thử lại!');
+                }
+            });
+        }
+</script>
+
+
