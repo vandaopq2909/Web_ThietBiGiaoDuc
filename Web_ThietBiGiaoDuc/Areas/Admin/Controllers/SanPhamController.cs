@@ -1,10 +1,13 @@
-﻿using System;
+﻿using PagedList;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Drawing.Printing;
 using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
 using Web_ThietBiGiaoDuc.Models;
 
 namespace Web_ThietBiGiaoDuc.Areas.Admin.Controllers
@@ -12,12 +15,54 @@ namespace Web_ThietBiGiaoDuc.Areas.Admin.Controllers
     public class SanPhamController : Controller
     {
         // GET: Admin/SanPham
-        public ActionResult Index()
+        public ActionResult Index(string search = "", int page = 1, int pageSize = 10)
         {
             DatabaseContext db = new DatabaseContext();
-            var listSP = db.sanPhams.ToList();
-            return View(listSP);
+            var listSP = db.sanPhams.AsQueryable();
+
+            // Lọc theo từ khóa tìm kiếm nếu có
+            if (!string.IsNullOrEmpty(search))
+            {
+                listSP = listSP.Where(sp => sp.TenSanPham.Contains(search));
+            }
+
+            // Áp dụng phân trang
+            var pagedSanPhams = listSP.OrderBy(sp => sp.MaSP).ToPagedList(page, pageSize);
+            return View(pagedSanPhams);
         }
+        // Action Search: Xử lý AJAX tìm kiếm và phân trang
+        [HttpGet]
+        public JsonResult TimKiem(string search = "", int page = 1, int pageSize = 10)
+        {
+            DatabaseContext db = new DatabaseContext();
+            var listSP = db.sanPhams.AsQueryable();
+
+            if (!string.IsNullOrEmpty(search))
+            {
+                listSP = listSP.Where(sp => sp.TenSanPham.Contains(search));
+            }
+
+            var pagedSanPhams = listSP.OrderBy(sp => sp.MaSP).ToPagedList(page, pageSize);
+
+            var result = new
+            {
+                Data = pagedSanPhams.Select(sp => new
+                {
+                    sp.MaSP,
+                    sp.TenSanPham,
+                    DanhMuc = sp.LoaiSanPham.DanhMuc.TenDanhMuc,
+                    Loai = sp.LoaiSanPham.TenLoai,
+                    Gia = sp.Gia.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("vi-VN")),
+                    TonKho = sp.SoLuongTonKho,
+                    sp.TrangThai
+                }).ToList(),
+                TotalPages = pagedSanPhams.PageCount,
+                CurrentPage = pagedSanPhams.PageNumber
+            };
+
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
         [HttpGet]
         public JsonResult GetListLoaiSP(string maDM)
         {
@@ -202,12 +247,28 @@ namespace Web_ThietBiGiaoDuc.Areas.Admin.Controllers
         public ActionResult Xoa(string maSP)
         {
             DatabaseContext db = new DatabaseContext();
-            var sp = db.sanPhams.Where(x => x.MaSP == maSP).FirstOrDefault();
-            sp.TrangThai = "daxoa";
 
-            //db.sanPhams.Remove(sp);
+            var sp = db.sanPhams.FirstOrDefault(x => x.MaSP == maSP);
+            if (sp == null)
+            {
+                TempData["ErrorMessage"] = "Sản phẩm không tồn tại.";
+                return RedirectToAction("Index");
+            }
+
+            // Kiểm tra sản phẩm đã được sử dụng trong hóa đơn hay chưa
+            bool isInHoaDon = db.chiTietDonHangs.Any(x => x.MaSP == maSP);
+            if (isInHoaDon)
+            {
+                TempData["ErrorMessage"] = "Không thể xóa. Sản phẩm đã được sử dụng trong hóa đơn.";
+                return RedirectToAction("Index");
+            }
+
+            db.sanPhams.Remove(sp);
             db.SaveChanges();
+
+            TempData["SuccessMessage"] = "Xóa sản phẩm thành công.";
             return RedirectToAction("Index");
         }
+
     }
 }
