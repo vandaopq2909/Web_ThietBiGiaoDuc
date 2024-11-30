@@ -1,0 +1,138 @@
+﻿@{
+    ViewBag.Title = "Thêm khách hàng";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .page-inner {
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            font-weight: bold;
+        }
+
+        .card-header {
+            font-weight: bold;
+            font-size: 1.5em;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 0.9em;
+            margin-top: 5px;
+            display: none; /* Ẩn thông báo lỗi ban đầu */
+        }
+
+        .button-container {
+            display: flex;
+            gap: 10px;
+        }
+
+            .button-container .btn {
+                flex: 1;
+            }
+
+        .btn-success {
+            background-color: green;
+            border-color: #28a745;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="page-inner">
+            <div class="d-flex align-items-center justify-content-center pt-2 pb-4">
+                <h3>Thêm Khách Hàng</h3>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    Thông Tin Khách Hàng
+                </div>
+                <div class="card-body">
+                    <form action="/admin/khachhang/them" method="post">
+                        <div class="mb-3 row">
+                            <label for="TenDN" class="col-sm-4 col-form-label">Tên Đăng Nhập</label>
+                            <div>
+                                <input type="text" class="form-control" id="TenDN" placeholder="Nhập tên đăng nhập" name="TenDangNhap" required />
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="MatKhau" class="col-sm-4 col-form-label">Mật Khẩu</label>
+                            <div>
+                                <input type="password" class="form-control" id="MatKhau" placeholder="Nhập mật khẩu" name="MatKhau" required />
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="HoTen" class="col-sm-4 col-form-label">Họ Tên</label>
+                            <div>
+                                <input type="text" class="form-control" id="HoTen" placeholder="Nhập họ và tên" name="HoTen" required />
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="Email" class="col-sm-4 col-form-label">Email</label>
+                            <div>
+                                <input type="email" class="form-control" id="Email" placeholder="Nhập email" name="Email" required />
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="SoDienThoai" class="col-sm-4 col-form-label">Số Điện Thoại</label>
+                            <div>
+                                <input type="tel" class="form-control" id="SoDienThoai" placeholder="Nhập số điện thoại" name="SDT" required pattern="\d+" />
+                            </div>
+                        </div>
+                        <!-- Địa chỉ-->
+                        <div class="row">
+                            <div class="col-md-12 mb-3">
+                                <label for="DiaChi" class="form-label">Địa chỉ</label>
+                                <input type="text" class="form-control" id="DiaChi" placeholder="Nhập địa chỉ" name="DiaChi" />
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="Active" class="col-sm-4 col-form-label">Trạng thái</label>
+                                <div>
+                                    <select class="form-select" id="Active" name="TrangThai" required>
+                                        <option value="" selected disabled>Chọn trạng thái</option>
+                                        <option value="hoatdong">Hoạt động</option>
+                                        <option value="daxoa">Đã xóa</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- Submit Button -->
+                            <div class="button-container">
+                                <a href="/admin/khachhang/index" class="btn btn-danger">Quay lại</a>
+                                <button type="submit" class="btn btn-primary">Lưu khách hàng</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const phoneInput = document.getElementById('SoDienThoai');
+        const phoneErrorMessage = document.getElementById('phone-error-message');
+
+        phoneInput.addEventListener('input', () => {
+            if (!/^\d*$/.test(phoneInput.value)) {
+                phoneErrorMessage.style.display = 'block';
+                phoneInput.classList.add('is-invalid');
+            } else {
+                phoneErrorMessage.style.display = 'none';
+                phoneInput.classList.remove('is-invalid');
+            }
+        });
+    </script>
+</body>
+</html>
