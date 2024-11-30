@@ -18,6 +18,12 @@ namespace Web_ThietBiGiaoDuc.Areas.Admin.Controllers
         public ActionResult Index(string search = "", int page = 1, int pageSize = 10)
         {
             DatabaseContext db = new DatabaseContext();
+            string tenDangNhap = Request.Cookies["auth"]?.Value;
+            var nv = db.nhanViens.Where(x => x.TenDangNhap == tenDangNhap).FirstOrDefault();
+            if (nv == null)
+            {
+                return RedirectToAction("DangNhap", "NhanVien");
+            }
             var listSP = db.sanPhams.AsQueryable();
 
             // Lọc theo từ khóa tìm kiếm nếu có
@@ -238,7 +244,7 @@ namespace Web_ThietBiGiaoDuc.Areas.Admin.Controllers
                         }
                     }
                     db.SaveChanges();
-                }                              
+                }
             }
 
             return RedirectToAction("Index");

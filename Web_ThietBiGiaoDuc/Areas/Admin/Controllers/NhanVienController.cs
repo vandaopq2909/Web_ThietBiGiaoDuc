@@ -14,6 +14,12 @@ namespace Web_ThietBiGiaoDuc.Areas.Admin.Controllers
         {
             //test
             DatabaseContext db = new DatabaseContext();
+            string tenDangNhap = Request.Cookies["auth"]?.Value;
+            var nv = db.nhanViens.Where(x => x.TenDangNhap == tenDangNhap).FirstOrDefault();
+            if (nv == null)
+            {
+                return RedirectToAction("DangNhap", "NhanVien");
+            }
             var t = db.nhanViens.ToList();
             return View();
         }
@@ -24,7 +30,7 @@ namespace Web_ThietBiGiaoDuc.Areas.Admin.Controllers
             if (nhanVien != null)
             {
                 DatabaseContext db = new DatabaseContext();
-                NhanVien nv = db.nhanViens.Where(u => u.TenDangNhap == u.TenDangNhap).FirstOrDefault();
+                NhanVien nv = db.nhanViens.Where(u => u.TenDangNhap == nhanVien.TenDangNhap).FirstOrDefault();
                 if (nv != null)
                 {
                     if (BCrypt.Net.BCrypt.Verify(nhanVien.MatKhau, nv.MatKhau))

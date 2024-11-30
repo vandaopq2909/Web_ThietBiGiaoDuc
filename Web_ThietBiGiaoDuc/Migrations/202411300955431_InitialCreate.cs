@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialDatabase : DbMigration
+    public partial class InitialCreate : DbMigration
     {
         public override void Up()
         {
@@ -161,6 +161,7 @@
                     {
                         MaNV = c.String(nullable: false, maxLength: 128),
                         TenDangNhap = c.String(),
+                        HoTen = c.String(),
                         MatKhau = c.String(),
                         Email = c.String(),
                         SDT = c.String(),
