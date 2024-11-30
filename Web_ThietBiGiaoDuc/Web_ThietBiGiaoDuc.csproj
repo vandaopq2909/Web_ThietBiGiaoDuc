@@ -860,6 +860,10 @@
     <Content Include="Areas\Admin\Views\KhuyenMai\Index.cshtml" />
     <Content Include="Areas\Admin\Views\KhuyenMai\Them.cshtml" />
     <Content Include="Areas\Admin\Views\KhuyenMai\Sua.cshtml" />
+    <Content Include="Areas\Admin\Views\KhachHang\Them.cshtml" />
+    <Content Include="Areas\Admin\Views\KhachHang\Sua.cshtml" />
+    <Content Include="Areas\Admin\Views\NhanVien\Them.cshtml" />
+    <Content Include="Areas\Admin\Views\NhanVien\Sua.cshtml" />
     <Content Include="Areas\Admin\Views\KhuyenMai\ApDung.cshtml" />
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
