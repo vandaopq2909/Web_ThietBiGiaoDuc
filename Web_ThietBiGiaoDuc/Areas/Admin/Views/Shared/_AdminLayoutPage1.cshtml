@@ -149,13 +149,13 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="widgets.html">
+                            <a href="#">
                                 <i class="fas fa-user-edit"></i>
                                 <p>Quản lý khách hàng</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="widgets.html">
+                            <a href="#">
                                 <i class="fas fa-users"></i>
                                 <p>Quản lý nhân viên</p>
                             </a>
@@ -195,7 +195,30 @@
                 <nav class="navbar navbar-header navbar-header-transparent navbar-expand-lg border-bottom">
                     <div class="container-fluid">
                         <nav class="navbar navbar-header-left navbar-expand-lg navbar-form nav-search p-0 d-none d-lg-flex">
-                          
+                            <span id="currentTime"></span>
+                            <script>
+                                function updateDateTime() {
+                                    const now = new Date(); // Lấy thời gian hiện tại
+                                    const day = String(now.getDate()).padStart(2, '0'); // Ngày (dd)
+                                    const month = String(now.getMonth() + 1).padStart(2, '0'); // Tháng (mm) (Lưu ý: getMonth() trả về từ 0-11)
+                                    const year = now.getFullYear(); // Năm (yyyy)
+                                    const hours = String(now.getHours()).padStart(2, '0'); // Giờ (hh)
+                                    const minutes = String(now.getMinutes()).padStart(2, '0'); // Phút (mm)
+                                    const seconds = String(now.getSeconds()).padStart(2, '0'); // Giây (ss)
+
+                                    // Format ngày giờ
+                                    const formattedDateTime = `${day}/${month}/${year} | ${hours} giờ : ${minutes} phút`;
+
+                                    // Hiển thị trong phần tử có id là currentTime
+                                    document.getElementById('currentTime').innerText = formattedDateTime;
+                                }
+
+                                // Gọi hàm updateDateTime mỗi giây
+                                setInterval(updateDateTime, 1000);
+
+                                // Gọi ngay khi tải trang
+                                updateDateTime();
+                            </script>
                         </nav>
 
                         <ul class="navbar-nav topbar-nav ms-md-auto align-items-center">
