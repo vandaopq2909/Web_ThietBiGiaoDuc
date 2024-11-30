@@ -33,22 +33,28 @@ namespace Web_ThietBiGiaoDuc.Controllers
                
                 return View("Error");
             }
-
+            ViewBag.DaMuaHang = false;
             // Truy vấn danh sách hình ảnh của sản phẩm
             List<HinhAnh> lstha = db.hinhAnhs.Where(x => x.MaSP == masp).ToList();
             ViewBag.lstHA = lstha;
             string tenDangNhap = Request.Cookies["auth"]?.Value;
             if (string.IsNullOrEmpty(tenDangNhap))
             {
-       
+
                 TempData["Message"] = "Vui lòng đăng nhập để thực hiện hành động này.";
-                return RedirectToAction("Login");
+
             }
-            var khach = db.khachHangs.FirstOrDefault(u => u.TenDangNhap == tenDangNhap);
-            string hoTen = khach?.HoTen;
-            bool daMuaHang = db.chiTietDonHangs.Any(ctdh => ctdh.MaSP == masp
+            else
+            {
+                 var khach = db.khachHangs.FirstOrDefault(u => u.TenDangNhap == tenDangNhap);
+                string hoTen = khach?.HoTen;
+                bool daMuaHang = db.chiTietDonHangs.Any(ctdh => ctdh.MaSP == masp
                                 && ctdh.DonHang.MaKH == khach.MaKH
                                 && ctdh.DonHang.TrangThai == "Giao hàng thành công");
+                ViewBag.HoTen = hoTen;
+                ViewBag.DaMuaHang = daMuaHang;
+            }
+           
 
 
             var lstDanhGia = db.danhGias.Where(x => x.SanPham.MaSP == masp).ToList();
@@ -63,8 +69,8 @@ namespace Web_ThietBiGiaoDuc.Controllers
                            img = sp.HinhAnhs.Select(h => h.TenHinhAnh).FirstOrDefault()
                        }).ToList();
 
-            ViewBag.HoTen = hoTen;
-            ViewBag.DaMuaHang = daMuaHang;
+
+       
             ViewBag.lstDanhGia = lstDanhGia;
             ViewBag.lstSPTuongTu = lstSPTuongTu;
 

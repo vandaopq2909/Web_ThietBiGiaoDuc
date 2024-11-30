@@ -1,95 +1,161 @@
-﻿@{
+﻿
+@{
     ViewBag.Title = "Thêm phiếu nhập";
+}
+@functions{
+    public string GetStatusColorClass(string trangThai)
+    {
+        if (trangThai == "Đã đăt hàng") return "text-primary"; // Đã đăt hàng
+        if (trangThai == "Đang giao hàng") return "text-warning"; // Đang giao hàng
+        if (trangThai == "Đã nhập hàng") return "text-success"; // Đã nhập hàng
+        return "text-secondary"; // Mặc định
+    }
+
 }
 
 <div class="container">
     <div class="page-inner">
         <div class="card">
             <div class="card-header">
-                <div class="card-title">Thông Tin Phiếu Nhập</div>
+                <div class="card-title">Thêm thông tin phiếu nhập</div>
             </div>
             <div class="card-body">
-                <form>
+                <form method="post" action="/admin/phieunhap/them">
                     <!-- Thông tin chung về phiếu nhập -->
-                    <div class="d-flex justify-content-between">
-                        <div class="col-md-2 mb-3 px-2">
+                    <div class="row">
+                        <div class="col-3">
                             <label for="MaPhieuNhap" class="form-label">Phiếu Nhập</label>
                             <input type="text" class="form-control" id="MaPhieuNhap" placeholder="PN003" disabled required>
                         </div>
-                        <div class="col-md-3 mb-3 px-2">
+                        <div class="col-4 mb-4 px-2">
                             <label for="NhaCungCap" class="form-label">Nhà Cung Cấp</label>
-                            <select id="NhaCungCap" class="form-control" required>
-                                <option value="ncc01">Nhà Cung Cấp 01</option>
-                                <option value="ncc02">Nhà Cung Cấp 02</option>
-                                <!-- Thêm các nhà cung cấp khác -->
+                            <select name="MaNCC" class="form-control">
+                                @foreach (var item in ViewBag.lstNCC)
+                                {
+                                    <option name="MaNCC" value="@item.MaNCC">@item.TenNCC</option>
+                                }
                             </select>
                         </div>
-                        <div class="col-md-3 mb-3 px-2">
-                            <label for="NgayNhapHang" class="form-label">Ngày Nhập Hàng</label>
-                            <input type="date" class="form-control" id="NgayNhapHang" required>
+                        <div class="col-md-4 mb-4 px-2">
+                            <label for="MaNV" class="form-label">Họ Tên</label>
+                            <input type="text" class="form-control" name="MaNV" value="@ViewBag.HoTen" id="HoTen" disabled>
                         </div>
                     </div>
 
-                    <!-- Bảng nhập chi tiết sản phẩm -->
-                    <h4>Chi Tiết Sản Phẩm</h4>
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th>Mã sản phẩm</th>
-                                <th>Tên sản phẩm</th>
-                                <th>Số lượng</th>
-                                <th>Đơn giá</th>
-                                <th>Thành tiền</th>
-                                <th>Xử lí</th>
-                            </tr>
-                        </thead>
-                        <tbody id="productTableBody">
-                            <tr>
-                                <td><input type="text" class="form-control" placeholder="SP001" disabled required></td>
-                                <td>
-                                    <select name="order-status" aria-controls="basic-datatables" class="form-control" style="width:200px">
-                                        <option value="processing" class="text-dark"></option>
-                                        <option value="shipping" class="text-primary">Bộ Bàn Ghế Giáo Viên</option>
-                                        <option value="return-processing" class="text-warning">Đang xử lý đổi trả</option>
-                                        <option value="delivered" class="text-success">Giao hàng thành công</option>
-                                        <option value="failed" class="text-danger">Giao hàng không thành công</option>
-                                    </select>
-                                </td>
-                                <td><input type="number" class="form-control" placeholder="Số lượng"></td>
-                                <td><input type="number" class="form-control" placeholder="Đơn giá"></td>
-                                <td><input type="text" class="form-control" placeholder="Tính tự động" disabled></td>
-                                <td><button type="button" class="btn btn-danger" onclick="removeRow(this)">Xóa</button></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <button type="button" class="btn btn-primary" onclick="addProductRow()">Thêm sản phẩm</button>
+                    <div class="d-flex justify-content-start">
+                        <!-- MaPN -->
+                        <div class="col-md-4 mb-3 px-2">
+                            <label for="NgayNhapHang" class="form-label">Ngày Nhập Hàng</label>
+                            <input type="date" class="form-control"  id="NgayNhapHang" required>
+                        </div>
 
+                        <div class="col-md-4 mb-3 px-2">
+                            <label for="TrangThai" class="form-label">Trạng Thái Đơn Hàng</label>
+                            <select name="trangthai" id="order-status" class="form-control" style="width:200px">
+                                <option class="text-primary" value="Đã đăt hàng" @(ViewBag.SelectedStatus == "Đã đăt hàng" ? "selected" : "")>Đã đăt hàng</option>
+                                <option class="text-warning" value="Đang giao hàng" @(ViewBag.SelectedStatus == "Đang giao hàng" ? "selected" : "")>Đang giao hàng</option>
+                                <option class="text-success" value="Đã nhập hàng" @(ViewBag.SelectedStatus == "Đã nhập hàng" ? "selected" : "")>Giao hàng thành công</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div class="d-flex justify-content-end">
+                            <button type="button" class="btn btn-primary" onclick="addProductRow()">Thêm dòng </button>
+                        </div>
+
+                        <table id="basic-datatables" class="display table table-striped table-hover dataTable" role="grid" aria-describedby="basic-datatables_info">
+                            <thead>
+                                <tr>
+                                    <th>Sản phẩm</th>
+                                    <th>Số lượng</th>
+                                    <th>Giá nhập</th>
+                                    <th>Thành tiền</th>
+                                    <th>Xử lí</th>
+                                </tr>
+                            </thead>
+                            <tbody id="productTableBody">
+                                <tr>
+                                    <td>
+                                        <select class="form-control" name="ChiTietPhieuNhaps[0].MaSP">
+                                            @foreach (var item in ViewBag.lstSanPham)
+                                            {
+                                                <option value="@item.MaSP" data-gia="@item.Gia">@item.TenSanPham (@item.MaSP)</option>
+                                            }
+                                        </select>
+                                    </td>
+                                    <td><input type="number" class="form-control" min="1" placeholder="Số lượng"></td>
+                                    <td><input type="number" class="form-control" min="1000" step="1000" placeholder="Giá nhập"></td>
+                                    <td><input type="text" class="form-control" min="1000" step="1000" placeholder="Thành tiền" disabled></td>
+                                    <td><button type="button" class="btn btn-danger" onclick="removeRow(this)">Xóa</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                     <!-- Nút xác nhận -->
-                    <div class="mt-3">
-                        <button type="submit" class="btn btn-success">Lưu Phiếu Nhập</button>
+                    <div class="d-flex justify-content-center">
+                        <a class="btn btn-success mx-2" href="/admin/phieunhap">Quay Lại</a>
+                        <button type="submit" class="btn btn-primary">Lưu Phiếu Nhập</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
-
 <script>
+    // Thêm dòng sản phẩm mới
     function addProductRow() {
         const tableBody = document.getElementById('productTableBody');
         const newRow = document.createElement('tr');
         newRow.innerHTML = `
-            <td><input type="text" class="form-control" placeholder="SP002"></td>
-            <td><input type="text" class="form-control" placeholder="Tên sản phẩm"></td>
-            <td><input type="number" class="form-control" placeholder="Số lượng"></td>
-            <td><input type="number" class="form-control" placeholder="Đơn giá"></td>
-            <td><input type="text" class="form-control" placeholder="Tính tự động" disabled></td>
+            <td>
+                <select class="form-control">
+                    @foreach (var item in ViewBag.lstSanPham)
+                    {
+                        <option value="@item.MaSP" data-gia="@item.Gia">@item.TenSanPham (@item.MaSP)</option>
+                    }
+                </select>
+            </td>
+            <td><input type="number" class="form-control soLuong" placeholder="Số lượng" min="1" onchange="updateRowTotal(this)"></td>
+            <td><input type="number" class="form-control donGia" placeholder="Giá nhập" min="1000" step="1000" onchange="validatePrice(this)"></td>
+            <td><input type="text" class="form-control thanhTien" placeholder="Tính tự động" min="1000" step="1000"  disabled></td>
             <td><button type="button" class="btn btn-danger" onclick="removeRow(this)">Xóa</button></td>
         `;
         tableBody.appendChild(newRow);
     }
 
+    // Xóa một dòng
     function removeRow(button) {
         button.closest('tr').remove();
+    }
+
+    // Cập nhật thành tiền khi nhập số lượng hoặc đơn giá
+    function updateRowTotal(input) {
+        const row = input.closest('tr');
+        const soLuong = row.querySelector('.soLuong').value || 0;
+        const donGia = row.querySelector('.donGia').value || 0;
+
+        if (soLuong < 1 || donGia < 1) {
+            row.querySelector('.thanhTien').value = "N/A";
+        } else {
+            const thanhTien = soLuong * donGia;
+            row.querySelector('.thanhTien').value = thanhTien.toLocaleString('vi-VN');
+        }
+    }
+
+    // Kiểm tra đơn giá không vượt quá giá trong kho
+    function validatePrice(input) {
+        const row = input.closest('tr');
+        const maxPrice = row.querySelector('select option:checked').dataset.gia;
+
+        if (input.value < 0) {
+            alert("Đơn giá không được âm!");
+            input.value = '';
+        } else if (parseFloat(input.value) > parseFloat(maxPrice)) {
+            alert(`Đơn giá không được vượt quá giá trong kho (${maxPrice} VND)!`);
+            input.value = '';
+        }
+
+        updateRowTotal(input);
     }
 </script>
