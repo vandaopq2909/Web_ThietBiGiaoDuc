@@ -1,0 +1,301 @@
+﻿@model Web_ThietBiGiaoDuc.Models.KhuyenMai
+@{
+    ViewBag.Title = "Áp Dụng Khuyến Mãi";
+}
+<style>
+    input, textarea, select {
+        max-width: none !important;
+    }
+</style>
+
+<div class="container">
+    <div class="page-inner">
+        <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4">
+            <div>
+                <h3 class="fw-bold mb-3">Sửa khuyến mãi</h3>
+            </div>
+        </div>
+
+        <!-- Form Thông Tin Khuyến Mãi -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Thông Tin khuyến mãi</div>
+            </div>
+            <div class="card-body">
+                <div>
+                    <input type="text" class="form-control" id="MaKM" name="MaKM" value="@Model.MaKM" hidden required>
+                    <div class="d-flex justify-content-between">
+                        <div class="col-md-8 mb-3 px-2">
+                            <label for="TenKM" class="form-label">Tên khuyến mãi</label>
+                            <input type="text" class="form-control" id="TenKM" name="TenKM" value="@Model.TenKM" placeholder="Nhập tên khuyến mãi" required>
+                        </div>
+                        <div class="col-md-4 mb-3 px-2">
+                            <label for="TiLeGiamGia" class="form-label">Tỷ lệ khuyến mãi (%)</label>
+                            <input type="number" class="form-control" id="TiLeGiamGia" name="TiLeGiamGia" value="@Model.TiLeGiamGia" placeholder="Nhập tỉ lệ khuyến mãi" required>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <div class="col-md-6 mb-3 px-2">
+                            <label for="NgayBD" class="form-label">Ngày bắt đầu</label>
+                            <input type="date" class="form-control" id="NgayBD" name="NgayBD" required>
+                        </div>
+                        <div class="col-md-6 mb-3 px-2">
+                            <label for="NgayKT" class="form-label">Ngày kết thúc</label>
+                            <input type="date" class="form-control" id="NgayKT" name="NgayKT" required>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <a class="btn btn-success mx-2" href="/admin/khuyenmai/index">Quay Lại</a>
+                        <button type="submit" id="applyDiscountBtn" class="btn btn-primary mx-2">Áp dụng khuyến mãi</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bảng Sản Phẩm -->
+        <div class="card">
+            <div class="card-header">
+                <div class="input-group">
+                    <a class="btn btn-primary btn-round ms-auto" href="javascript:void(0);" id="addProductBtn">
+                        <i class="fa fa-plus"></i>
+                        Thêm sản phẩm
+                    </a>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table id="add-row" class="display table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>Mã Sản Phẩm</th>
+                                <th>Tên Sản Phẩm</th>
+                                <th>Giá Gốc</th>
+                                <th>Giá Sau Giảm</th>
+                                <th style="width: 10%">Xử Lý</th>
+                            </tr>
+                        </thead>
+                        <tbody id="product-table-body">
+                            <!-- Dữ liệu sản phẩm sẽ được thêm vào đây -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Modal Thêm Sản Phẩm -->
+<div class="modal" tabindex="-1" id="addProductModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Thêm Sản Phẩm</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="addProductForm">
+                    <div class="mb-3">
+                        <label for="TenSanPham" class="form-label">Tên Sản Phẩm</label>
+                        <select class="form-select" id="TenSanPham" required>
+                            <!-- Các sản phẩm sẽ được load vào đây -->
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="GiaGoc" class="form-label">Giá Gốc</label>
+                        <input type="number" class="form-control" id="GiaGoc" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="GiaSauGiam" class="form-label">Giá Sau Giảm</label>
+                        <input type="number" class="form-control" id="GiaSauGiam" readonly>
+                    </div>
+                    <button type="button" class="btn btn-primary" id="saveProductBtn">Lưu sản phẩm</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // Khi nhấn nút "Thêm sản phẩm"
+        $('#addProductBtn').on('click', function () {
+            var discountRate = $('#TiLeGiamGia').val();  // Lấy tỷ lệ giảm giá
+
+            // Gọi Controller để lấy danh sách sản phẩm
+            $.ajax({
+                url: '/Admin/KhuyenMai/GetSanPhamList', // Đổi theo đường dẫn Controller của bạn
+                type: 'GET',
+                success: function (data) {
+                    // Làm sạch dropdown trước khi thêm dữ liệu mới
+                    $('#TenSanPham').empty();
+                    $('#GiaGoc').val('');
+                    $('#GiaSauGiam').val('');
+
+                    // Thêm option mặc định
+                    $('#TenSanPham').append('<option value="">Chọn sản phẩm</option>');
+
+                    // Thêm các sản phẩm vào dropdown
+                    $.each(data, function (index, sp) {
+                        $('#TenSanPham').append('<option value="' + sp.MaSP + '" data-gia="' + sp.Gia + '">' + sp.TenSanPham + '</option>');
+                    });
+
+                    // Hiển thị modal
+                    $('#addProductModal').modal('show');
+                },
+                error: function () {
+                    alert('Không thể tải danh sách sản phẩm!');
+                }
+            });
+        });
+
+        $('#TenSanPham').on('change', function () {
+            var MaSP = $(this).val(); // Lấy MaSP của sản phẩm đã chọn
+            var discountRate = $('#TiLeGiamGia').val(); // Lấy tỷ lệ giảm giá
+
+            if (MaSP) {
+                // Gửi yêu cầu AJAX để lấy giá sản phẩm từ server
+                $.ajax({
+                    url: '/Admin/KhuyenMai/GetGiaSanPham', // Đường dẫn Controller để lấy thông tin giá
+                    type: 'GET',
+                    data: { MaSP: MaSP },
+                    success: function (data) {
+                        // Kiểm tra nếu có giá từ server
+                        if (data && data.Gia) {
+                            var originalPrice = data.Gia; // Lấy giá gốc của sản phẩm
+
+                            // Định dạng giá gốc chỉ hiển thị trong modal
+                            var formattedOriginalPrice = originalPrice.toLocaleString('vi-VN');
+
+                            // Tính giá sau khi giảm
+                            var discountedPrice = originalPrice - (originalPrice * discountRate / 100);
+
+                            // Định dạng giá sau giảm chỉ hiển thị trong modal
+                            var formattedDiscountedPrice = discountedPrice.toLocaleString('vi-VN');
+
+                            // Cập nhật giá gốc và giá sau giảm vào modal
+                            $('#GiaGoc').val(originalPrice); // Hiển thị giá gốc (dưới dạng số)
+                            $('#GiaSauGiam').val(discountedPrice.toFixed(2)); // Hiển thị giá sau giảm (dưới dạng số)
+                        } else {
+                            alert("Không thể lấy thông tin giá sản phẩm.");
+                        }
+                    },
+                    error: function () {
+                        alert('Lỗi khi lấy thông tin sản phẩm!');
+                    }
+                });
+            } else {
+                $('#GiaGoc').val('');
+                $('#GiaSauGiam').val('');
+            }
+        });
+
+        // Lưu sản phẩm khi nhấn "Lưu sản phẩm"
+        $('#saveProductBtn').on('click', function () {
+            var MaSP = $('#TenSanPham').val();
+            var GiaGoc = $('#GiaGoc').val();
+            var GiaSauGiam = $('#GiaSauGiam').val();
+
+            if (!MaSP) {
+                alert("Vui lòng chọn sản phẩm.");
+                return;
+            }
+
+            // Định dạng giá gốc và giá sau giảm chỉ khi thêm vào bảng (không thay đổi giá trị trong modal)
+            var formattedGiaGoc = Number(GiaGoc).toLocaleString('vi-VN') + 'đ';
+            var formattedGiaSauGiam = Number(GiaSauGiam).toLocaleString('vi-VN') + 'đ';
+
+            // Tạo một dòng mới trong bảng
+            var newRow = `
+            <tr id="product-row-${MaSP}">
+                <td>${MaSP}</td>
+                <td><select class="form-select" id="TenSanPham_${MaSP}">
+                        <option value="${MaSP}">${$('#TenSanPham option:selected').text()}</option>
+                    </select></td>
+                <td>${formattedGiaGoc}</td>
+                <td>${formattedGiaSauGiam}</td>
+                <td>
+                    <button class="btn btn-link btn-danger" onclick="removeProduct('${MaSP}')">
+                        <i class="fa fa-times"></i>
+                    </button>
+                </td>
+            </tr>
+        `;
+
+            // Thêm dòng mới vào bảng
+            $('#product-table-body').append(newRow);
+
+            // Đóng modal
+            $('#addProductModal').modal('hide');
+
+            // Xóa giá trị input trong modal
+            $('#addProductForm')[0].reset();
+        });
+
+        // Hàm xóa sản phẩm khỏi bảng
+        window.removeProduct = function (MaSP) {
+            $('#product-row-' + MaSP).remove(); // Xóa dòng có id = 'product-row-' + MaSP
+        }
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        // Khi nhấn nút "Áp Dụng Khuyến Mãi"
+        $('#applyDiscountBtn').on('click', function () {
+            var MaKM = $('#MaKM').val();  // Lấy MaKM từ input (đã có sẵn trong form)
+            var NgayBD = $('#NgayBD').val();  // Lấy Ngày Bắt Đầu
+            var NgayKT = $('#NgayKT').val();  // Lấy Ngày Kết Thúc
+
+            // Kiểm tra nếu các trường cần thiết chưa được điền
+            if (!MaKM || !NgayBD || !NgayKT) {
+                alert("Vui lòng điền đầy đủ thông tin khuyến mãi!");
+                return;
+            }
+
+            // Khởi tạo mảng để chứa tất cả sản phẩm từ bảng
+            var products = [];
+
+            // Duyệt qua tất cả các sản phẩm trong bảng và lấy thông tin
+            $('#product-table-body tr').each(function () {
+                var MaSP = $(this).find('td').eq(0).text();  // Lấy Mã Sản Phẩm
+
+                // Thêm sản phẩm vào mảng (chỉ cần MaSP)
+                products.push({
+                    MaSP: MaSP
+                });
+            });
+
+            // Kiểm tra nếu bảng sản phẩm không có dữ liệu
+            if (products.length === 0) {
+                alert("Không có sản phẩm nào trong bảng!");
+                return;
+            }
+
+            // Gửi AJAX tới server để thêm sản phẩm vào bảng ApDungKhuyenMai
+            $.ajax({
+                url: '/Admin/KhuyenMai/ThemSanPhamApDung',  // Đổi đường dẫn theo Controller của bạn
+                type: 'POST',
+                data: JSON.stringify({
+                    MaKM: MaKM,
+                    NgayBD: NgayBD,
+                    NgayKT: NgayKT,
+                    products: products
+                }),  // Gửi MaKM, NgayBD, NgayKT và products cùng lúc
+                contentType: 'application/json',
+                success: function (response) {
+                    if (response.success) {
+                        alert("Áp dụng khuyến mãi thành công!");
+                        // Chuyển hướng về trang index
+                        window.location.href = '/admin/khuyenmai/index'; // Đổi theo đường dẫn đúng
+                    } else {
+                        alert("Đã xảy ra lỗi khi áp dụng khuyến mãi.");
+                    }
+                },
+                error: function () {
+                    alert('Lỗi khi gửi dữ liệu!');
+                }
+            });
+        });
+    });
+</script>

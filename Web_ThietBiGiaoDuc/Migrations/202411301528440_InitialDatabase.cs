@@ -8,6 +8,57 @@
         public override void Up()
         {
             CreateTable(
+                "dbo.ApDungKhuyenMais",
+                c => new
+                    {
+                        MaKM = c.String(nullable: false, maxLength: 128),
+                        MaSP = c.String(nullable: false, maxLength: 128),
+                        NgayBD = c.DateTimeOffset(nullable: false, precision: 7),
+                        NgayKT = c.DateTimeOffset(nullable: false, precision: 7),
+                    })
+                .PrimaryKey(t => new { t.MaKM, t.MaSP })
+                .ForeignKey("dbo.KhuyenMais", t => t.MaKM, cascadeDelete: true)
+                .ForeignKey("dbo.SanPhams", t => t.MaSP, cascadeDelete: true)
+                .Index(t => t.MaKM)
+                .Index(t => t.MaSP);
+            
+            CreateTable(
+                "dbo.KhuyenMais",
+                c => new
+                    {
+                        MaKM = c.String(nullable: false, maxLength: 128),
+                        TenKM = c.String(),
+                        MoTa = c.String(),
+                        TiLeGiamGia = c.Double(nullable: false),
+                        TrangThai = c.String(),
+                    })
+                .PrimaryKey(t => t.MaKM);
+            
+            CreateTable(
+                "dbo.SanPhams",
+                c => new
+                    {
+                        MaSP = c.String(nullable: false, maxLength: 128),
+                        TenSanPham = c.String(),
+                        Gia = c.Double(nullable: false),
+                        SoLuongTonKho = c.Int(nullable: false),
+                        MoTa = c.String(),
+                        MauSac = c.String(),
+                        KichThuoc = c.String(),
+                        DonViTinh = c.String(),
+                        CachDongGoi = c.String(),
+                        TrangThai = c.String(),
+                        TinhTrangSanPham = c.String(),
+                        MaLoai = c.String(maxLength: 128),
+                        MaTH = c.String(maxLength: 128),
+                    })
+                .PrimaryKey(t => t.MaSP)
+                .ForeignKey("dbo.LoaiSanPhams", t => t.MaLoai)
+                .ForeignKey("dbo.ThuongHieux", t => t.MaTH)
+                .Index(t => t.MaLoai)
+                .Index(t => t.MaTH);
+            
+            CreateTable(
                 "dbo.ChiTietDonHangs",
                 c => new
                     {
@@ -55,57 +106,6 @@
                         TrangThai = c.String(),
                     })
                 .PrimaryKey(t => t.MaKH);
-            
-            CreateTable(
-                "dbo.SanPhams",
-                c => new
-                    {
-                        MaSP = c.String(nullable: false, maxLength: 128),
-                        TenSanPham = c.String(),
-                        Gia = c.Double(nullable: false),
-                        SoLuongTonKho = c.Int(nullable: false),
-                        MoTa = c.String(),
-                        MauSac = c.String(),
-                        KichThuoc = c.String(),
-                        DonViTinh = c.String(),
-                        CachDongGoi = c.String(),
-                        TrangThai = c.String(),
-                        TinhTrangSanPham = c.String(),
-                        MaLoai = c.String(maxLength: 128),
-                        MaTH = c.String(maxLength: 128),
-                    })
-                .PrimaryKey(t => t.MaSP)
-                .ForeignKey("dbo.LoaiSanPhams", t => t.MaLoai)
-                .ForeignKey("dbo.ThuongHieux", t => t.MaTH)
-                .Index(t => t.MaLoai)
-                .Index(t => t.MaTH);
-            
-            CreateTable(
-                "dbo.ApDungKhuyenMais",
-                c => new
-                    {
-                        MaKM = c.String(nullable: false, maxLength: 128),
-                        MaSP = c.String(nullable: false, maxLength: 128),
-                        NgayBD = c.DateTimeOffset(nullable: false, precision: 7),
-                        NgayKT = c.DateTimeOffset(nullable: false, precision: 7),
-                    })
-                .PrimaryKey(t => new { t.MaKM, t.MaSP })
-                .ForeignKey("dbo.KhuyenMais", t => t.MaKM, cascadeDelete: true)
-                .ForeignKey("dbo.SanPhams", t => t.MaSP, cascadeDelete: true)
-                .Index(t => t.MaKM)
-                .Index(t => t.MaSP);
-            
-            CreateTable(
-                "dbo.KhuyenMais",
-                c => new
-                    {
-                        MaKM = c.String(nullable: false, maxLength: 128),
-                        TenKM = c.String(),
-                        MoTa = c.String(),
-                        TiLeGiamGia = c.Double(nullable: false),
-                        TrangThai = c.String(),
-                    })
-                .PrimaryKey(t => t.MaKM);
             
             CreateTable(
                 "dbo.ChiTietPhieuNhaps",
@@ -245,7 +245,7 @@
         
         public override void Down()
         {
-            DropForeignKey("dbo.ChiTietDonHangs", "MaSP", "dbo.SanPhams");
+            DropForeignKey("dbo.ApDungKhuyenMais", "MaSP", "dbo.SanPhams");
             DropForeignKey("dbo.SanPhams", "MaTH", "dbo.ThuongHieux");
             DropForeignKey("dbo.SanPhams", "MaLoai", "dbo.LoaiSanPhams");
             DropForeignKey("dbo.LoaiSanPhams", "MaDM", "dbo.DanhMucs");
@@ -256,10 +256,10 @@
             DropForeignKey("dbo.NhanViens", "MaQuyen", "dbo.Quyens");
             DropForeignKey("dbo.PhieuNhaps", "MaNV", "dbo.NhanViens");
             DropForeignKey("dbo.PhieuNhaps", "MaNCC", "dbo.NhaCungCaps");
-            DropForeignKey("dbo.ApDungKhuyenMais", "MaSP", "dbo.SanPhams");
-            DropForeignKey("dbo.ApDungKhuyenMais", "MaKM", "dbo.KhuyenMais");
+            DropForeignKey("dbo.ChiTietDonHangs", "MaSP", "dbo.SanPhams");
             DropForeignKey("dbo.ChiTietDonHangs", "MaDH", "dbo.DonHangs");
             DropForeignKey("dbo.DonHangs", "MaKH", "dbo.KhachHangs");
+            DropForeignKey("dbo.ApDungKhuyenMais", "MaKM", "dbo.KhuyenMais");
             DropIndex("dbo.LoaiSanPhams", new[] { "MaDM" });
             DropIndex("dbo.HinhAnhs", new[] { "MaSP" });
             DropIndex("dbo.DanhGias", new[] { "MaSP" });
@@ -268,13 +268,13 @@
             DropIndex("dbo.PhieuNhaps", new[] { "MaNCC" });
             DropIndex("dbo.ChiTietPhieuNhaps", new[] { "MaPN" });
             DropIndex("dbo.ChiTietPhieuNhaps", new[] { "MaSP" });
-            DropIndex("dbo.ApDungKhuyenMais", new[] { "MaSP" });
-            DropIndex("dbo.ApDungKhuyenMais", new[] { "MaKM" });
-            DropIndex("dbo.SanPhams", new[] { "MaTH" });
-            DropIndex("dbo.SanPhams", new[] { "MaLoai" });
             DropIndex("dbo.DonHangs", new[] { "MaKH" });
             DropIndex("dbo.ChiTietDonHangs", new[] { "MaDH" });
             DropIndex("dbo.ChiTietDonHangs", new[] { "MaSP" });
+            DropIndex("dbo.SanPhams", new[] { "MaTH" });
+            DropIndex("dbo.SanPhams", new[] { "MaLoai" });
+            DropIndex("dbo.ApDungKhuyenMais", new[] { "MaSP" });
+            DropIndex("dbo.ApDungKhuyenMais", new[] { "MaKM" });
             DropTable("dbo.ThuongHieux");
             DropTable("dbo.DanhMucs");
             DropTable("dbo.LoaiSanPhams");
@@ -285,12 +285,12 @@
             DropTable("dbo.NhaCungCaps");
             DropTable("dbo.PhieuNhaps");
             DropTable("dbo.ChiTietPhieuNhaps");
-            DropTable("dbo.KhuyenMais");
-            DropTable("dbo.ApDungKhuyenMais");
-            DropTable("dbo.SanPhams");
             DropTable("dbo.KhachHangs");
             DropTable("dbo.DonHangs");
             DropTable("dbo.ChiTietDonHangs");
+            DropTable("dbo.SanPhams");
+            DropTable("dbo.KhuyenMais");
+            DropTable("dbo.ApDungKhuyenMais");
         }
     }
 }
