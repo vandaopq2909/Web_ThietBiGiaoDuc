@@ -138,14 +138,23 @@ namespace Web_ThietBiGiaoDuc.Areas.Admin.Controllers
         public ActionResult GetSanPhamList()
         {
             DatabaseContext db = new DatabaseContext();
-            var sanPhams = db.sanPhams.Select(sp => new
-            {
-                sp.MaSP,
-                sp.TenSanPham
-            }).ToList();
+            // Lấy ngày hiện tại
+            DateTimeOffset today = DateTimeOffset.Now;
+
+            // Lấy danh sách sản phẩm
+            var sanPhams = db.sanPhams
+                .Where(sp => !db.apDungKhuyenMais
+                    .Any(km => km.MaSP == sp.MaSP && km.NgayKT >= today)) // Sản phẩm không có trong apDungKhuyenMai hoặc khuyến mãi đã hết hạn
+                .Select(sp => new
+                {
+                    sp.MaSP,
+                    sp.TenSanPham
+                })
+                .ToList();
 
             return Json(sanPhams, JsonRequestBehavior.AllowGet);
         }
+
         // Phương thức này sẽ được gọi từ AJAX để lấy giá sản phẩm
         [HttpGet]
         public JsonResult GetGiaSanPham(string MaSP)

@@ -214,5 +214,35 @@ namespace Web_ThietBiGiaoDuc.Controllers
             }
             return View();
         }
+        [HttpGet]
+        public JsonResult GetTiLeGiamGia(string maSP)
+        {
+            // Lấy mã khuyến mãi dựa trên mã sản phẩm
+            string maKM = db.apDungKhuyenMais
+                           .Where(x => x.MaSP == maSP)
+                           .Select(x => x.MaKM)
+                           .FirstOrDefault();
+
+            // Nếu không có mã khuyến mãi, trả về giá trị mặc định
+            if (string.IsNullOrEmpty(maKM))
+            {
+                return Json(0, JsonRequestBehavior.AllowGet);
+            }
+
+            // Lấy tỷ lệ giảm giá dựa trên mã khuyến mãi
+            double? tileGiamGia = db.khuyenMais
+                                    .Where(x => x.MaKM == maKM)
+                                    .Select(x => x.TiLeGiamGia)
+                                    .FirstOrDefault();
+
+            // Nếu không tìm thấy tỷ lệ giảm giá, trả về giá trị mặc định
+            if (!tileGiamGia.HasValue)
+            {
+                return Json(0, JsonRequestBehavior.AllowGet);
+            }
+
+            // Trả về tỷ lệ giảm giá nếu hợp lệ
+            return Json(tileGiamGia.Value, JsonRequestBehavior.AllowGet);
+        }
     }
 }
