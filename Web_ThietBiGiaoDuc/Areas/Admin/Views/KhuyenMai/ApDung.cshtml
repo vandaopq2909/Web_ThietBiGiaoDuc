@@ -238,6 +238,13 @@
             $('#product-row-' + MaSP).remove(); // Xóa dòng có id = 'product-row-' + MaSP
         }
     });
+    document.addEventListener("DOMContentLoaded", function () {
+        const NgayBDInput = document.getElementById("NgayBD");
+        const today = new Date();
+        const formattedDate = today.toISOString().split('T')[0];
+        NgayBDInput.min = formattedDate;
+        NgayBDInput.value = formattedDate;
+    });
 </script>
 <script>
     $(document).ready(function () {

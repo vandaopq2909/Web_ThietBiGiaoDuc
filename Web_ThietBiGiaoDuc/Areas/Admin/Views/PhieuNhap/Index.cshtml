@@ -44,6 +44,7 @@
                                     <form method="get" action="/Admin/PhieuNhap">
                                         <label style="font-size:16px">Xem trạng thái</label>
                                         <select name="trangthai" id="order-status" class="form-control" style="width:200px" onchange="this.form.submit()">
+                                                                                        <option class="text-secondary" value="" @(string.IsNullOrEmpty(ViewBag.SelectedStatus) ? "selected" : "")>Tất cả</option>
                                             <option value="Đã đăt hàng" @(ViewBag.SelectedStatus == "Đã đăt hàng" ? "selected" : "")>Đã đăt hàng</option>
                                             <option value="Đang giao hàng" @(ViewBag.SelectedStatus == "Đang giao hàng" ? "selected" : "")>Đang giao hàng</option>
                                             <option value="Đã nhập hàng" @(ViewBag.SelectedStatus == "Đã nhập hàng" ? "selected" : "")>Đã nhập hàng</option>
