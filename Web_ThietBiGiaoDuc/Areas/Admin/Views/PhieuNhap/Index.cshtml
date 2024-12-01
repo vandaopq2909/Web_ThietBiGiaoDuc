@@ -44,6 +44,7 @@
                                     <form method="get" action="/Admin/PhieuNhap">
                                         <label style="font-size:16px">Xem trạng thái</label>
                                         <select name="trangthai" id="order-status" class="form-control" style="width:200px" onchange="this.form.submit()">
+                                                                                        <option class="text-secondary" value="" @(string.IsNullOrEmpty(ViewBag.SelectedStatus) ? "selected" : "")>Tất cả</option>
                                             <option value="Đã đăt hàng" @(ViewBag.SelectedStatus == "Đã đăt hàng" ? "selected" : "")>Đã đăt hàng</option>
                                             <option value="Đang giao hàng" @(ViewBag.SelectedStatus == "Đang giao hàng" ? "selected" : "")>Đang giao hàng</option>
                                             <option value="Đã nhập hàng" @(ViewBag.SelectedStatus == "Đã nhập hàng" ? "selected" : "")>Đã nhập hàng</option>
@@ -79,7 +80,7 @@
                                         {
                                             <tr>
                                                 <td>@item.MaPN</td>
-                                                <td>@item.NgayNhapHang.ToString("dd/MM/yyyy HH:mm")</td>
+                                                <td>@item.NgayNhapHang.ToString("dd/MM/yyyy ")</td>
                                                 <td>@item.TongTien.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("vi-VN"))</td>
                                                 <td>
                                                     <h6 class="@GetStatusColorClass(item.TrangThai)">
@@ -88,7 +89,7 @@
                                                 </td>
                                                 <td style="text-align:center">
                                                     <div class="form-button-action">
-                                                        <a href="/Admin/PhieuNhap/Sua?madh=@item.MaPN"
+                                                        <a href="/Admin/PhieuNhap/Sua?mapn=@item.MaPN"
                                                            type="button"
                                                            data-bs-toggle="tooltip"
                                                            class="btn btn-link btn-primary btn-lg"
@@ -120,11 +121,11 @@
                                                                     </div>
                                                                     <div class="modal-footer">
                                                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
-                                                                        <!-- Form xóa -->
-                                                                        @*<form action="/Admin/PhieuNhap/Xoa" method="post">
-                                    <input type="hidden" name="maDH" value="@item.MaPN" />
-                                    <button type="submit" class="btn btn-danger">Xóa</button>
-                                </form>*@
+                                                                         <!-- Form xóa -->
+                                                                        <form action="/Admin/PhieuNhap/Xoa" method="post">
+                                                                            <input type="hidden" name="maPN" value="@item.MaPN" />
+                                                                            <button type="submit" class="btn btn-danger">Xóa</button>
+                                                                        </form>
                                                                     </div>
                                                                 </div>
                                                             </div>

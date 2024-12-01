@@ -857,6 +857,7 @@
     <Content Include="Areas\Admin\Views\SanPham\Sua.cshtml" />
     <Content Include="Areas\Admin\Views\NhanVien\DangNhap.cshtml" />
     <Content Include="Areas\Admin\Views\ThongKe\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\PhieuNhap\Sua.cshtml" />
     <Content Include="Areas\Admin\Views\KhuyenMai\Index.cshtml" />
     <Content Include="Areas\Admin\Views\KhuyenMai\Them.cshtml" />
     <Content Include="Areas\Admin\Views\KhuyenMai\Sua.cshtml" />

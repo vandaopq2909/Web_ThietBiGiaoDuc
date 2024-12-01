@@ -1,4 +1,8 @@
-﻿@model Web_ThietBiGiaoDuc.Models.SanPham
+﻿@{ 
+    var TenDangNhap = Context.Request.Cookies["auth"];
+    var makh = Context.Request.Cookies["makh"];
+}
+@model Web_ThietBiGiaoDuc.Models.SanPham
 @{
     ViewBag.Title = "ChiTiet";
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";

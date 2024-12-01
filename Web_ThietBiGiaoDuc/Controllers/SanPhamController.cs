@@ -40,19 +40,25 @@ namespace Web_ThietBiGiaoDuc.Controllers
             string tenDangNhap = Request.Cookies["auth"]?.Value;
             if (string.IsNullOrEmpty(tenDangNhap))
             {
-
                 TempData["Message"] = "Vui lòng đăng nhập để thực hiện hành động này.";
-
+             
             }
             else
             {
-                 var khach = db.khachHangs.FirstOrDefault(u => u.TenDangNhap == tenDangNhap);
-                string hoTen = khach?.HoTen;
-                bool daMuaHang = db.chiTietDonHangs.Any(ctdh => ctdh.MaSP == masp
-                                && ctdh.DonHang.MaKH == khach.MaKH
-                                && ctdh.DonHang.TrangThai == "Giao hàng thành công");
-                ViewBag.HoTen = hoTen;
-                ViewBag.DaMuaHang = daMuaHang;
+                var khach = db.khachHangs.FirstOrDefault(u => u.TenDangNhap == tenDangNhap);
+                if (khach == null) {
+
+                }
+                else
+                {
+                    string hoTen = khach?.HoTen;
+                    bool daMuaHang = db.chiTietDonHangs.Any(ctdh => ctdh.MaSP == masp
+                                    && ctdh.DonHang.MaKH == khach.MaKH
+                                    && ctdh.DonHang.TrangThai == "Giao hàng thành công");
+                    ViewBag.HoTen = hoTen;
+                    ViewBag.DaMuaHang = daMuaHang;
+                }
+           
             }
            
 
