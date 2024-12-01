@@ -549,10 +549,12 @@
                     <h3 class="font-weight-bold mb-3">@Model.TenSanPham</h3>
 
                     <h3 class="font-weight-bold">
-                        <span>@Model.Gia.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("vi-VN"))</span><sup>đ</sup>
+                        <del>
+                            <span>@Model.Gia.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("vi-VN"))</span><sup>đ</sup>
+                        </del>
                     </h3>
                     <h3>
-                        <strong class="discounted-price" style="color:red;" data-product-id="@spNoiBat.MaSP" data-original-price="@spNoiBat.Gia">
+                        <strong class="discounted-price" style="color:red;" data-product-id="@Model.MaSP" data-original-price="@Model.Gia">
                             Đang tính...
                         </strong>
                     </h3>
