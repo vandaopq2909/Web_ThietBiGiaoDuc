@@ -37,8 +37,8 @@ namespace Web_ThietBiGiaoDuc.Controllers
                     {
                         HttpCookie authCookie = new HttpCookie("auth", khach.TenDangNhap);
                         HttpCookie maKHCookie= new HttpCookie("makh", khach.MaKH);
-                        authCookie.Expires = DateTime.Now.AddDays(30);
-                        maKHCookie.Expires = DateTime.Now.AddDays(30);
+                        authCookie.Expires = DateTime.Now.AddDays(10);
+                        maKHCookie.Expires = DateTime.Now.AddDays(10);
                         Response.Cookies.Add(authCookie);
                         Response.Cookies.Add(maKHCookie);
                         return RedirectToAction("Index", "Home");
@@ -55,7 +55,7 @@ namespace Web_ThietBiGiaoDuc.Controllers
         public ActionResult DangXuat()
         {
             HttpCookie authCookie = new HttpCookie("auth");
-            authCookie.Expires = DateTime.Now.AddDays(-1);
+            authCookie.Expires = DateTime.Now.AddDays(-10);
 
             Response.Cookies.Add(authCookie);
             return RedirectToAction("Index", "Home");

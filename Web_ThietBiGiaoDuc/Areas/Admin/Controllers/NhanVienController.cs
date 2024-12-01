@@ -23,6 +23,14 @@ namespace Web_ThietBiGiaoDuc.Areas.Admin.Controllers
             var listNV = db.nhanViens.ToList();
             return View(listNV);
         }
+        public ActionResult DangXuat() 
+        {
+            HttpCookie authCookie = new HttpCookie("auth");
+            authCookie.Expires = DateTime.Now.AddDays(-10);
+
+            Response.Cookies.Add(authCookie);
+            return RedirectToAction("Index", "Home");
+        }
         public ActionResult DangNhap() { return View(); }
         [HttpPost]
         public ActionResult DangNhap(NhanVien nhanVien)

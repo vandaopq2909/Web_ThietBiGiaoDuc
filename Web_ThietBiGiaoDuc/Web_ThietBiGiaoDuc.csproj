@@ -719,6 +719,7 @@
     <Content Include="Resources\img\latest-product\lp-2.jpg" />
     <Content Include="Resources\img\latest-product\lp-3.jpg" />
     <Content Include="Resources\img\login\background.jpg" />
+    <Content Include="Resources\img\login\background_admin.jpg" />
     <Content Include="Resources\img\logo.png" />
     <Content Include="Resources\img\logo\TBGD_AandB_Logo.png" />
     <Content Include="Resources\img\payment-item.png" />
