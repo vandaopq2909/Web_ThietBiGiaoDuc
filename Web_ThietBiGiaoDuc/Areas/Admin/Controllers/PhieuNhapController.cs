@@ -1,6 +1,7 @@
 ﻿using PagedList;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Drawing.Printing;
 using System.Linq;
 using System.Web;
@@ -31,6 +32,7 @@ namespace Web_ThietBiGiaoDuc.Areas.Admin.Controllers
             }
             var pagedPhieuNhap = listPN.OrderByDescending(x => x.NgayNhapHang).ToPagedList(page, pageSize);
 
+
             ViewBag.lstPhieuNhap = pagedPhieuNhap;
             ViewBag.SelectedStatus = trangthai; // Lưu trạng thái đã chọn
             return View();
@@ -51,8 +53,16 @@ namespace Web_ThietBiGiaoDuc.Areas.Admin.Controllers
             }
 
             var nhanVien = db.nhanViens.FirstOrDefault(x => x.TenDangNhap == tenDangNhap);
-            ViewBag.HoTen=nhanVien.HoTen;
+            if (nhanVien == null)
+            {
+                return RedirectToAction("DangNhap", "NhanVien");
+            }
+            else
+            {
+                ViewBag.HoTen = nhanVien.HoTen;
+            }
 
+            ViewBag.NgayNhapHang = DateTime.Now.ToString("dd-MM-yyyy hh:mm:ss");
             ViewBag.lstSanPham = lstSanPham;
             ViewBag.lstNCC = lstNCC;
             return View();
@@ -61,28 +71,51 @@ namespace Web_ThietBiGiaoDuc.Areas.Admin.Controllers
         public ActionResult Them(PhieuNhap viewModel)
         {
             DatabaseContext db = new DatabaseContext();
+            string tenDangNhap = Request.Cookies["auth"]?.Value;
+            string maNV = db.nhanViens.FirstOrDefault(x => x.TenDangNhap == tenDangNhap).MaNV;
             if (ModelState.IsValid)
             {
                 var phieuNhap = new PhieuNhap
                 {
-                    MaNV = viewModel.MaNV,
+                    MaNV = maNV,
                     MaNCC = viewModel.MaNCC,
                     NgayNhapHang = viewModel.NgayNhapHang,
                     TrangThai = viewModel.TrangThai,
                     ChiTietPhieuNhaps = new List<ChiTietPhieuNhap>()
                 };
-
+                double TongTien = 0;
+                int TongSoLuong=0;
                 foreach (var item in viewModel.ChiTietPhieuNhaps)
                 {
-                    var chiTiet = new ChiTietPhieuNhap
+                    // Kiểm tra nếu sản phẩm đã có trong ChiTietPhieuNhaps
+                    var existingProduct = phieuNhap.ChiTietPhieuNhaps
+                                                  .FirstOrDefault(x => x.MaSP == item.MaSP);
+
+                    if (existingProduct != null)
                     {
-                        MaSP = item.MaSP,
-                        SoLuong = item.SoLuong,
-                        Gia = item.Gia,
-                        TongTien = item.TongTien
-                    };
-                    phieuNhap.ChiTietPhieuNhaps.Add(chiTiet);
+                        // Nếu đã có sản phẩm, cộng dồn số lượng và tính lại tổng tiền
+                        existingProduct.SoLuong += item.SoLuong;
+                        existingProduct.TongTien = existingProduct.SoLuong * existingProduct.Gia;
+                    }
+                    else
+                    {
+                        // Nếu chưa có sản phẩm, thêm sản phẩm mới vào danh sách
+                        var chiTiet = new ChiTietPhieuNhap
+                        {
+                            MaSP = item.MaSP,
+                            SoLuong = item.SoLuong,
+                            Gia = item.Gia,
+                            TongTien = item.TongTien
+                        };
+                        TongTien += chiTiet.TongTien;
+                        TongSoLuong+= chiTiet.SoLuong;
+                        phieuNhap.ChiTietPhieuNhaps.Add(chiTiet);
+                       
+                    }
                 }
+                phieuNhap.TongSoLuong = TongSoLuong;
+                phieuNhap.TongTien = TongTien;
+
 
                 db.phieuNhaps.Add(phieuNhap);
                 db.SaveChanges();
@@ -92,5 +125,60 @@ namespace Web_ThietBiGiaoDuc.Areas.Admin.Controllers
 
             return View(viewModel); 
         }
+        [HttpGet]
+        public ActionResult Sua(string mapn)
+        {
+            DatabaseContext db = new DatabaseContext();
+            var phieuNhap = db.phieuNhaps.Include(p => p.ChiTietPhieuNhaps).FirstOrDefault(p => p.MaPN == mapn);
+
+            if (phieuNhap == null)
+            {
+                return HttpNotFound(); 
+            }
+
+            ViewBag.MaPN = mapn;
+            ViewBag.lstNCC = db.nhaCungCaps.ToList();
+            ViewBag.lstSanPham = db.sanPhams.ToList();
+            ViewBag.HoTen = phieuNhap.NhanVien.HoTen;
+      
+            ViewBag.SelectedStatus = phieuNhap.TrangThai;
+
+            return View(phieuNhap);
+        }
+        [HttpPost]
+        public ActionResult Sua( PhieuNhap model)
+        {
+            DatabaseContext db = new DatabaseContext();
+            var phieuNhap = db.phieuNhaps
+                .Include(p => p.ChiTietPhieuNhaps)
+                .FirstOrDefault(x => x.MaPN == model.MaPN);
+
+            if (phieuNhap == null)
+            {
+                return HttpNotFound();
+            }
+
+            phieuNhap.MaNCC = model.MaNCC;
+            phieuNhap.NgayNhapHang = model.NgayNhapHang;
+            phieuNhap.TrangThai = model.TrangThai;
+
+            if (model.TrangThai == "Đã nhập hàng")
+            {
+                foreach (var chiTiet in phieuNhap.ChiTietPhieuNhaps)
+                {
+                    var sanPham = db.sanPhams.FirstOrDefault(sp => sp.MaSP == chiTiet.MaSP);
+                    if (sanPham != null)
+                    {
+                        sanPham.SoLuongTonKho += chiTiet.SoLuong; 
+                    }
+                }
+            }
+
+
+            db.SaveChanges();
+
+            return RedirectToAction("Index", "PhieuNhap");
+        }
+
     }
 }
