@@ -179,6 +179,28 @@ namespace Web_ThietBiGiaoDuc.Areas.Admin.Controllers
 
             return RedirectToAction("Index", "PhieuNhap");
         }
+        [HttpPost]
+        public ActionResult Xoa(string maPN)
+        {
+
+            var db = new DatabaseContext();
+            var phieuNhap = db.phieuNhaps
+                .Include(p => p.ChiTietPhieuNhaps)
+                .FirstOrDefault(p => p.MaPN == maPN);
+
+            if (phieuNhap == null)
+            {
+                return HttpNotFound("Không tìm thấy phiếu nhập");
+            }
+            db.chiTietPhieuNhaps.RemoveRange(phieuNhap.ChiTietPhieuNhaps);
+
+            db.phieuNhaps.Remove(phieuNhap);
+            db.SaveChanges();
+
+            TempData["Message"] = "Xóa phiếu nhập thành công!";
+            return RedirectToAction("Index", "PhieuNhap");
+        }
 
     }
+
 }
