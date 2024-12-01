@@ -22,6 +22,7 @@ namespace Web_ThietBiGiaoDuc.Models
         public DbSet<ChiTietPhieuNhap> chiTietPhieuNhaps { get; set; }
         public DbSet<HinhAnh> hinhAnhs { get; set; }
         public DbSet<KhuyenMai> khuyenMais { get; set; }
+        public DbSet<ApDungKhuyenMai> apDungKhuyenMais { get; set; }
         public DbSet<NhaCungCap> nhaCungCaps { get; set; }
         public DbSet<PhieuNhap> phieuNhaps { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

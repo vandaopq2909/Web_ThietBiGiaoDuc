@@ -1,11 +1,12 @@
-﻿
+﻿﻿@model List<Web_ThietBiGiaoDuc.Models.NhanVien>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Quản lý nhân viên";
 }
 <!DOCTYPE html>
 <html lang="vi">
 <head>
     <style>
+        /* Custom Search Container Style */
         .custom-search-container {
             display: flex;
             justify-content: space-between;
@@ -28,8 +29,37 @@
         #customSearchBox {
             font-size: 14px;
         }
-    </style>
 
+        /* Table Styles */
+        #customerTable {
+            font-size: 14px;
+            border-collapse: separate;
+            width: 100%;
+        }
+
+            #customerTable th {
+                padding: 10px;
+                border: 1px solid #ddd;
+                text-align: center;
+            }
+
+            #customerTable td {
+                padding: 8px;
+                border: 1px solid #ddd;
+                text-align: center;
+            }
+
+        /* Pagination */
+        .pagination .page-link {
+            color: #007bff;
+        }
+
+        .pagination .page-item.active .page-link {
+            background-color: #007bff;
+            border-color: #007bff;
+            color: #fff;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -38,21 +68,9 @@
                 <h3 class="fw-bold mb-3">Quản Lý Nhân Viên</h3>
                 <ul class="breadcrumbs mb-3">
                     <li class="nav-home">
-                        <a href="#">
+                        <a href="/admin/home/index">
                             <i class="icon-home"></i>
                         </a>
-                    </li>
-                    <li class="separator">
-                        <i class="icon-arrow-right"></i>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#">Tables</a>
-                    </li>
-                    <li class="separator">
-                        <i class="icon-arrow-right"></i>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#">Datatables</a>
                     </li>
                 </ul>
             </div>
@@ -60,8 +78,12 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
-                        <div class="card-header">
+                        <div class="card-header d-flex justify-content-between align-items-center">
                             <h4 class="card-title">Quản Lý Nhân Viên</h4>
+                            <a class="btn btn-primary btn-round ms-auto" href="/Admin/NhanVien/Them">
+                                <i class="fa fa-plus"></i>
+                                Thêm Nhân Viên
+                            </a>
                         </div>
 
                         <div class="card-body">
@@ -82,54 +104,91 @@
 
                             <!-- Table -->
                             <div class="table-responsive">
-                                <table id="customerTable" class="display table table-striped table-hover">
+                                <table id="employeeTable" class="display table table-striped table-hover">
                                     <thead>
                                         <tr>
                                             <th>Mã NV</th>
-                                            <th>Tên DN</th>
-                                            <th>Mật Khẩu</th>
+                                            <th>Tên đăng nhập</th>
+                                            <th>Mật khẩu</th>
                                             <th>Email</th>
-                                            <th>Số Điện Thoại</th>
-                                            <th>Địa Chỉ</th>
-                                            <th>Trạng Thái</th>
-                                            <th>Mã Quyền</th>
+                                            <th>Số điện thoại</th>
+                                            <th>Địa chỉ</th>
+                                            <th>Trạng thái</th>
+                                            <th>Mã quyền</th>
                                             <th style="width: 10%">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>KH001</td>
-                                            <td>Nguyen Van A</td>
-                                            <td>***********</td>
-                                            <td>example1@gmail.com</td>
-                                            <td>0912345678</td>
-                                            <td>Hanoi</td>
-                                            <td>Active</td>
-                                            <td>MQ001</td>
-                                            <td>
-                                                <div class="form-button-action">
-                                                    <button type="button" class="btn btn-link btn-primary btn-lg" data-bs-toggle="tooltip" title="Edit">
-                                                        <i class="fa fa-edit"></i>
-                                                    </button>
-                                                    <button type="button" class="btn btn-link btn-danger" data-bs-toggle="tooltip" title="Remove">
-                                                        <i class="fa fa-times"></i>
-                                                    </button>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <!-- Add more rows here -->
+                                        @foreach (var nv in Model)
+                                        {
+                                            <tr>
+                                                <td>@nv.MaNV</td>
+                                                <td>@nv.TenDangNhap</td>
+                                                <td>@nv.MatKhau</td>
+                                                <td>@nv.Email</td>
+                                                <td>@nv.SDT</td>
+                                                <td>@nv.DiaChi</td>
+                                                <td>@nv.TrangThai</td>
+                                                <td>@(nv.Quyen != null ? nv.Quyen.TenQuyen : "Chưa gán quyền")</td>
+                                                <td>
+                                                    <div class="form-button-action">
+                                                        <a href="/admin/nhanvien/sua?maNV=@nv.MaNV"
+                                                           data-bs-toggle="tooltip"
+                                                           title=""
+                                                           class="btn btn-link btn-primary btn-lg"
+                                                           data-original-title="Edit Task">
+                                                            <i class="fa fa-edit"></i>
+                                                        </a>
+                                                        <!-- Nút xóa kích hoạt Modal -->
+                                                        <button data-bs-toggle="modal"
+                                                                data-bs-target="#remove_modal_@nv.MaNV"
+                                                                aria-hidden="true"
+                                                                tabindex="-1"
+                                                                id="remove_btn_@nv.MaNV"
+                                                                title=""
+                                                                class="btn btn-link btn-danger"
+                                                                data-original-title="Remove">
+                                                            <i class="fa fa-times"></i>
+                                                        </button>
+                                                        <!-- Modal Xác nhận xóa -->
+                                                        <div class="modal fade" id="remove_modal_@nv.MaNV" tabindex="-1" aria-labelledby="confirmDeleteLabel_@nv.MaNV" aria-hidden="true">
+                                                            <div class="modal-dialog">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title" id="confirmDeleteLabel_@nv.MaNV">Xác nhận xóa</h5>
+                                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        Bạn có chắc chắn muốn xóa mục "@nv.TenDangNhap" không?
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                                                                        <!-- Form xóa -->
+                                                                        <form action="/Admin/NhanVien/Xoa" method="post">
+                                                                            <input type="hidden" name="maNV" value="@nv.MaNV" />
+                                                                            <button type="submit" class="btn btn-danger">Xóa</button>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        }
                                     </tbody>
                                 </table>
                             </div>
+                            <!-- Phân trang -->
                             <nav aria-label="Page navigation example">
-                                <ul class="pagination justify-content-center">
-                                    <li class="page-item disabled">
+                                <ul class="pagination justify-content-center" id="pagination">
+                                    <li class="page-item disabled" id="prevPage">
                                         <a class="page-link">Previous</a>
                                     </li>
-                                    <li class="page-item active" aria-current="page"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item">
+                                    <li class="page-item active" aria-current="page" id="page1"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item" id="page2"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item" id="page3"><a class="page-link" href="#">3</a></li>
+                                    <li class="page-item" id="nextPage">
                                         <a class="page-link" href="#">Next</a>
                                     </li>
                                 </ul>
@@ -141,52 +200,144 @@
         </div>
     </div>
     <script>
-        $(document).ready(function () {
-            var table = $('#customerTable').DataTable({
-                pageLength: 10,
-                order: [],
-                language: {
-                    paginate: {
-                        previous: "Previous",
-                        next: "Next"
-                    },
-                    info: "Showing _START_ to _END_ of _TOTAL_ entries"
-                }
-            });
+        const entriesSelect = document.getElementById('entriesSelect');
+        const table = document.getElementById('employeeTable');
 
-            // Custom search box event listener
-            $('#customSearchBox').on('keyup', function () {
-                table.search(this.value).draw();
-            });
+        // Hàm thay đổi số lượng dòng hiển thị
+        function updateTableEntries() {
+            const selectedValue = parseInt(entriesSelect.value);
+            const rows = table.getElementsByTagName('tr');
 
-            // Change number of entries shown based on dropdown
-            $('#entriesSelect').on('change', function () {
-                var selectedValue = $(this).val();
-                table.page.len(selectedValue).draw();
-            });
-
-            // Sorting functionality for each column
-            $('#customerTable th.sorting').on('click', function () {
-                var columnIndex = $(this).data('column');
-                var currentOrder = table.order();
-                var direction = 'asc';
-
-                // Toggle sort direction
-                if (currentOrder[0] && currentOrder[0][0] === columnIndex && currentOrder[0][1] === 'asc') {
-                    direction = 'desc';
-                }
-
-                table.order([columnIndex, direction]).draw();
-
-                // Update sort icons
-                $('#customerTable th .sort-icon').removeClass('fa-sort-asc fa-sort-desc');
-                if (direction === 'asc') {
-                    $(this).find('.sort-icon').addClass('fa-sort-asc');
+            // Chỉ hiển thị các dòng dữ liệu (bỏ qua phần header)
+            for (let i = 1; i < rows.length; i++) {
+                if (i <= selectedValue) {
+                    rows[i].style.display = '';
                 } else {
-                    $(this).find('.sort-icon').addClass('fa-sort-desc');
+                    rows[i].style.display = 'none';
                 }
-            });
+            }
+        }
+
+        // Lắng nghe sự kiện thay đổi giá trị trong select
+        entriesSelect.addEventListener('change', updateTableEntries);
+
+        // Gọi hàm để áp dụng giá trị mặc định khi tải trang
+        updateTableEntries();
+    </script>
+    <script>
+        // Lấy phần tử input và bảng
+        const searchBox = document.getElementById('customSearchBox');
+        const employeeTable = document.getElementById('employeeTable');
+
+        // Hàm lọc bảng khi người dùng nhập vào ô tìm kiếm
+        function filterTable() {
+            const filter = searchBox.value.toLowerCase(); // Lấy giá trị tìm kiếm và chuyển thành chữ thường
+            const rows = employeeTable.getElementsByTagName('tr'); // Lấy tất cả các dòng trong bảng
+
+            // Lặp qua từng dòng trong bảng
+            for (let i = 1; i < rows.length; i++) {  // Bỏ qua dòng header
+                const cells = rows[i].getElementsByTagName('td');
+                let rowText = '';
+
+                // Lặp qua tất cả các ô trong mỗi dòng
+                for (let j = 0; j < cells.length; j++) {
+                    rowText += cells[j].textContent.toLowerCase(); // Kết hợp tất cả các giá trị ô vào một chuỗi
+                }
+
+                // Kiểm tra xem chuỗi tìm kiếm có trong dòng không
+                if (rowText.indexOf(filter) > -1) {
+                    rows[i].style.display = '';  // Hiển thị dòng nếu có kết quả
+                } else {
+                    rows[i].style.display = 'none';  // Ẩn dòng nếu không có kết quả
+                }
+            }
+        }
+
+        // Lắng nghe sự kiện khi người dùng nhập vào ô tìm kiếm
+        searchBox.addEventListener('keyup', filterTable);
+    </script>
+    <script>
+        const rowsPerPage = 2;  // Số dòng mỗi trang
+        let currentPage = 1;  // Trang hiện tại
+        const table = document.getElementById('employeeTable');
+        const rows = table.getElementsByTagName('tr');
+        const totalPages = Math.ceil((rows.length - 1) / rowsPerPage); // Tổng số trang (trừ đi header)
+
+        // Hàm hiển thị dữ liệu trên bảng
+        function displayTablePage(page) {
+            const start = (page - 1) * rowsPerPage + 1; // Vị trí bắt đầu
+            const end = start + rowsPerPage - 1; // Vị trí kết thúc
+
+            // Lặp qua tất cả các dòng và ẩn/hiển thị chúng
+            for (let i = 1; i < rows.length; i++) {  // Bỏ qua dòng header
+                if (i >= start && i <= end) {
+                    rows[i].style.display = '';  // Hiển thị dòng
+                } else {
+                    rows[i].style.display = 'none';  // Ẩn dòng
+                }
+            }
+
+            // Cập nhật trạng thái nút phân trang
+            updatePagination(page);
+        }
+
+        // Hàm cập nhật các nút phân trang
+        function updatePagination(page) {
+            // Cập nhật các nút trang
+            for (let i = 1; i <= totalPages; i++) {
+                const pageLink = document.getElementById(`page${i}`);
+                if (i === page) {
+                    pageLink.classList.add('active');
+                } else {
+                    pageLink.classList.remove('active');
+                }
+            }
+
+            // Cập nhật nút Previous và Next
+            const prevPage = document.getElementById('prevPage');
+            const nextPage = document.getElementById('nextPage');
+
+            if (page === 1) {
+                prevPage.classList.add('disabled');
+            } else {
+                prevPage.classList.remove('disabled');
+            }
+
+            if (page === totalPages) {
+                nextPage.classList.add('disabled');
+            } else {
+                nextPage.classList.remove('disabled');
+            }
+        }
+
+        // Lắng nghe sự kiện click vào các trang
+        document.getElementById('pagination').addEventListener('click', function (event) {
+            if (event.target.tagName === 'A') {
+                const page = parseInt(event.target.textContent);
+                if (!isNaN(page)) {
+                    currentPage = page;
+                    displayTablePage(currentPage);
+                }
+            }
         });
+
+        // Lắng nghe sự kiện click vào nút Previous và Next
+        document.getElementById('prevPage').addEventListener('click', function () {
+            if (currentPage > 1) {
+                currentPage--;
+                displayTablePage(currentPage);
+            }
+        });
+
+        document.getElementById('nextPage').addEventListener('click', function () {
+            if (currentPage < totalPages) {
+                currentPage++;
+                displayTablePage(currentPage);
+            }
+        });
+
+        // Hiển thị trang đầu tiên khi tải trang
+        displayTablePage(currentPage);
     </script>
 </body>
 </html>

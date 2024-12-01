@@ -141,6 +141,7 @@
     <Compile Include="Areas\Admin\Controllers\DanhMucController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\KhachHangController.cs" />
+    <Compile Include="Areas\Admin\Controllers\KhuyenMaiController.cs" />
     <Compile Include="Areas\Admin\Controllers\NhanVienController.cs" />
     <Compile Include="Areas\Admin\Controllers\PhieuNhapController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoaiSanPhamController.cs" />
@@ -155,9 +156,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202411300955431_InitialCreate.cs" />
-    <Compile Include="Migrations\202411300955431_InitialCreate.Designer.cs">
-      <DependentUpon>202411300955431_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\202411301528440_InitialDatabase.cs" />
+    <Compile Include="Migrations\202411301528440_InitialDatabase.Designer.cs">
+      <DependentUpon>202411301528440_InitialDatabase.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApDungKhuyenMai.cs" />
@@ -857,6 +858,14 @@
     <Content Include="Areas\Admin\Views\NhanVien\DangNhap.cshtml" />
     <Content Include="Areas\Admin\Views\ThongKe\Index.cshtml" />
     <Content Include="Areas\Admin\Views\PhieuNhap\Sua.cshtml" />
+    <Content Include="Areas\Admin\Views\KhuyenMai\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\KhuyenMai\Them.cshtml" />
+    <Content Include="Areas\Admin\Views\KhuyenMai\Sua.cshtml" />
+    <Content Include="Areas\Admin\Views\KhachHang\Them.cshtml" />
+    <Content Include="Areas\Admin\Views\KhachHang\Sua.cshtml" />
+    <Content Include="Areas\Admin\Views\NhanVien\Them.cshtml" />
+    <Content Include="Areas\Admin\Views\NhanVien\Sua.cshtml" />
+    <Content Include="Areas\Admin\Views\KhuyenMai\ApDung.cshtml" />
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />
@@ -929,8 +938,8 @@
     <Content Include="Scripts\jquery-3.7.0.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202411300955431_InitialCreate.resx">
-      <DependentUpon>202411300955431_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202411301528440_InitialDatabase.resx">
+      <DependentUpon>202411301528440_InitialDatabase.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

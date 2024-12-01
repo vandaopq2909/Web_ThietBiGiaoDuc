@@ -20,8 +20,8 @@ namespace Web_ThietBiGiaoDuc.Areas.Admin.Controllers
             {
                 return RedirectToAction("DangNhap", "NhanVien");
             }
-            var t = db.nhanViens.ToList();
-            return View();
+            var listNV = db.nhanViens.ToList();
+            return View(listNV);
         }
         public ActionResult DangNhap() { return View(); }
         [HttpPost]
@@ -59,6 +59,63 @@ namespace Web_ThietBiGiaoDuc.Areas.Admin.Controllers
 
             }
             return View();
+        }
+        public ActionResult Them()
+        {
+            DatabaseContext db = new DatabaseContext();
+
+            // Lấy danh sách quyền hoạt động
+            ViewBag.listQ = db.quyens.Where(q => q.TrangThai == "hoatdong").ToList();
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Them(NhanVien nv)
+        {
+            if (nv == null)
+            {
+            }
+            else
+            {
+                DatabaseContext db = new DatabaseContext();
+                db.nhanViens.Add(nv);
+                db.SaveChanges();
+            }
+            return RedirectToAction("Index");
+        }
+
+
+        public ActionResult Sua(string maNV)
+        {
+            DatabaseContext db = new DatabaseContext();
+            var nv = db.nhanViens.Where(x => x.MaNV == maNV).FirstOrDefault();
+            ViewBag.listQ = db.quyens.Where(q => q.TrangThai == "hoatdong").ToList();
+            return View(nv);
+        }
+        [HttpPost]
+        public ActionResult Sua(NhanVien nv)
+        {
+            DatabaseContext db = new DatabaseContext();
+            var nhanVien = db.nhanViens.Where(x => x.MaNV == nv.MaNV).FirstOrDefault();
+
+            //update
+            nhanVien.SDT = nv.SDT;
+            nhanVien.DiaChi = nv.DiaChi;
+            nhanVien.TrangThai = nv.TrangThai;
+            nhanVien.MaQuyen = nv.MaQuyen;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        [HttpPost]
+        public ActionResult Xoa(string maNV)
+        {
+            DatabaseContext db = new DatabaseContext();
+            var nv = db.nhanViens.FirstOrDefault(x => x.MaNV == maNV);
+            //cập nhật trạng thái tài khoản khách hàng
+            //nv.TrangThai = "Đã xóa";
+  
+            db.nhanViens.Remove(nv);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }
