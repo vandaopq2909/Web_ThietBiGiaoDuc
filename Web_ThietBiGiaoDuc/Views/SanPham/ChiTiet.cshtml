@@ -547,6 +547,11 @@
                     <h3 class="font-weight-bold">
                         <span>@Model.Gia.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("vi-VN"))</span><sup>đ</sup>
                     </h3>
+                    <h3>
+                        <strong class="discounted-price" style="color:red;" data-product-id="@spNoiBat.MaSP" data-original-price="@spNoiBat.Gia">
+                            Đang tính...
+                        </strong>
+                    </h3>
                 </div>
                 <!-- Toast thông báo với màu nền xanh lá -->
                 <div class="toast" id="successToast" role="alert" aria-live="assertive" aria-atomic="true"
@@ -558,6 +563,51 @@
                         Thêm sản phẩm vào giỏ hàng thành công!
                     </div>
                 </div>
+                <script>
+                    $(document).ready(function () {
+                    // Lặp qua từng sản phẩm để tính giá sau khuyến mãi
+                    $(".discounted-price").each(function () {
+                        var $this = $(this);
+                        var maSP = $this.data("product-id");
+                        var originalPrice = parseFloat($this.data("original-price"));
+
+                        // Kiểm tra giá gốc có hợp lệ không
+                        if (isNaN(originalPrice) || originalPrice <= 0) {
+                            $this.text("Giá không hợp lệ");
+                            return;
+                        }
+
+                        // Gọi API lấy tỷ lệ giảm giá
+                        $.ajax({
+                            url: '@Url.Action("GetTiLeGiamGia", "SanPham")',
+                            type: 'GET',
+                            data: { maSP: maSP },
+                            success: function (discountRate) {
+                                // Kiểm tra tỷ lệ giảm giá có hợp lệ không
+                                if (discountRate === null || discountRate === undefined || discountRate < 0) {
+                                    $this.text("Không thể tính giá");
+                                    $this.siblings(".discount-rate").text("Tỷ lệ lỗi");
+                                    return;
+                                }
+
+                                // Chuyển đổi tỷ lệ giảm giá từ phần trăm sang thập phân
+                                var discountDecimal = discountRate / 100;
+
+                                // Tính giá sau khuyến mãi
+                                var discountedPrice = originalPrice * (1 - discountDecimal);
+
+                                // Cập nhật giá và tỷ lệ giảm giá
+                                $this.text(discountedPrice.toLocaleString("vi-VN") + " đ");
+                                $this.siblings(".discount-rate").text(discountRate + "% OFF");
+                            },
+                            error: function () {
+                                $this.text("Không thể tính giá");
+                                $this.siblings(".discount-rate").text("Lỗi");
+                            }
+                        });
+                    });
+                });
+                </script>
                 <script type="text/javascript">
                     function themVaoGioHang(maSP) {
                         $.ajax({
