@@ -74,7 +74,7 @@
                                         <tr>
                                             <td>@item.MaDH</td>
                                             <td>@item.NgayDatHang.ToString("dd/MM/yyyy HH:mm")</td>
-                                            <td>@item.TongTien.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("vi-VN"))</td>
+                                            <td style="text-align:right">@item.TongTien.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("vi-VN"))</td>
                                             <td>
                                                 <h6 class="@GetStatusColorClass(item.TrangThai)">
                                                     @item.TrangThai
