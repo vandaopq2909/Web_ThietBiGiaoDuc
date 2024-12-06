@@ -81,7 +81,7 @@
                                             <tr>
                                                 <td>@item.MaPN</td>
                                                 <td>@item.NgayNhapHang.ToString("dd/MM/yyyy ")</td>
-                                                <td>@item.TongTien.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("vi-VN"))</td>
+                                                <td style="text-align:right">@item.TongTien.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("vi-VN"))</td>
                                                 <td>
                                                     <h6 class="@GetStatusColorClass(item.TrangThai)">
                                                         @item.TrangThai
