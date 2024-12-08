@@ -58,16 +58,16 @@ namespace Web_ThietBiGiaoDuc.Controllers
 
             return View();
         }
-        public ActionResult About()
+        public ActionResult GioiThieu()
         {
-            ViewBag.Message = "Your application description page.";
+         
 
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult LienHe()
         {
-            ViewBag.Message = "Your contact page.";
+      
 
             return View();
         }
