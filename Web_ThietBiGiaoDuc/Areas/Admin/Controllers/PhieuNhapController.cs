@@ -79,7 +79,7 @@ namespace Web_ThietBiGiaoDuc.Areas.Admin.Controllers
                 {
                     MaNV = maNV,
                     MaNCC = viewModel.MaNCC,
-                    NgayNhapHang = viewModel.NgayNhapHang,
+                    NgayNhapHang = DateTime.Now,
                     TrangThai = viewModel.TrangThai,
                     ChiTietPhieuNhaps = new List<ChiTietPhieuNhap>()
                 };
@@ -159,7 +159,7 @@ namespace Web_ThietBiGiaoDuc.Areas.Admin.Controllers
             }
 
             phieuNhap.MaNCC = model.MaNCC;
-            phieuNhap.NgayNhapHang = model.NgayNhapHang;
+            phieuNhap.NgayNhapHang = DateTime.Now;
             phieuNhap.TrangThai = model.TrangThai;
 
             if (model.TrangThai == "Đã nhập hàng")
