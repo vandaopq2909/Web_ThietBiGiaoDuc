@@ -3,6 +3,27 @@
     Layout = null;
 }
 
+<style>
+    .alert {
+        padding: 15px;
+        margin-bottom: 20px;
+        border: 1px solid transparent;
+        border-radius: 4px;
+    }
+
+    .alert-success {
+        color: #155724;
+        background-color: #d4edda;
+        border-color: #c3e6cb;
+    }
+
+    .alert-danger {
+        color: #721c24;
+        background-color: #f8d7da;
+        border-color: #f5c6cb;
+    }
+
+</style>
 <!DOCTYPE html>
 
 <html>
@@ -10,7 +31,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đăng nhập</title>
+    <title>Đăng kí tài khoản</title>
     <!-- APP CSS -->
     <link rel="stylesheet" href="~/Resources/css/flogin.css" asp-append-version="true">
 </head>
@@ -19,6 +40,18 @@
         <a href="~/Home/Index" class="form-logo">
             <img src="~/Resources/img/logo/TBGD_AandB_Logo.png" alt="PetSpa logo">
         </a>
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-success">
+                @TempData["SuccessMessage"]
+            </div>
+        }
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-danger">
+                @TempData["ErrorMessage"]
+            </div>
+        }
         <form id="signin-form" action="/KhachHang/DangKi" method="post">
             <div class="form-group">
                 <input type="text" id="TenDangNhap" class="form-input" name="TenDangNhap" placeholder="Tên đăng nhập">
@@ -40,5 +73,12 @@
         </form>
     </div>
     <script src="~/Resources/js/fregister.js" asp-append-version="true"></script>
+    <!-- Tự động ẩn thông báo sau 2 giây -->
+    <script>
+        setTimeout(() => {
+            document.querySelector('.alert-success')?.remove();
+            document.querySelector('.alert-danger')?.remove();
+        }, 2000);
+    </script>
 </body>
 </html>

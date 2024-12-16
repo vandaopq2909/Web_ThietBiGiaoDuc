@@ -94,31 +94,42 @@ namespace Web_ThietBiGiaoDuc.Controllers
         {
             if (!ModelState.IsValid)
             {
+                TempData["ErrorMessage"] = "Thông tin không hợp lệ. Vui lòng kiểm tra lại.";
                 return View();
             }
+
             DatabaseContext db = new DatabaseContext();
-            KhachHang khach = db.khachHangs.Where(u => u.Email == khachHang.Email).FirstOrDefault();
+            KhachHang khach = db.khachHangs.FirstOrDefault(u => u.Email == khachHang.Email);
             if (khach != null)
             {
-                ModelState.AddModelError("Email", "Email đã tồn tại");
+                TempData["ErrorMessage"] = "Email đã tồn tại. Vui lòng sử dụng email khác.";
                 return View();
             }
-            khach = db.khachHangs.Where(u => u.TenDangNhap == khachHang.TenDangNhap).FirstOrDefault();
+
+            khach = db.khachHangs.FirstOrDefault(u => u.TenDangNhap == khachHang.TenDangNhap);
             if (khach != null)
             {
-                ModelState.AddModelError("TenDangNhap", "Tên đăng nhập đã tồn tại");
+                TempData["ErrorMessage"] = "Tên đăng nhập đã tồn tại. Vui lòng chọn tên khác.";
                 return View();
             }
-            khach = new KhachHang();
-            khach.TenDangNhap = khachHang.TenDangNhap;
-            khach.Email = khachHang.Email;
-            khach.MatKhau = BCrypt.Net.BCrypt.HashPassword(khachHang.MatKhau);
-            khach.TrangThai = "hoatdong";
+
+            // Nếu không có lỗi, thực hiện đăng ký
+            khach = new KhachHang
+            {
+                TenDangNhap = khachHang.TenDangNhap,
+                Email = khachHang.Email,
+                MatKhau = BCrypt.Net.BCrypt.HashPassword(khachHang.MatKhau),
+                TrangThai = "hoatdong"
+            };
+
             db.khachHangs.Add(khach);
             db.SaveChanges();
 
+            TempData["SuccessMessage"] = "Đăng ký thành công. Bạn có thể đăng nhập ngay bây giờ!";
             return RedirectToAction("DangNhap");
         }
+
+
         public ActionResult DoiMatKhau(string makh)
         {
             DatabaseContext db = new DatabaseContext();
