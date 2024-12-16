@@ -4,12 +4,38 @@
 }
 
 <!DOCTYPE html>
+
+
 <style>
     input::placeholder {
         color: black;
-      
+    }
+
+    .alert {
+        padding: 15px;
+        margin-bottom: 20px;
+        border: 1px solid transparent;
+        border-radius: 4px;
+    }
+
+    .alert-success {
+        color: #155724;
+        background-color: #d4edda;
+        border-color: #c3e6cb;
+    }
+
+    .alert-danger {
+        color: #721c24;
+        background-color: #f8d7da;
+        border-color: #f5c6cb;
     }
 </style>
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessage"]
+    </div>
+}
 <html>
 <head>
     <meta charset="UTF-8">
@@ -42,3 +68,10 @@
     <script src="~/Resources/js/flogin.js" asp-append-version="true"></script>
 </body>
 </html>
+<!-- Tự động ẩn thông báo sau 2 giây -->
+<script>
+    setTimeout(() => {
+        document.querySelector('.alert-success')?.remove();
+        document.querySelector('.alert-danger')?.remove();
+    }, 2000);
+</script>
