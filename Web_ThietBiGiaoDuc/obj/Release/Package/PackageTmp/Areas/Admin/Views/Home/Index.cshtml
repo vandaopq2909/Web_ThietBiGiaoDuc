@@ -1,0 +1,252 @@
+﻿
+@{
+    ViewBag.Title = "HOME ADMIN";
+}
+
+<div class="container">
+    <div class="page-inner">
+        <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4">
+            <div>
+                <h3 class="fw-bold mb-3">Trang Chủ</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 col-md-3">
+                <div class="card card-stats card-round">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col-icon">
+                                <div class="icon-big text-center icon-primary bubble-shadow-small">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                            </div>
+                            <div class="col col-stats ms-3 ms-sm-0">
+                                <div class="numbers">
+                                    <p class="card-category">Số lượng khách hàng</p>
+                                    <h4 class="card-title">@ViewBag.SLKhachHang</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="card card-stats card-round">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col-icon">
+                                <div class="icon-big text-center icon-info bubble-shadow-small">
+                                    <i class="fas fa-user-check"></i>
+                                </div>
+                            </div>
+                            <div class="col col-stats ms-3 ms-sm-0">
+                                <div class="numbers">
+                                    <p class="card-category">SL khách đã chốt đơn</p>
+                                    <h4 class="card-title">@ViewBag.SLKhachHangDaMuaHang</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="card card-stats card-round">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col-icon">
+                                <div class="icon-big text-center icon-success bubble-shadow-small">
+                                    <i class="fas fa-luggage-cart"></i>
+                                </div>
+                            </div>
+                            <div class="col col-stats ms-3 ms-sm-0">
+                                <div class="numbers">
+                                    <p class="card-category">Doanh thu trong ngày</p>
+                                    <h4 class="card-title">@ViewBag.DoanhThuTrongNgay.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("vi-VN"))<sup>đ</sup></h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="card card-stats card-round">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col-icon">
+                                <div class="icon-big text-center icon-secondary bubble-shadow-small">
+                                    <i class="far fa-check-circle"></i>
+                                </div>
+                            </div>
+                            <div class="col col-stats ms-3 ms-sm-0">
+                                <div class="numbers">
+                                    <p class="card-category">SL đơn hàng trong ngày</p>
+                                    <h4 class="card-title">@ViewBag.SLDonHangTrongNgay</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card card-round">
+                    <div class="card-header">
+                        <div class="card-head-row">
+                            <div class="card-title">Biểu đồ doanh thu các ngày trong tháng</div>
+                            <div class="card-tools">
+                                <a href="#"
+                                   class="btn btn-label-success btn-round btn-sm me-2">
+                                    <span class="btn-label">
+                                        <i class="fa fa-pencil"></i>
+                                    </span>
+                                    Export
+                                </a>
+                                <a href="#" class="btn btn-label-info btn-round btn-sm">
+                                    <span class="btn-label">
+                                        <i class="fa fa-print"></i>
+                                    </span>
+                                    Print
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container" style="min-height: 375px">
+                            <canvas id="dailyRevenueChart"></canvas>
+                        </div>
+                        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                        <script>
+                            document.addEventListener("DOMContentLoaded", function () {
+                                // Tùy chọn năm và tháng
+                                const year = new Date().getFullYear(); // Năm hiện tại
+                                const month = new Date().getMonth() + 1; // Tháng hiện tại (0-based, cần +1)
+
+                                // Gọi API lấy dữ liệu doanh thu
+                                fetch(`/ThongKe/GetThongKeTheoNgayTrongThang?year=${year}&month=${month}`)
+                                    .then(response => response.json())
+                                    .then(data => {
+                                        const labels = data.map(item => `Ngày ${item.Day}`);
+                                        const revenues = data.map(item => item.Revenue);
+
+                                        // Tạo biểu đồ
+                                        const ctx = document.getElementById('dailyRevenueChart').getContext('2d');
+                                        new Chart(ctx, {
+                                            type: 'line',
+                                            data: {
+                                                labels: labels,
+                                                datasets: [{
+                                                    label: 'Doanh thu (đ)',
+                                                    data: revenues,
+                                                    borderColor: 'rgba(255, 99, 132, 1)',
+                                                    backgroundColor: 'rgba(255, 159, 64, 0.2)',
+                                                    borderWidth: 1,
+                                                    fill: true
+                                                }]
+                                            },
+                                            options: {
+                                                scales: {
+                                                    y: {
+                                                        beginAtZero: true
+                                                    },
+                                                    x: {
+                                                        title: {
+                                                            display: true,
+                                                            text: `Ngày trong tháng ${month}/${year}`
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        });
+                                    })
+                                    .catch(error => console.error('Lỗi khi tải dữ liệu:', error));
+                            });
+                        </script>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card card-primary card-round">
+                    <div class="card-header">
+                        <div class="card-head-row">
+                            <div class="card-title">Doanh thu trong tháng</div>
+                        </div>
+                        <div class="card-category">@DateTime.Now.ToLongDateString()</div>
+                    </div>
+                    <div class="card-body pb-0">
+                        <div class="mb-4 mt-2">
+                            <h1>@ViewBag.DoanhThuTrongThang.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("vi-VN"))<sup>đ</sup></h1>
+                        </div>
+                        <div class="pull-in">
+                            <canvas id="dailySalesChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="card card-round">
+                    <div class="card-header">
+                        <div class="card-title">Biểu đồ doanh thu theo năm</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container">
+                            <canvas id="yearRevenueChart"></canvas>
+                        </div>
+                    </div>
+                    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                    <script>
+                        // Sử dụng AJAX để gọi controller và lấy dữ liệu
+                        $.ajax({
+                            url: '@Url.Action("GetThongKeTheoNam", "ThongKe")',
+                            type: 'GET',
+                            success: function (data) {
+                                // Dữ liệu trả về từ controller
+                                var years = data.map(function(item) { return item.Year; }); // Các năm
+                                var revenues = data.map(function(item) { return item.Revenue; }); // Doanh thu
+
+                                // Tạo biểu đồ
+                                var ctx = document.getElementById('yearRevenueChart').getContext('2d');
+                                var revenueChart = new Chart(ctx, {
+                                    type: 'bar', // Biểu đồ dạng cột
+                                    data: {
+                                        labels: years, // Các năm
+                                        datasets: [{
+                                            label: 'Doanh thu (đ)',
+                                            data: revenues,
+                                            backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                                            borderColor: 'rgba(54, 162, 235, 1)',
+                                            borderWidth: 1,
+                                        }]
+                                    },
+                                    options: {
+                                        responsive: true,
+                                        plugins: {
+                                            legend: {
+                                                position: 'top',
+                                            },
+                                            tooltip: {
+                                                callbacks: {
+                                                    label: function(tooltipItem) {
+                                                        return 'Doanh thu: ' + tooltipItem.raw.toLocaleString() + ' đ';
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        scales: {
+                                            y: {
+                                                beginAtZero: true // Đảm bảo trục Y bắt đầu từ 0
+                                            }
+                                        }
+                                    }
+                                });
+                            },
+                            error: function (xhr, status, error) {
+                                alert("Đã có lỗi xảy ra khi tải dữ liệu.");
+                            }
+                        });
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

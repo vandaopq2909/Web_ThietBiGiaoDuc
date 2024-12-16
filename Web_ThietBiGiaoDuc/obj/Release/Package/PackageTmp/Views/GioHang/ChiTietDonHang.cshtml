@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewBag.Title = "ChiTietDonHang";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<div style="min-height:400px;padding:100px">
+    <div class="text-center container">
+        <h4>Chi tiết đơn hàng @ViewBag.madh</h4>
+        <hr />
+    </div>
+    <div class="container d-flex justify-content-center " style="min-height:200px;">
+
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col" style="text-align:center">Mã sản phẩm</th>
+                    <th scope="col" style="text-align:center">Tên sản phẩm</th>
+                    <th scope="col" style="text-align:center">Giá</th>
+                    <th scope="col" style="text-align:center">Đơn giá</th>
+                    <th scope="col" style="text-align:center">Thành tiền</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in ViewBag.lstCTDH)
+                {
+                    <tr>
+                        <th scope="row">@item.MaSP</th>
+                        <td>@item.TenSanPham</td>
+                        <td style="text-align:right">@item.SoLuong</td>
+
+                        <td style="text-align:right">@item.Gia.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("vi-VN"))</td>
+                        <td style="text-align:right">@item.TongTien.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("vi-VN"))</td>
+                        <td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+    <!-- Tổng tiền div -->
+    <div class="d-flex justify-content-end mt-3 container">
+        <table class="table w-50">
+            <tr>
+                <td style="text-align: right;">
+                    <h5>
+                        Tổng tiền:
+                        <strong style="color:red"> @ViewBag.TongTien.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("vi-VN")) đ</strong>
+                    </h5>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+

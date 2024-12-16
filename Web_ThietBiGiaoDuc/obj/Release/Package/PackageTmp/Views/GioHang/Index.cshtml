@@ -1,0 +1,323 @@
+﻿@{
+    // Lấy giỏ hàng từ session
+    var cart = ViewBag.Cart;
+    if (cart == null)
+    {
+        cart = new List<dynamic>();
+    }
+
+    double tongTienTatCaSP = 0;
+    if (cart != null)
+    {
+        foreach (var item in cart)
+        {
+            tongTienTatCaSP += item.TongTien;
+        }
+    }
+    //double tongTienTatCaSP = ViewBag.tongTienTatCaSP;
+
+    var cookieMaKH = Context.Request.Cookies["makh"].Value;
+}
+@{
+    ViewBag.Title = "Giỏ hàng";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+    a {
+        text-decoration: none;
+    }
+
+    #verify-form {
+        display: none;
+    }
+</style>
+<section class="h-100" style="background-color: #eee;">
+    <div class="container h-100 py-3">
+        <div class="row d-flex justify-content-center h-100">
+            <h4 class="text text-danger text-center">GIỎ HÀNG</h4>
+
+            <div class="col-8 align-items-center">
+                @foreach (var item in cart)
+                {
+                    <div class="card rounded-3 mb-4">
+                        <div class="card-body p-4">
+                            <div class="row d-flex justify-content-between align-items-center">
+                                <div class="col-md-2 col-lg-2 col-xl-2">
+                                    <a href="/SanPham/ChiTiet?maSP=@item.MaSP">
+                                        <img src="~/Images/SanPham/@item.Img"
+                                             class="img-fluid rounded-3">
+                                    </a>
+                                </div>
+                                <div class="col-md-3 col-lg-3 col-xl-3">
+                                    <p class="lead fw-normal mb-2"></p>
+                                    <p><a href="/SanPham/ChiTiet?maSP=@item.MaSP" class="text-muted">@item.TenSP</a></p>
+                                </div>
+                                <div class="col-md-2 col-lg-3 col-xl-2">
+                                    <form id="form-submit-capnhat-@item.MaSP" action="/GioHang/CapNhatSPGioHang" method="post" class="d-flex justify-content-center align-items-center">
+                                        <input type="button" class="button-quantity px-2" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" value="-">
+
+                                        <input type="number" id="#" class="form-control form-control-sm mx-1 text-center" min="1" name="soLuong" value="@item.SoLuong" style="width: 50px;">
+
+                                        <input type="button" class="button-quantity px-2" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" value="+">
+
+                                        <input type="hidden" name="maSP" value="@item.MaSP" />
+                                    </form>
+                                </div>
+                                <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                                    <h5 class="mb-0">@item.TongTien.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("vi-VN"))<sup>đ</sup></h5>
+                                </div>
+                                <div class="col-md-1 col-lg-1 col-xl-2 text-end d-flex">
+                                    <h4 id="capNhatSP-@item.MaSP" style="cursor:pointer;" title="Cập nhật sản phẩm"><i class="fa-solid fa-repeat text-success"></i></h4>
+                                    <span class="mx-3">|</span>
+                                    <form id="form-xoa-@item.MaSP" action="/GioHang/XoaSPKhoiGioHang" method="post">
+                                        <input type="hidden" name="maSP" value="@item.MaSP" />
+                                        <h4 id="xoaKhoiGioHang-@item.MaSP" style="cursor:pointer;" title="Xóa sản phẩm">
+                                            <i class="fa-solid fa-trash text-danger"></i>
+                                        </h4>
+                                    </form>
+                                    <script>
+                                        // Đảm bảo sự kiện được gắn khi DOM đã hoàn tất
+                                        document.addEventListener("DOMContentLoaded", function () {
+                                            // Lặp qua tất cả các phần tử có ID theo mẫu "xoaKhoiGioHang-"
+                                            var xoaElements = document.querySelectorAll('[id^="xoaKhoiGioHang-"]');
+
+                                            xoaElements.forEach(function (element) {
+                                                // Lấy ID động từ phần tử
+                                                var maSP = element.id.split('-')[1]; // Lấy @item.MaSP từ ID ví dụ "xoaKhoiGioHang-123"
+
+                                                // Gắn sự kiện click
+                                                element.addEventListener("click", function (event) {
+                                                    event.preventDefault(); // Ngăn chặn hành vi mặc định
+                                                    // Kích hoạt sự kiện submit của form có ID tương ứng
+                                                    document.getElementById("form-xoa-" + maSP).submit();
+                                                });
+                                            });
+                                        });
+                                    </script>
+                                    <script>//cập nhật sản phẩm
+                                        // Đảm bảo sự kiện được gắn khi DOM đã hoàn tất
+                                        document.addEventListener("DOMContentLoaded", function() {
+                                            // Lặp qua tất cả các phần tử có ID theo mẫu "capNhatSP-"
+                                            var capNhatElements = document.querySelectorAll('[id^="capNhatSP-"]');
+
+                                            capNhatElements.forEach(function(element) {
+                                                // Lấy ID động từ phần tử
+                                                var maSP = element.id.split('-')[1];  // @item.MaSP từ ID ví dụ "capNhatSP-123"
+
+                                                // Gắn sự kiện click
+                                                element.addEventListener("click", function (event) {
+                                                    event.preventDefault(); // Ngăn chặn hành vi mặc định
+                                                    // Kích hoạt sự kiện submit của form có ID tương ứng
+                                                    document.getElementById("form-submit-capnhat-" + maSP).submit();
+                                                });
+                                            });
+                                        });
+                                    </script>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                <a href="/GioHang/LamTrongGioHang" class="btn btn-danger">Làm trống giỏ hàng</a>
+
+            </div>
+            <div class="col-4">
+                <div class="card mb-2">
+                    <div class="card-header py-3">
+                        <h5 class="mb-0">Thanh toán đơn hàng</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
+                                Tổng tiền
+                                <span>@tongTienTatCaSP.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("vi-VN"))<sup>đ</sup></span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                                Phí giao hàng
+                                <span>0<sup>đ</sup></span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
+                                <div>
+                                    <strong>Phải trả</strong>
+                                    <strong>
+                                        <p class="mb-0">(đã bao gồm VAT)</p>
+                                    </strong>
+                                </div>
+                                <span id="total-price"><strong>@tongTienTatCaSP.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("vi-VN"))<sup>đ</sup></strong></span>
+                            </li>
+                        </ul>
+
+                        <button id="btn-pay" type="button"
+                                data-mdb-button-init data-mdb-ripple-init class="btn btn-danger btn-lg btn-block">
+                            Thanh toán
+                        </button>
+
+                    </div>
+                </div>
+
+                <div class="card mb-4" id="verify-form">
+                    <div class="card-header py-2">
+                        <h5 class="mb-0">Xác nhận thanh toán đơn hàng</h5>
+                    </div>
+                    <div class="card-body">
+
+                        <form id="verify-payment-form" action="/GioHang/ThanhToan" method="post" style="display: none;">
+                            <div class="mb-2">
+                                <label for="phone">Số điện thoại:</label>
+                                <input type="text" class="form-control" id="phone" name="phone_number" required>
+                            </div>
+                            <div class="mb-2">
+                                <label for="address">Địa chỉ:</label>
+                                <input type="text" class="form-control" id="address" name="delivery_address" required>
+                            </div>
+                            <div class="d-flex justify-content-center">
+                                <button id="btn-verify-pay" type="submit"
+                                        data-mdb-button-init data-mdb-ripple-init class="btn btn-danger btn-lg btn-block">
+                                    Xác nhận thanh toán
+                                </button>
+                            </div>
+                        </form>
+
+                        <script>
+                            document.addEventListener("DOMContentLoaded", function () {
+                                // Lấy tổng giá trị từ phần tử hiển thị tổng giá
+                                var totalPriceText = document.getElementById('total-price').textContent.trim();
+                                var totalPrice = parseInt(totalPriceText, 10);
+
+                                // Gắn sự kiện click cho nút thanh toán
+                                document.getElementById('btn-pay').addEventListener('click', function (event) {
+                                    event.preventDefault(); // Ngăn chặn hành vi mặc định của nút
+
+                                    if (isNaN(totalPrice) || totalPrice <= 0) {
+                                        // Hiển thị thông báo lỗi nếu tổng giá trị không hợp lệ
+                                        Swal.fire({
+                                            icon: "error",
+                                            title: "Lỗi...",
+                                            text: "Bạn phải thêm sản phẩm cần mua vào giỏ hàng trước!",
+                                        });
+                                    } else {
+                                        // Hiển thị hoặc ẩn form xác nhận thanh toán
+                                        var form = document.getElementById('verify-form');
+                                        if (form.style.display === 'none' || form.style.display === '') {
+                                            form.style.display = 'block'; // Hiển thị form
+                                        } else {
+                                            form.style.display = 'none'; // Ẩn form
+                                        }
+                                    }
+                                });
+                            });
+                        </script>
+                        <script>
+document.addEventListener("DOMContentLoaded", function () {
+                                var maKH = '@cookieMaKH';
+
+                                document.getElementById('btn-pay').addEventListener('click', function () {
+                                    // Gửi yêu cầu AJAX đến server, kèm theo mã KH
+                                    fetch('/GioHang/LayThongTinNguoiDung?maKH=' + encodeURIComponent(maKH), {
+                                        method: 'GET',
+                                        headers: {
+                                            'Content-Type': 'application/json'
+                                        }
+                                    })
+                                        .then(response => response.json())
+                                        .then(data => {
+                                            // Điền dữ liệu vào các trường input
+                                            document.getElementById('phone').value = data.phone_number;
+                                            document.getElementById('address').value = data.delivery_address;
+
+                                            // Hiển thị form
+                                            document.getElementById('verify-payment-form').style.display = 'block';
+                                        })
+                                        .catch(error => {
+                                            console.error('Error fetching user info:', error);
+                                            Swal.fire({
+                                                icon: 'error',
+                                                title: 'Lỗi...',
+                                                text: 'Không thể lấy thông tin người dùng!'
+                                            });
+                                        });
+                                });
+                            });</script>
+                        <!-- scrip cho btn xác nhận thanh toán -->
+                        <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var maKH = '@cookieMaKH'; // Mã khách hàng từ cookie hoặc session
+
+        document.getElementById('btn-verify-pay').addEventListener('click', function () {
+            // Lấy dữ liệu từ các input
+            var phone = document.getElementById('phone').value.trim();
+            var address = document.getElementById('address').value.trim();
+
+            // Kiểm tra dữ liệu input
+            if (!phone || !address) {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Thiếu thông tin',
+                    text: 'Vui lòng nhập đầy đủ số điện thoại và địa chỉ!'
+                });
+                return; // Dừng thực hiện nếu dữ liệu không hợp lệ
+            }
+
+            // Kiểm tra định dạng số điện thoại
+            var phoneRegex = /^[0-9]{10,15}$/;
+            if (!phoneRegex.test(phone)) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Sai định dạng',
+                    text: 'Số điện thoại không hợp lệ! Vui lòng kiểm tra lại.'
+                });
+                return; // Dừng thực hiện nếu số điện thoại sai định dạng
+            }
+
+            // Tạo dữ liệu gửi đi dưới dạng 'application/x-www-form-urlencoded'
+            var formData = new URLSearchParams();
+            formData.append('maKH', maKH.toString());
+            formData.append('phone_number', phone);
+            formData.append('delivery_address', address);
+
+            // Gửi yêu cầu AJAX tới controller ThanhToan
+            fetch('/GioHang/ThanhToan', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: formData
+            })
+            .then(response => {
+                if (response.redirected) {
+                    // Nếu controller trả về một redirect (chuyển hướng), ta sẽ chuyển hướng theo URL đó
+                    window.location.href = response.url;
+                } else if (response.ok) {
+                    // Nếu trả về view trực tiếp (không redirect), tải nội dung view vào trang hiện tại
+                    return response.text(); // Lấy HTML từ phản hồi
+                } else {
+                    throw new Error('Yêu cầu không thành công: ' + response.statusText);
+                }
+            })            
+            .catch(error => {
+                console.error('Error during payment process:', error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Lỗi...',
+                    text: 'Có lỗi xảy ra khi gửi yêu cầu thanh toán!'
+                });
+            });
+        });
+    });
+                        </script>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+

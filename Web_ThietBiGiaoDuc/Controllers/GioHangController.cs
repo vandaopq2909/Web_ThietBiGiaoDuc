@@ -1,9 +1,13 @@
 ﻿using PagedList;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Mail;
+using System.Text;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 using Web_ThietBiGiaoDuc.Models;
 
@@ -211,6 +215,10 @@ namespace Web_ThietBiGiaoDuc.Controllers
             {
                 // Lấy giỏ hàng từ session
                 List<ItemSanPham> cart = Session["Cart"] as List<ItemSanPham>;
+
+                //lấy thông tin khách hàng
+                var CustomerInfo = db.khachHangs.Where(x=> x.MaKH == maKH).FirstOrDefault();
+
                 double tongTien = 0;
                 if (cart != null)
                 {
@@ -235,6 +243,28 @@ namespace Web_ThietBiGiaoDuc.Controllers
                     db.SaveChanges();
 
                     ThemCTDonHang(donHang.MaDH);
+
+                    var listSP = new List<ItemSanPham>(); 
+                    foreach (var item in cart)
+                    {
+                        listSP.Add(new ItemSanPham
+                        {
+                            TenSP = item.TenSP,
+                            SoLuong = item.SoLuong,
+                            Gia = item.Gia,
+                            Img = item.Img
+                        });
+                    }
+                    Order order = new Order
+                    {
+                        CustomerName = CustomerInfo.HoTen,
+                        CustomerEmail = CustomerInfo.Email,
+                        Items = listSP,
+                        TotalPrice = tongTien
+                    };
+
+                    EmailHelper emailHelper = new EmailHelper();
+                    emailHelper.SendOrderConfirmationEmail(order);
 
                     Session["Cart"] = null;
                     ViewBag.Cart = null;
@@ -364,6 +394,133 @@ namespace Web_ThietBiGiaoDuc.Controllers
 
             // Trả về dữ liệu JSON
             return Json(gioHangData, JsonRequestBehavior.AllowGet);
+        }
+        public class EmailHelper
+        {
+            public void SendOrderConfirmationEmail(Order order)
+            {
+                // Cấu hình thông tin email
+                string fromEmail = "thietbigiaoduc.dacn@gmail.com";
+                string subject = "Đơn hàng đã đặt thành công";
+
+                // Tạo nội dung email từ hàm GetOrderConfirmationEmailBody
+                AlternateView emailBody = GetOrderConfirmationEmailBody(order);
+
+                try
+                {
+                    // Cấu hình SMTP Client
+                    var smtpClient = new SmtpClient("smtp.gmail.com")
+                    {
+                        Port = 587,
+                        Credentials = new NetworkCredential("thietbigiaoduc.dacn@gmail.com", "mzazrwkdbrugholx"),
+                        EnableSsl = true
+                    };
+
+                    // Tạo email
+                    var mailMessage = new MailMessage
+                    {
+                        From = new MailAddress(fromEmail),
+                        Subject = subject,
+                        IsBodyHtml = true // Đảm bảo email sẽ được gửi dưới dạng HTML
+                    };
+
+                    // Thêm nội dung HTML vào email
+                    mailMessage.AlternateViews.Add(emailBody);
+
+                    // Thêm địa chỉ người nhận
+                    mailMessage.To.Add(order.CustomerEmail);
+
+                    // Gửi email
+                    smtpClient.Send(mailMessage);
+                }
+                catch (Exception ex)
+                {
+                    // Xử lý lỗi
+                    Console.WriteLine("Lỗi gửi email: " + ex.Message);
+                }
+            }
+
+            private AlternateView GetOrderConfirmationEmailBody(Order order)
+            {
+                StringBuilder body = new StringBuilder();
+                body.Append("<h2>Đơn hàng đã đặt thành công</h2>");
+                body.Append("<p>Xin chào " + order.CustomerName + ",</p>");
+                body.Append("<p>Cảm ơn bạn đã đặt hàng tại cửa hàng của chúng tôi.</p>");
+                body.Append("<h3>Danh sách sản phẩm:</h3>");
+                body.Append("<table border='1' cellpadding='5' cellspacing='0'>");
+                body.Append("<tr><th>Hình ảnh</th><th>Tên sản phẩm</th><th>Số lượng</th><th>Giá</th></tr>");
+
+                // Thêm LinkedResource vào danh sách ảnh để nhúng inline
+                List<LinkedResource> linkedImages = new List<LinkedResource>();
+
+                foreach (ItemSanPham item in order.Items)
+                {
+                    // Đường dẫn tới hình ảnh trên máy chủ
+                    string imagePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Images/SanPham", item.Img);
+
+                    string contentId = Guid.NewGuid().ToString(); // Tạo Content-ID duy nhất cho ảnh
+
+                    if (System.IO.File.Exists(imagePath))
+                    {
+                        // Tạo LinkedResource từ ảnh
+                        LinkedResource linkedImage = new LinkedResource(imagePath, "image/jpeg")
+                        {
+                            ContentId = contentId,
+                            TransferEncoding = System.Net.Mime.TransferEncoding.Base64
+                        };
+
+                        linkedImages.Add(linkedImage);
+
+                        // Thêm dòng vào bảng email, tham chiếu ảnh qua Content-ID
+                        body.Append("<tr>");
+                        body.Append($"<td style='padding: 8px;'><img src='cid:{contentId}' alt='{item.TenSP}' style='width: 100px; height: auto;' /></td>");
+                        body.Append("<td>" + item.TenSP + "</td>");
+                        body.Append("<td>" + item.SoLuong + "</td>");
+                        body.Append("<td>" + item.Gia.ToString("N0") + " VNĐ</td>");
+                        body.Append("</tr>");
+                    }
+                    else
+                    {
+                        body.Append("<tr>");
+                        body.Append("<td style='padding: 8px;'>Hình ảnh không tìm thấy</td>");
+                        body.Append("<td>" + item.TenSP + "</td>");
+                        body.Append("<td>" + item.SoLuong + "</td>");
+                        body.Append("<td>" + item.Gia.ToString("N0") + " VNĐ</td>");
+                        body.Append("</tr>");
+                    }
+                }
+
+                body.Append("</table>");
+                body.Append("<p>Tổng tiền: " + order.TotalPrice.ToString("N0") + " VNĐ</p>");
+                body.Append("<p>Xin cảm ơn và chúc bạn có một ngày tốt lành!</p>");
+
+                // Tạo AlternateView cho nội dung email
+                AlternateView htmlView = AlternateView.CreateAlternateViewFromString(body.ToString(), null, "text/html");
+
+                // Thêm LinkedResource vào AlternateView
+                foreach (var linkedImage in linkedImages)
+                {
+                    htmlView.LinkedResources.Add(linkedImage);
+                }
+
+                return htmlView;
+            }
+
+        }
+
+        public class Order
+        {
+            public string CustomerName { get; set; }
+            public string CustomerEmail { get; set; }
+            public List<ItemSanPham> Items { get; set; }
+            public double TotalPrice { get; set; }
+        }
+
+        public class OrderItem
+        {
+            public string ProductName { get; set; }
+            public int Quantity { get; set; }
+            public decimal Price { get; set; }
         }
     }
 }

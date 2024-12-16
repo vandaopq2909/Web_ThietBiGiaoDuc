@@ -1,0 +1,181 @@
+﻿
+@{
+    ViewBag.Title = "Thêm phiếu nhập";
+}
+@functions{
+    public string GetStatusColorClass(string trangThai)
+    {
+        if (trangThai == "Đã đăt hàng") return "text-primary"; // Đã đăt hàng
+        if (trangThai == "Đang giao hàng") return "text-warning"; // Đang giao hàng
+        if (trangThai == "Đã nhập hàng") return "text-success"; // Đã nhập hàng
+        return "text-secondary"; // Mặc định
+    }
+
+}
+
+<div class="container">
+    <div class="page-inner">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Thêm thông tin phiếu nhập</div>
+            </div>
+            <div class="card-body">
+                <form method="post" action="/admin/phieunhap/them">
+                    <!-- Thông tin chung về phiếu nhập -->
+                    <div class="row">
+                   
+                        <div class="col-4 mb-4 px-2">
+                            <label for="NhaCungCap" class="form-label">Nhà Cung Cấp</label>
+                            <select name="MaNCC" class="form-control">
+                                @foreach (var item in ViewBag.lstNCC)
+                                {
+                                    <option name="MaNCC" value="@item.MaNCC">@item.TenNCC</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="col-md-4 mb-4 px-2">
+                            <label for="MaNV" class="form-label">Họ Tên</label>
+                            <input type="text" class="form-control" name="@ViewBag.HoTen" value="@ViewBag.HoTen" id="HoTen" disabled>
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-start">
+                        <!-- MaPN -->
+                        <div class="col-md-4 mb-3 px-2">
+                            <label for="NgayNhapHang" class="form-label">Ngày Nhập Hàng</label>
+                            <input type="date" class="form-control"  id="NgayNhapHang" name="NgayNhapHang" required disabled>
+                        </div>
+
+                        <div class="col-md-4 mb-3 px-2">
+                            <label for="TrangThai" class="form-label">Trạng Thái Đơn Hàng</label>
+                            <select name="trangthai" id="order-status" class="form-control" style="width:200px">
+                                <option class="text-primary" value="Đã đăt hàng" @(ViewBag.SelectedStatus == "Đã đăt hàng" ? "selected" : "")>Đã đăt hàng</option>
+                                <option class="text-warning" value="Đang giao hàng" @(ViewBag.SelectedStatus == "Đang giao hàng" ? "selected" : "")>Đang giao hàng</option>
+                                <option class="text-success" value="Đã nhập hàng" @(ViewBag.SelectedStatus == "Đã nhập hàng" ? "selected" : "")>Giao hàng thành công</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div class="d-flex justify-content-end">
+                            <button type="button" class="btn btn-primary" onclick="addProductRow()">Thêm dòng </button>
+                        </div>
+
+                        <table id="basic-datatables" class="display table table-striped table-hover dataTable" role="grid" aria-describedby="basic-datatables_info">
+                            <thead>
+                                <tr>
+                                    <th>Sản phẩm</th>
+                                    <th>Số lượng</th>
+                                    <th>Giá nhập</th>
+                                    <th>Thành tiền</th>
+                                    <th>Xử lí</th>
+                                </tr>
+                            </thead>
+                            <tbody id="productTableBody">
+                                <tr>
+                                    <td>
+                                        <select class="form-control" name="ChiTietPhieuNhaps[0].MaSP">
+                                            @foreach (var item in ViewBag.lstSanPham)
+                                            {
+                                                <option value="@item.MaSP" data-gia="@item.Gia">@item.TenSanPham (@item.MaSP)</option>
+                                            }
+                                        </select>
+                                    </td>
+                                    <td><input type="number" class="form-control soLuong" name="ChiTietPhieuNhaps[0].SoLuong" min="1" placeholder="Số lượng" onchange="updateRowTotal(this)"></td>
+                                    <td><input type="number" class="form-control donGia" name="ChiTietPhieuNhaps[0].Gia"  min="1000" step="1000" placeholder="Giá nhập" onchange="updateRowTotal(this)"></td>
+                                    <td> <input type="text" class="form-control TongTien" name="ChiTietPhieuNhaps[0].TongTien" placeholder="Tính tự động" readonly></td>
+                                    <td><button type="button" class="btn btn-danger" onclick="removeRow(this)">Xóa</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- Nút xác nhận -->
+                    <div class="d-flex justify-content-center">
+                        <a class="btn btn-success mx-2" href="/admin/phieunhap">Quay Lại</a>
+                        <button type="submit" class="btn btn-primary">Lưu Phiếu Nhập</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    // Thêm dòng sản phẩm mới
+    function addProductRow() {
+    const tableBody = document.getElementById('productTableBody');
+    const rowCount = tableBody.querySelectorAll('tr').length; // Đếm số dòng hiện tại
+    const newRow = document.createElement('tr');
+
+    newRow.innerHTML = `
+        <td>
+            <select class="form-control" name="ChiTietPhieuNhaps[${rowCount}].MaSP">
+                @foreach (var item in ViewBag.lstSanPham)
+                {
+                    <option value="@item.MaSP" data-gia="@item.Gia">@item.TenSanPham (@item.MaSP)</option>
+                }
+            </select>
+        </td>
+        <td>
+            <input type="number" class="form-control soLuong" name="ChiTietPhieuNhaps[${rowCount}].SoLuong" min="1" placeholder="Số lượng" onchange="updateRowTotal(this)">
+        </td>
+        <td>
+            <input type="number" class="form-control donGia" name="ChiTietPhieuNhaps[${rowCount}].Gia" min="1000" step="1000" placeholder="Giá nhập" onchange="updateRowTotal(this)">
+        </td>
+        <td>
+            <input type="text" class="form-control TongTien" name="ChiTietPhieuNhaps[${rowCount}].TongTien" placeholder="Tính tự động" readonly>
+        </td>
+        <td>
+            <button type="button" class="btn btn-danger" onclick="removeRow(this)">Xóa</button>
+        </td>
+    `;
+    tableBody.appendChild(newRow);
+}
+
+
+    // Xóa một dòng
+    function removeRow(button) {
+        button.closest('tr').remove();
+    }
+
+    // Cập nhật thành tiền khi nhập số lượng hoặc đơn giá
+    function updateRowTotal(input) {
+        const row = input.closest('tr'); // Lấy hàng hiện tại
+        const soLuong = parseFloat(row.querySelector('.soLuong').value) || 0; // Lấy số lượng, mặc định 0 nếu rỗng
+        const donGia = parseFloat(row.querySelector('.donGia').value) || 0;   // Lấy đơn giá, mặc định 0 nếu rỗng
+
+        // Tính toán tổng tiền
+        const TongTien = soLuong * donGia;
+
+        // Cập nhật ô Tổng Tiền
+        const tongTienInput = row.querySelector('.TongTien');
+        if (TongTien > 0) {
+            tongTienInput.value = TongTien; // Định dạng số theo kiểu Việt Nam
+        } else {
+            tongTienInput.value = "0";
+        }
+    }
+
+
+    // Kiểm tra đơn giá không vượt quá giá trong kho
+    function validatePrice(input) {
+        const row = input.closest('tr');
+        const maxPrice = row.querySelector('select option:checked').dataset.gia;
+
+        if (input.value < 0) {
+            alert("Đơn giá không được âm!");
+            input.value = '';
+        } else if (parseFloat(input.value) > parseFloat(maxPrice)) {
+            alert(`Đơn giá không được vượt quá giá trong kho (${maxPrice} VND)!`);
+            input.value = '';
+        }
+
+        updateRowTotal(input);
+    }
+    document.addEventListener("DOMContentLoaded", function () {
+        const ngayNhapHangInput = document.getElementById("NgayNhapHang");
+        const today = new Date();
+        const formattedDate = today.toISOString().split('T')[0]; 
+        ngayNhapHangInput.min = formattedDate; 
+        ngayNhapHangInput.value = formattedDate;
+    });
+</script>

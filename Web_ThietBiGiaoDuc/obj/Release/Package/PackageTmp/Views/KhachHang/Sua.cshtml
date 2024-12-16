@@ -1,0 +1,49 @@
+﻿@model Web_ThietBiGiaoDuc.Models.KhachHang
+@{
+    ViewBag.Title = "Sua";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+
+<div class="container d-flex justify-content-center">
+    @if (Model != null)
+    {
+        <form action="/KhachHang/Sua" method="post" class="w-50" id="signin-form">
+            <input type="hidden" name="MaKH" value="@Model.MaKH" />
+
+            <div class="text-center">
+                <h4>Thông tin khách hàng</h4>
+                <hr />
+            </div>
+
+            <div class="form-group p-2">
+                <label for="Email" class="control-label">Email</label>
+                <input type="email" id="Email" name="Email" value="@Model.Email" class="form-control" disabled/>
+            </div>
+
+            <div class="form-group p-2">
+                <label for="HoTen" class="control-label">Họ tên</label>
+                <input type="text" id="HoTen" name="HoTen" value="@Model.HoTen" class="form-control" />
+            </div>
+
+            <div class="form-group p-2">
+                <label for="DiaChi" class="control-label">Địa chỉ</label>
+                <input type="text" id="DiaChi" name="DiaChi" value="@Model.DiaChi" class="form-control" />
+            </div>
+
+            <div class="form-group p-2">
+                <label for="SDT" class="control-label">Số điện thoại</label>
+                <input type="text" id="SDT" name="SDT" value="@Model.SDT" class="form-control"
+                       pattern="\d{10}" maxlength="10" title="Số điện thoại phải là 10 chữ số">
+            </div>
+
+            <div class="form-group text-center p-4 ">
+                <button type="submit" class="btn btn-primary">Lưu</button>
+                <a href="/Home/Index" class="btn btn-default">Quay lại</a>
+            </div>
+        </form>
+    }
+</div>
+
+
+

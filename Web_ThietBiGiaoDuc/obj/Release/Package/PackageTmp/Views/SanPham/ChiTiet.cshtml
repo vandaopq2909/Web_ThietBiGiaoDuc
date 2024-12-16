@@ -1,0 +1,795 @@
+﻿@{ 
+    var TenDangNhap = Context.Request.Cookies["auth"];
+    var makh = Context.Request.Cookies["makh"];
+}
+@model Web_ThietBiGiaoDuc.Models.SanPham
+@{
+    ViewBag.Title = "ChiTiet";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<style>
+
+    body {
+        background-color: #eee;
+        font-family: "Poppins", sans-serif
+    }
+
+    .card {
+        background-color: #fff;
+        padding: 14px;
+        border: none
+    }
+
+    .demo {
+        width: 100%
+    }
+
+    ul {
+        list-style: none outside none;
+        padding-left: 0;
+        margin-bottom: 0
+    }
+
+    li {
+        display: block;
+        float: left;
+        margin-right: 6px;
+        cursor: pointer
+    }
+
+    img {
+        display: block;
+        height: auto;
+        width: 100%
+    }
+
+    .stars i {
+        color: #f6d151
+    }
+
+    .stars span {
+        font-size: 13px
+    }
+
+    hr {
+        color: #d4d4d4
+    }
+
+    .badge {
+        padding: 5px !important;
+        padding-bottom: 6px !important
+    }
+
+        .badge i {
+            font-size: 10px
+        }
+
+    .profile-image {
+        width: 35px
+    }
+
+    .comment-ratings i {
+        font-size: 13px
+    }
+
+    .username {
+        font-size: 12px
+    }
+
+    .comment-profile {
+        line-height: 17px
+    }
+
+    .date span {
+        font-size: 12px
+    }
+
+    .p-ratings i {
+        color: #f6d151;
+        font-size: 12px
+    }
+
+    .btn-long {
+        padding-left: 35px;
+        padding-right: 35px
+    }
+
+    .buttons {
+        margin-top: 15px
+    }
+
+        .buttons .btn {
+            height: 46px
+        }
+
+        .buttons .cart {
+            border-color: #ff7676;
+            color: #ff7676
+        }
+
+            .buttons .cart:hover {
+                background-color: #e86464 !important;
+                color: #fff
+            }
+
+        .buttons .buy {
+            color: #fff;
+            background-color: #ff7676;
+            border-color: #ff7676
+        }
+
+            .buttons .buy:focus,
+            .buy:active {
+                color: #fff;
+                background-color: #ff7676;
+                border-color: #ff7676;
+                box-shadow: none
+            }
+
+            .buttons .buy:hover {
+                color: #fff;
+                background-color: #e86464;
+                border-color: #e86464
+            }
+
+        .buttons .wishlist {
+            background-color: #fff;
+            border-color: #ff7676
+        }
+
+            .buttons .wishlist:hover {
+                background-color: #e86464;
+                border-color: #e86464;
+                color: #fff
+            }
+
+                .buttons .wishlist:hover i {
+                    color: #fff
+                }
+
+            .buttons .wishlist i {
+                color: #ff7676
+            }
+
+    .comment-ratings i {
+        color: #f6d151
+    }
+
+    .followers {
+        font-size: 9px;
+        color: #d6d4d4
+    }
+
+    .store-image {
+        width: 42px
+    }
+
+    .dot {
+        height: 10px;
+        width: 10px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+        margin-right: 5px
+    }
+
+    .bullet-text {
+        font-size: 12px
+    }
+
+    .my-color {
+        margin-top: 10px;
+        margin-bottom: 10px
+    }
+
+    label.radio {
+        cursor: pointer
+    }
+
+        label.radio input {
+            position: absolute;
+            top: 0;
+            left: 0;
+            visibility: hidden;
+            pointer-events: none
+        }
+
+        label.radio span {
+            border: 2px solid #8f37aa;
+            display: inline-block;
+            color: #8f37aa;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            text-transform: uppercase;
+            transition: 0.5s all
+        }
+
+        label.radio .red {
+            background-color: red;
+            border-color: red
+        }
+
+        label.radio .blue {
+            background-color: blue;
+            border-color: blue
+        }
+
+        label.radio .green {
+            background-color: green;
+            border-color: green
+        }
+
+        label.radio .orange {
+            background-color: orange;
+            border-color: orange
+        }
+
+        label.radio input:checked + span {
+            color: #fff;
+            position: relative
+        }
+
+            label.radio input:checked + span::before {
+                opacity: 1;
+                content: '\2713';
+                position: absolute;
+                font-size: 13px;
+                font-weight: bold;
+                left: 4px
+            }
+
+    .card-body {
+        padding: 0.3rem 0.3rem 0.2rem
+    }
+    /* Custom Styles */
+    .product-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr); /* 4 cột */
+        gap: 20px; /* Khoảng cách giữa các card */
+    }
+
+    .product-card {
+        display: flex;
+        flex-direction: column;
+        height: 100%; /* Đảm bảo chiều cao đầy đủ */
+        border: 1px solid #e0e0e0; /* Thêm viền cho card */
+        border-radius: 10px; /* Bo góc cho card */
+        background-color: #fff;
+        padding: 10px;
+        overflow: hidden; /* Ẩn phần vượt quá */
+        transition: box-shadow 0.3s ease; /* Hiệu ứng chuyển tiếp cho bóng */
+    }
+
+        .product-card:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Bóng khi hover */
+        }
+
+    .product-image-wrapper {
+        height: 200px; /* Đặt chiều cao cố định cho hình ảnh */
+        overflow: hidden; /* Ẩn phần hình ảnh vượt quá chiều cao */
+        position: relative; /* Để đảm bảo hình ảnh được căn chỉnh đúng */
+        border-radius: 10px; /* Bo góc cho hình ảnh */
+    }
+
+    .product-image {
+        height: 180px;
+        object-fit: contain;
+        transition: transform 0.3s ease;
+    }
+
+    .product-image-wrapper img {
+        width: 100%; /* Đặt chiều rộng 100% */
+        height: 100%; /* Đặt chiều cao 100% */
+        object-fit: cover; /* Cắt hình ảnh cho phù hợp */
+        transition: transform 0.3s ease-in-out; /* Thêm hiệu ứng chuyển tiếp */
+    }
+
+        .product-image-wrapper img:hover {
+            transform: scale(1.1); /* Phóng to hình ảnh khi hover */
+        }
+
+    /* Zoom in ảnh khi hover vào toàn bộ card */
+    .product-card:hover .product-image {
+        transform: scale(1.1);
+    }
+
+    .product-name {
+        margin: 10px 0; /* Khoảng cách giữa tên sản phẩm và các phần khác */
+    }
+
+        .product-name a {
+            color: #333;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+            .product-name a:hover {
+                color: #28a745; /* Đổi màu xanh lá cây khi hover */
+            }
+    /* Hiệu ứng zoom-in khi hover */
+    .banner-ad {
+        transition: transform 0.5s ease; /* Chuyển đổi nhẹ nhàng khi hover */
+    }
+
+        .banner-ad:hover {
+            transform: scale(1.05); /* Zoom-in khi hover */
+        }
+
+    vertical-align: top;
+    }
+
+    .restaurant-detailed-ratings-and-reviews hr {
+        margin: 0 -24px;
+    }
+
+    .graph-star-rating-header .star-rating {
+        font-size: 17px;
+    }
+
+    .progress {
+        background: #f2f4f8 none repeat scroll 0 0;
+        border-radius: 0;
+        height: 30px;
+    }
+
+    .rating-list {
+        display: inline-flex;
+        margin-bottom: 15px;
+        width: 100%;
+    }
+
+    .rating-list-left {
+        height: 16px;
+        line-height: 29px;
+        width: 10%;
+    }
+
+    .rating-list-center {
+        width: 80%;
+    }
+
+    .rating-list-right {
+        line-height: 29px;
+        text-align: right;
+        width: 10%;
+    }
+
+    .restaurant-slider-pics {
+        bottom: 0;
+        font-size: 12px;
+        left: 0;
+        z-index: 999;
+        padding: 0 10px;
+    }
+
+    .restaurant-slider-view-all {
+        bottom: 15px;
+        right: 15px;
+        z-index: 999;
+    }
+
+    .offer-dedicated-nav .nav-link.active,
+    .offer-dedicated-nav .nav-link:hover,
+    .offer-dedicated-nav .nav-link:focus {
+        border-color: #3868fb;
+        color: #3868fb;
+    }
+
+    .offer-dedicated-nav .nav-link {
+        border-bottom: 2px solid #fff;
+        color: #000000;
+        padding: 16px 0;
+        font-weight: 600;
+    }
+
+    .offer-dedicated-nav .nav-item {
+        margin: 0 37px 0 0;
+    }
+
+    .restaurant-detailed-action-btn {
+        margin-top: 12px;
+    }
+
+    .restaurant-detailed-header-right .btn-success {
+        border-radius: 3px;
+        height: 45px;
+        margin: -18px 0 18px;
+        min-width: 130px;
+        padding: 7px;
+    }
+
+    .text-black {
+        color: #000000;
+    }
+
+    .icon-overlap {
+        bottom: -23px;
+        font-size: 74px;
+        opacity: 0.23;
+        position: absolute;
+        right: -32px;
+    }
+
+    .menu-list img {
+        width: 41px;
+        height: 41px;
+        object-fit: cover;
+    }
+
+    .restaurant-detailed-header-left img {
+        width: 88px;
+        height: 88px;
+        border-radius: 3px;
+        object-fit: cover;
+        box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075) !important;
+    }
+
+    .reviews-members .media .mr-3 {
+        width: 56px;
+        height: 56px;
+        object-fit: cover;
+    }
+
+    .rounded-pill {
+        border-radius: 50rem !important;
+    }
+
+    .total-like-user {
+        border: 2px solid #fff;
+        height: 34px;
+        box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075) !important;
+        width: 34px;
+    }
+
+    .total-like-user-main a {
+        display: inline-block;
+        margin: 0 -17px 0 0;
+    }
+
+    .total-like {
+        border: 1px solid;
+        border-radius: 50px;
+        display: inline-block;
+        font-weight: 500;
+        height: 34px;
+        line-height: 33px;
+        padding: 0 13px;
+        vertical-align: top;
+    }
+
+    .restaurant-detailed-ratings-and-reviews hr {
+        margin: 0 -24px;
+    }
+
+    .graph-star-rating-header .star-rating {
+        font-size: 17px;
+    }
+
+    .progress {
+        background: #f2f4f8 none repeat scroll 0 0;
+        border-radius: 0;
+        height: 30px;
+    }
+
+    .rating-list {
+        display: inline-flex;
+        margin-bottom: 15px;
+        width: 100%;
+    }
+
+    .rating-list-left {
+        height: 16px;
+        line-height: 29px;
+        width: 10%;
+    }
+
+    .rating-list-center {
+        width: 80%;
+    }
+
+    .rating-list-right {
+        line-height: 29px;
+        text-align: right;
+        width: 10%;
+    }
+
+    .restaurant-slider-pics {
+        bottom: 0;
+        font-size: 12px;
+        left: 0;
+        z-index: 999;
+        padding: 0 10px;
+    }
+
+    .restaurant-slider-view-all {
+        bottom: 15px;
+        right: 15px;
+        z-index: 999;
+    }
+
+    .progress {
+        background: #f2f4f8 none repeat scroll 0 0;
+        border-radius: 0;
+        height: 30px;
+    }
+</style>
+<link rel="stylesheet" href="https://allyoucan.cloud/cdn/icofont/1.0.1/icofont.css" integrity="sha384-jbCTJB16Q17718YM9U22iJkhuGbS0Gd2LjaWb4YJEZToOPmnKDjySVa323U+W7Fv" crossorigin="anonymous">
+<link rel='stylesheet' href='https://sachinchoolur.github.io/lightslider/dist/css/lightslider.css'>
+<div class="container-fluid mt-2 mb-3">
+    <div class="row no-gutters">
+        <div class="col-md-4 pr-2">
+            <div class="card">
+                <div class="demo">
+                    <ul id="lightSlider">
+                        @if (ViewBag.lstHA != null && ViewBag.lstHA.Count > 0)
+                        {
+                            foreach (var item in ViewBag.lstHA)
+                            {
+                                <li data-thumb="/Images/SanPham/@item.TenHinhAnh">
+                                    <img src="/Images/SanPham/@item.TenHinhAnh" />
+                                </li>
+                            }
+
+                        }
+                        else
+                        {
+                            <p>Không có hình ảnh nào.</p>
+                        }
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="card">
+                <div class="about">
+                    <h3 class="font-weight-bold mb-3">@Model.TenSanPham</h3>
+
+                    <h3 class="font-weight-bold">
+                        <del>
+                            <span>@Model.Gia.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("vi-VN"))</span><sup>đ</sup>
+                        </del>
+                    </h3>
+                    <h3>
+                        <strong class="discounted-price" style="color:red;" data-product-id="@Model.MaSP" data-original-price="@Model.Gia">
+                            Đang tính...
+                        </strong>
+                    </h3>
+                </div>
+                <!-- Toast thông báo với màu nền xanh lá -->
+                <div class="toast" id="successToast" role="alert" aria-live="assertive" aria-atomic="true"
+                     style="position: fixed; top: 20px; right: 20px; min-width: 200px; z-index: 1050; background-color: #28a745; color: white;">
+                    <div class="toast-header" style="background-color: #218838; color: white;">
+                        <strong class="mr-auto">Thông báo</strong>
+                    </div>
+                    <div class="toast-body">
+                        Thêm sản phẩm vào giỏ hàng thành công!
+                    </div>
+                </div>
+                <script>
+                    $(document).ready(function () {
+                    // Lặp qua từng sản phẩm để tính giá sau khuyến mãi
+                    $(".discounted-price").each(function () {
+                        var $this = $(this);
+                        var maSP = $this.data("product-id");
+                        var originalPrice = parseFloat($this.data("original-price"));
+
+                        // Kiểm tra giá gốc có hợp lệ không
+                        if (isNaN(originalPrice) || originalPrice <= 0) {
+                            $this.text("Giá không hợp lệ");
+                            return;
+                        }
+
+                        // Gọi API lấy tỷ lệ giảm giá
+                        $.ajax({
+                            url: '@Url.Action("GetTiLeGiamGia", "SanPham")',
+                            type: 'GET',
+                            data: { maSP: maSP },
+                            success: function (discountRate) {
+                                // Kiểm tra tỷ lệ giảm giá có hợp lệ không
+                                if (discountRate === null || discountRate === undefined || discountRate < 0) {
+                                    $this.text("Không thể tính giá");
+                                    $this.siblings(".discount-rate").text("Tỷ lệ lỗi");
+                                    return;
+                                }
+
+                                // Chuyển đổi tỷ lệ giảm giá từ phần trăm sang thập phân
+                                var discountDecimal = discountRate / 100;
+
+                                // Tính giá sau khuyến mãi
+                                var discountedPrice = originalPrice * (1 - discountDecimal);
+
+                                // Cập nhật giá và tỷ lệ giảm giá
+                                $this.text(discountedPrice.toLocaleString("vi-VN") + " đ");
+                                $this.siblings(".discount-rate").text(discountRate + "% OFF");
+                            },
+                            error: function () {
+                                $this.text("Không thể tính giá");
+                                $this.siblings(".discount-rate").text("Lỗi");
+                            }
+                        });
+                    });
+                });
+                </script>
+                <script type="text/javascript">
+                    function themVaoGioHang(maSP) {
+                        $.ajax({
+                            url: '@Url.Action("ThemVaoGio", "GioHang")', // URL của Action
+                            type: 'POST', // Phương thức gửi dữ liệu
+                            data: { maSP: maSP }, // Gửi maSP tới server
+                            success: function () {
+                                // Hiển thị toast khi gửi thành công
+                                $('#successToast').toast({ delay: 2000 }); // Thiết lập thời gian tồn tại là 2 giây
+                                $('#successToast').toast('show');
+                            },
+                            error: function () {
+                                alert("Có lỗi xảy ra khi gửi dữ liệu.");
+                            }
+                        });
+                    }
+                </script>
+                <script type="text/javascript">
+                    function muaNgay(maSP) {
+                        $.ajax({
+                            url: '@Url.Action("ThemVaoGio", "GioHang")', // URL của Action
+                            type: 'POST', // Phương thức gửi dữ liệu
+                            data: { maSP: maSP }, // Gửi maSP tới server
+                            success: function () {
+                                // Chuyển hướng đến trang giỏ hàng sau khi thêm sản phẩm thành công
+                                window.location.href = '@Url.Action("Index", "GioHang")';
+                            },
+                            error: function () {
+                                alert("Có lỗi xảy ra khi gửi dữ liệu.");
+                            }
+                        });
+                    }
+                </script>
+
+                <div class="buttons">
+                    <button class="btn btn-outline-warning btn-long cart" onclick="themVaoGioHang('@Model.MaSP')">Thêm vào giỏ hàng</button>
+                    <button class="btn btn-warning btn-long buy" onclick="muaNgay('@Model.MaSP')">Mua ngay</button>
+                </div>
+                <hr>
+                <div class="product-description">
+                    <div class="d-flex flex-row align-items-center">
+                        <i class="fa fa-calendar-check-o"></i>
+                        <span class="ml-1">Giao hàng trong vòng 10 ngày</span>
+                    </div>
+                    <div class="mt-2">
+                        <ul class="list-group">
+                            <li><strong>Thương hiệu : </strong> @Model.ThuongHieu.TenThuongHieu</li>
+                            <li><strong>Màu sắc : </strong> @Model.MauSac</li>
+                            <li><strong>Kích thước : </strong> @Model.KichThuoc</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row no-gutters pt-2" style="min-height:400px">
+        <div class="card">
+            <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Mô tả</button>
+                    <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Đánh giá</button>
+                </div>
+            </nav>
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active pt-4" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                    <p class="text-black">@Model.MoTa</p>
+                </div>
+                <div class="tab-pane fade pt-4" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                    <div class="container">
+                        <div class="col-md-12">
+                            <div class="offer-dedicated-body-left">
+                                <div class="tab-content" id="pills-tabContent">
+                                    <div class="tab-pane fade active show" id="pills-reviews" role="tabpanel" aria-labelledby="pills-reviews-tab">
+                                        <div class="bg-white rounded shadow-sm p-4 mb-4 restaurant-detailed-ratings-and-reviews">
+
+                                            @if (ViewBag.lstDanhGia != null && ((List<Web_ThietBiGiaoDuc.Models.DanhGia>)ViewBag.lstDanhGia).Any())
+                                            {
+                                                foreach (var danhGia in ViewBag.lstDanhGia)
+                                                {
+                                                    <div class="reviews-members pt-4 pb-4">
+                                                        <div class="media">
+                                                            <a href="#"><img alt="Generic" src="http://bootdey.com/img/Content/avatar/avatar1.png" class="mr-3 rounded-pill"></a>
+                                                            <div class="media-body">
+                                                                <div class="reviews-members-header">
+
+                                                                    <h6 class="mb-1"><a class="text-black" href="#">@ViewBag.HoTen</a></h6>
+                                                                    <p class="text-gray">@danhGia.NgayDanhGia.ToString("dd/MM/yyyy HH:mm")</p>
+                                                                </div>
+                                                                <div class="reviews-members-body">
+                                                                    <p>@danhGia.NoiDung</p>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <hr />
+                                                }
+                                            }
+                                            else
+                                            {
+                                                <span>Chưa có đánh giá.</span>
+                                            }
+                                            <hr>
+                                        </div>
+                                        
+                                        <div class="bg-white rounded shadow-sm p-4 mb-5 rating-review-select-page">
+                                            @* Form đánh giá *@
+                                            @if (ViewBag.DaMuaHang)
+                                            {
+                                                <form method="post" action="/SanPham/ThemDanhGia">
+                                                    <input type="hidden" name="MaSP" value="@Model.MaSP" />
+                                                    <div class="form-group">
+                                                        <label for="BinhLuan">Bình luận của bạn</label>
+                                                        <textarea class="form-control" id="NoiDung" name="NoiDung" rows="3" required></textarea>
+                                                    </div>
+                                                    <div class="form-group pt-3">
+                                                        <button class="btn btn-primary btn-lg" type="submit">Gửi đánh giá</button>
+                                                    </div>
+                                                </form>
+                                            }
+                                            else
+                                            {
+                                                <strong>Để có thể đánh giá, bạn cần phải mua sản phẩm này.</strong>
+                                            }
+
+                                        </div>
+                                            
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div>
+        <div class="card mt-2">
+            <strong style="text-align:center">Sản phẩm tương tự</strong>
+            <div class="similar-products mt-2 d-flex flex-row pt-3">
+                @foreach (var item in ViewBag.lstSPTuongTu)
+                {
+                    <div class="col-md-3 d-flex">
+                        <div class="product-card d-flex flex-column text-center border-0 w-80">
+                            <div class="product-image-wrapper mb-3">
+                                <a href="/sanpham/chitiet?masp=@item.MaSP">
+                                    <img src="~/Images/SanPham/@item.img" class="img-fluid" />
+                                </a>
+                            </div>
+                            <h5 class="product-name">
+                                <a href="/sanpham/chitiet?masp=@item.MaSP">@item.TenSanPham</a>
+                            </h5>
+                            <p>
+                                <del><span>@item.Gia.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("vi-VN"))</span><sup>đ</sup></del>
+                                <strong style="color:red;">@item.Gia.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("vi-VN"))<sup>đ</sup></strong>
+                                <span class="badge badge-success">0% OFF</span>
+                            </p>
+                            <!-- Spacer để đẩy nút xuống đáy -->
+
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js'></script>
+<script src='https://sachinchoolur.github.io/lightslider/dist/js/lightslider.js'></script>
+<script>
+    $('#lightSlider').lightSlider({
+        gallery: true,
+        item: 1,
+        loop: true,
+        slideMargin: 0,
+        thumbItem: 9
+    });
+</script>
+

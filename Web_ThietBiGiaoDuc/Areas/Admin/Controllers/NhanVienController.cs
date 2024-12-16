@@ -49,13 +49,13 @@ namespace Web_ThietBiGiaoDuc.Areas.Admin.Controllers
                         roleCookie.Expires = DateTime.Now.AddDays(30);
                         Response.Cookies.Add(authCookie);
                         Response.Cookies.Add(roleCookie);
-                        if (nv.Quyen.TenQuyen == "quanli")
+                        if (nv.Quyen.TenQuyen == "quanli" || nv.Quyen.TenQuyen == "nhanvien")
                         {
                             return RedirectToAction("Index", "Home", new { area = "Admin" });
                         }
                         else
                         {
-                            return RedirectToAction("Index", "Products");
+                            return RedirectToAction("Index", "SanPham");
                         }
 
                     }

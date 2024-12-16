@@ -1,0 +1,51 @@
+﻿@model Web_ThietBiGiaoDuc.Models.ThuongHieu
+@{
+    ViewBag.Title = "Admin | Sửa Thương Hiệu";
+}
+<style>
+    input, textarea, select {
+        max-width: none !important;
+    }
+</style>
+<div class="container">
+    <div class="page-inner">
+        <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4">
+            <div>
+                <h3 class="fw-bold mb-3">Sửa Thương Hiệu</h3>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Thông Tin Thương Hiệu</div>
+            </div>
+            <div class="card-body">
+                <form action="/admin/thuonghieu/sua" method="post">
+                    <!-- hidden MaTH -->
+                    <input type="text" class="form-control" id="MaTH" name="MaTH" value="@Model.MaTH" placeholder="TH001" hidden required>
+                    <div class="d-flex justify-content-between">
+                        <!-- TenThuongHieu -->
+                        <div class="col-md-8 mb-3 px-2">
+                            <label for="TenThuongHieu" class="form-label">Tên Thương Hiệu</label>
+                            <input type="text" class="form-control" id="TenThuongHieu" name="TenThuongHieu" value="@Model.TenThuongHieu" placeholder="Nhập tên thương hiệu" required>
+                        </div>
+                        <!-- TrangThai -->
+                        <div class="col-md-4 mb-3 px-2">
+                            <label for="TrangThai" class="form-label">Trạng Thái</label>
+                            <select class="form-select" id="TrangThai" name="TrangThai" required>
+                                <option value="" disabled>Chọn trạng thái</option>
+                                <option value="hoatdong" @(Model.TrangThai == "hoatdong" ? "selected" : "")>Hoạt Động</option>
+                                <option value="daxoa" @(Model.TrangThai == "daxoa" ? "selected" : "")>Đã Xóa</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- Back Button & Submit Button -->
+                    <div class="d-flex justify-content-center">
+                        <a class="btn btn-success mx-2" href="/admin/thuonghieu">Quay Lại</a>
+                        <button type="submit" class="btn btn-primary mx-2">Cập Nhật Thương Hiệu</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

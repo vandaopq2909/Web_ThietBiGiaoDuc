@@ -1,0 +1,2450 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+    <_PublishTargetUrl>C:\Users\VANDAO\Desktop\DoAnChuyenNghanh\Publish_Web_ThietBiGiaoDuc</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/css/bootstrap.min.css">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/css/demo.css">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/css/demo.css.map">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/css/fonts.css">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/css/fonts.min.css">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/css/plugins.css">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/css/plugins.css.map">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/css/plugins.min.css">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/css/tbgdadmin.css">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/css/tbgdadmin.css.map">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/css/tbgdadmin.min.css">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/fonts/fontawesome/fa-brands-400.eot">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/fonts/fontawesome/fa-brands-400.svg">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/fonts/fontawesome/fa-brands-400.ttf">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/fonts/fontawesome/fa-brands-400.woff">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/fonts/fontawesome/fa-brands-400.woff2">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/fonts/fontawesome/fa-regular-400.eot">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/fonts/fontawesome/fa-regular-400.svg">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/fonts/fontawesome/fa-regular-400.ttf">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/fonts/fontawesome/fa-regular-400.woff">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/fonts/fontawesome/fa-regular-400.woff2">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/fonts/fontawesome/fa-solid-900.eot">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/fonts/fontawesome/fa-solid-900.svg">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/fonts/fontawesome/fa-solid-900.ttf">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/fonts/fontawesome/fa-solid-900.woff">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/fonts/fontawesome/fa-solid-900.woff2">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/fonts/simple-line-icons/Simple-Line-Icons.eot">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/fonts/simple-line-icons/Simple-Line-Icons.svg">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/fonts/simple-line-icons/Simple-Line-Icons.ttf">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/fonts/simple-line-icons/Simple-Line-Icons.woff">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/fonts/simple-line-icons/Simple-Line-Icons.woff2">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/fonts/summernote/summernote.eot">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/fonts/summernote/summernote.ttf">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/fonts/summernote/summernote.woff">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/fonts/summernote/summernote.woff2">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/arashmil.jpg">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/bg-404.jpeg">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/blogpost.jpg">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/chadengle.jpg">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/examples/example1-300x300.jpg">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/examples/example1.jpeg">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/examples/example10-300x300.jpg">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/examples/example10.jpeg">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/examples/example11-300x300.jpg">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/examples/example11.jpeg">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/examples/example12-300x300.jpg">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/examples/example12.jpeg">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/examples/example2-300x300.jpg">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/examples/example2.jpeg">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/examples/example3-300x300.jpg">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/examples/example3.jpeg">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/examples/example4-300x300.jpg">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/examples/example4.jpeg">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/examples/example5-300x300.jpg">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/examples/example5.jpeg">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/examples/example6-300x300.jpg">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/examples/example6.jpeg">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/examples/example7-300x300.jpg">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/examples/example7.jpeg">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/examples/example8-300x300.jpg">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/examples/example8.jpeg">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/examples/example9-300x300.jpg">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/examples/example9.jpeg">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/examples/logo.svg">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/examples/logo1.svg">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/examples/logo2.svg">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/examples/logoinvoice.svg">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/examples/product1.jpg">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/examples/product10.jpeg">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/examples/product11.jpeg">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/examples/product12.jpeg">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/examples/product2.jpg">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/examples/product3.jpg">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/examples/product4.jpg">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/examples/product5.jpg">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/examples/product6.jpg">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/examples/product7.jpg">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/examples/product8.jpg">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/ad.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/ae.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/af.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/ag.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/ai.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/al.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/am.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/an.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/ao.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/ar.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/as.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/at.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/au.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/aw.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/ax.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/az.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/ba.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/bb.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/bd.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/be.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/bf.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/bg.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/bh.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/bi.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/bj.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/bm.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/bn.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/bo.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/br.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/bs.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/bt.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/bv.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/bw.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/by.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/bz.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/ca.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/catalonia.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/cc.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/cd.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/cf.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/cg.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/ch.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/ci.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/ck.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/cl.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/cm.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/cn.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/co.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/cr.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/cs.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/cu.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/cv.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/cx.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/cy.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/cz.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/de.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/dj.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/dk.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/dm.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/do.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/dz.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/ec.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/ee.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/eg.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/eh.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/england.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/er.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/es.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/et.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/europeanunion.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/fam.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/fi.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/fj.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/fk.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/fm.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/fo.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/fr.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/ga.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/gb.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/gd.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/ge.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/gf.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/gh.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/gi.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/gl.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/gm.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/gn.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/gp.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/gq.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/gr.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/gs.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/gt.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/gu.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/gw.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/gy.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/hk.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/hm.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/hn.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/hr.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/ht.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/hu.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/id.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/ie.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/il.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/in.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/io.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/iq.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/ir.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/is.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/it.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/jm.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/jo.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/jp.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/ke.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/kg.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/kh.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/ki.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/km.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/kn.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/kp.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/kr.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/kw.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/ky.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/kz.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/la.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/lb.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/lc.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/li.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/lk.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/lr.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/ls.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/lt.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/lu.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/lv.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/ly.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/ma.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/mc.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/md.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/me.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/mg.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/mh.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/mk.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/ml.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/mm.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/mn.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/mo.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/mp.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/mq.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/mr.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/ms.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/mt.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/mu.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/mv.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/mw.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/mx.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/my.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/mz.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/na.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/nc.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/ne.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/nf.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/ng.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/ni.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/nl.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/no.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/np.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/nr.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/nu.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/nz.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/om.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/pa.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/pe.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/pf.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/pg.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/ph.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/pk.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/pl.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/pm.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/pn.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/pr.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/ps.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/pt.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/pw.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/py.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/qa.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/re.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/readme.txt">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/ro.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/rs.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/ru.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/rw.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/sa.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/sb.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/sc.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/scotland.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/sd.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/se.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/sg.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/sh.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/si.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/sj.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/sk.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/sl.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/sm.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/sn.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/so.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/sr.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/st.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/sv.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/sy.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/sz.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/tc.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/td.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/tf.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/tg.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/th.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/tj.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/tk.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/tl.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/tm.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/tn.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/to.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/tr.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/tt.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/tv.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/tw.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/tz.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/ua.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/ug.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/um.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/us.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/uy.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/uz.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/va.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/vc.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/ve.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/vg.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/vi.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/vn.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/vu.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/wales.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/wf.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/ws.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/ye.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/yt.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/za.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/zm.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/flags/zw.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/img-shadow.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/jm_denis.jpg">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/kaiadmin/demo1.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/kaiadmin/demo2.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/kaiadmin/demo3.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/kaiadmin/demo4.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/kaiadmin/demo5.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/kaiadmin/demo6.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/kaiadmin/demo7.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/kaiadmin/demo8.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/kaiadmin/demo9.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/kaiadmin/favicon.ico">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/kaiadmin/favicon.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/kaiadmin/favicon.svg">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/kaiadmin/icon.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/kaiadmin/icon.svg">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/kaiadmin/logo_dark.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/kaiadmin/logo_dark.svg">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/kaiadmin/logo_documentation.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/kaiadmin/logo_light.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/kaiadmin/logo_light.svg">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/logoproduct.svg">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/logoproduct2.svg">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/logoproduct3.svg">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/mlane.jpg">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/profile.jpg">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/profile2.jpg">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/sauro.jpg">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/talha.jpg">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/undraw/undraw_blank_canvas_3rbb.svg">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/undraw/undraw_creative_team_r90h.svg">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/undraw/undraw_empty_xct9.svg">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/undraw/undraw_Hello_qnas.svg">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/undraw/undraw_not_found_60pq.svg">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/undraw/undraw_no_data_qbuo.svg">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/undraw/undraw_page_not_found_su7k.svg">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/undraw/undraw_sign_in_e6hj.svg">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/undraw/undraw_tabs_jf82.svg">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/undraw/undraw_Taken_if77.svg">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/undraw/undraw_update_uxn2.svg">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/undraw/undraw_upgrade_06a0.svg">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/img/visa.svg">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/js/core/bootstrap.min.js">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/js/core/jquery-3.7.1.min.js">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/js/core/popper.min.js">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/js/demo.js">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/js/plugin/bootstrap-tagsinput/bootstrap-tagsinput.min.js">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/js/plugin/bootstrap-toggle/bootstrap-toggle.min.js">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/js/plugin/chart-circle/circles.min.js">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/js/plugin/chart.js/chart.min.js">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/js/plugin/datatables/datatables.min.js">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/js/plugin/datepicker/bootstrap-datetimepicker.min.js">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/js/plugin/dropzone/dropzone.min.js">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/js/plugin/fullcalendar/fullcalendar.min.js">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/js/plugin/gmaps/gmaps.js">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/js/plugin/jquery.magnific-popup/jquery.magnific-popup.min.js">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/js/plugin/jquery.validate/jquery.validate.min.js">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/js/plugin/jsvectormap/jsvectormap.min.js">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/js/plugin/jsvectormap/world.js">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/js/plugin/list.js/list.min.js">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/js/plugin/moment/moment.min.js">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/js/plugin/owl-carousel/ajax-loader.gif">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/js/plugin/owl-carousel/owl.carousel.min.js">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/js/plugin/owl-carousel/owl.video.play.png">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/js/plugin/select2/select2.full.min.js">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/js/plugin/sortable/sortable.min.js">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/js/plugin/sticky-sidebar/sticky-sidebar.min.js">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/js/plugin/summernote/summernote-lite.min.js">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/js/plugin/sweetalert/sweetalert.min.js">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/js/plugin/webfont/webfont.min.js">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/js/setting-demo.js">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/js/setting-demo2.js">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/js/tbgdadmin.js">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/assets/js/tbgdadmin.min.js">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/charts/charts.html">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/charts/sparkline.html">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/components/avatars.html">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/components/buttons.html">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/components/font-awesome-icons.html">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/components/gridsystem.html">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/components/notifications.html">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/components/panels.html">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/components/simple-line-icons.html">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/components/sweetalert.html">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/components/typography.html">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/forms/forms.html">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/icon-menu.html">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/maps/googlemaps.html">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/maps/jsvectormap.html">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/sidebar-style-2.html">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/starter-template.html">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/tables/datatables.html">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/tables/tables.html">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/ResourcesAdmin/widgets.html">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/DanhMuc/Index.cshtml">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/DanhMuc/Sua.cshtml">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/DanhMuc/Them.cshtml">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/DonHang/ChiTiet.cshtml">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/DonHang/Index.cshtml">
+      <publishTime>12/09/2024 10:59:57</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/DonHang/Sua.cshtml">
+      <publishTime>11/29/2024 15:07:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/Home/Index.cshtml">
+      <publishTime>11/29/2024 23:26:48</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/KhachHang/Index.cshtml">
+      <publishTime>12/01/2024 14:25:01</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/KhachHang/Sua.cshtml">
+      <publishTime>11/30/2024 23:47:51</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/KhachHang/Them.cshtml">
+      <publishTime>11/30/2024 23:47:51</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/KhuyenMai/ApDung.cshtml">
+      <publishTime>12/01/2024 14:25:01</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/KhuyenMai/Index.cshtml">
+      <publishTime>11/30/2024 22:02:24</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/KhuyenMai/Sua.cshtml">
+      <publishTime>12/01/2024 19:36:53</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/KhuyenMai/Them.cshtml">
+      <publishTime>11/30/2024 20:31:53</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/LoaiSanPham/Index.cshtml">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/LoaiSanPham/Sua.cshtml">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/LoaiSanPham/Them.cshtml">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/NhanVien/DangNhap.cshtml">
+      <publishTime>12/01/2024 22:28:30</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/NhanVien/Index.cshtml">
+      <publishTime>12/01/2024 14:25:01</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/NhanVien/Sua.cshtml">
+      <publishTime>11/30/2024 23:47:51</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/NhanVien/Them.cshtml">
+      <publishTime>11/30/2024 23:47:51</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/PhieuNhap/Index.cshtml">
+      <publishTime>12/09/2024 10:59:57</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/PhieuNhap/Sua.cshtml">
+      <publishTime>12/09/2024 10:59:57</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/PhieuNhap/Them.cshtml">
+      <publishTime>12/09/2024 15:06:46</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/SanPham/Index.cshtml">
+      <publishTime>11/30/2024 14:27:01</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/SanPham/Sua.cshtml">
+      <publishTime>12/01/2024 19:28:27</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/SanPham/Them.cshtml">
+      <publishTime>11/16/2024 20:00:52</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/Shared/_AdminLayoutPage1.cshtml">
+      <publishTime>12/09/2024 15:51:38</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/ThongKe/Index.cshtml">
+      <publishTime>11/29/2024 23:25:25</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/ThuongHieu/Index.cshtml">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/ThuongHieu/Sua.cshtml">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/ThuongHieu/Them.cshtml">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/web.config">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/_ViewStart.cshtml">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="bin/Antlr3.Runtime.dll">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="bin/Antlr3.Runtime.pdb">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="bin/BCrypt.Net-Core.dll">
+      <publishTime>11/24/2024 16:00:48</publishTime>
+    </File>
+    <File Include="bin/BCrypt.Net-Core.pdb">
+      <publishTime>11/24/2024 16:00:48</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.SqlServer.dll">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>11/16/2024 19:22:42</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>11/16/2024 19:22:42</publishTime>
+    </File>
+    <File Include="bin/PagedList.dll">
+      <publishTime>10/01/2013 00:36:38</publishTime>
+    </File>
+    <File Include="bin/PagedList.Mvc.dll">
+      <publishTime>10/01/2013 01:15:20</publishTime>
+    </File>
+    <File Include="bin/roslyn/csc.exe">
+      <publishTime>11/16/2024 19:22:42</publishTime>
+    </File>
+    <File Include="bin/roslyn/csc.exe.config">
+      <publishTime>11/16/2024 19:22:42</publishTime>
+    </File>
+    <File Include="bin/roslyn/csc.rsp">
+      <publishTime>11/16/2024 19:22:42</publishTime>
+    </File>
+    <File Include="bin/roslyn/csi.exe">
+      <publishTime>11/16/2024 19:22:42</publishTime>
+    </File>
+    <File Include="bin/roslyn/csi.exe.config">
+      <publishTime>11/16/2024 19:22:42</publishTime>
+    </File>
+    <File Include="bin/roslyn/csi.rsp">
+      <publishTime>11/16/2024 19:22:42</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.Build.Tasks.CodeAnalysis.dll">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.CSharp.dll">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.CSharp.Scripting.dll">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.dll">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.Scripting.dll">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.VisualBasic.dll">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CSharp.Core.targets">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.DiaSymReader.Native.amd64.dll">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.DiaSymReader.Native.x86.dll">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.Managed.Core.targets">
+      <publishTime>11/16/2024 19:22:42</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.VisualBasic.Core.targets">
+      <publishTime>11/16/2024 19:22:42</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.Win32.Primitives.dll">
+      <publishTime>11/16/2024 19:22:42</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.AppContext.dll">
+      <publishTime>11/16/2024 19:22:42</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Collections.Immutable.dll">
+      <publishTime>11/16/2024 19:22:42</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Console.dll">
+      <publishTime>11/16/2024 19:22:42</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Diagnostics.DiagnosticSource.dll">
+      <publishTime>11/16/2024 19:22:42</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Diagnostics.FileVersionInfo.dll">
+      <publishTime>11/16/2024 19:22:42</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Diagnostics.StackTrace.dll">
+      <publishTime>11/16/2024 19:22:42</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Globalization.Calendars.dll">
+      <publishTime>11/16/2024 19:22:42</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.IO.Compression.dll">
+      <publishTime>11/16/2024 19:22:42</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.IO.Compression.ZipFile.dll">
+      <publishTime>11/16/2024 19:22:42</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.IO.FileSystem.dll">
+      <publishTime>11/16/2024 19:22:42</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.IO.FileSystem.Primitives.dll">
+      <publishTime>11/16/2024 19:22:42</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Net.Http.dll">
+      <publishTime>11/16/2024 19:22:42</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Net.Sockets.dll">
+      <publishTime>11/16/2024 19:22:42</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Reflection.Metadata.dll">
+      <publishTime>11/16/2024 19:22:42</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Runtime.InteropServices.RuntimeInformation.dll">
+      <publishTime>11/16/2024 19:22:42</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Security.Cryptography.Algorithms.dll">
+      <publishTime>11/16/2024 19:22:42</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Security.Cryptography.Encoding.dll">
+      <publishTime>11/16/2024 19:22:42</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Security.Cryptography.Primitives.dll">
+      <publishTime>11/16/2024 19:22:42</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Security.Cryptography.X509Certificates.dll">
+      <publishTime>11/16/2024 19:22:42</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Text.Encoding.CodePages.dll">
+      <publishTime>11/16/2024 19:22:42</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Threading.Tasks.Extensions.dll">
+      <publishTime>11/16/2024 19:22:42</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.ValueTuple.dll">
+      <publishTime>11/16/2024 19:22:42</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Xml.ReaderWriter.dll">
+      <publishTime>11/16/2024 19:22:42</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Xml.XmlDocument.dll">
+      <publishTime>11/16/2024 19:22:42</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Xml.XPath.dll">
+      <publishTime>11/16/2024 19:22:42</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Xml.XPath.XDocument.dll">
+      <publishTime>11/16/2024 19:22:42</publishTime>
+    </File>
+    <File Include="bin/roslyn/vbc.exe">
+      <publishTime>11/16/2024 19:22:42</publishTime>
+    </File>
+    <File Include="bin/roslyn/vbc.exe.config">
+      <publishTime>11/16/2024 19:22:42</publishTime>
+    </File>
+    <File Include="bin/roslyn/vbc.rsp">
+      <publishTime>11/16/2024 19:22:42</publishTime>
+    </File>
+    <File Include="bin/roslyn/VBCSCompiler.exe">
+      <publishTime>11/16/2024 19:22:42</publishTime>
+    </File>
+    <File Include="bin/roslyn/VBCSCompiler.exe.config">
+      <publishTime>11/16/2024 19:22:42</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="bin/System.Web.Optimization.dll">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Deployment.dll">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.dll">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Razor.dll">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="bin/WebGrease.dll">
+      <publishTime>11/16/2024 19:22:42</publishTime>
+    </File>
+    <File Include="bin/Web_ThietBiGiaoDuc.dll">
+      <publishTime>12/09/2024 22:31:36</publishTime>
+    </File>
+    <File Include="bin/Web_ThietBiGiaoDuc.pdb">
+      <publishTime>12/09/2024 22:31:36</publishTime>
+    </File>
+    <File Include="Content/bootstrap-grid.css">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Content/bootstrap-grid.css.map">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Content/bootstrap-grid.min.css">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Content/bootstrap-grid.min.css.map">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Content/bootstrap-grid.rtl.css">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Content/bootstrap-grid.rtl.css.map">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Content/bootstrap-grid.rtl.min.css">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Content/bootstrap-grid.rtl.min.css.map">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Content/bootstrap-reboot.css">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Content/bootstrap-reboot.css.map">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Content/bootstrap-reboot.min.css">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Content/bootstrap-reboot.min.css.map">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Content/bootstrap-reboot.rtl.css">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Content/bootstrap-reboot.rtl.css.map">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Content/bootstrap-reboot.rtl.min.css">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Content/bootstrap-reboot.rtl.min.css.map">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Content/bootstrap-utilities.css">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Content/bootstrap-utilities.css.map">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Content/bootstrap-utilities.min.css">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Content/bootstrap-utilities.min.css.map">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Content/bootstrap-utilities.rtl.css">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Content/bootstrap-utilities.rtl.css.map">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Content/bootstrap-utilities.rtl.min.css">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Content/bootstrap-utilities.rtl.min.css.map">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Content/bootstrap.css">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Content/bootstrap.css.map">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Content/bootstrap.min.css">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Content/bootstrap.min.css.map">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="Content/bootstrap.rtl.css">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Content/bootstrap.rtl.css.map">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Content/bootstrap.rtl.min.css">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Content/bootstrap.rtl.min.css.map">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Content/PagedList.css">
+      <publishTime>11/24/2024 17:58:22</publishTime>
+    </File>
+    <File Include="Content/Site.css">
+      <publishTime>11/16/2024 19:22:40</publishTime>
+    </File>
+    <File Include="favicon.ico">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Images/Banner/banner1.png">
+      <publishTime>11/28/2024 20:18:00</publishTime>
+    </File>
+    <File Include="Images/Banner/banner2.png">
+      <publishTime>11/28/2024 20:22:54</publishTime>
+    </File>
+    <File Include="Images/Banner/banner3.png">
+      <publishTime>11/28/2024 20:25:00</publishTime>
+    </File>
+    <File Include="Images/SanPham/ampe_ke_mot_chieu_1.jpg">
+      <publishTime>11/25/2024 10:00:33</publishTime>
+    </File>
+    <File Include="Images/SanPham/bang_ten_chu_cai_tieng_viet_1.jpg">
+      <publishTime>11/24/2024 13:31:19</publishTime>
+    </File>
+    <File Include="Images/SanPham/bang_tu_chong_loa_treo_tren_tuong_1.jpg">
+      <publishTime>11/24/2024 13:31:19</publishTime>
+    </File>
+    <File Include="Images/SanPham/bang_tu_hop_truot_ngang_ket_hop_man_hinh_1.jpg">
+      <publishTime>11/24/2024 13:31:19</publishTime>
+    </File>
+    <File Include="Images/SanPham/bang_tu_truot_ngang_ket_hop_man_hinh_tivi_1.jpg">
+      <publishTime>11/24/2024 13:31:19</publishTime>
+    </File>
+    <File Include="Images/SanPham/ban_ghe_hoc_sinh_1_cho_ngoi_cao_cap_1.jpg">
+      <publishTime>11/25/2024 10:00:33</publishTime>
+    </File>
+    <File Include="Images/SanPham/ban_ghe_hoc_sinh_go_cao_su_tu_nhien.jpg">
+      <publishTime>12/02/2024 09:48:09</publishTime>
+    </File>
+    <File Include="Images/SanPham/ban_hoc_sinh_2_cho_ngoi_khong_tua.jpg">
+      <publishTime>12/02/2024 09:48:09</publishTime>
+    </File>
+    <File Include="Images/SanPham/ban_hoc_sinh_2_cho_ngoi_lien_ghe_co_tua.jpg">
+      <publishTime>11/25/2024 09:58:04</publishTime>
+    </File>
+    <File Include="Images/SanPham/ban_hoc_sinh_ghe_roi_bang_dai.jpg">
+      <publishTime>11/18/2024 09:39:30</publishTime>
+    </File>
+    <File Include="Images/SanPham/ban_hoc_sinh_khong_ghe.jpg">
+      <publishTime>11/18/2024 09:39:30</publishTime>
+    </File>
+    <File Include="Images/SanPham/ban_hoc_sinh_lien_ghe_co_tua_go_cao_su_1.jpg">
+      <publishTime>11/24/2024 13:31:19</publishTime>
+    </File>
+    <File Include="Images/SanPham/ban_hoc_sinh_lien_ghe_go_cao_su_ghep_thanh.jpg">
+      <publishTime>11/17/2024 22:55:55</publishTime>
+    </File>
+    <File Include="Images/SanPham/ban_hop_van_phong_2m4_bh6_1.jpg">
+      <publishTime>11/24/2024 13:31:19</publishTime>
+    </File>
+    <File Include="Images/SanPham/ban_hop_van_phong_3m6_bh25_1.jpg">
+      <publishTime>11/25/2024 10:00:33</publishTime>
+    </File>
+    <File Include="Images/SanPham/ban_nhan_vien_hoa_phat_hr140hlc2y1_1.jpg">
+      <publishTime>11/24/2024 13:31:19</publishTime>
+    </File>
+    <File Include="Images/SanPham/ban_nhan_vien_hr120sc5_1.jpg">
+      <publishTime>11/24/2024 13:31:19</publishTime>
+    </File>
+    <File Include="Images/SanPham/ban_nhan_vien_hr140hlc1y1_1.jpg">
+      <publishTime>11/24/2024 13:31:19</publishTime>
+    </File>
+    <File Include="Images/SanPham/ban_thi_nghiem_hoa_2_cho_ngoi_1.jpg">
+      <publishTime>11/24/2024 13:31:19</publishTime>
+    </File>
+    <File Include="Images/SanPham/ban_thi_nghiem_hoa_4_cho_ngoi_1.jpg">
+      <publishTime>11/24/2024 13:31:19</publishTime>
+    </File>
+    <File Include="Images/SanPham/ban_thi_nghiem_ly_2_cho_1.jpg">
+      <publishTime>11/24/2024 13:31:19</publishTime>
+    </File>
+    <File Include="Images/SanPham/ban_thi_nghiem_ly_4_cho_ngoi_1.jpg">
+      <publishTime>11/24/2024 13:31:19</publishTime>
+    </File>
+    <File Include="Images/SanPham/ban_tieu_hoc_hai_ghe_roi.jpg">
+      <publishTime>11/24/2024 13:31:19</publishTime>
+    </File>
+    <File Include="Images/SanPham/ban_van_phong_hoa_phat_hr120sc7_1.jpg">
+      <publishTime>11/24/2024 13:31:19</publishTime>
+    </File>
+    <File Include="Images/SanPham/bien_the_nguon_1.jpg">
+      <publishTime>11/24/2024 13:31:19</publishTime>
+    </File>
+    <File Include="Images/SanPham/bo_ban_ghe_giao_vien_gv01_1.jpg">
+      <publishTime>11/24/2024 13:31:19</publishTime>
+    </File>
+    <File Include="Images/SanPham/bo_ban_ghe_giao_vien_khong_hoc_gv02_1.jpg">
+      <publishTime>11/24/2024 13:31:19</publishTime>
+    </File>
+    <File Include="Images/SanPham/bo_ban_ghe_gv_khong_hoc.jpeg">
+      <publishTime>11/17/2024 21:48:05</publishTime>
+    </File>
+    <File Include="Images/SanPham/bo_ban_ghe_gv_khong_hoc_tu.jpg">
+      <publishTime>11/17/2024 21:48:05</publishTime>
+    </File>
+    <File Include="Images/SanPham/bo_chu_day_tap_viet_1.jpg">
+      <publishTime>11/24/2024 13:31:19</publishTime>
+    </File>
+    <File Include="Images/SanPham/bo_gia_thi_nghiem_1.jpg">
+      <publishTime>11/24/2024 13:31:19</publishTime>
+    </File>
+    <File Include="Images/SanPham/bo_mau_chu_viet_1.jpg">
+      <publishTime>11/24/2024 13:31:19</publishTime>
+    </File>
+    <File Include="Images/SanPham/bo_the_chu_hoc_van_thuc_hanh_1.jpg">
+      <publishTime>11/24/2024 13:31:19</publishTime>
+    </File>
+    <File Include="Images/SanPham/bo_thiet_bi_day_hoc_ve_cac_duong_conic.jpg">
+      <publishTime>11/24/2024 13:31:19</publishTime>
+    </File>
+    <File Include="Images/SanPham/bo_thiet_bi_day_hoc_ve_hinh_hoc.jpg">
+      <publishTime>11/24/2024 13:31:19</publishTime>
+    </File>
+    <File Include="Images/SanPham/bo_thiet_bi_day_hoc_ve_thong_ke_va_xac_suat.jpg">
+      <publishTime>11/24/2024 13:31:19</publishTime>
+    </File>
+    <File Include="Images/SanPham/bo_thiet_bi_de_ve_tren_bang_day_hoc_1.jpg">
+      <publishTime>11/24/2024 13:31:19</publishTime>
+    </File>
+    <File Include="Images/SanPham/but_thu_thong_mach_1.jpg">
+      <publishTime>11/24/2024 13:31:19</publishTime>
+    </File>
+    <File Include="Images/SanPham/cac_hinh_khoi_co_ban_1.jpg">
+      <publishTime>11/24/2024 13:31:19</publishTime>
+    </File>
+    <File Include="Images/SanPham/chuong_dien_1.jpg">
+      <publishTime>11/24/2024 13:31:19</publishTime>
+    </File>
+    <File Include="Images/SanPham/DoAnTotNghiep.drawio %282%29.png">
+      <publishTime>11/17/2024 14:35:54</publishTime>
+    </File>
+    <File Include="Images/SanPham/dong_ho_do_dien_da_nang_1.jpg">
+      <publishTime>11/24/2024 13:31:19</publishTime>
+    </File>
+    <File Include="Images/SanPham/ghe_giam_doc_da_cao_cap_1.jpg">
+      <publishTime>11/24/2024 13:31:19</publishTime>
+    </File>
+    <File Include="Images/SanPham/ghe_phong_thi_nghiem_hoa_sinh_1.jpg">
+      <publishTime>11/24/2024 13:31:19</publishTime>
+    </File>
+    <File Include="Images/SanPham/ghe_sofa_bo_van_phong_1.jpg">
+      <publishTime>11/24/2024 13:31:19</publishTime>
+    </File>
+    <File Include="Images/SanPham/ghe_thi_nghiem_mat_nhua_1.jpg">
+      <publishTime>11/24/2024 13:31:19</publishTime>
+    </File>
+    <File Include="Images/SanPham/gia-treo-di-dong-p1500-cao-cap.jpg">
+      <publishTime>11/17/2024 14:35:54</publishTime>
+    </File>
+    <File Include="Images/SanPham/gia_lap_pin_1.jpg">
+      <publishTime>11/24/2024 13:31:19</publishTime>
+    </File>
+    <File Include="Images/SanPham/giuong_benh_nhan_3_tay_quay_1.jpg">
+      <publishTime>11/24/2024 13:31:19</publishTime>
+    </File>
+    <File Include="Images/SanPham/hop_nuoi_sau_bo_1.jpg">
+      <publishTime>11/24/2024 13:31:19</publishTime>
+    </File>
+    <File Include="Images/SanPham/kinh_lup_co_de_1.jpg">
+      <publishTime>11/24/2024 13:31:19</publishTime>
+    </File>
+    <File Include="Images/SanPham/may_cat_nuoc_1_lan_1.jpg">
+      <publishTime>11/24/2024 13:31:19</publishTime>
+    </File>
+    <File Include="Images/SanPham/nam_cham_dien_1.jpg">
+      <publishTime>11/24/2024 13:31:19</publishTime>
+    </File>
+    <File Include="Images/SanPham/nguon_sang_1.jpg">
+      <publishTime>11/24/2024 13:31:19</publishTime>
+    </File>
+    <File Include="Images/SanPham/ong_dong_thuy_tinh_100ml_1.jpg">
+      <publishTime>11/24/2024 13:31:19</publishTime>
+    </File>
+    <File Include="Images/SanPham/phan_mem_toan_hoc_1.jpg">
+      <publishTime>11/24/2024 13:31:19</publishTime>
+    </File>
+    <File Include="Images/SanPham/tu_dau_giuong_y_te_inox_1.jpg">
+      <publishTime>11/24/2024 13:31:19</publishTime>
+    </File>
+    <File Include="Images/SanPham/tu_thuoc_y_te_inox_thuong_1.jpg">
+      <publishTime>11/24/2024 13:31:19</publishTime>
+    </File>
+    <File Include="Images/SanPham/von_ke_1_chieu_1.jpg">
+      <publishTime>11/24/2024 13:31:19</publishTime>
+    </File>
+    <File Include="Images/SanPham/xe_tiem_3_tang_co_vanh_cai_xo.jpg">
+      <publishTime>11/24/2024 13:31:19</publishTime>
+    </File>
+    <File Include="Resources/blog-details.html">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/blog.html">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/checkout.html">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/contact.html">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/css/bootstrap.min.css">
+      <publishTime>11/26/2024 19:23:16</publishTime>
+    </File>
+    <File Include="Resources/css/custom.css">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/css/elegant-icons.css">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/css/flogin.css">
+      <publishTime>11/25/2024 21:19:02</publishTime>
+    </File>
+    <File Include="Resources/css/font-awesome.min.css">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/css/fonts.min.css">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/css/jquery-ui.min.css">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/css/nice-select.css">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/css/owl.carousel.min.css">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/css/slicknav.min.css">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/css/style.css">
+      <publishTime>11/26/2024 22:37:16</publishTime>
+    </File>
+    <File Include="Resources/fonts/ElegantIcons.eot">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/fonts/ElegantIcons.svg">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/fonts/ElegantIcons.ttf">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/fonts/ElegantIcons.woff">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/fonts/fontawesome-webfont.eot">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/fonts/fontawesome-webfont.svg">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/fonts/fontawesome-webfont.ttf">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/fonts/fontawesome-webfont.woff">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/fonts/fontawesome-webfont.woff2">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/fonts/FontAwesome.otf">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/fonts/webfont/webfont.min.js">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/img/banner/banner-1.jpg">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/img/banner/banner-2.jpg">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/img/blog/blog-1.jpg">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/img/blog/blog-2.jpg">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/img/blog/blog-3.jpg">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/img/blog/blog-4.jpg">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/img/blog/blog-5.jpg">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/img/blog/blog-6.jpg">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/img/blog/details/details-author.jpg">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/img/blog/details/details-hero.jpg">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/img/blog/details/details-pic.jpg">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/img/blog/sidebar/sr-1.jpg">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/img/blog/sidebar/sr-2.jpg">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/img/blog/sidebar/sr-3.jpg">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/img/breadcrumb.jpg">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/img/cart/cart-1.jpg">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/img/cart/cart-2.jpg">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/img/cart/cart-3.jpg">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/img/categories/DanhMuc_Ban_thi_nghiem.jpg">
+      <publishTime>11/17/2024 20:02:08</publishTime>
+    </File>
+    <File Include="Resources/img/categories/DanhMuc_Giao_cu_montessori.jpg">
+      <publishTime>11/17/2024 20:03:20</publishTime>
+    </File>
+    <File Include="Resources/img/categories/DanhMuc_Noi_that_phong_hoc.jpeg">
+      <publishTime>11/17/2024 19:54:46</publishTime>
+    </File>
+    <File Include="Resources/img/categories/DanhMuc_Thiet_bi_dung_cu_day_hoc.jpg">
+      <publishTime>11/17/2024 20:29:26</publishTime>
+    </File>
+    <File Include="Resources/img/featured/feature-1.jpg">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/img/featured/feature-2.jpg">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/img/featured/feature-3.jpg">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/img/featured/feature-4.jpg">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/img/featured/feature-5.jpg">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/img/featured/feature-6.jpg">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/img/featured/feature-7.jpg">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/img/featured/feature-8.jpg">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/img/hero/banner.jpg">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/img/language.png">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/img/latest-product/lp-1.jpg">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/img/latest-product/lp-2.jpg">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/img/latest-product/lp-3.jpg">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/img/login/background.jpg">
+      <publishTime>11/24/2024 13:31:19</publishTime>
+    </File>
+    <File Include="Resources/img/login/background_admin.jpg">
+      <publishTime>12/01/2024 22:28:30</publishTime>
+    </File>
+    <File Include="Resources/img/logo.png">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/img/logo/TBGD_AandB_Logo.png">
+      <publishTime>11/24/2024 13:31:19</publishTime>
+    </File>
+    <File Include="Resources/img/payment-item.png">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/img/product/details/product-details-1.jpg">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/img/product/details/product-details-2.jpg">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/img/product/details/product-details-3.jpg">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/img/product/details/product-details-4.jpg">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/img/product/details/product-details-5.jpg">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/img/product/details/thumb-1.jpg">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/img/product/details/thumb-2.jpg">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/img/product/details/thumb-3.jpg">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/img/product/details/thumb-4.jpg">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/img/product/discount/pd-1.jpg">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/img/product/discount/pd-2.jpg">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/img/product/discount/pd-3.jpg">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/img/product/discount/pd-4.jpg">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/img/product/discount/pd-5.jpg">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/img/product/discount/pd-6.jpg">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/img/product/product-1.jpg">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/img/product/product-10.jpg">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/img/product/product-11.jpg">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/img/product/product-12.jpg">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/img/product/product-2.jpg">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/img/product/product-3.jpg">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/img/product/product-4.jpg">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/img/product/product-5.jpg">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/img/product/product-6.jpg">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/img/product/product-7.jpg">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/img/product/product-8.jpg">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/img/product/product-9.jpg">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/index.html">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/js/bootstrap.bundle.min.js">
+      <publishTime>11/26/2024 19:23:16</publishTime>
+    </File>
+    <File Include="Resources/js/bootstrap.min.js">
+      <publishTime>11/26/2024 19:23:16</publishTime>
+    </File>
+    <File Include="Resources/js/CapNhatThongTinCaNhan.js">
+      <publishTime>11/26/2024 22:37:16</publishTime>
+    </File>
+    <File Include="Resources/js/changepass.js">
+      <publishTime>11/26/2024 22:37:16</publishTime>
+    </File>
+    <File Include="Resources/js/flogin.js">
+      <publishTime>11/25/2024 21:19:02</publishTime>
+    </File>
+    <File Include="Resources/js/fregister.js">
+      <publishTime>11/25/2024 21:19:02</publishTime>
+    </File>
+    <File Include="Resources/js/jquery-3.3.1.min.js">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/js/jquery-ui.min.js">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/js/jquery.nice-select.min.js">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/js/jquery.slicknav.js">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/js/main.js">
+      <publishTime>11/17/2024 21:14:13</publishTime>
+    </File>
+    <File Include="Resources/js/mixitup.min.js">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/js/owl.carousel.min.js">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/js/popper.min.js">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/main.html">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/readme.txt">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/sass/style.scss">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/sass/_base.scss">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/sass/_blog-details.scss">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/sass/_blog-sidebar.scss">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/sass/_blog.scss">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/sass/_breadcrumb.scss">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/sass/_checkout.scss">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/sass/_contact.scss">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/sass/_footer.scss">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/sass/_header.scss">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/sass/_hero.scss">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/sass/_home-page.scss">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/sass/_mixins.scss">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/sass/_responsive.scss">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/sass/_shop-details.scss">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/sass/_shop-grid.scss">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/sass/_shoping-cart.scss">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/sass/_sidebar.scss">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/sass/_variable.scss">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/shop-details.html">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/shop-grid.html">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/shoping-cart.html">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/Source/bootstrap-4.4.1-dist.zip">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/Source/font-awesome-4.7.0.zip">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/Source/jquery-nice-select-1.1.0.zip">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/Source/jquery-ui-1.12.1.zip">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/Source/OwlCarousel2-2.3.4.zip">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/Source/sass.zip">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Resources/Source/SlickNav-master.zip">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.bundle.js">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.bundle.js.map">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.bundle.min.js">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.bundle.min.js.map">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.esm.js">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.esm.js.map">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.esm.min.js">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.esm.min.js.map">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.js">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.js.map">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.min.js">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.min.js.map">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.7.0.js">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.7.0.min.js">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.7.0.min.map">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.7.0.slim.js">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.7.0.slim.min.js">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.7.0.slim.min.map">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.js">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.min.js">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.unobtrusive.js">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.unobtrusive.min.js">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Scripts/modernizr-2.8.3.js">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Views/Email/SendEmail.cshtml">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Views/GioHang/ChiTietDonHang.cshtml">
+      <publishTime>12/09/2024 10:59:57</publishTime>
+    </File>
+    <File Include="Views/GioHang/Index.cshtml">
+      <publishTime>11/27/2024 16:25:54</publishTime>
+    </File>
+    <File Include="Views/GioHang/LichSuMuaHang.cshtml">
+      <publishTime>11/29/2024 15:07:16</publishTime>
+    </File>
+    <File Include="Views/GioHang/ThanhToanThanhCong.cshtml">
+      <publishTime>11/28/2024 19:03:24</publishTime>
+    </File>
+    <File Include="Views/Home/About.cshtml">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Views/Home/Contact.cshtml">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Views/Home/GioiThieu.cshtml">
+      <publishTime>12/09/2024 10:59:57</publishTime>
+    </File>
+    <File Include="Views/Home/Index.cshtml">
+      <publishTime>12/01/2024 14:07:02</publishTime>
+    </File>
+    <File Include="Views/Home/LienHe.cshtml">
+      <publishTime>12/09/2024 10:59:57</publishTime>
+    </File>
+    <File Include="Views/KhachHang/DangKi.cshtml">
+      <publishTime>11/24/2024 16:00:48</publishTime>
+    </File>
+    <File Include="Views/KhachHang/DangNhap.cshtml">
+      <publishTime>11/25/2024 21:19:02</publishTime>
+    </File>
+    <File Include="Views/KhachHang/DoiMatKhau.cshtml">
+      <publishTime>11/26/2024 22:37:16</publishTime>
+    </File>
+    <File Include="Views/KhachHang/Sua.cshtml">
+      <publishTime>11/26/2024 22:37:16</publishTime>
+    </File>
+    <File Include="Views/SanPham/ChiTiet.cshtml">
+      <publishTime>12/01/2024 19:54:07</publishTime>
+    </File>
+    <File Include="Views/SanPham/SanPhamTheoDanhMuc.cshtml">
+      <publishTime>12/01/2024 14:16:04</publishTime>
+    </File>
+    <File Include="Views/SanPham/SanPhamTheoLoai.cshtml">
+      <publishTime>12/01/2024 14:16:54</publishTime>
+    </File>
+    <File Include="Views/SanPham/TatCa.cshtml">
+      <publishTime>12/01/2024 14:13:33</publishTime>
+    </File>
+    <File Include="Views/SanPham/TimKiem.cshtml">
+      <publishTime>12/01/2024 14:15:10</publishTime>
+    </File>
+    <File Include="Views/Shared/Error.cshtml">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Views/Shared/_Layout.cshtml">
+      <publishTime>12/09/2024 10:59:57</publishTime>
+    </File>
+    <File Include="Views/Shared/_LayoutPage1.cshtml">
+      <publishTime>12/09/2024 10:59:57</publishTime>
+    </File>
+    <File Include="Views/Web.config">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Views/_ViewStart.cshtml">
+      <publishTime>11/16/2024 19:22:41</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>12/09/2024 22:31:37</publishTime>
+    </File>
+  </ItemGroup>
+</Project>
