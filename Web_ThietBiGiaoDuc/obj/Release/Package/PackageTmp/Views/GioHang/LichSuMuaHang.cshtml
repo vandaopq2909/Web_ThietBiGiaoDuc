@@ -1,0 +1,81 @@
+﻿@using PagedList.Mvc;
+@{
+    ViewBag.Title = "LichSuMuaHang";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+<head>
+    <!-- Fonts and icons -->
+    <script src="~/Areas/Admin/ResourcesAdmin/assets/js/plugin/webfont/webfont.min.js"></script>
+</head>
+<div style="min-height:400px;padding:100px">
+    <div class="text-center container">
+        <h4>Lịch sử mua hàng</h4>
+        <hr />
+    </div>
+    <div class="container d-flex justify-content-center " style="min-height:200px;">
+
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Mã đơn hàng</th>
+                    <th scope="col">Ngày đặt hàng</th>
+                    <th scope="col">Địa chỉ giao hàng</th>
+                    <th scope="col">Trạng thái</th>
+                    <th scope="col" style="text-align:center">Xử lý</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in ViewBag.lstDonHang)
+                {
+                    <tr>
+                        <th scope="row">@item.MaDH</th>
+                        <td>@item.NgayDatHang.ToString("dd/MM/yyyy HH:mm")</td>
+
+                        <td>@item.DiaChiGiaoHang</td>
+                        <td>@item.TrangThai</td>
+                        <td>
+                            <div class="form-button-action" style="text-align:center">
+                                <a href="/GioHang/ChiTietDonHang?madh=@item.MaDH" type="button" class="btn btn-outline-primary">Xem chi tiết</a>
+                                <a href="#" type="button" class="btn btn-outline-secondary">Yêu cầu đổi trả</a>
+                            </div>
+                        </td>
+                    </tr>
+
+                }
+
+            </tbody>
+        </table>
+    </div>
+    <!-- Hiển thị phân trang -->
+    <div class="pagination-container mb-5">
+        @if (ViewBag.lstDonHang != null && ViewBag.lstDonHang is PagedList.IPagedList)
+        {
+            var pagedList = (PagedList.IPagedList)ViewBag.lstDonHang;
+
+            <ul class="pagination justify-content-center">
+                @if (pagedList.HasPreviousPage)
+                {
+                    <li class="page-item">
+                        <a class="page-link" href="@Url.Action("LichSuMuaHang", "GioHang", new {makh=ViewBag.makh, page = pagedList.PageNumber - 1 })">Previous</a>
+                    </li>
+                }
+
+                @for (int i = 1; i <= pagedList.PageCount; i++)
+                {
+                    <li class="page-item @(i == pagedList.PageNumber ? "active" : "")">
+                        <a class="page-link" href="@Url.Action("LichSuMuaHang", "GioHang", new {makh=ViewBag.makh,page = i })">@i</a>
+                    </li>
+                }
+
+                @if (pagedList.HasNextPage)
+                {
+                    <li class="page-item">
+                        <a class="page-link" href="@Url.Action("LichSuMuaHang", "GioHang", new {makh=ViewBag.makh,page = pagedList.PageNumber + 1 })">Next</a>
+                    </li>
+                }
+            </ul>
+        }
+    </div>
+
+</div>
+

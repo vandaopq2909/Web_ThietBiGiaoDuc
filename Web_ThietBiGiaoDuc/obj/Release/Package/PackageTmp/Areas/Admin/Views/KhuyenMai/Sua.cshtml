@@ -1,0 +1,65 @@
+﻿@model Web_ThietBiGiaoDuc.Models.KhuyenMai
+@{
+    ViewBag.Title = "Admin | Sửa Khuyến Mãi";
+}
+
+<style>
+    input, textarea, select {
+        max-width: none !important;
+    }
+</style>
+<div class="container">
+    <div class="page-inner">
+        <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4">
+            <div>
+                <h3 class="fw-bold mb-3">Sửa khuyến mãi</h3>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Thông Tin khuyến mãi</div>
+            </div>
+            <div class="card-body">
+                <form action="/admin/khuyenmai/sua" method="post">
+                    <!--MaKM-->
+                    <input type="text" class="form-control" id="MaKM" name="MaKM" value="@Model.MaKM" hidden required>
+                    <div class="d-flex justify-content-between">
+                        <!-- TenKM -->
+                        <div class="col-md-8 mb-3 px-2">
+                            <label for="TenKM" class="form-label">Tên khuyến mãi</label>
+                            <input type="text" class="form-control" id="TenKM" name="TenKM" value="@Model.TenKM" placeholder="Nhập tên khuyến mãi" required>
+                        </div>
+                        <!-- TiLeGiamGia -->
+                        <div class="col-md-4 mb-3 px-2">
+                            <label for="TiLeGiamGia" class="form-label">Tỷ lệ khuyến mãi</label>
+                            <input type="number" class="form-control" id="TiLeGiamGia" name="TiLeGiamGia" value="@Model.TiLeGiamGia" placeholder="Nhập tỉ lệ khuyến mãi" required>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <!-- MoTa -->
+                        <div class="col-md-8 mb-3 px-2">
+                            <label for="MoTa" class="form-label">Mô Tả</label>
+                            <textarea class="form-control" id="MoTa" name="MoTa" rows="1" placeholder="Nhập mô tả khuyến mãi">@Model.MoTa</textarea>
+                        </div>
+                        <!-- TrangThai -->
+                        <div class="col-md-4 mb-3 px-2">
+                            <label for="TrangThai" class="form-label">Trạng Thái</label>
+                            <select class="form-select" id="TrangThai" name="TrangThai" required>
+                                <option value="" disabled>Chọn trạng thái</option>
+                                <option value="hoatdong" @(Model.TrangThai == "hoatdong" ? "selected" : "")>Hoạt động</option>
+                                <option value="daxoa" @(Model.TrangThai == "daxoa" ? "selected" : "")>Đã xóa</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- Back Button & Submit Button -->
+                    <div class="d-flex justify-content-center">
+                        <a class="btn btn-success mx-2" href="/admin/khuyenmai/index">Quay Lại</a>
+                        <button type="submit" class="btn btn-primary mx-2">Lưu khuyến mãi</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

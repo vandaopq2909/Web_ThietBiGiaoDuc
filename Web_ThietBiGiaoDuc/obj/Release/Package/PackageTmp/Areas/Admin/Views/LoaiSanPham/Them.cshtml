@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewBag.Title = "Admin | Thêm Loại Sản Phẩm";
+}
+<style>
+    input, textarea, select {
+        max-width: none !important;
+    }
+</style>
+<div class="container">
+    <div class="page-inner">
+        <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4">
+            <div>
+                <h3 class="fw-bold mb-3">Thêm Loại Sản Phẩm</h3>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Thông Tin Loại Sản Phẩm</div>
+            </div>
+            <div class="card-body">
+                <form action="/admin/loaisanpham/them" method="post">
+                    <div class="d-flex justify-content-between">
+                        <!-- TenLoai -->
+                        <div class="col-md-6 mb-3 px-2">
+                            <label for="TenLoai" class="form-label">Tên Loại Sản Phẩm</label>
+                            <input type="text" class="form-control" id="TenLoai" name="TenLoai" placeholder="Nhập tên loại sản phẩm" required>
+                        </div>
+                        <!-- MaDM -->
+                        <div class="col-md-4 mb-3 px-2">
+                            <label for="MaDM" class="form-label">Danh Mục</label>
+                            <select class="form-select" id="MaDM" name="MaDM" required>
+                                <option value="" selected disabled>Chọn danh mục</option>
+                                @if (ViewBag.listDM != null)
+                                {
+                                    foreach (var dm in ViewBag.listDM)
+                                    {
+                                        <option value="@dm.MaDM">@dm.TenDanhMuc</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                        <!-- TrangThai -->
+                        <div class="col-md-2 mb-3 px-2">
+                            <label for="TrangThai" class="form-label">Trạng Thái</label>
+                            <select class="form-select" id="TrangThai" name="TrangThai" required>
+                                <option value="" disabled>Chọn trạng thái</option>
+                                <option value="hoatdong" selected>Hoạt Động</option>
+                                <option value="daxoa">Đã Xóa</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn btn-primary">Lưu Loại Sản Phẩm</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

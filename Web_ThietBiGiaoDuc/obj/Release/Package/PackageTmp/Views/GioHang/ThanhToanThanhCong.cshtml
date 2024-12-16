@@ -1,0 +1,32 @@
+﻿@model Web_ThietBiGiaoDuc.Models.DonHang
+@{
+    ViewBag.Title = "Xác Nhận Thanh Toán Thành Công";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+    <div class="container mt-5">
+        <div class="alert alert-success text-center" role="alert">
+            <h4 class="alert-heading">Thanh toán thành công!</h4>
+            <p>Cảm ơn bạn đã thanh toán. Dưới đây là thông tin đơn hàng của bạn:</p>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                Thông tin đơn hàng
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Mã đơn hàng: <strong>@Model.MaDH</strong></h5>
+                <p class="card-text"><strong>Số tiền: </strong>@Model.TongTien.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("vi-VN"))<sup>đ</sup></p>
+                <p class="card-text"><strong>Phương thức thanh toán: </strong>COD</p>
+                <p class="card-text"><strong>Thời gian thanh toán: </strong>@Model.NgayDatHang.ToLocalTime()</p>
+            </div>
+            <div class="card-footer text-muted">
+                Bạn có thể kiểm tra trạng thái đơn hàng trong tài khoản của mình.
+            </div>
+        </div>
+
+        <div class="text-center mt-4 mb-4">
+            <a href="/Home/Index" class="btn btn-primary">Quay về trang chủ</a>
+            <a href="/GioHang/ChiTietDonHang?madh=@Model.MaDH" class="btn btn-secondary">Xem lịch sử đơn hàng</a>
+        </div>
+    </div>
+

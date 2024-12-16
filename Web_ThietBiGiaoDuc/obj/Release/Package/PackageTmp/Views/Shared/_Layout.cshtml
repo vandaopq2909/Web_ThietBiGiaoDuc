@@ -1,0 +1,372 @@
+﻿
+@{ 
+    var TenDangNhap = Context.Request.Cookies["auth"];
+    var makh = Context.Request.Cookies["makh"];
+
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <!-- Css Styles -->
+    <link href="~/Resources/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/Resources/js/bootstrap.bundle.js" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Resources/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Resources/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Resources/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="~/Resources/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="~/Resources/css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Resources/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Resources/css/style.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/templatemo.css">
+    <link rel="stylesheet" href="assets/css/custom.css">
+    <!-- Css categories -->
+    <style>
+        /* Minimal Custom Styles */
+        .category-item {
+            text-align: center;
+        }
+
+            .category-item img {
+                border-radius: 15px; /* Rounded corners for the image */
+                transition: transform 0.3s ease;
+            }
+
+            .category-item:hover img {
+                transform: scale(1.1); /* Zoom in effect */
+            }
+    </style>
+</head>
+<body>
+    <!-- Humberger Begin -->
+    <div class="humberger__menu__overlay"></div>
+    <div class="humberger__menu__wrapper">
+        <div class="humberger__menu__logo">
+            <a href="#"><img src="img/logo.png" alt=""></a>
+        </div>
+        <div class="humberger__menu__cart">
+            <ul>
+                <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
+                <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+            </ul>
+            <div class="header__cart__price">item: <span>$150.00</span></div>
+        </div>
+        <nav class="humberger__menu__nav mobile-menu">
+            <ul>
+                <li class="active"><a href="./index.html">Home</a></li>
+                <li><a href="./shop-grid.html">Shop</a></li>
+                <li>
+                    <a href="#">Pages</a>
+                    <ul class="header__menu__dropdown">
+                        <li><a href="./shop-details.html">Shop Details</a></li>
+                        <li><a href="./shoping-cart.html">Shoping Cart</a></li>
+                        <li><a href="./checkout.html">Check Out</a></li>
+                        <li><a href="./blog-details.html">Blog Details</a></li>
+                    </ul>
+                </li>
+                <li><a href="./blog.html">Blog</a></li>
+                <li><a href="./contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <div id="mobile-menu-wrap"></div>
+        <div class="header__top__right__social">
+            <a href="#"><i class="fa fa-facebook"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+            <a href="#"><i class="fa fa-linkedin"></i></a>
+            <a href="#"><i class="fa fa-pinterest-p"></i></a>
+        </div>
+        <div class="humberger__menu__contact">
+            <ul>
+                <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
+                <li>Free Shipping for all Order of $99</li>
+            </ul>
+        </div>
+    </div>
+    <!-- Humberger End -->
+    <!-- Header Section Begin -->
+    <header class="header">
+        <div class="header__top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-md-8">
+                        <div class="header__top__left">
+                            <ul>
+                                <li><i class="fa fa-envelope"></i> thietbigiaoduc.dacn@gmail.com</li>
+                                <li>Miễn phí giao hàng cho tất cả đơn hàng từ 1.000.000<sup>đ</sup></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <div class="header__top__right">
+                            @if (TenDangNhap == null)
+                            {
+                                <div class="header__top__right__social">
+                                    <a href="~/KhachHang/DangKi"><i class="fa fas fa-user-plus"></i> Đăng kí</a>
+                                </div>
+                                <div class="header__top__right__auth">
+                                    <a href="~/KhachHang/DangNhap"><i class="fa fa-user"></i> Đăng nhập</a>
+                                </div>
+                            }
+                            else if(TenDangNhap !=null)
+                            {
+                            <div class="header__top__right__auth">
+                                <div class="dropdown">
+                                    <a class="btn btn-info dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                        @TenDangNhap.Value
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                        <li><a class="dropdown-item" href="/GioHang/LichSuMuaHang?makh=@makh.Value">Lịch sử mua hàng</a></li>
+                                        <li><a class="dropdown-item" href="/Khachhang/Sua?makh=@makh.Value">Cập nhật thông tin cá nhân</a></li>
+                                        <li><a class="dropdown-item" href="/Khachhang/DoiMatKhau?makh=@makh.Value" ">Đổi mật khẩu</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item" href="/KhachHang/DangXuat">Đăng xuất</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                          
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="header__logo">
+                        <a href="/Home/Index"><img src="img/logo.png" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <nav class="header__menu">
+                        <ul>
+                            <li class="active"><a href="/home/index">Trang Chủ</a></li>
+                            <li>
+                                <a href="/SanPham/TatCa">Sản Phẩm</a>
+                                <ul class="header__menu__dropdown">
+                                    <li><a href="/SanPham/SanPhamTheoLoai?maLoai=L7">Bàn ghế học sinh</a></li>
+                                    <li><a href="/SanPham/SanPhamTheoLoai?maLoai=L8">Bàn ghế giáo viên</a></li>
+                                    <li><a href="/SanPham/SanPhamTheoLoai?maLoai=L3">Ghế thí nghiệm</a></li>
+                                    <li><a href="/SanPham/TatCa">Tất cả</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="/home/gioithieu">Giới Thiệu</a></li>
+
+                            <li><a href="/home/lienhe">Liên Hệ</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-lg-3">
+                    <div class="header__cart">
+                        <ul>
+                            <li><a href="/GioHang/Index"><i class="fa fa-shopping-bag"></i><span id="tong-sl"></span></a></li>
+                        </ul>
+                        <div class="header__cart__price">Tổng tiền: <span id="tong-tien"><sup>đ</sup></span></div>
+                    </div>
+                    <script src="~/Resources/js/jquery-3.3.1.min.js"></script>
+                    <script>
+                        $(document).ready(function () {
+                            // Gọi AJAX tới phương thức GetGioHangData
+                            $.ajax({
+                                url: '/GioHang/GetGioHangData',
+                                type: 'GET',
+                                dataType: 'json', // Dữ liệu trả về là JSON
+                                success: function (data) {
+                                    // Cập nhật dữ liệu vào HTML
+                                    $('#tong-sl').text(data.TongSL);
+                                    $('#tong-tien').text(data.TongTien.toLocaleString('vi-VN') + "đ");
+                                },
+                                error: function () {
+                                    alert('Có lỗi xảy ra khi lấy dữ liệu giỏ hàng.');
+                                }
+                            });
+                        });
+                    </script>
+                </div>
+            </div>
+            <div class="humberger__open">
+                <i class="fa fa-bars"></i>
+            </div>
+        </div>
+    </header>
+    <!-- Header Section End -->
+    <!-- Hero Section Begin -->
+    <section class="hero">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="hero__categories">
+                        <div class="list-group">
+                            <a href="/SanPham/TatCa" class="list-group-item list-group-item-action active bg-success" aria-current="true">
+                                <i class="fa fa-bars"></i> Tất Cả Danh Mục
+                            </a>
+                         
+                            <a href="/SanPham/SanPhamTheoDanhMuc?maDM=DM1" class="list-group-item list-group-item-action">Bàn thí nghiệm</a>
+                            <a href="/SanPham/SanPhamTheoDanhMuc?maDM=DM2" class="list-group-item list-group-item-action">Thiết bị - Nội thất trường học</a>
+                            <a href="/SanPham/SanPhamTheoDanhMuc?maDM=DM3" class="list-group-item list-group-item-action">Thiết bị đồ dùng dạy học</a>
+                            <a href="/SanPham/SanPhamTheoDanhMuc?maDM=DM4" class="list-group-item list-group-item-action">Nội thất mầm non</a>
+                            <a href="/SanPham/SanPhamTheoDanhMuc?maDM=DM5" class="list-group-item list-group-item-action">Thiết bị vui chơi</a>
+                            <a href="/SanPham/SanPhamTheoDanhMuc?maDM=DM6" class="list-group-item list-group-item-action">Giáo cụ montessori</a>
+                            <a href="/SanPham/SanPhamTheoDanhMuc?maDM=DM7" class="list-group-item list-group-item-action">Thiết bị thể thao ngoài trời</a>
+                            <a href="/SanPham/SanPhamTheoDanhMuc?maDM=DM8" class="list-group-item list-group-item-action">Nội thất văn phòng</a>
+                            <a href="/SanPham/SanPhamTheoDanhMuc?maDM=DM9" class="list-group-item list-group-item-action">Phòng học smart classroom</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    <div class="hero__search">
+                        <div class="hero__search__form">
+                            <form action="/sanpham/timkiem" method="post">
+                                <input type="text" name="s" placeholder="Bạn Muốn Tìm Gì?">
+                                <button type="submit" class="btn btn-success">Tìm Kiếm</button>
+                            </form>
+                        </div>
+                        <div class="hero__search__phone">
+                            <div class="hero__search__phone__icon">
+                                <i class="fa fa-phone"></i>
+                            </div>
+                            <div class="hero__search__phone__text">
+                                <h5>0327845877</h5>
+                                <span>Hỗ trợ 24/7</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="carouselExampleIndicators" class="carousel slide">
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                        </div>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="~/Images/Banner/banner1.png" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="~/Images/Banner/banner2.png" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="~/Images/Banner/banner3.png" class="d-block w-100" alt="...">
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Banner Begin -->
+    <div class="banner">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div class="banner__pic">
+                        <img src="img/banner/banner-1.jpg" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div class="banner__pic">
+                        <img src="img/banner/banner-2.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Banner End -->
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <!-- Footer Section Begin -->
+        <footer class="footer spad">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-5 col-md-6 col-sm-6">
+                        <div class="footer__about">
+                            <div class="footer__about__logo">
+                                <h3>THIẾT BỊ GIÁO DỤC A&B</h3>
+                            </div>
+                            <ul>
+                                <li>Địa chỉ: 140 Lê Trọng Tấn, Tân Phú, Tp. Hồ Chí Minh</li>
+                                <li>Điện thoại: +84 0327845877</li>
+                                <li>Email: thietbigiaoduc.dacn@gmail.com</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="footer__widget">
+                            <h6>Về chúng tôi</h6>
+                            <ul>
+                                <li><a href="#">Giới thiệu</a></li>
+                                <li><a href="#">Chính sách mua hàng</a></li>
+                                <li><a href="#">Chính sách đổi trả</a></li>
+                                <li><a href="#">Chính sách thanh toán</a></li>
+                                <li><a href="#">Thông tin liên hệ</a></li>
+                                <li><a href="#">Google map</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-12">
+                        <div class="footer__widget">
+                            <h6>Góp ý từ khách hàng</h6>
+                            <p>Vui lòng liên hệ qua email để chúng tôi mang đến trải nghiệm tuyệt vời hơn!</p>
+                            <form action="#">
+                                <input type="text" placeholder="Nhập email của bạn">
+                                <button type="submit" class="site-btn">Gửi</button>
+                            </form>
+                            <div class="footer__widget__social">
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-instagram"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-pinterest"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="footer__copyright">
+                            <div class="footer__copyright__text">
+                                <p>
+                                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                    Copyright &copy;
+                                    <script>document.write(new Date().getFullYear());</script>, Thiết Bị Giáo Dục <i class="fa fa-heart" aria-hidden="true"></i> by Trần Văn Đảo | Chiêm Hồng Hưng | Nguyễn Thanh Tiến
+                                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Footer Section End -->
+
+    </div>
+
+    <!-- Js Plugins -->
+    <script src="~/Resources/js/jquery-3.3.1.min.js"></script>
+    <script src="~/Resources/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Resources/js/jquery.nice-select.min.js"></script>
+    <script src="~/Resources/js/jquery-ui.min.js"></script>
+    <script src="~/Resources/js/jquery.slicknav.js"></script>
+    <script src="~/Resources/js/mixitup.min.js"></script>
+    <script src="~/Resources/js/main.js"></script>
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+                          

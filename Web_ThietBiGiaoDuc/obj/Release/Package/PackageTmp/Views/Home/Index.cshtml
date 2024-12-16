@@ -1,0 +1,459 @@
+﻿
+@{
+    ViewBag.Title = "Trang Chủ";
+}
+<style>
+    /* Custom Styles */
+    .product-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr); /* 4 cột */
+        gap: 20px; /* Khoảng cách giữa các card */
+    }
+
+    .product-card {
+        display: flex;
+        flex-direction: column;
+        height: 100%; /* Đảm bảo chiều cao đầy đủ */
+        border: 1px solid #e0e0e0; /* Thêm viền cho card */
+        border-radius: 10px; /* Bo góc cho card */
+        background-color: #fff;
+        padding: 10px;
+        overflow: hidden; /* Ẩn phần vượt quá */
+        transition: box-shadow 0.3s ease; /* Hiệu ứng chuyển tiếp cho bóng */
+    }
+
+        .product-card:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Bóng khi hover */
+        }
+
+    .product-image-wrapper {
+        height: 200px; /* Đặt chiều cao cố định cho hình ảnh */
+        overflow: hidden; /* Ẩn phần hình ảnh vượt quá chiều cao */
+        position: relative; /* Để đảm bảo hình ảnh được căn chỉnh đúng */
+        border-radius: 10px; /* Bo góc cho hình ảnh */
+    }
+
+    .product-image {
+        height: 180px;
+        object-fit: contain;
+        transition: transform 0.3s ease;
+    }
+
+    .product-image-wrapper img {
+        width: 100%; /* Đặt chiều rộng 100% */
+        height: 100%; /* Đặt chiều cao 100% */
+        object-fit: cover; /* Cắt hình ảnh cho phù hợp */
+        transition: transform 0.3s ease-in-out; /* Thêm hiệu ứng chuyển tiếp */
+    }
+
+        .product-image-wrapper img:hover {
+            transform: scale(1.1); /* Phóng to hình ảnh khi hover */
+        }
+
+    /* Zoom in ảnh khi hover vào toàn bộ card */
+    .product-card:hover .product-image {
+        transform: scale(1.1);
+    }
+
+    .product-name {
+        margin: 10px 0; /* Khoảng cách giữa tên sản phẩm và các phần khác */
+    }
+
+    .product-name a {
+        color: #333;
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s ease;
+    }
+
+    .product-name a:hover {
+        color: #28a745; /* Đổi màu xanh lá cây khi hover */
+    }
+    /* Hiệu ứng zoom-in khi hover */
+    .banner-ad {
+        transition: transform 0.5s ease; /* Chuyển đổi nhẹ nhàng khi hover */
+    }
+
+    .banner-ad:hover {
+        transform: scale(1.05); /* Zoom-in khi hover */
+    }
+</style>
+
+<!-- Categories Section Begin -->
+<section class="categories">
+    <div class="container">
+        <div class="row">
+            <!-- Category 1 -->
+            <div class="col-md-3 mb-4">
+                <div class="category-item">
+                    <img src="~/Resources/img/categories/DanhMuc_Ban_thi_nghiem.jpg" alt="Fresh Fruit" class="img-fluid rounded mb-3">
+                    <div class="category-title">
+                        <a href="/SanPham/SanPhamTheoLoai?maLoai=L2" class="btn btn-outline-success rounded-pill">BÀN THÍ NGHIỆM VẬT LÝ</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Category 2 -->
+            <div class="col-md-3 mb-4">
+                <div class="category-item">
+                    <img src="~/Resources/img/categories/DanhMuc_Noi_that_phong_hoc.jpeg" alt="Dried Fruit" class="img-fluid rounded mb-3">
+                    <div class="category-title">
+                        <a href="/SanPham/SanPhamTheoLoai?maLoai=L8" class="btn btn-outline-success rounded-pill">BÀN GHẾ GIÁO VIÊN</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Category 3 -->
+            <div class="col-md-3 mb-4">
+                <div class="category-item">
+                    <img src="~/Resources/img/categories/DanhMuc_Thiet_bi_dung_cu_day_hoc.jpg" alt="Vegetables" class="img-fluid rounded mb-3">
+                    <div class="category-title">
+                        <a href="/SanPham/SanPhamTheoLoai?maLoai=L15" class="btn btn-outline-success rounded-pill">THIẾT BỊ - ĐỒ DÙNG DẠY HỌC</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Category 4 -->
+            <div class="col-md-3 mb-4">
+                <div class="category-item">
+                    <img src="~/Resources/img/categories/DanhMuc_Giao_cu_montessori.jpg" alt="Drink Fruits" class="img-fluid rounded mb-3">
+                    <div class="category-title">
+                        <a href="/SanPham/SanPhamTheoLoai?maLoai=L27" class="btn btn-outline-success rounded-pill">GIÁO CỤ MONTESSORI</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Categories Section End -->
+<!-- Featured Section Begin -->
+<section class="featured spad">
+    <div class="container my-5">
+        <div class="section-title d-flex justify-content-between align-items-center mb-4">
+            <h2 class="text-center flex-grow-1">Sản phẩm nổi bật</h2>
+            <a href="/SanPham/TatCa" class="btn btn-outline-success rounded-pill ml-auto">Xem tất cả</a>
+        </div>
+
+        <!-- Danh sách sản phẩm nổi bật -->
+        <div class="row">
+            @foreach (var spNoiBat in ViewBag.listSPNoiBat)
+            {
+                <!-- Sản phẩm -->
+                <div class="col-md-3 d-flex">
+                    <div class="product-card d-flex flex-column text-center border-0 w-100">
+                        <div class="product-image-wrapper mb-3">
+                            <a href="/sanpham/chitiet?masp=@spNoiBat.MaSP">
+                                <img src="~/Images/SanPham/@spNoiBat.img" class="img-fluid" />
+                            </a>
+                        </div>
+                        <h5 class="product-name">
+                            <a href="/sanpham/chitiet?masp=@spNoiBat.MaSP">@spNoiBat.TenSanPham</a>
+                        </h5>
+                        <p>
+                            <del><span>@spNoiBat.Gia.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("vi-VN"))</span><sup>đ</sup></del>
+                            <strong class="discounted-price" style="color:red;" data-product-id="@spNoiBat.MaSP" data-original-price="@spNoiBat.Gia">
+                                Đang tính...
+                            </strong>
+                            <span class="badge badge-success">0% OFF</span>
+                        </p>
+                        <!-- Toast thông báo với màu nền xanh lá -->
+                        <div class="toast" id="successToast" role="alert" aria-live="assertive" aria-atomic="true"
+                             style="position: fixed; top: 20px; right: 20px; min-width: 200px; z-index: 1050; background-color: #28a745; color: white;">
+                            <div class="toast-header" style="background-color: #218838; color: white;">
+                                <strong class="mr-auto">Thông báo</strong>
+                            </div>
+                            <div class="toast-body">
+                                Thêm sản phẩm vào giỏ hàng thành công!
+                            </div>
+                        </div>
+                        <script type="text/javascript">
+                            function themVaoGioHang(maSP) {
+                                $.ajax({
+                                    url: '@Url.Action("ThemVaoGio", "GioHang")', // URL của Action
+                                    type: 'POST', // Phương thức gửi dữ liệu
+                                    data: { maSP: maSP }, // Gửi maSP tới server
+                                    success: function () {
+                                        // Hiển thị toast khi gửi thành công
+                                        $('#successToast').toast({ delay: 2000 }); // Thiết lập thời gian tồn tại là 2 giây
+                                        $('#successToast').toast('show');
+                                    },
+                                    error: function () {
+                                        alert("Có lỗi xảy ra khi gửi dữ liệu.");
+                                    }
+                                });
+                            }
+                        </script>
+                        <!-- Spacer để đẩy nút xuống đáy -->
+                        <div class="mt-auto">
+                            <button class="btn btn-outline-success btn-sm" onclick="themVaoGioHang('@spNoiBat.MaSP')">Thêm vào giỏ hàng</button>
+                        </div>
+                        <!--lấy tỉ lệ giảm giá-->
+                        <script>
+                            $(document).ready(function () {
+                            // Lặp qua từng sản phẩm để tính giá sau khuyến mãi
+                            $(".discounted-price").each(function () {
+                                var $this = $(this);
+                                var maSP = $this.data("product-id");
+                                var originalPrice = parseFloat($this.data("original-price"));
+
+                                // Kiểm tra giá gốc có hợp lệ không
+                                if (isNaN(originalPrice) || originalPrice <= 0) {
+                                    $this.text("Giá không hợp lệ");
+                                    return;
+                                }
+
+                                // Gọi API lấy tỷ lệ giảm giá
+                                $.ajax({
+                                    url: '@Url.Action("GetTiLeGiamGia", "SanPham")',
+                                    type: 'GET',
+                                    data: { maSP: maSP },
+                                    success: function (discountRate) {
+                                        // Kiểm tra tỷ lệ giảm giá có hợp lệ không
+                                        if (discountRate === null || discountRate === undefined || discountRate < 0) {
+                                            $this.text("Không thể tính giá");
+                                            $this.siblings(".discount-rate").text("Tỷ lệ lỗi");
+                                            return;
+                                        }
+
+                                        // Chuyển đổi tỷ lệ giảm giá từ phần trăm sang thập phân
+                                        var discountDecimal = discountRate / 100;
+
+                                        // Tính giá sau khuyến mãi
+                                        var discountedPrice = originalPrice * (1 - discountDecimal);
+
+                                        // Cập nhật giá và tỷ lệ giảm giá
+                                        $this.text(discountedPrice.toLocaleString("vi-VN") + " đ");
+                                        $this.siblings(".discount-rate").text(discountRate + "% OFF");
+                                    },
+                                    error: function () {
+                                        $this.text("Không thể tính giá");
+                                        $this.siblings(".discount-rate").text("Lỗi");
+                                    }
+                                });
+                            });
+                        });
+
+                        </script>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    <!-- Sản phẩm theo loại: Bàn ghế học sinh-->
+    <div class="container my-5">
+        <div class="section-title d-flex justify-content-between align-items-center mb-4">
+            <h2 class="text-center flex-grow-1">Bàn ghế học sinh</h2>
+            <a href="/SanPham/SanPhamTheoLoai?maLoai=L7" class="btn btn-outline-success rounded-pill ml-auto">Xem tất cả</a>
+        </div>
+
+        <!-- Danh sách sản phẩm nổi bật -->
+        <div class="row">
+            @foreach (var spNoiBat in ViewBag.listSPBanGheHS)
+            {
+                <!-- Sản phẩm -->
+                <div class="col-md-3 d-flex">
+                    <div class="product-card d-flex flex-column text-center border-0 w-100">
+                        <div class="product-image-wrapper mb-3">
+                            <a href="/sanpham/chitiet?masp=@spNoiBat.MaSP">
+                                <img src="~/Images/SanPham/@spNoiBat.img" class="img-fluid" />
+                            </a>
+                        </div>
+                        <h5 class="product-name">
+                            <a href="/sanpham/chitiet?masp=@spNoiBat.MaSP">@spNoiBat.TenSanPham</a>
+                        </h5>
+                        <p>
+                            <del><span>@spNoiBat.Gia.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("vi-VN"))</span><sup>đ</sup></del>
+                            <strong class="discounted-price" style="color:red;" data-product-id="@spNoiBat.MaSP" data-original-price="@spNoiBat.Gia">
+                                Đang tính...
+                            </strong>
+                            <span class="badge badge-success">0% OFF</span>
+                        </p>
+                        <!-- Spacer để đẩy nút xuống đáy -->
+                        <div class="mt-auto">
+                            <button class="btn btn-outline-success btn-sm" onclick="themVaoGioHang('@spNoiBat.MaSP')">Thêm vào giỏ hàng</button>
+                        </div>
+                        <!--lấy tỉ lệ giảm giá-->
+                        <script>
+                            $(document).ready(function () {
+                            // Lặp qua từng sản phẩm để tính giá sau khuyến mãi
+                            $(".discounted-price").each(function () {
+                                var $this = $(this);
+                                var maSP = $this.data("product-id");
+                                var originalPrice = parseFloat($this.data("original-price"));
+
+                                // Kiểm tra giá gốc có hợp lệ không
+                                if (isNaN(originalPrice) || originalPrice <= 0) {
+                                    $this.text("Giá không hợp lệ");
+                                    return;
+                                }
+
+                                // Gọi API lấy tỷ lệ giảm giá
+                                $.ajax({
+                                    url: '@Url.Action("GetTiLeGiamGia", "SanPham")',
+                                    type: 'GET',
+                                    data: { maSP: maSP },
+                                    success: function (discountRate) {
+                                        // Kiểm tra tỷ lệ giảm giá có hợp lệ không
+                                        if (discountRate === null || discountRate === undefined || discountRate < 0) {
+                                            $this.text("Không thể tính giá");
+                                            $this.siblings(".discount-rate").text("Tỷ lệ lỗi");
+                                            return;
+                                        }
+
+                                        // Chuyển đổi tỷ lệ giảm giá từ phần trăm sang thập phân
+                                        var discountDecimal = discountRate / 100;
+
+                                        // Tính giá sau khuyến mãi
+                                        var discountedPrice = originalPrice * (1 - discountDecimal);
+
+                                        // Cập nhật giá và tỷ lệ giảm giá
+                                        $this.text(discountedPrice.toLocaleString("vi-VN") + " đ");
+                                        $this.siblings(".discount-rate").text(discountRate + "% OFF");
+                                    },
+                                    error: function () {
+                                        $this.text("Không thể tính giá");
+                                        $this.siblings(".discount-rate").text("Lỗi");
+                                    }
+                                });
+                            });
+                        });
+
+                        </script>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    <!-- Sản phẩm theo loại: Thiết bị dạy học-->
+    <div class="container my-5">
+        <div class="section-title d-flex justify-content-between align-items-center mb-4">
+            <h2 class="text-center flex-grow-1">Thiết bị dạy học</h2>
+            <a href="/SanPham/SanPhamTheoLoai?maLoai=L15" class="btn btn-outline-success rounded-pill ml-auto">Xem tất cả</a>
+        </div>
+
+        <!-- Danh sách sản phẩm nổi bật -->
+        <div class="row">
+            @foreach (var spNoiBat in ViewBag.listSPThietBiDayHoc)
+            {
+                <!-- Sản phẩm -->
+                <div class="col-md-3 d-flex">
+                    <div class="product-card d-flex flex-column text-center border-0 w-100">
+                        <div class="product-image-wrapper mb-3">
+                            <a href="/sanpham/chitiet?masp=@spNoiBat.MaSP">
+                                <img src="~/Images/SanPham/@spNoiBat.img" class="img-fluid" />
+                            </a>
+                        </div>
+                        <h5 class="product-name">
+                            <a href="/sanpham/chitiet?masp=@spNoiBat.MaSP">@spNoiBat.TenSanPham</a>
+                        </h5>
+                        <p>
+                            <del><span>@spNoiBat.Gia.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("vi-VN"))</span><sup>đ</sup></del>
+                            <strong class="discounted-price" style="color:red;" data-product-id="@spNoiBat.MaSP" data-original-price="@spNoiBat.Gia">
+                                Đang tính...
+                            </strong>
+                            <span class="badge badge-success">0% OFF</span>
+                        </p>
+                        <!-- Spacer để đẩy nút xuống đáy -->
+                        <div class="mt-auto">
+                            <button class="btn btn-outline-success btn-sm" onclick="themVaoGioHang('@spNoiBat.MaSP')">Thêm vào giỏ hàng</button>
+                        </div>
+                        <!--lấy tỉ lệ giảm giá-->
+                        <script>
+                            $(document).ready(function () {
+                            // Lặp qua từng sản phẩm để tính giá sau khuyến mãi
+                            $(".discounted-price").each(function () {
+                                var $this = $(this);
+                                var maSP = $this.data("product-id");
+                                var originalPrice = parseFloat($this.data("original-price"));
+
+                                // Kiểm tra giá gốc có hợp lệ không
+                                if (isNaN(originalPrice) || originalPrice <= 0) {
+                                    $this.text("Giá không hợp lệ");
+                                    return;
+                                }
+
+                                // Gọi API lấy tỷ lệ giảm giá
+                                $.ajax({
+                                    url: '@Url.Action("GetTiLeGiamGia", "SanPham")',
+                                    type: 'GET',
+                                    data: { maSP: maSP },
+                                    success: function (discountRate) {
+                                        // Kiểm tra tỷ lệ giảm giá có hợp lệ không
+                                        if (discountRate === null || discountRate === undefined || discountRate < 0) {
+                                            $this.text("Không thể tính giá");
+                                            $this.siblings(".discount-rate").text("Tỷ lệ lỗi");
+                                            return;
+                                        }
+
+                                        // Chuyển đổi tỷ lệ giảm giá từ phần trăm sang thập phân
+                                        var discountDecimal = discountRate / 100;
+
+                                        // Tính giá sau khuyến mãi
+                                        var discountedPrice = originalPrice * (1 - discountDecimal);
+
+                                        // Cập nhật giá và tỷ lệ giảm giá
+                                        $this.text(discountedPrice.toLocaleString("vi-VN") + " đ");
+                                        $this.siblings(".discount-rate").text(discountRate + "% OFF");
+                                    },
+                                    error: function () {
+                                        $this.text("Không thể tính giá");
+                                        $this.siblings(".discount-rate").text("Lỗi");
+                                    }
+                                });
+                            });
+                        });
+                        </script>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="row">
+        <!-- Banner lớn bên trái, chiếm 70% -->
+        <div class="col-md-8">
+            <div class="banner-ad d-flex align-items-center large bg-info block-1 h-100 zoom-banner" style="background: url('/Resources/img/categories/DanhMuc_Ban_thi_nghiem.jpg') no-repeat; background-size: cover;">
+                <div class="banner-content p-5">
+                    <div class="content-wrapper">
+                        <h3 class="banner-title text-white">Khuyến Mãi Đặc Biệt: Thiết Bị Giáo Dục</h3>
+                        <p class="text-white">Tận hưởng giảm giá lên đến 30% cho các thiết bị giáo dục chất lượng cao. Cập nhật các sản phẩm mới nhất cho lớp học của bạn hôm nay!</p>
+                        <a href="#" class="btn-link text-white">Mua Ngay</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hai banner nhỏ bên phải, mỗi cái chiếm 50% chiều dọc -->
+        <div class="col-md-4">
+            <div class="row h-100">
+                <!-- Banner nhỏ thứ nhất -->
+                <div class="col-12 mb-3">
+                    <div class="banner-ad bg-success-subtle block-2 h-100 zoom-banner" style="background: url('/Resources/img/categories/DanhMuc_Giao_cu_montessori.jpg') no-repeat; background-size: cover;">
+                        <div class="banner-content align-items-center p-5">
+                            <div class="content-wrapper">
+                                <h3 class="banner-title text-white">Combo Tiết Kiệm Cho Lớp Học</h3>
+                                <p class="text-white">Giảm giá đến 50% khi mua các combo thiết bị giáo dục. Hoàn hảo cho mọi lớp học từ mầm non đến trung học!</p>
+                                <a href="#" class="btn-link text-white">Khám Phá Các Combo</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Banner nhỏ thứ hai -->
+                <div class="col-12">
+                    <div class="banner-ad bg-danger block-3 h-100 zoom-banner" style="background: url('/Resources/img/categories/DanhMuc_Noi_that_phong_hoc.jpeg') no-repeat; background-size: cover;">
+                        <div class="banner-content align-items-center p-5">
+                            <div class="content-wrapper">
+                                <h3 class="banner-title text-white">Mã Giảm Giá Thiết Bị Giáo Dục</h3>
+                                <p class="text-white">Nhận mã giảm giá lên đến 40% cho các thiết bị học tập. Sử dụng mã để tiết kiệm ngay hôm nay!</p>
+                                <a href="#" class="btn-link text-white">Nhận Mã Giảm Giá</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+<!-- Featured Section End -->
+
+<script src="~/Areas/Admin/ResourcesAdmin/assets/js/core/jquery-3.7.1.min.js"></script>

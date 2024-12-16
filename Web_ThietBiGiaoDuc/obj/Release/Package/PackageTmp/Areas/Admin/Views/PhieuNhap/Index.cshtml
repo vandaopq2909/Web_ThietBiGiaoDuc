@@ -1,0 +1,179 @@
+﻿
+@{
+    ViewBag.Title = "Quản lí phiếu nhập";
+}
+
+<head>
+    <link href="~/Resources/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/Resources/js/bootstrap.bundle.js" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Resources/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Resources/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Resources/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="~/Resources/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="~/Resources/css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Resources/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Resources/css/style.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/templatemo.css">
+    <link rel="stylesheet" href="assets/css/custom.css">
+</head>
+@functions{
+    public string GetStatusColorClass(string trangThai)
+    {
+        if (trangThai == "Đã đăt hàng") return "text-primary"; // Đã đăt hàng
+        if (trangThai == "Đang giao hàng") return "text-warning"; // Đang giao hàng
+        if (trangThai == "Đã nhập hàng") return "text-success"; // Đã nhập hàng
+        return "text-secondary"; // Mặc định
+    }
+
+}
+
+<div class="container">
+    <div class="page-inner">
+        <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4">
+            <div>
+                <h3 class="fw-bold mb-3">Quản lí nhập hàng</h3>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <div id="basic-datatables_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
+                        <div class="row">
+                            <div class="col-sm-6 col-md-6">
+                                <div class="dataTables_length" id="basic-datatables_length">
+                                    <form method="get" action="/Admin/PhieuNhap">
+                                        <label style="font-size:16px">Xem trạng thái</label>
+                                        <select name="trangthai" id="order-status" class="form-control" style="width:200px" onchange="this.form.submit()">
+                                                                                        <option class="text-secondary" value="" @(string.IsNullOrEmpty(ViewBag.SelectedStatus) ? "selected" : "")>Tất cả</option>
+                                            <option value="Đã đăt hàng" @(ViewBag.SelectedStatus == "Đã đăt hàng" ? "selected" : "")>Đã đăt hàng</option>
+                                            <option value="Đang giao hàng" @(ViewBag.SelectedStatus == "Đang giao hàng" ? "selected" : "")>Đang giao hàng</option>
+                                            <option value="Đã nhập hàng" @(ViewBag.SelectedStatus == "Đã nhập hàng" ? "selected" : "")>Đã nhập hàng</option>
+                                        </select>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6 ">
+                                <div class="d-flex justify-content-end">
+                                    <div class="input-group">
+                                        <a class="btn btn-primary btn-round ms-auto" href="/admin/phieunhap/them">
+                                            <i class="fa fa-plus"></i>
+                                            Thêm phiếu nhập
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="col-sm-12">
+                                <table id="basic-datatables" class="display table table-striped table-hover dataTable" role="grid" aria-describedby="basic-datatables_info">
+                                    <thead>
+                                        <tr>
+                                            <th>Mã phiếu nhập</th>
+                                            <th>Thời gian</th>
+                                            <th>Tổng tiền</th>
+                                            <th>Trạng thái </th>
+                                            <th style="text-align:center">Xử lí</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in ViewBag.lstPhieuNhap)
+                                        {
+                                            <tr>
+                                                <td>@item.MaPN</td>
+                                                <td>@item.NgayNhapHang.ToString("dd/MM/yyyy ")</td>
+                                                <td style="text-align:right">@item.TongTien.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("vi-VN"))</td>
+                                                <td>
+                                                    <h6 class="@GetStatusColorClass(item.TrangThai)">
+                                                        @item.TrangThai
+                                                    </h6>
+                                                </td>
+                                                <td style="text-align:center">
+                                                    <div class="form-button-action">
+                                                        <a href="/Admin/PhieuNhap/Sua?mapn=@item.MaPN"
+                                                           type="button"
+                                                           data-bs-toggle="tooltip"
+                                                           class="btn btn-link btn-primary btn-lg"
+                                                           title="Cập nhật">
+                                                            <i class="fa fa-edit"></i>
+                                                        </a>
+
+                                                        <!-- Nút xóa kích hoạt Modal -->
+                                                        <button data-bs-toggle="modal"
+                                                                data-bs-target="#remove_modal_@item.MaPN"
+                                                                aria-hidden="true"
+                                                                tabindex="-1"
+                                                                id="remove_btn_@item.MaPN"
+                                                                title=""
+                                                                class="btn btn-link btn-danger"
+                                                                data-original-title="Remove">
+                                                            <i class="fa fa-times"></i>
+                                                        </button>
+                                                        <!-- Modal Xác nhận xóa -->
+                                                        <div class="modal fade" id="remove_modal_@item.MaPN" tabindex="-1" aria-labelledby="confirmDeleteLabel_@item.MaPN" aria-hidden="true">
+                                                            <div class="modal-dialog">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title" id="confirmDeleteLabel_@item.MaPN">Xác nhận xóa</h5>
+                                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        Bạn có chắc chắn muốn xóa mục "@item.MaPN" không?
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                                                                         <!-- Form xóa -->
+                                                                        <form action="/Admin/PhieuNhap/Xoa" method="post">
+                                                                            <input type="hidden" name="maPN" value="@item.MaPN" />
+                                                                            <button type="submit" class="btn btn-danger">Xóa</button>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        }
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="row">
+                                <div class="pagination-container mb-5">
+                                    @if (ViewBag.lstDonHang != null && ViewBag.lstDonHang is PagedList.IPagedList)
+                                    {
+                                        var pagedList = (PagedList.IPagedList)ViewBag.lstDonHang;
+
+                                        <ul class="pagination justify-content-center">
+                                            @if (pagedList.HasPreviousPage)
+                                            {
+                                                <li class="page-item">
+                                                    <a class="page-link" href="@Url.Action("Index", "PhieuNhap", new { area = "Admin",page = pagedList.PageNumber - 1 })">Previous</a>
+                                                </li>
+                                            }
+
+                                            @for (int i = 1; i <= pagedList.PageCount; i++)
+                                            {
+                                                <li class="page-item @(i == pagedList.PageNumber ? "active" : "")">
+                                                    <a class="page-link" href="@Url.Action("Index", "PhieuNhap", new { area = "Admin",page = i})">@i</a>
+                                                </li>
+                                            }
+
+                                            @if (pagedList.HasNextPage)
+                                            {
+                                                <li class="page-item">
+                                                    <a class="page-link" href="@Url.Action("Index", "DonHang", new { area = "Admin",page = pagedList.PageNumber + 1 })">Next</a>
+                                                </li>
+                                            }
+                                        </ul>
+                                    }
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
